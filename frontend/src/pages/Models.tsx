@@ -121,6 +121,7 @@ export default function Models() {
   const [activationError, setActivationError] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [activatingId, setActivatingId] = useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const detectFrameworkFromFile = (file: File): string => {
@@ -299,6 +300,29 @@ export default function Models() {
     }
   };
 
+  const handleDelete = async (modelId: string) => {
+    setDeletingId(modelId);
+    setRegistryError(null);
+    try {
+      const token = localStorage.getItem("auth_token") ?? "";
+      const response = await fetch(`${API_BASE_URL}/registry/models/${modelId}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const payload = (await response.json()) as ApiError & { status?: string };
+      if (!response.ok) {
+        setRegistryError(payload.detail ?? "Model deletion failed.");
+        await loadModels();
+        return;
+      }
+      await loadModels();
+    } catch {
+      setRegistryError("Could not reach backend. Check that the API is running.");
+    } finally {
+      setDeletingId(null);
+    }
+  };
+
   const columns = [
     { key: "name", label: "Model", render: textRender },
     { key: "version", label: "Version", render: textRender },
@@ -335,10 +359,19 @@ export default function Models() {
         return (
           <div className="flex items-center justify-end gap-2">
             <Button
-              label={activatingId === model.id ? "Activating" : "Activate"}
               variant="secondary"
+              ico={<SvgIcon name={activatingId === model.id ? "loader" : "play"} size="w-4 h-4" />}
               disabled={model.active || activatingId === model.id}
               onClick={() => void handleActivate(model.id)}
+            />
+            <Button
+              variant="secondary"
+              ico={<SvgIcon name={deletingId === model.id ? "loader" : "trash-2"} size="w-4 h-4" />}
+              disabled={deletingId === model.id || activatingId === model.id}
+              onClick={() => {
+                if (!confirm(`Delete model ${model.name} ${model.version}?`)) return;
+                void handleDelete(model.id);
+              }}
             />
             <Button
               variant="transparent"

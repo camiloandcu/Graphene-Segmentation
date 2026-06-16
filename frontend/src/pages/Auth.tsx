@@ -271,7 +271,7 @@ export default function Auth({ onLogin }: AuthProps) {
             </div>
 
             {/* Selector de rol */}
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1" style={{display: "none"}}>
               <label className="text-xs font-semibold" style={{ color: "var(--cl-font-secondary)" }}>
                 Role
               </label>

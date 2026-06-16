@@ -6,14 +6,14 @@ import { Modal } from "../Modal";
 import { SelectList } from "../SelectList";
 import { ToggleRow } from "../ToggleRow";
 
+const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://127.0.0.1:8000";
+
 interface HeaderProps {
   userName?: string;
   children?: React.ReactNode;
   onLogout?: () => void;
-  onProfileUpdate?: (name: string) => void; 
+  onProfileUpdate?: (name: string) => void;
 }
-
-// ─── estilos compartidos ───────────────────────────────────────────────────
 
 const headerStyles: React.CSSProperties = {
   backgroundColor: "var(--bg-title-user)",
@@ -75,55 +75,30 @@ interface SelectRowProps {
   onChange: (val: string) => void;
 }
 
-const SelectRow: React.FC<SelectRowProps> = ({
-  title,
-  description,
-  value,
-  options,
-  onChange,
-}) => (
-  <div
-    className="flex items-center justify-between py-2.5"
-    style={{ borderBottom: "1px solid var(--cl-border)" }}
-  >
+const SelectRow: React.FC<SelectRowProps> = ({ title, description, value, options, onChange }) => (
+  <div className="flex items-center justify-between py-2.5" style={{ borderBottom: "1px solid var(--cl-border)" }}>
     <div className="flex flex-col gap-0.5">
-      <span
-        className="text-sm font-medium"
-        style={{ color: "var(--cl-font-primary)" }}
-      >
-        {title}
-      </span>
-      <span className="text-xs" style={{ color: "var(--cl-font-secondary)" }}>
-        {description}
-      </span>
+      <span className="text-sm font-medium" style={{ color: "var(--cl-font-primary)" }}>{title}</span>
+      <span className="text-xs" style={{ color: "var(--cl-font-secondary)" }}>{description}</span>
     </div>
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
       className="text-xs px-2 py-1 rounded-md"
-      style={{
-        border: "1px solid var(--cl-border)",
-        background: "var(--bg-input)",
-        color: "var(--cl-font-primary)",
-        cursor: "pointer",
-      }}
+      style={{ border: "1px solid var(--cl-border)", background: "var(--bg-input)", color: "var(--cl-font-primary)", cursor: "pointer" }}
     >
-      {options.map((o) => (
-        <option key={o.value} value={o.value}>
-          {o.label}
-        </option>
-      ))}
+      {options.map((o) => (<option key={o.value} value={o.value}>{o.label}</option>))}
     </select>
   </div>
 );
-
-// ─── componente principal ──────────────────────────────────────────────────
 
 export const Header: React.FC<HeaderProps> = ({ children, onLogout, userName, onProfileUpdate }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [profileModalOpen, setProfileModalOpen] = useState(false);
   const [settingsModalOpen, setSettingsModalOpen] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
 
   const [profile, setProfile] = useState<ProfileForm>({
     name: userName ?? "",
@@ -153,31 +128,18 @@ export const Header: React.FC<HeaderProps> = ({ children, onLogout, userName, on
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Load profile from API on mount
+  // Fetch real profile from backend using Bearer token
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        // Get user_id from localStorage
-        let userId = localStorage.getItem("user_id");
-        
-        // If no userId, fetch first user to test
-        if (!userId) {
-          const usersRes = await fetch("http://localhost:8000/users");
-          if (usersRes.ok) {
-            const users = await usersRes.json();
-            if (users.length > 0) {
-              userId = users[0].id;
-              localStorage.setItem("user_id", userId);
-            }
-          }
-        }
+        const token = localStorage.getItem("auth_token") ?? "";
+        if (!token) return;
 
-        if (!userId) return;
-
-        const res = await fetch("http://localhost:8000/user/profile", {
-          headers: { "x-user-id": userId },
+        const res = await fetch(`${API_BASE_URL}/user/profile`, {
+          headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) return;
+
         const data = await res.json();
         setProfile({
           name: data.name ?? userName ?? "",
@@ -195,47 +157,35 @@ export const Header: React.FC<HeaderProps> = ({ children, onLogout, userName, on
   const handleProfileChange = (field: keyof ProfileForm, value: string) =>
     setProfile((prev) => ({ ...prev, [field]: value }));
 
-  const handleSettingChange = <K extends keyof SettingsState>(
-    key: K,
-    value: SettingsState[K]
-  ) => setSettings((prev) => ({ ...prev, [key]: value }));
+  const handleSettingChange = <K extends keyof SettingsState>(key: K, value: SettingsState[K]) =>
+    setSettings((prev) => ({ ...prev, [key]: value }));
 
   const handleSaveProfile = async () => {
+    setSaving(true);
+    setSaveError(null);
     try {
-      // Get user_id from localStorage or use a test ID
-      let userId = localStorage.getItem("user_id");
-      
-      // If no userId, fetch the first user from the database to test
-      if (!userId) {
-        const usersRes = await fetch("http://localhost:8000/users");
-        if (usersRes.ok) {
-          const users = await usersRes.json();
-          if (users.length > 0) {
-            userId = users[0].id;
-            localStorage.setItem("user_id", userId);
-          }
-        }
-      }
-
-      if (!userId) {
-        console.error("No user ID available");
+      const token = localStorage.getItem("auth_token") ?? "";
+      if (!token) {
+        setSaveError("Not authenticated.");
         return;
       }
 
-      const res = await fetch("http://localhost:8000/user/profile", {
+      const res = await fetch(`${API_BASE_URL}/user/profile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "x-user-id": userId,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(profile),
       });
+
       if (!res.ok) {
-        console.error("Failed to save profile", await res.text());
+        const err = await res.json().catch(() => ({}));
+        setSaveError(err.detail ?? "Failed to save profile.");
         return;
       }
+
       const updated = await res.json();
-      // Update the display name and profile in header
       setProfile({
         name: updated.name ?? profile.name,
         email: updated.email ?? profile.email,
@@ -245,62 +195,32 @@ export const Header: React.FC<HeaderProps> = ({ children, onLogout, userName, on
       onProfileUpdate?.(updated.name ?? profile.name);
       setProfileModalOpen(false);
     } catch (err) {
-      console.error("Error saving profile", err);
+      setSaveError("Could not reach backend.");
+    } finally {
+      setSaving(false);
     }
   };
 
-  const handleSaveSettings = async () => {
-    try {
-      const res = await fetch("/api/user/settings", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify(settings),
-      });
-      if (!res.ok) {
-        console.error("Failed to save settings", await res.text());
-        return;
-      }
-      setSettingsModalOpen(false);
-    } catch (err) {
-      console.error("Error saving settings", err);
-    }
+  const handleSaveSettings = () => {
+    // Settings are local-only for now
+    setSettingsModalOpen(false);
   };
 
   const menuItems = [
-    {
-      label: "Edit Profile",
-      icon: "user",
-      action: () => setProfileModalOpen(true),
-    },
-    {
-      label: "Settings",
-      icon: "settings",
-      action: () => setSettingsModalOpen(true),
-    },
+    { label: "Edit Profile", icon: "user", action: () => setProfileModalOpen(true) },
+    { label: "Settings", icon: "settings", action: () => setSettingsModalOpen(true) },
   ];
 
   return (
     <>
-      <header
-        style={headerStyles}
-        className="flex items-center w-full px-4 py-3 gap-4"
-      >
+      <header style={headerStyles} className="flex items-center w-full px-4 py-3 gap-4">
         <div className="flex flex-row items-center gap-4 w-full">
           <SvgIcon name="brain" size="w-7 h-7" className="text-white" />
           <div>
-            <p className="text-lg font-bold text-[var(--cl-font-primary)]">
-              Plataforma
-            </p>
-            <p className="text-sm font-semibold text-[var(--cl-font-third)]">
-              AI Platform
-            </p>
+            <p className="text-lg font-bold text-[var(--cl-font-primary)]">Plataforma</p>
+            <p className="text-sm font-semibold text-[var(--cl-font-third)]">AI Platform</p>
           </div>
-          <InputText
-            className="w-4/12"
-            ico={<SvgIcon name="search" />}
-            placeholder="Search experiments, datasets and anythings"
-          />
+      
         </div>
 
         <div className="flex flex-row items-center justify-center gap-0.5">
@@ -309,60 +229,37 @@ export const Header: React.FC<HeaderProps> = ({ children, onLogout, userName, on
             ico={<SvgIcon name="circle-question-mark" size="w-5 h-5" />}
             label="Help"
             className="gap-3"
-            onClick={() => window.open("https://www.wikipedia.org", "_blank")}
+            onClick={() => window.open("https://youtu.be/QL2g3TZeNJk", "_blank")}
           />
-          <div
-            style={{ backgroundColor: "var(--cl-border)" }}
-            className="w-px h-6 m-2"
-          />
-          <Button
-            className="rounded-full"
-            variant="transparent"
-            ico={<SvgIcon name="bell" size="w-5 h-5" glow="var(--cl-white)" />}
-          />
+          <div style={{ backgroundColor: "var(--cl-border)" }} className="w-px h-6 m-2" />
+        
 
           <div ref={menuRef} className="relative">
             <Button
               className="rounded-full"
               variant="transparent"
-              ico={
-                <SvgIcon name="user" size="w-5 h-5" glow="var(--cl-white)" />
-              }
+              ico={<SvgIcon name="user" size="w-5 h-5" glow="var(--cl-white)" />}
               onClick={() => setMenuOpen((prev) => !prev)}
             />
 
             <div style={dropdownStyles(menuOpen)}>
-              {userName && (
-                <div
-                  style={{
-                    padding: "10px 16px 8px",
-                    borderBottom: "1px solid var(--cl-border)",
-                    marginBottom: "4px",
-                  }}
-                >
-                  <p className="text-xs" style={{ color: "var(--cl-font-secondary)" }}>
+              {(profile.name || userName) && (
+                <div style={{ padding: "10px 16px 8px", borderBottom: "1px solid var(--cl-border)", marginBottom: "4px" }}>
+                  <p className="text-xs font-semibold" style={{ color: "var(--cl-font-primary)" }}>
                     {profile.name || userName}
                   </p>
                   {profile.email && (
-                    <p className="text-xs" style={{ color: "var(--cl-font-secondary)" }}>
-                      {profile.email}
-                    </p>
+                    <p className="text-xs" style={{ color: "var(--cl-font-secondary)" }}>{profile.email}</p>
                   )}
                 </div>
               )}
               {menuItems.map((item) => (
                 <button
                   key={item.label}
-                  onClick={() => {
-                    item.action();
-                    setMenuOpen(false);
-                  }}
+                  onClick={() => { item.action(); setMenuOpen(false); }}
                   style={{
                     ...menuItemStyles,
-                    background:
-                      hoveredItem === item.label
-                        ? "var(--bg-input-hover)"
-                        : "transparent",
+                    background: hoveredItem === item.label ? "var(--bg-input-hover)" : "transparent",
                   }}
                   onMouseEnter={() => setHoveredItem(item.label)}
                   onMouseLeave={() => setHoveredItem(null)}
@@ -372,23 +269,14 @@ export const Header: React.FC<HeaderProps> = ({ children, onLogout, userName, on
                 </button>
               ))}
 
-              <div
-                style={{
-                  borderTop: "1px solid var(--cl-border)",
-                  margin: "4px 0",
-                }}
-              />
+              <div style={{ borderTop: "1px solid var(--cl-border)", margin: "4px 0" }} />
 
               <button
-                onClick={() => {
-                  setMenuOpen(false);
-                  onLogout?.();
-                }}
+                onClick={() => { setMenuOpen(false); onLogout?.(); }}
                 style={{
                   ...menuItemStyles,
                   color: "var(--cl-red)",
-                  background:
-                    hoveredItem === "logout" ? "var(--bg-red)" : "transparent",
+                  background: hoveredItem === "logout" ? "var(--bg-red)" : "transparent",
                 }}
                 onMouseEnter={() => setHoveredItem("logout")}
                 onMouseLeave={() => setHoveredItem(null)}
@@ -404,77 +292,36 @@ export const Header: React.FC<HeaderProps> = ({ children, onLogout, userName, on
       {/* ── Edit Profile Modal ── */}
       <Modal
         open={profileModalOpen}
-        onClose={() => setProfileModalOpen(false)}
+        onClose={() => { setProfileModalOpen(false); setSaveError(null); }}
         title="Edit Profile"
-        description="Update your personal information and preferences"
+        description="Update your personal information"
         icon="user"
       >
         <div className="flex flex-col gap-4">
           <div className="flex flex-row items-center gap-4">
             <div
               className="flex items-center justify-center rounded-full w-16 h-16 text-xl font-bold"
-              style={{
-                backgroundColor: "var(--bg-input-hover)",
-                color: "var(--cl-font-primary)",
-              }}
+              style={{ backgroundColor: "var(--bg-input-hover)", color: "var(--cl-font-primary)" }}
             >
               {profile.name ? profile.name.charAt(0).toUpperCase() : "U"}
             </div>
             <div className="flex flex-col gap-1">
-              <p
-                className="text-sm font-semibold"
-                style={{ color: "var(--cl-font-primary)" }}
-              >
-                Profile photo
-              </p>
-              <p
-                className="text-xs"
-                style={{ color: "var(--cl-font-secondary)" }}
-              >
-                PNG or JPEG — max 2MB
-              </p>
-              <Button
-                label="Upload photo"
-                variant="secondary"
-                ico={<SvgIcon name="upload" size="w-4 h-4" />}
-              />
+              <p className="text-sm font-semibold" style={{ color: "var(--cl-font-primary)" }}>Profile photo</p>
+              <p className="text-xs" style={{ color: "var(--cl-font-secondary)" }}>PNG or JPEG — max 2MB</p>
+              <Button label="Upload photo" variant="secondary" ico={<SvgIcon name="upload" size="w-4 h-4" />} />
             </div>
           </div>
 
-          <div
-            style={{ borderTop: "1px solid var(--cl-border)" }}
-            className="my-1"
-          />
+          <div style={{ borderTop: "1px solid var(--cl-border)" }} className="my-1" />
 
-          {[
-            {
-              field: "name" as const,
-              label: "Full Name",
-              placeholder: "e.g. Jane Doe",
-            },
-            {
-              field: "email" as const,
-              label: "Email",
-              placeholder: "e.g. jane@company.com",
-            },
-            {
-              field: "role" as const,
-              label: "Role",
-              placeholder: "e.g. ML Engineer",
-            },
-            {
-              field: "bio" as const,
-              label: "Bio",
-              placeholder: "A short description about yourself...",
-            },
-          ].map(({ field, label, placeholder }) => (
+          {([
+            { field: "name" as const, label: "Full Name", placeholder: "e.g. Jane Doe" },
+            { field: "email" as const, label: "Email", placeholder: "e.g. jane@company.com" },
+            { field: "role" as const, label: "Role", placeholder: "e.g. ML Engineer" },
+            { field: "bio" as const, label: "Bio", placeholder: "A short description about yourself..." },
+          ]).map(({ field, label, placeholder }) => (
             <div key={field} className="flex flex-col gap-1">
-              <label
-                className="text-xs font-semibold"
-                style={{ color: "var(--cl-font-secondary)" }}
-              >
-                {label}
-              </label>
+              <label className="text-xs font-semibold" style={{ color: "var(--cl-font-secondary)" }}>{label}</label>
               <InputText
                 placeholder={placeholder}
                 value={profile[field]}
@@ -483,16 +330,17 @@ export const Header: React.FC<HeaderProps> = ({ children, onLogout, userName, on
             </div>
           ))}
 
+          {saveError && (
+            <p className="text-xs" style={{ color: "var(--cl-red)" }}>{saveError}</p>
+          )}
+
           <div className="flex flex-row justify-end gap-2 mt-2">
+            <Button label="Cancel" variant="secondary" onClick={() => { setProfileModalOpen(false); setSaveError(null); }} />
             <Button
-              label="Cancel"
-              variant="secondary"
-              onClick={() => setProfileModalOpen(false)}
-            />
-            <Button
-              label="Save Changes"
+              label={saving ? "Saving..." : "Save Changes"}
               ico={<SvgIcon name="save" />}
-              onClick={handleSaveProfile}
+              disabled={saving}
+              onClick={() => void handleSaveProfile()}
             />
           </div>
         </div>
@@ -513,14 +361,12 @@ export const Header: React.FC<HeaderProps> = ({ children, onLogout, userName, on
             checked={settings.emailNotifications}
             onChange={(v) => handleSettingChange("emailNotifications", v)}
           />
-
           <ToggleRow
             title="Training alerts"
             description="Notify when a model finishes training"
             checked={settings.trainingAlerts}
             onChange={(v) => handleSettingChange("trainingAlerts", v)}
           />
-
           <ToggleRow
             title="Dataset upload complete"
             description="Get notified when uploads finish"
@@ -530,20 +376,9 @@ export const Header: React.FC<HeaderProps> = ({ children, onLogout, userName, on
 
           <div className="flex items-center justify-between py-2.5">
             <div className="flex flex-col gap-0.5">
-              <span
-                className="text-sm font-medium"
-                style={{ color: "var(--cl-font-primary)" }}
-              >
-                Default language
-              </span>
-              <span
-                className="text-xs"
-                style={{ color: "var(--cl-font-secondary)" }}
-              >
-                Interface display language
-              </span>
+              <span className="text-sm font-medium" style={{ color: "var(--cl-font-primary)" }}>Default language</span>
+              <span className="text-xs" style={{ color: "var(--cl-font-secondary)" }}>Interface display language</span>
             </div>
-
             <div className="w-44">
               <SelectList
                 options={[
@@ -556,22 +391,12 @@ export const Header: React.FC<HeaderProps> = ({ children, onLogout, userName, on
               />
             </div>
           </div>
+
           <div className="flex items-center justify-between py-2.5">
             <div className="flex flex-col gap-0.5">
-              <span
-                className="text-sm font-medium"
-                style={{ color: "var(--cl-font-primary)" }}
-              >
-                Timezone
-              </span>
-              <span
-                className="text-xs"
-                style={{ color: "var(--cl-font-secondary)" }}
-              >
-                Used for scheduling and logs
-              </span>
+              <span className="text-sm font-medium" style={{ color: "var(--cl-font-primary)" }}>Timezone</span>
+              <span className="text-xs" style={{ color: "var(--cl-font-secondary)" }}>Used for scheduling and logs</span>
             </div>
-
             <div className="w-44">
               <SelectList
                 options={[
@@ -584,6 +409,7 @@ export const Header: React.FC<HeaderProps> = ({ children, onLogout, userName, on
               />
             </div>
           </div>
+
           <ToggleRow
             title="Auto-save experiments"
             description="Save progress every 5 minutes"
@@ -593,41 +419,16 @@ export const Header: React.FC<HeaderProps> = ({ children, onLogout, userName, on
 
           <div className="flex items-center justify-between py-2.5">
             <div className="flex flex-col gap-0.5">
-              <span
-                className="text-sm font-medium"
-                style={{ color: "var(--cl-font-primary)" }}
-              >
-                Delete account
-              </span>
-              <span
-                className="text-xs"
-                style={{ color: "var(--cl-font-secondary)" }}
-              >
-                Permanently remove all your data
-              </span>
+              <span className="text-sm font-medium" style={{ color: "var(--cl-font-primary)" }}>Delete account</span>
+              <span className="text-xs" style={{ color: "var(--cl-font-secondary)" }}>Permanently remove all your data</span>
             </div>
-            <Button
-              label="Delete"
-              variant="secondary"
-              ico={<SvgIcon name="trash-2" />}
-            />
+            <Button label="Delete" variant="secondary" ico={<SvgIcon name="trash-2" />} />
           </div>
 
-          <div
-            style={{ borderTop: "1px solid var(--cl-border)" }}
-            className="mt-3 pt-3"
-          />
+          <div style={{ borderTop: "1px solid var(--cl-border)" }} className="mt-3 pt-3" />
           <div className="flex flex-row justify-end gap-2">
-            <Button
-              label="Cancel"
-              variant="secondary"
-              onClick={() => setSettingsModalOpen(false)}
-            />
-            <Button
-              label="Save Settings"
-              ico={<SvgIcon name="save" />}
-              onClick={handleSaveSettings}
-            />
+            <Button label="Cancel" variant="secondary" onClick={() => setSettingsModalOpen(false)} />
+            <Button label="Save Settings" ico={<SvgIcon name="save" />} onClick={handleSaveSettings} />
           </div>
         </div>
       </Modal>

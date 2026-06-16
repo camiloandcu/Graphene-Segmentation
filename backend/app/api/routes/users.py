@@ -141,3 +141,46 @@ def get_user_details(user_id: str) -> UserDetailResponse:
             detail="Database error while fetching user details.",
         ) from exc
 
+class UserUpdateRequest(BaseModel):
+    name: str
+    role: Literal["user", "admin"]
+
+@router.put("/{user_id}", response_model=UserResponse)
+def update_user(user_id: str, body: UserUpdateRequest) -> UserResponse:
+    try:
+        client = get_supabase_client()
+        response = client.table("users").update({
+            "name": body.name,
+            "role": body.role,
+        }).eq("id", user_id).execute()
+
+        if not response.data:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+
+        return UserResponse(**response.data[0])
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Database error while updating user.",
+        ) from exc
+
+
+@router.delete("/{user_id}", status_code=status.HTTP_200_OK)
+def delete_user(user_id: str) -> dict:
+    try:
+        client = get_supabase_client()
+        response = client.table("users").delete().eq("id", user_id).execute()
+
+        if not response.data:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+        
+        return {"message": "User deleted successfully"}
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Database error while deleting user.",
+        ) from exc

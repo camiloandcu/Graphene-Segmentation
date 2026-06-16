@@ -42,6 +42,9 @@ export default function UserTable() {
   const [viewOpen, setViewOpen] = useState(false); // ✅ NUEVO
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [userDetails, setUserDetails] = useState<any>(null);
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   // data + refresh control
   const [users, setUsers] = useState(initialUsers);
@@ -111,6 +114,42 @@ export default function UserTable() {
       filter === "all" || filter === row.status || filter === row.role;
     return matchesSearch && matchesFilter;
   });
+
+  const handleSaveUser = async () => {
+    if (!selectedUser) return;
+    setSaving(true);
+    try {
+      const response = await fetch(`http://localhost:8000/users/${selectedUser.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: selectedUser.user, role: selectedUser.role }),
+      });
+      if (!response.ok) throw new Error("Failed to update user");
+      await refreshData();
+      setEditOpen(false);
+    } catch (error) {
+      console.error("Error updating user:", error);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDeleteUser = async () => {
+    if (!selectedUser) return;
+    setDeleting(true);
+    try {
+      const response = await fetch(`http://localhost:8000/users/${selectedUser.id}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) throw new Error("Failed to delete user");
+      await refreshData();
+      setDeleteOpen(false);
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    } finally {
+      setDeleting(false);
+    }
+  };
 
   const columns = [
     { key: "user", label: "User", render: textRender },
@@ -188,7 +227,10 @@ export default function UserTable() {
           <Button
             variant="transparent"
             ico={<SvgIcon name="trash-2" size="w-4 h-4" />}
-            onClick={() => {}}
+            onClick={() => {
+              setSelectedUser(row);
+              setDeleteOpen(true);
+            }}
           />
         </div>
       ),
@@ -305,7 +347,12 @@ export default function UserTable() {
               variant="secondary"
               onClick={() => setEditOpen(false)}
             />
-            <Button label="Save User" ico={<SvgIcon name="save" />} />
+            <Button
+              label={saving ? "Saving..." : "Save User"}
+              ico={<SvgIcon name="save" />}
+              disabled={saving}
+              onClick={handleSaveUser}
+            />
           </div>
         </div>
       </Modal>
@@ -407,6 +454,36 @@ export default function UserTable() {
                 </div>
               )}
             </div>
+          </div>
+        </div>
+      </Modal>
+      <Modal
+        open={deleteOpen}
+        onClose={() => setDeleteOpen(false)}
+        title="Delete User"
+        description="This action cannot be undone"
+        icon="trash-2"
+      >
+        <div className="flex flex-col gap-4">
+          <p className="text-sm" style={{ color: "var(--cl-font-secondary)" }}>
+            Are you sure you want to delete{" "}
+            <span className="font-semibold" style={{ color: "var(--cl-font-primary)" }}>
+              {selectedUser?.user}
+            </span>
+            ? This will permanently remove their account and all associated data.
+          </p>
+          <div className="flex flex-row justify-end gap-2 mt-2">
+            <Button
+              label="Cancel"
+              variant="secondary"
+              onClick={() => setDeleteOpen(false)}
+            />
+            <Button
+              label={deleting ? "Deleting..." : "Delete User"}
+              ico={<SvgIcon name="trash-2" />}
+              disabled={deleting}
+              onClick={handleDeleteUser}
+            />
           </div>
         </div>
       </Modal>

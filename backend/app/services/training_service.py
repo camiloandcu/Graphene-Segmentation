@@ -421,7 +421,6 @@ class TrainingService:
                 return
 
             state.status = TrainingStatus.RUNNING
-            state.epochs = 1
             state.started_at = _now_iso()
             state.notify()
             _persist_experiment(state)

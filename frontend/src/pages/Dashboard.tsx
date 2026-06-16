@@ -5,6 +5,7 @@ import { Card } from "../components/Card";
 import { Modal } from "../components/Modal";
 import { InputText } from "../components/InputText";
 import { Table } from "../components/Table";
+import JSZip from "jszip";
 
 const statusStyles: Record<string, { bg: string; color: string }> = {
   active: { bg: "var(--bg-green)", color: "var(--cl-green)" },
@@ -261,6 +262,99 @@ export default function Dashboard() {
     },
   ];
 
+
+  const base64ToUint8Array = (b64: string): Uint8Array => {
+    const binary = atob(b64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return bytes;
+  };
+
+  const handleDownloadZip = async () => {
+    if (!segmentResult) return;
+
+    const zip = new JSZip();
+    const filename = imageFile?.name.replace(/\.[^.]+$/, "") ?? "result";
+    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+
+    // ── PNGs ────────────────────────────────────────────────────────────────
+    const originalBytes = await imageFile!.arrayBuffer();
+    zip.file(`${filename}_original.png`,  new Uint8Array(originalBytes));
+    zip.file(`${filename}_segmented.png`, base64ToUint8Array(segmentResult.segmented_base64));
+    zip.file(`${filename}_overlay.png`,   base64ToUint8Array(segmentResult.overlay_base64));
+
+    const pdfHtml = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="utf-8"/>
+    <title>Segmentation Report – ${filename}</title>
+    <style>
+      body { font-family: sans-serif; padding: 32px; color: #111; }
+      h1   { font-size: 20px; margin-bottom: 4px; }
+      p    { font-size: 12px; color: #555; margin: 2px 0; }
+      .images { display: flex; gap: 12px; margin: 24px 0; }
+      .images figure { flex: 1; margin: 0; text-align: center; }
+      .images img { width: 100%; border-radius: 8px; border: 1px solid #ddd; }
+      .images figcaption { font-size: 11px; color: #888; margin-top: 4px; }
+      table { border-collapse: collapse; width: 100%; font-size: 12px; margin-top: 16px; }
+      th, td { border: 1px solid #ddd; padding: 6px 10px; text-align: left; }
+      th { background: #f5f5f5; }
+      .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 2px;
+                border: 1px solid #ccc; margin-right: 6px; vertical-align: middle; }
+    </style>
+    </head>
+    <body>
+      <h1>Segmentation Report</h1>
+      <p><strong>File:</strong> ${imageFile?.name ?? "unknown"}</p>
+      <p><strong>Model:</strong> ${selectedModel?.name ?? "unknown"} ${selectedModel?.version ?? ""}</p>
+      <p><strong>Architecture:</strong> ${selectedModel?.architecture ?? "unknown"}</p>
+      <p><strong>Generated:</strong> ${new Date().toLocaleString()}</p>
+
+      <div class="images">
+        <figure>
+          <img src="data:image/png;base64,${btoa(String.fromCharCode(...new Uint8Array(await imageFile!.arrayBuffer())))}" />
+          <figcaption>Original</figcaption>
+        </figure>
+        <figure>
+          <img src="data:image/png;base64,${segmentResult.segmented_base64}" />
+          <figcaption>Segmented</figcaption>
+        </figure>
+        <figure>
+          <img src="data:image/png;base64,${segmentResult.overlay_base64}" />
+          <figcaption>Overlay</figcaption>
+        </figure>
+      </div>
+
+      <h2 style="font-size:14px">Color Legend</h2>
+      <table>
+        <thead><tr><th>Class</th><th>Color</th></tr></thead>
+        <tbody>
+          ${segmentationLegend
+            .map(
+              (item) => `
+            <tr>
+              <td>${item.label}</td>
+              <td><span class="swatch" style="background:${item.color}"></span>${item.color}</td>
+            </tr>`,
+            )
+            .join("")}
+        </tbody>
+      </table>
+    </body>
+    </html>`;
+
+    zip.file(`${filename}_report.html`, pdfHtml); // HTML abre en cualquier browser e imprime a PDF
+
+    // ── Descarga ─────────────────────────────────────────────────────────────
+    const blob = await zip.generateAsync({ type: "blob" });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement("a");
+    a.href     = url;
+    a.download = `segmentation_${filename}_${timestamp}.zip`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
   return (
     <main className="flex-1 overflow-y-auto p-6 bg-[var(--bg-page-user)]">
       <div
@@ -593,6 +687,8 @@ export default function Dashboard() {
             label="Download All (ZIP)"
             className="w-full mt-2 justify-center"
             ico={<SvgIcon name="download" />}
+            disabled={!segmentResult}          
+            onClick={handleDownloadZip}        
           />
         </Card>
       </div>
