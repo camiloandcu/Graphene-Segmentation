@@ -1,14 +1,16 @@
 # Project repair review
 
-Status: WI-01 implementation approved and technically verified; broader release
-and later proposals remain pending.
-Checked: 2026-10-07.
+Status: WI-01 merged; WI-02 implementation approved. Broader release and later
+proposals remain pending.
+Checked: 2026-10-08.
 
-Current step: WI-01 was approved and implemented. Its single
-[OpenSpec proposal](../../openspec/changes/archive/2026-10-08-wi-01-local-workspace/proposal.md),
-[technical design](../../openspec/changes/archive/2026-10-08-wi-01-local-workspace/design.md),
-[behavior specification](../../openspec/changes/archive/2026-10-08-wi-01-local-workspace/specs/local-workspace/spec.md),
-and [tasks](../../openspec/changes/archive/2026-10-08-wi-01-local-workspace/tasks.md) record the approved work.
+Current step: WI-02 is implemented following explicit stakeholder approval;
+review its single [proposal](../../openspec/changes/wi-02-portable-model-contract/proposal.md),
+[technical design](../../openspec/changes/wi-02-portable-model-contract/design.md),
+[specification](../../openspec/changes/wi-02-portable-model-contract/specs/portable-model-contract/spec.md),
+and [tasks](../../openspec/changes/wi-02-portable-model-contract/tasks.md).
+See [WI-02 verification](10_WI_02_VERIFICATION.md) for acceptance evidence and
+the boundary between compatibility and real model performance.
 
 Read in this order:
 
@@ -22,11 +24,13 @@ Read in this order:
 7. [Dataset source evidence](07_DATA_SOURCE_EVIDENCE.json): checked source metadata and annotation counts.
 8. [GitHub tracking](08_GITHUB_WORK_ITEMS.md): Issues and implementation branches.
 9. [WI-01 verification](09_WI_01_VERIFICATION.md): acceptance and browser evidence.
+10. [WI-02 verification](10_WI_02_VERIFICATION.md): contract and geometry evidence.
 
 Confirmed stakeholder decisions take precedence over recommendations. Open decisions
 must be resolved or explicitly accepted as assumptions before their dependent work.
 WI-01 local architecture, scope and acceptance criteria were approved. Unrelated
 ML decisions and later work items remain subject to their own review.
 
-Application code changed only for the approved WI-01 local foundation. Dataset inspections
+Application startup is the WI-01 local foundation; WI-02 adds a shared contract
+library and optional validation dependencies. Dataset inspections
 used public metadata and byte ranges; no external account was accessed.
