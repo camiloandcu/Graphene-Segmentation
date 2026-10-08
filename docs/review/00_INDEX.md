@@ -1,18 +1,31 @@
 # Project repair review
 
-Status: WI-01 through WI-03 merged; WI-04 implemented and technically verified.
-Lab/stakeholder acceptance, merge and broader release remain separate.
+Status: WI-01 through WI-04 merged; WI-03 and WI-04 stakeholder accepted on
+2026-10-08. WI-05 software is implemented and technically verified; PR #19 open; stakeholder item acceptance/merge pending.
+Real label/split decisions and broader release remain separate.
 Checked: 2026-10-08.
 
-Current item: WI-04 proposal/design/specs were explicitly approved on 2026-10-08.
+Current item: WI-05 proposal/design/specs were explicitly approved on 2026-10-08.
+Its offline dataset contract/CLI and consumer loader are implemented on
+`feat/wi-05-validated-labeled-datasets`, linked to Issue #5. See
+[WI-05 verification](13_WI_05_VERIFICATION.md) for 84 passing checks, real-export
+reconciliation, synthetic handoff and fresh wheel installation. Real lab label/
+split review remains pending; no real ready handoff or training is claimed.
+Verified software requirements are synced and the change is
+[archived](../../openspec/changes/archive/2026-10-08-wi-05-validated-labeled-datasets/README.md).
+[PR #19](https://github.com/camiloandcu/Graphene-Segmentation/pull/19) is open with `Closes #5`. Stakeholder acceptance/merge
+remain separate; no subsequent proposal is prepared.
+
+Previous item: WI-04 proposal/design/specs were explicitly approved on 2026-10-08.
 Implementation on `feat/wi-04-local-model-management` adds bounded local model import,
 immutable registry, explicit selection, schema migration/recovery and Models UI.
-PR [#18](https://github.com/camiloandcu/Graphene-Segmentation/pull/18) is open with `Closes #4`.
+PR [#18](https://github.com/camiloandcu/Graphene-Segmentation/pull/18) is merged with `Closes #4` (checked via `gh` on 2026-10-08).
+Stakeholder accepted WI-04 on the same date.
 See [WI-04 verification](12_WI_04_VERIFICATION.md) for AC-1–5 evidence and submission references.
 Synthetic packages prove management; no trained-model or prediction claim is made.
 The verified change is synced/archived under
 `openspec/changes/archive/2026-10-08-wi-04-local-model-management/`.
-No subsequent proposal is prepared.
+WI-05 is the only subsequent change prepared in this work.
 
 Previous item: the stakeholder approved WI-03 and supplied the export with a
 90-minute investigation limit. Its
@@ -22,7 +35,8 @@ Previous item: the stakeholder approved WI-03 and supplied the export with a
 and [tasks](../../openspec/changes/archive/2026-10-08-wi-03-lab-dataset-audit/tasks.md) were explicitly
 approved on 2026-10-08. See the [audit report](wi03/00_INDEX.md) and
 [WI-03 verification](11_WI_03_VERIFICATION.md). The audit is technically verified;
-lab review and stakeholder acceptance remain separate. Authorized read-only `gh`
+stakeholder accepted the audit on 2026-10-08. Its remaining label/group decisions
+are still needed before real training readiness. Authorized read-only `gh`
 inspection confirmed PR #17 merged on 2026-10-08; local `main` already contains it.
 
 Previous item: WI-02 is implemented and merged following explicit stakeholder approval;
@@ -48,6 +62,7 @@ Read in this order:
 10. [WI-02 verification](10_WI_02_VERIFICATION.md): contract and geometry evidence.
 11. [WI-03 verification](11_WI_03_VERIFICATION.md): lab data audit and readiness evidence.
 12. [WI-04 verification](12_WI_04_VERIFICATION.md): local model management, migration and browser evidence.
+13. [WI-05 verification](13_WI_05_VERIFICATION.md): offline dataset/review contracts, real blockers and synthetic ready handoff.
 
 Confirmed stakeholder decisions take precedence over recommendations. Open decisions
 must be resolved or explicitly accepted as assumptions before their dependent work.

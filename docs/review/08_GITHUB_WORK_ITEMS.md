@@ -1,16 +1,16 @@
 # GitHub work item tracking
 
 Access: `gh`, authorized by the stakeholder. WI-01, WI-02 and WI-03 proposals are approved;
-WI-04 is approved and technically verified; later items retain their provisional readiness. Creating Issues does not
+WI-03 and WI-04 are stakeholder accepted and merged; WI-05 software is approved, implemented and technically verified. Later items retain their provisional readiness. Creating Issues does not
 approve their implementation or create additional OpenSpec proposals.
 
 | Work item | Issue | Parent | State |
 | --- | --- | --- | --- |
 | WI-01 | [#1](https://github.com/camiloandcu/Graphene-Segmentation/issues/1) | INC-01 / F-03 | Merged via PR #15 |
 | WI-02 | [#2](https://github.com/camiloandcu/Graphene-Segmentation/issues/2) | INC-01 / F-03 | Merged via PR #16 |
-| WI-03 | [#3](https://github.com/camiloandcu/Graphene-Segmentation/issues/3) | INC-01 / F-01 | Merged via PR #17; lab/stakeholder acceptance pending |
-| WI-04 | [#4](https://github.com/camiloandcu/Graphene-Segmentation/issues/4) | INC-01 / F-03 | Technically verified; PR #18 open; stakeholder acceptance pending |
-| WI-05 | [#5](https://github.com/camiloandcu/Graphene-Segmentation/issues/5) | INC-01 / F-01 | Provisional; refinement required |
+| WI-03 | [#3](https://github.com/camiloandcu/Graphene-Segmentation/issues/3) | INC-01 / F-01 | Merged via PR #17; stakeholder accepted 2026-10-08 |
+| WI-04 | [#4](https://github.com/camiloandcu/Graphene-Segmentation/issues/4) | INC-01 / F-03 | Merged via PR #18; stakeholder accepted 2026-10-08 |
+| WI-05 | [#5](https://github.com/camiloandcu/Graphene-Segmentation/issues/5) | INC-01 / F-01 | Software verified; real ready handoff/lab review pending; PR #19 open |
 | WI-06 | [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6) | INC-01 / F-02 | Provisional; refinement required |
 | WI-07 | [#7](https://github.com/camiloandcu/Graphene-Segmentation/issues/7) | INC-01 / F-02 | Provisional; refinement required |
 | WI-08 | [#8](https://github.com/camiloandcu/Graphene-Segmentation/issues/8) | INC-01 / F-02 | Provisional; refinement required |
@@ -53,7 +53,8 @@ merge and release remain separate. No protected branch was updated.
 
 Checked 2026-10-08 with authorized `gh`: PR #17 is now merged; local `main`
 already contains merge commit `985d40b`. Historical handoff statements above
-describe the prior submission state; lab/stakeholder acceptance remains pending.
+describe the prior submission state; stakeholder acceptance was confirmed on
+2026-10-08. Label/group questions remain downstream decisions.
 
 WI-04: Issue #4 was refined from the explicitly approved 2026-10-08 proposal.
 Branch `feat/wi-04-local-model-management` is linked with `gh issue develop 4`.
@@ -62,3 +63,19 @@ PR [#18](https://github.com/camiloandcu/Graphene-Segmentation/pull/18) uses `Clo
 Commits `50ca4cb` (approved design) and `2758654` (implementation/evidence) are pushed.
 Specification sync/archive and final documentation references are recorded there; human acceptance,
 Issue closure, merge and release remain separate. No later proposal is prepared.
+
+Current check, 2026-10-08: PR #18 is merged and local `main` contains `36119c5`.
+Stakeholder explicitly accepted WI-03 and WI-04 and authorized continuation to WI-05.
+No agent protected-branch operation was performed. Earlier open/pending statements
+are historical submission records.
+
+WI-05: Issue #5 is refined from the explicitly approved proposal/design/specs
+(2026-10-08). Branch `feat/wi-05-validated-labeled-datasets` is linked with
+`gh issue develop 5`; approved-design commit `8447823`. See
+[verification](13_WI_05_VERIFICATION.md) for 84 checks, complete real audit
+reconciliation and fresh wheel consumption. AC-1–5 software behavior is verified;
+genuine real ready handoff requires lab label/group/split decisions and remains
+unverified. The specification is synced and verified software change archived.
+[PR #19](https://github.com/camiloandcu/Graphene-Segmentation/pull/19) is open with `Closes #5`; GitHub confirms the closing Issue
+association. Implementation `b17453f` and design `8447823` are pushed; final handoff
+references are committed separately. Stakeholder item acceptance/merge remain separate.

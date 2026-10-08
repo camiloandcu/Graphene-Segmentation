@@ -1,8 +1,8 @@
 # Decisions and work item hierarchy
 
-Status: WI-01 through WI-03 merged; WI-03 lab acceptance pending; WI-04 technically
-verified; later items
-remain subject to review. Apply the hierarchy **delivery increment -> feature -> executable
+Status: WI-01 through WI-04 merged; WI-03 and WI-04 stakeholder accepted on
+2026-10-08. WI-05 software is implemented and technically verified; PR #19 open; stakeholder item acceptance/merge pending.
+Later items remain provisional. Apply the hierarchy **delivery increment -> feature -> executable
 work item -> implementation task**. Epics are optional and are omitted because
 they would duplicate the delivery increments in this project.
 
@@ -10,8 +10,8 @@ The former seven phases were delivery groupings, not atomic executable items.
 Identifiers below are stable parent/dependency references. The stakeholder asked
 to continue with WI-01 and explicitly approved its single proposal.
 WI-01 and WI-02 are implemented, technically verified and merged. WI-03's approved
-audit is technically verified; lab/stakeholder acceptance remains pending.
-WI-04 is implemented below following explicit proposal approval. Later candidates
+audit is technically verified and stakeholder accepted. WI-04 is implemented,
+merged and stakeholder accepted. WI-05 is implemented below; later candidates
 remain provisional.
 
 ## Decision log
@@ -29,7 +29,7 @@ remain provisional.
 | English interface | Confirmed | User-facing copy, code, and files use English. |
 | Acquisition metadata absent; lab members supplied labels | Confirmed | Audit duplicates/overlap; do not claim known independent sample groups. |
 | Annotation completeness / physical label validation | Unverified | Stakeholder sees no obvious unlabeled areas; inspect masks and seek lab clarification for ambiguous labels. |
-| WI-03 export audit | Technically verified; lab acceptance pending | 40 images, 759 polygon records, reversed source class IDs, 10 conflicting-label images; conditional pilot readiness and inconclusive independent evaluation. See the audit report. |
+| WI-03 export audit | Technically verified; stakeholder accepted 2026-10-08 | 40 images, 759 polygon records, reversed source class IDs, 10 conflicting-label images; conditional pilot readiness and inconclusive independent evaluation. See the audit report. |
 | Thick_Graphene equivalence to lab bulk | Proposed, requires label review | External-data mapping cannot silently assume equivalent thickness definitions. |
 | ONNX package for app inference | WI-02 v1 contract approved | Small CPU runtime; package validation replaces framework guessing. |
 | U-Net baseline / compact SegFormer challenger | Recommended, awaiting approval | Model selection follows measured lab performance, not a SOTA claim. |
@@ -71,7 +71,9 @@ not a separate required delivery. Cloud hosting is outside both increments.
 
 WI-01 and WI-02 are merged; their acceptance evidence is recorded separately.
 WI-03 has verified audit evidence and a conditional/inconclusive recommendation.
-Real training remains dependent on reviewed labels and a reviewed split policy.
+Stakeholder accepted WI-03 and WI-04 on 2026-10-08. Real training remains
+dependent on reviewed labels and a reviewed split policy; accepting the audit
+does not resolve its remaining label/group questions.
 
 ### WI-01 — Enabler: run and persist the local workspace
 
@@ -145,7 +147,7 @@ Implementation tasks (recorded in the WI-02 OpenSpec change):
 Proposal: [WI-03 lab dataset audit](../../openspec/changes/archive/2026-10-08-wi-03-lab-dataset-audit/proposal.md).
 Status: proposal explicitly approved on 2026-10-08; stakeholder supplied the local
 export and authorized a 90-minute investigation. AC-1 through AC-3 have technical
-evidence; stakeholder acceptance and merge remain pending. See
+evidence; merged via PR #17 and stakeholder accepted on 2026-10-08. See
 [WI-03 verification](11_WI_03_VERIFICATION.md) and [audit report](wi03/00_INDEX.md).
 
 Parent: INC-01 / F-01. Consumers: model trainer and stakeholder.
@@ -187,7 +189,8 @@ Implemented and technically verified on `feat/wi-04-local-model-management`, lin
 using `gh issue develop 4`. Reuses Issue #4. See
 [verification](12_WI_04_VERIFICATION.md) for acceptance, checks and PR references.
 The verified OpenSpec change is synced and archived under
-`2026-10-08-wi-04-local-model-management`. Stakeholder acceptance/merge remain separate.
+`2026-10-08-wi-04-local-model-management`. PR #18 is merged (checked via `gh`);
+stakeholder acceptance confirmed on 2026-10-08. Release remains separate.
 
 Scope delivered: bounded local ZIP import, immutable model registry, readable
 metadata/evaluation, explicit durable selection, transactional v1-to-v2 upgrade,
@@ -203,7 +206,39 @@ Numbered Given/When/Then criteria remain authoritative in the archived proposal:
 **AC-3** failures/concurrency preserve state; **AC-4** transactional upgrade/recovery
 and no-extras startup; **AC-5** accessible Models workflow. All five are technically
 **passed** with synthetic integration/browser evidence. G-02 approved; G-04 verified;
-human acceptance and G-05 real trained-model/release gates remain pending.
+human acceptance is confirmed; G-05 real trained-model/release gates remain pending.
+
+## WI-05 / Enabler: validated labeled datasets for the trainer
+
+Parent: INC-01 / F-01. Consumer: occasional trainer and WI-06 Colab loader.
+Outcome: a validated canonical dataset with reviewed annotation provenance and
+explicit split identity, or an actionable blocked report when readiness is unresolved.
+Dependencies: merged WI-02 and accepted WI-03; WI-04 is not a prerequisite.
+
+Status: stakeholder explicitly approved the proposal/design/specs on 2026-10-08. The single
+[proposal](../../openspec/changes/archive/2026-10-08-wi-05-validated-labeled-datasets/proposal.md),
+[design](../../openspec/changes/archive/2026-10-08-wi-05-validated-labeled-datasets/design.md),
+[specification](../../openspec/changes/archive/2026-10-08-wi-05-validated-labeled-datasets/specs/validated-labeled-datasets/spec.md)
+and [tasks](../../openspec/changes/archive/2026-10-08-wi-05-validated-labeled-datasets/tasks.md) are archived after software verification.
+Issue #5 is reused; branch `feat/wi-05-validated-labeled-datasets` is linked with
+`gh issue develop 5`. See [verification](13_WI_05_VERIFICATION.md): AC-1–5
+software behavior passes; genuine real ready handoff remains unverified pending
+lab review. [PR #19](https://github.com/camiloandcu/Graphene-Segmentation/pull/19) is open with `Closes #5`;
+implementation commit `b17453f` is pushed. Stakeholder item acceptance/merge remain separate.
+
+Scope delivered: offline COCO polygon validation/conversion, versioned review and dataset
+contracts, split/group/provenance gates, reproducible artifacts and consumer checks.
+Exclude UI/cloud, annotation editing, pseudo-labeling, training and new split ratios.
+Approved policies: reviewed eligibility required; reject conflicts unless reviewed
+ignore is authorized; preserve source roles and require explicit effective roles;
+exclude predictions/unknown origins; retain exploratory evaluation limitations.
+
+Acceptance criteria in the proposal are authoritative: AC-1 canonical real-source
+validation; AC-2 traceability/reproducibility; AC-3 reviewed split isolation;
+AC-4 human annotation eligibility; AC-5 complete offline handoff/recovery.
+Verify real-export blockers and synthetic ready-path behavior. A real ready handoff
+requires genuine lab decisions, otherwise that evidence remains pending. G-01–G-04
+apply; real training/release approval remain separate.
 
 ## Later candidates in dependency order
 
@@ -214,7 +249,6 @@ promoted item gets its own OpenSpec change when the user starts that work.
 
 | ID / type | Parent | Consumer and independently reviewable outcome | Dependencies | Candidate acceptance evidence |
 | --- | --- | --- | --- | --- |
-| WI-05 / Enabler | INC-01 / F-01 | Trainer receives validated labeled data with canonical classes, split identity, and human annotation provenance. | WI-02, WI-03 | Real export validation, rejected malformed masks, preserved splits, and proof that saved predictions do not silently enter ground truth. |
 | WI-06 / Enabler | INC-01 / F-02 | Trainer can train/resume the pretrained baseline in Colab and select the best development checkpoint. | WI-05 | Recorded Colab training/resume, configuration/environment, checkpoint-selection evidence; a notebook smoke run alone is insufficient. |
 | WI-07 / Spike | INC-01 / F-02 | Stakeholder can select a model/operating setting using few-layer misses, false detections, segmentation quality, and resource measurements. | WI-03, WI-06 | Actual baseline/challenger reports, full supported metrics, error panels, split isolation, uncertainty, and a supported recommendation. Effort limit and numeric acceptance remain to review; DINOv3 is access/resource gated. |
 | WI-08 / Enabler | INC-01 / F-02 | Exporter supplies the selected checkpoint as a compatible app model with matching predictions. | WI-02, WI-06; WI-07 for the final selected model | PyTorch/ONNX logit and mask comparisons on representative square/non-square images; package records the evaluated checkpoint and settings. |
@@ -245,7 +279,10 @@ Keep these separate from item acceptance criteria and implementation tasks:
   and implemented. WI-03 proposal is explicitly approved and its audit is verified;
   export access and a 90-minute limit were provided. WI-04's single proposal was
   explicitly approved, implemented and technically verified.
-  No later proposal is prepared.
+  WI-03 and WI-04 stakeholder acceptance is confirmed on 2026-10-08.
+  WI-05 proposal/design/specs explicitly approved on 2026-10-08; software
+  implemented, verified, specs synced and change archived. Real-data human gate
+  and item acceptance remain separate.
 - **G-03 — Item acceptance:** record each criterion as passed, failed, or
   unverified with its evidence; required human review is pending until confirmed.
   For US items use Given/When/Then, for fixes preserve reproducer/boundaries,
