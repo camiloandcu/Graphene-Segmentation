@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import Any, Iterator
 
 logger = logging.getLogger(__name__)
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 GENERATED_ARTIFACT = re.compile(r"[0-9a-f]{32}\.bin\Z")
 GENERATED_STAGING = re.compile(r"[0-9a-f]{32}\.tmp\Z")
 
@@ -110,7 +110,7 @@ class Workspace:
         with self._connection() as connection:
             connection.execute("BEGIN IMMEDIATE")
             version = connection.execute("PRAGMA user_version").fetchone()[0]
-            if version not in (0, SCHEMA_VERSION):
+            if version not in (0, 1, SCHEMA_VERSION):
                 raise WorkspaceError("Unsupported workspace schema. Use a compatible application version.")
             if version == 0:
                 tables = connection.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()
@@ -122,6 +122,9 @@ class Workspace:
                     created_at TEXT NOT NULL, metadata TEXT NOT NULL,
                     available INTEGER NOT NULL DEFAULT 1 CHECK(available IN (0, 1))
                 )""")
+            if version < 2:
+                from app.services.local_schema import add_model_registry
+                add_model_registry(connection)
                 connection.execute(f"PRAGMA user_version = {SCHEMA_VERSION}")
         self._sync_directory(self.root)
 

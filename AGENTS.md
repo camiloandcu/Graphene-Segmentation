@@ -24,6 +24,7 @@ distinguished in the README and work-item records.
 - Completed change history: `openspec/changes/archive/`.
 - Runtime and model-contract details: `docs/09_LOCAL_WORKSPACE.md` and
   `docs/10_PORTABLE_MODEL_CONTRACT.md`.
+- Model import, selection and recovery: `docs/11_LOCAL_MODEL_MANAGEMENT.md`.
 
 For a work-item request, locate its definition and approved OpenSpec change, then
 read only the context relevant to its scope. Treat zero-padded identifiers such

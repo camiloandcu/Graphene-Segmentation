@@ -40,7 +40,7 @@ the local configuration.
 | Entry | Purpose |
 | --- | --- |
 | `workspace.sqlite3` | Versioned metadata, checksum/size, relative artifact references and availability. |
-| `artifacts/<generated-id>.bin` | Opaque committed bytes; later items add model/dataset interpretation. |
+| `artifacts/<generated-id>.bin` | Opaque committed bytes, including original validated model ZIPs. |
 | `staging/<generated-id>.tmp` | In-progress files, cleaned by exclusive startup recovery. |
 | `.workspace.lock` | OS process lock; persists as a file after shutdown. Never delete it to bypass ownership. |
 
@@ -48,6 +48,20 @@ Only the generated storage namespace is eligible for orphan cleanup. Operator
 notes, unrelated files, and legacy backend model/MLflow data are preserved. Metadata
 uses relative paths so a stopped complete workspace can move without rewriting it.
 Do not manually change artifact bytes: integrity failure makes a record unavailable.
+
+## Model registry schema and upgrade
+
+WI-04 upgrades schema v1 to v2 under the exclusive workspace lock, in one SQLite
+transaction. Existing artifact IDs, bytes and metadata are preserved. The new
+`models` table references a ZIP artifact and stores immutable identity, digests,
+validated documents and CPU smoke evidence. A singleton `model_selection` row
+records the explicit choice. Import does not change it.
+
+Migration failure rolls back to v1. A complete v2 workspace requires a compatible
+application; older versions reject it. Back up a stopped complete workspace before
+upgrading if you need a rollback path; do not downgrade by editing `user_version`.
+Health reports schema v2 and `model_loaded: false`: selection is distinct from a
+production inference session. See [model operations](11_LOCAL_MODEL_MANAGEMENT.md).
 
 ## Stop, back up and restore
 
