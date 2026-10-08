@@ -1,87 +1,103 @@
-import { useState, useEffect } from "react";
-import { NavBar } from "./components/NavBar";
-import { Header } from "./components/Header";
-import Auth from "./pages/Auth";
-import Dashboard from "./pages/Dashboard";
-import Experiments from "./pages/Experiments";
-import Datasets from "./pages/Datasets";
-import Models from "./pages/Models";
-import Analytics from "./pages/Analytics";
-import SystemOverview from "./pages/SystemOverview";
-import UserTable from "./pages/UserTable";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { API_BASE_URL } from "./api";
 
-type Role = "user" | "admin" | null;
+interface Health {
+  status: "ok";
+  runtime: "local";
+  storage_ready: boolean;
+  model_loaded: boolean;
+}
 
-const TOKEN_KEY = "auth_token";
-const ROLE_KEY  = "auth_role";
-const NAME_KEY  = "auth_name";
-
-const userPages: Record<string, React.ReactNode> = {
-  dashboard:   <Dashboard />,
-  experiments: <Experiments />,
-  datasets:    <Datasets />,
-  models:      <Models />,
-  analytics:   <Analytics />,
-};
-
-const adminPages: Record<string, React.ReactNode> = {
-  overview: <SystemOverview />,
-  users:    <UserTable />,
-};
+type Connection = "checking" | "ready" | "error";
 
 export default function App() {
-  const [role, setRole]   = useState<Role>(null);
-  const [name, setName]   = useState<string>("");
-  const [activePage, setActivePage] = useState("dashboard");
+  const [connection, setConnection] = useState<Connection>("checking");
+  const request = useRef<AbortController | null>(null);
 
-  // Restaurar sesión desde localStorage al arrancar
-  useEffect(() => {
-    const savedToken = localStorage.getItem(TOKEN_KEY);
-    const savedRole  = localStorage.getItem(ROLE_KEY) as Role;
-    const savedName  = localStorage.getItem(NAME_KEY) ?? "";
-    if (savedToken && savedRole) {
-      setRole(savedRole);
-      setName(savedName);
-      setActivePage(savedRole === "admin" ? "overview" : "dashboard");
+  const checkConnection = useCallback(async () => {
+    request.current?.abort();
+    const controller = new AbortController();
+    request.current = controller;
+    setConnection("checking");
+    const timeout = window.setTimeout(() => controller.abort(), 8000);
+    try {
+      const response = await fetch(`${API_BASE_URL}/health`, {
+        signal: controller.signal,
+        cache: "no-store",
+      });
+      if (!response.ok) throw new Error("Workspace unavailable");
+      const health: Health = await response.json();
+      if (health.status !== "ok" || health.runtime !== "local" || !health.storage_ready || health.model_loaded !== false) {
+        throw new Error("Workspace not ready");
+      }
+      if (request.current === controller) setConnection("ready");
+    } catch {
+      if (request.current === controller) setConnection("error");
+    } finally {
+      window.clearTimeout(timeout);
     }
   }, []);
 
-  const handleLogin = (r: "user" | "admin", token: string, userName: string) => {
-    localStorage.setItem(TOKEN_KEY, token);
-    localStorage.setItem(ROLE_KEY,  r);
-    localStorage.setItem(NAME_KEY,  userName);
-    setRole(r);
-    setName(userName);
-    setActivePage(r === "admin" ? "overview" : "dashboard");
-  };
+  useEffect(() => {
+    void checkConnection();
+    return () => {
+      request.current?.abort();
+      request.current = null;
+    };
+  }, [checkConnection]);
 
-  const handleLogout = () => {
-    localStorage.removeItem(TOKEN_KEY);
-    localStorage.removeItem(ROLE_KEY);
-    localStorage.removeItem(NAME_KEY);
-    setRole(null);
-    setName("");
-  };
-
-  if (!role) return <Auth onLogin={handleLogin} />;
-
-  if (role === "admin")
-    return (
-      <div className="flex flex-col h-screen">
-        <Header onLogout={handleLogout} userName={name} />
-        <div className="flex flex-1 overflow-hidden">
-          <NavBar activePage={activePage} onNavigate={setActivePage} role="admin" />
-          {adminPages[activePage]}
-        </div>
-      </div>
-    );
+  const label = connection === "ready" ? "Workspace connected" : connection === "error" ? "Connection unavailable" : "Connecting to workspace";
 
   return (
-    <div className="flex flex-col h-screen">
-      <Header onLogout={handleLogout} userName={name} />
-      <div className="flex flex-1 overflow-hidden">
-        <NavBar activePage={activePage} onNavigate={setActivePage} role="user" />
-        {userPages[activePage]}
+    <div className="workspace-shell">
+      <a className="skip-link" href="#main">Skip to workspace</a>
+      <header className="workspace-header">
+        <a className="wordmark" href="#main" aria-label="Graphene workspace">
+          <svg viewBox="0 0 28 28" width="28" height="28" aria-hidden="true">
+            <path d="M14 3 24 8.5v11L14 25 4 19.5v-11Z M4 8.5 14 14l10-5.5 M14 14v11" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+          </svg>
+          Graphene
+        </a>
+        <span className="local-label">Local workspace</span>
+      </header>
+      <div className="workspace-layout">
+        <nav className="workspace-nav" aria-label="Workspace navigation">
+          <a href="#main" aria-current="page">Workspace</a>
+          <p>On this computer</p>
+        </nav>
+        <main id="main" className="workspace-main" tabIndex={-1}>
+          <div className="page-heading">
+            <h1>Workspace</h1>
+            <p>Graphene screening for your microscopy images.</p>
+          </div>
+          <section className="connection-section" aria-labelledby="connection-heading">
+            <div>
+              <h2 id="connection-heading">Workspace status</h2>
+              <p role="status" aria-live="polite" className={`connection-state ${connection}`}>
+                <span className="status-dot" aria-hidden="true" />{label}
+              </p>
+              <p className="status-description">
+                {connection === "ready"
+                  ? "Local storage is ready. No account is needed."
+                  : connection === "error"
+                    ? "Start the local server, then check the connection again."
+                    : "Checking the connection and local storage…"}
+              </p>
+            </div>
+            <button onClick={() => void checkConnection()} disabled={connection === "checking"}>
+              {connection === "checking" ? "Checking…" : "Check connection"}
+            </button>
+          </section>
+          <section className="empty-workspace" aria-labelledby="model-heading">
+            <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true">
+              <path d="M8 12h32v24H8z M8 20h32 M18 12v24 M24 27h10 M24 31h6" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+            </svg>
+            <h2 id="model-heading">No model available</h2>
+            <p>Model import and prediction are not available in this build yet.</p>
+            <p className="future-work">Once a validated model is available, you’ll be able to inspect graphene masks and rank images by few-layer coverage.</p>
+          </section>
+          <footer className="workspace-footer">Workspace files stay on this computer.</footer>
+        </main>
       </div>
     </div>
   );

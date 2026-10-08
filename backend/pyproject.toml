@@ -1,34 +1,20 @@
 [project]
 name = "graphene-backend"
-version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-requires-python = ">=3.12"
+version = "0.2.0"
+description = "Local workspace for graphene microscopy screening"
+requires-python = ">=3.12,<3.14"
 dependencies = [
-    "bcrypt",
-    "email-validator",
-    "fastapi[standard]",
-    "httpx",
-    "numpy",
-    "pillow",
-    "pyjwt",
-    "pytest",
-    "python-dotenv",
-    "python-multipart",
-    "supabase",
-    "scikit-image",
-    "scipy",
-    "tensorflow",
-    "tensorflow-intel",
-    "torch",
-    "segmentation-models-pytorch",
-    "timm",
-    "uvicorn[standard]",
-    "websockets",
-    "mlflow"
+    "fastapi==0.115.8",
+    "uvicorn==0.34.0",
 ]
 
 [dependency-groups]
 dev = [
+    "httpx==0.28.1",
     "pytest==8.3.5",
 ]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests_local"]
+addopts = "-ra"

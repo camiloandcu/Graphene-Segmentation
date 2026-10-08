@@ -33,8 +33,6 @@ def get_settings() -> Settings:
     supabase_key = os.getenv("SUPABASE_KEY")
     jwt_secret = os.getenv("JWT_SECRET")
 
-    print(supabase_url, supabase_key, jwt_secret)
-
     missing = [
         name
         for name, value in (
