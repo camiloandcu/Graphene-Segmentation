@@ -7,7 +7,8 @@ Checked: 2026-10-08.
 Current item: WI-04 proposal/design/specs were explicitly approved on 2026-10-08.
 Implementation on `feat/wi-04-local-model-management` adds bounded local model import,
 immutable registry, explicit selection, schema migration/recovery and Models UI.
-See [WI-04 verification](12_WI_04_VERIFICATION.md) for AC-1–5 evidence and PR status.
+PR [#18](https://github.com/camiloandcu/Graphene-Segmentation/pull/18) is open with `Closes #4`.
+See [WI-04 verification](12_WI_04_VERIFICATION.md) for AC-1–5 evidence and submission references.
 Synthetic packages prove management; no trained-model or prediction claim is made.
 The verified change is synced/archived under
 `openspec/changes/archive/2026-10-08-wi-04-local-model-management/`.

@@ -4,7 +4,8 @@ Checked: 2026-10-08. Proposal/design/specs explicitly approved by stakeholder.
 Status: implemented and technically verified; lab/stakeholder acceptance and merge pending.
 Issue: [#4](https://github.com/camiloandcu/Graphene-Segmentation/issues/4).
 Branch: `feat/wi-04-local-model-management`, linked with `gh issue develop 4`.
-Approved-design commit: `50ca4cb`. Implementation commit and PR references below.
+Approved-design commit: `50ca4cb`. Implementation commit: `2758654`.
+PR: [#18](https://github.com/camiloandcu/Graphene-Segmentation/pull/18), open with `Closes #4`; GitHub confirms the closing Issue association.
 
 ## Acceptance evidence
 
@@ -80,7 +81,8 @@ environment; isolated base checks installed their own test dependencies.
 ## Submission and remaining gates
 
 No protected branch was pushed, merged or updated. The work branch is pushed and
-its PR uses `Closes #4`; precise references are added before handoff. Verified
+PR #18 uses `Closes #4`. Approved design and implementation commits are pushed;
+a final documentation commit records these submission references. Verified
 specifications are synced and the change archived under
 `openspec/changes/archive/2026-10-08-wi-04-local-model-management/`.
 Lab/stakeholder acceptance, Issue closure, merge and release remain pending.

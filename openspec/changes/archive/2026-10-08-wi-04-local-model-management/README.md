@@ -2,7 +2,8 @@
 
 Explicit proposal/design/spec approval: 2026-10-08. Implemented and technically
 verified on `feat/wi-04-local-model-management`, linked with `gh issue develop 4`.
-Reuses [Issue #4](https://github.com/camiloandcu/Graphene-Segmentation/issues/4).
+PR [#18](https://github.com/camiloandcu/Graphene-Segmentation/pull/18) is open with `Closes #4`; commits
+`50ca4cb` and `2758654` are pushed. Reuses [Issue #4](https://github.com/camiloandcu/Graphene-Segmentation/issues/4).
 
 Read [proposal](proposal.md), [design](design.md), [tasks](tasks.md),
 [model management requirements](specs/local-model-management/spec.md) and
