@@ -1,10 +1,22 @@
 # Project repair review
 
-Status: WI-01 and WI-02 merged; WI-03 technically verified. Broader release and later
-proposals remain pending.
+Status: WI-01 through WI-03 merged; WI-03 lab acceptance pending. WI-04 proposal
+prepared for review; implementation and broader release remain pending.
 Checked: 2026-10-08.
 
-Current item: the stakeholder approved WI-03 and supplied the export with a
+Current item: the stakeholder requested continuation with WI-04 on 2026-10-08.
+Review its single [change entry point](../../openspec/changes/wi-04-local-model-management/README.md),
+[proposal](../../openspec/changes/wi-04-local-model-management/proposal.md),
+[design](../../openspec/changes/wi-04-local-model-management/design.md),
+[requirements](../../openspec/changes/wi-04-local-model-management/specs/local-model-management/spec.md)
+and [tasks](../../openspec/changes/wi-04-local-model-management/tasks.md).
+Explicit approval is pending; no implementation has started. WI-01/WI-02
+dependencies are merged. All WI-04 acceptance criteria remain unverified.
+Proposal checks on 2026-10-08: strict OpenSpec validation for
+`wi-04-local-model-management` and `git diff --check` passed. Application checks
+are pending implementation.
+
+Previous item: the stakeholder approved WI-03 and supplied the export with a
 90-minute investigation limit. Its
 [proposal](../../openspec/changes/archive/2026-10-08-wi-03-lab-dataset-audit/proposal.md),
 [design](../../openspec/changes/archive/2026-10-08-wi-03-lab-dataset-audit/design.md),
@@ -12,7 +24,8 @@ Current item: the stakeholder approved WI-03 and supplied the export with a
 and [tasks](../../openspec/changes/archive/2026-10-08-wi-03-lab-dataset-audit/tasks.md) were explicitly
 approved on 2026-10-08. See the [audit report](wi03/00_INDEX.md) and
 [WI-03 verification](11_WI_03_VERIFICATION.md). The audit is technically verified;
-lab review, stakeholder acceptance and merge remain separate.
+lab review and stakeholder acceptance remain separate. Authorized read-only `gh`
+inspection confirmed PR #17 merged on 2026-10-08; local `main` already contains it.
 
 Previous item: WI-02 is implemented and merged following explicit stakeholder approval;
 review its single [proposal](../../openspec/changes/archive/2026-10-08-wi-02-portable-model-contract/proposal.md),

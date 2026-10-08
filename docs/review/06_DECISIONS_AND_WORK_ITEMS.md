@@ -1,6 +1,7 @@
 # Decisions and work item hierarchy
 
-Status: WI-01 and WI-02 merged; WI-03 technically verified; later items
+Status: WI-01 through WI-03 merged; WI-03 lab acceptance pending; WI-04 proposal
+prepared for review; later items
 remain subject to review. Apply the hierarchy **delivery increment -> feature -> executable
 work item -> implementation task**. Epics are optional and are omitted because
 they would duplicate the delivery increments in this project.
@@ -10,7 +11,8 @@ Identifiers below are stable parent/dependency references. The stakeholder asked
 to continue with WI-01 and explicitly approved its single proposal.
 WI-01 and WI-02 are implemented, technically verified and merged. WI-03's approved
 audit is technically verified; lab/stakeholder acceptance remains pending.
-WI-04 and later candidates are provisional.
+WI-04 is refined below with a single proposal awaiting approval. Later candidates
+remain provisional.
 
 ## Decision log
 
@@ -174,6 +176,33 @@ Candidate investigation tasks:
 - T-02: assess duplicates, overlap, and candidate split support (AC-2).
 - T-03: deliver limitations and a readiness recommendation (AC-3).
 
+## WI-04 / US: import and select a compatible local model
+
+Parent: **INC-01 / F-03**. Consumer: lab member or occasional trainer importing
+a v1 model ZIP without manually entering ML configuration. Dependencies: merged
+WI-01 and WI-02; WI-03 lab acceptance and real training are not prerequisites.
+
+Status: stakeholder requested continuation on 2026-10-08; one
+[proposal](../../openspec/changes/wi-04-local-model-management/proposal.md) and
+[design](../../openspec/changes/wi-04-local-model-management/design.md) are prepared,
+with explicit approval pending. Reuses Issue #4. No implementation branch/code/PR.
+
+Scope: bounded local ZIP import, validated immutable model registry, readable
+details/evaluation, explicit durable selection, v1 workspace upgrade and recovery,
+UI/API integration. Excludes prediction, training, image/batch upload, model
+deletion/editing, cloud registry and quality certification.
+
+Proposed review decisions: import never auto-selects; identical packages reuse the
+existing entry; same model ID with different bundle bytes is rejected; unavailable
+selected models retain their identity until explicit selection of an intact alternative.
+
+Numbered Given/When/Then acceptance criteria and evidence are authoritative in the
+proposal: **AC-1** import/inspect exact identity; **AC-2** explicit selection across
+restart; **AC-3** failures/concurrency preserve committed state; **AC-4** transactional
+upgrade/recovery and no-extras startup; **AC-5** accessible understandable Models
+workflow. All are **unverified**. Tasks are separately recorded in the change.
+G-02 approval precedes implementation; G-03/G-04 completion and G-05 release stay separate.
+
 ## Later candidates in dependency order
 
 The following is a provisional decomposition, not a queue of approved executable
@@ -183,7 +212,6 @@ promoted item gets its own OpenSpec change when the user starts that work.
 
 | ID / type | Parent | Consumer and independently reviewable outcome | Dependencies | Candidate acceptance evidence |
 | --- | --- | --- | --- | --- |
-| WI-04 / US | INC-01 / F-03 | Lab user imports and selects a compatible model without entering ML configuration manually. | WI-01, WI-02 | Given a valid package, import/select persists across restart; given an incompatible package, the previous selection remains usable and the error explains why. Integration scenarios through UI/API/registry. |
 | WI-05 / Enabler | INC-01 / F-01 | Trainer receives validated labeled data with canonical classes, split identity, and human annotation provenance. | WI-02, WI-03 | Real export validation, rejected malformed masks, preserved splits, and proof that saved predictions do not silently enter ground truth. |
 | WI-06 / Enabler | INC-01 / F-02 | Trainer can train/resume the pretrained baseline in Colab and select the best development checkpoint. | WI-05 | Recorded Colab training/resume, configuration/environment, checkpoint-selection evidence; a notebook smoke run alone is insufficient. |
 | WI-07 / Spike | INC-01 / F-02 | Stakeholder can select a model/operating setting using few-layer misses, false detections, segmentation quality, and resource measurements. | WI-03, WI-06 | Actual baseline/challenger reports, full supported metrics, error panels, split isolation, uncertainty, and a supported recommendation. Effort limit and numeric acceptance remain to review; DINOv3 is access/resource gated. |
@@ -213,8 +241,9 @@ Keep these separate from item acceptance criteria and implementation tasks:
   explicit approval precede implementation and preparation of another change.
   Status: WI-01 proposal approved/completed; WI-02 proposal explicitly approved
   and implemented. WI-03 proposal is explicitly approved and its audit is verified;
-  export access and a 90-minute limit were provided. No WI-04 or later proposal
-  is prepared.
+  export access and a 90-minute limit were provided. WI-04's single proposal is
+  prepared following the continuation request; explicit approval is pending.
+  No later proposal is prepared.
 - **G-03 — Item acceptance:** record each criterion as passed, failed, or
   unverified with its evidence; required human review is pending until confirmed.
   For US items use Given/When/Then, for fixes preserve reproducer/boundaries,

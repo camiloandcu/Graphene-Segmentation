@@ -1,15 +1,15 @@
 # GitHub work item tracking
 
 Access: `gh`, authorized by the stakeholder. WI-01, WI-02 and WI-03 proposals are approved;
-future items retain their pending/provisional readiness. Creating Issues does not
+WI-04 proposal approval is pending; later items retain their provisional readiness. Creating Issues does not
 approve their implementation or create additional OpenSpec proposals.
 
 | Work item | Issue | Parent | State |
 | --- | --- | --- | --- |
 | WI-01 | [#1](https://github.com/camiloandcu/Graphene-Segmentation/issues/1) | INC-01 / F-03 | Merged via PR #15 |
 | WI-02 | [#2](https://github.com/camiloandcu/Graphene-Segmentation/issues/2) | INC-01 / F-03 | Merged via PR #16 |
-| WI-03 | [#3](https://github.com/camiloandcu/Graphene-Segmentation/issues/3) | INC-01 / F-01 | Technically verified; PR #17 open; stakeholder acceptance pending |
-| WI-04 | [#4](https://github.com/camiloandcu/Graphene-Segmentation/issues/4) | INC-01 / F-03 | Provisional; refinement required |
+| WI-03 | [#3](https://github.com/camiloandcu/Graphene-Segmentation/issues/3) | INC-01 / F-01 | Merged via PR #17; lab/stakeholder acceptance pending |
+| WI-04 | [#4](https://github.com/camiloandcu/Graphene-Segmentation/issues/4) | INC-01 / F-03 | Proposal prepared; explicit approval pending |
 | WI-05 | [#5](https://github.com/camiloandcu/Graphene-Segmentation/issues/5) | INC-01 / F-01 | Provisional; refinement required |
 | WI-06 | [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6) | INC-01 / F-02 | Provisional; refinement required |
 | WI-07 | [#7](https://github.com/camiloandcu/Graphene-Segmentation/issues/7) | INC-01 / F-02 | Provisional; refinement required |
@@ -50,3 +50,14 @@ WI-03 PR [#17](https://github.com/camiloandcu/Graphene-Segmentation/pull/17) use
 branch. The verified audit specification is synced and the change archived under
 `2026-10-08-wi-03-lab-dataset-audit`. Issue closure, lab/stakeholder acceptance,
 merge and release remain separate. No protected branch was updated.
+
+Checked 2026-10-08 with authorized `gh`: PR #17 is now merged; local `main`
+already contains merge commit `985d40b`. Historical handoff statements above
+describe the prior submission state; lab/stakeholder acceptance remains pending.
+
+WI-04: Issue #4 is open and its remote body remains provisional. The stakeholder
+requested continuation on 2026-10-08, authorizing preparation of one
+[change](../../openspec/changes/wi-04-local-model-management/README.md). Proposal,
+design, spec deltas and tasks await explicit approval. No implementation branch,
+code, commits, push or PR; AC-1–5 remain unverified. Update Issue #4 from the
+approved record and link its branch after approval. No later proposal is prepared.
