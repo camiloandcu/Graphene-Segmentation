@@ -1,18 +1,19 @@
 # Project repair review
 
 Status: WI-01 through WI-04 merged; WI-03 and WI-04 stakeholder accepted on
-2026-10-08. WI-05 proposal is ready for review; implementation approval pending.
+2026-10-08. WI-05 software is implemented and technically verified; submission in progress.
 Real label/split decisions and broader release remain separate.
 Checked: 2026-10-08.
 
-Current item: WI-05 continuation authorized on 2026-10-08. Review its single
-[proposal](../../openspec/changes/wi-05-validated-labeled-datasets/proposal.md),
-[design](../../openspec/changes/wi-05-validated-labeled-datasets/design.md),
-[specification](../../openspec/changes/wi-05-validated-labeled-datasets/specs/validated-labeled-datasets/spec.md)
-and [tasks](../../openspec/changes/wi-05-validated-labeled-datasets/tasks.md).
-The change proposes an offline dataset contract/CLI for the Colab trainer, with
-explicit review, provenance and split gates. Proposal approval precedes coding;
-Issue #5 is reused. No implementation branch or checks exist yet.
+Current item: WI-05 proposal/design/specs were explicitly approved on 2026-10-08.
+Its offline dataset contract/CLI and consumer loader are implemented on
+`feat/wi-05-validated-labeled-datasets`, linked to Issue #5. See
+[WI-05 verification](13_WI_05_VERIFICATION.md) for 84 passing checks, real-export
+reconciliation, synthetic handoff and fresh wheel installation. Real lab label/
+split review remains pending; no real ready handoff or training is claimed.
+Verified software requirements are synced and the change is
+[archived](../../openspec/changes/archive/2026-10-08-wi-05-validated-labeled-datasets/README.md).
+Stakeholder acceptance/merge remain separate; no subsequent proposal is prepared.
 
 Previous item: WI-04 proposal/design/specs were explicitly approved on 2026-10-08.
 Implementation on `feat/wi-04-local-model-management` adds bounded local model import,
@@ -23,7 +24,7 @@ See [WI-04 verification](12_WI_04_VERIFICATION.md) for AC-1–5 evidence and sub
 Synthetic packages prove management; no trained-model or prediction claim is made.
 The verified change is synced/archived under
 `openspec/changes/archive/2026-10-08-wi-04-local-model-management/`.
-Only the WI-05 proposal above is prepared.
+WI-05 is the only subsequent change prepared in this work.
 
 Previous item: the stakeholder approved WI-03 and supplied the export with a
 90-minute investigation limit. Its
@@ -60,6 +61,7 @@ Read in this order:
 10. [WI-02 verification](10_WI_02_VERIFICATION.md): contract and geometry evidence.
 11. [WI-03 verification](11_WI_03_VERIFICATION.md): lab data audit and readiness evidence.
 12. [WI-04 verification](12_WI_04_VERIFICATION.md): local model management, migration and browser evidence.
+13. [WI-05 verification](13_WI_05_VERIFICATION.md): offline dataset/review contracts, real blockers and synthetic ready handoff.
 
 Confirmed stakeholder decisions take precedence over recommendations. Open decisions
 must be resolved or explicitly accepted as assumptions before their dependent work.

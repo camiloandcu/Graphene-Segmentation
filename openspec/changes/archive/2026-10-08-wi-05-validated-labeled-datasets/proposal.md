@@ -77,7 +77,9 @@ Proposed policies for approval:
 | WI-05-AC-4 | Only explicitly human-annotated, reviewed eligible samples enter the handoff. Missing review, unresolved conflicts/completeness or prediction/unknown origin blocks eligible inclusion. Default conflict rejection and reviewed ignore behavior are deterministic. | Real-export blocker report, reviewed synthetic ready run, background/ignore checks and saved-prediction contamination regressions. |
 | WI-05-AC-5 | The documented local workflow produces either an actionable blocked report or a complete artifact accepted by the consumer validator; malformed/tampered/partial artifacts are rejected, and failures preserve source and prior outputs. | Clean offline CLI/loader trial, tamper and interrupted-publication checks; real ready-path evidence if genuine lab review is supplied, otherwise explicitly pending. |
 
-All criteria are currently unverified. Real source validation/blocking is required;
+At approval all criteria were unverified. Current software evidence and the
+pending real ready handoff are recorded in
+[verification](../../../../docs/review/13_WI_05_VERIFICATION.md). Real source validation/blocking is required;
 real training readiness remains pending if lab decisions are unavailable. Synthetic
 ready-path proof establishes the software contract, not real-label certification.
 Shared gates: G-01 affected policy review; G-02 proposal approval; G-03 criterion

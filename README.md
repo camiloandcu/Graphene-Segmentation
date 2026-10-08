@@ -5,7 +5,7 @@ is to inspect segmentation masks and prioritize image batches by the fraction
 covered by few-layer graphene. Training will run separately in free-tier Colab.
 
 **Current delivery: local workspace, portable model contract, dataset audit and
-model management (WI-01 through WI-04).** Open without an account, import a
+model management and offline dataset preparation (WI-01 through WI-05).** Open without an account, import a
 compatible model ZIP, inspect its supplied evaluation, and explicitly select it.
 Model files, metadata and selection persist locally across restarts.
 
@@ -16,6 +16,11 @@ no trained model or lab performance is claimed.
 The [lab dataset audit](docs/review/wi03/00_INDEX.md) now records the supplied
 40-image export's label support, conflicts and evaluation limitations. It supports
 conditional pilot planning; it does not establish an independent test benchmark.
+
+For trainers, the [offline dataset workflow](docs/13_VALIDATED_DATASETS.md)
+validates the COCO export, preserves canonical classes/provenance and enforces
+reviewed split decisions. Real dataset readiness remains blocked until the lab
+supplies its label and grouping review; saved predictions cannot enter ground truth.
 
 ## Run on Linux
 
@@ -100,6 +105,7 @@ requirements, standalone installation, synthetic examples, and resource limits.
 - [WI-02 verification evidence](docs/review/10_WI_02_VERIFICATION.md)
 - [WI-03 dataset audit evidence](docs/review/11_WI_03_VERIFICATION.md)
 - [WI-04 model management evidence](docs/review/12_WI_04_VERIFICATION.md)
+- [WI-05 validated dataset evidence](docs/review/13_WI_05_VERIFICATION.md)
 
 Work proceeds one approved OpenSpec change at a time. Implementation branches
 link to their Issue, and PRs include the acceptance evidence and a closing link.

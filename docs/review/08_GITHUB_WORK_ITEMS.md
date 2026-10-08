@@ -1,8 +1,7 @@
 # GitHub work item tracking
 
 Access: `gh`, authorized by the stakeholder. WI-01, WI-02 and WI-03 proposals are approved;
-WI-03 and WI-04 are stakeholder accepted and merged; WI-05 has a proposed change
-awaiting approval. Later items retain their provisional readiness. Creating Issues does not
+WI-03 and WI-04 are stakeholder accepted and merged; WI-05 software is approved, implemented and technically verified. Later items retain their provisional readiness. Creating Issues does not
 approve their implementation or create additional OpenSpec proposals.
 
 | Work item | Issue | Parent | State |
@@ -11,7 +10,7 @@ approve their implementation or create additional OpenSpec proposals.
 | WI-02 | [#2](https://github.com/camiloandcu/Graphene-Segmentation/issues/2) | INC-01 / F-03 | Merged via PR #16 |
 | WI-03 | [#3](https://github.com/camiloandcu/Graphene-Segmentation/issues/3) | INC-01 / F-01 | Merged via PR #17; stakeholder accepted 2026-10-08 |
 | WI-04 | [#4](https://github.com/camiloandcu/Graphene-Segmentation/issues/4) | INC-01 / F-03 | Merged via PR #18; stakeholder accepted 2026-10-08 |
-| WI-05 | [#5](https://github.com/camiloandcu/Graphene-Segmentation/issues/5) | INC-01 / F-01 | Proposal prepared; implementation approval pending |
+| WI-05 | [#5](https://github.com/camiloandcu/Graphene-Segmentation/issues/5) | INC-01 / F-01 | Software verified; real ready handoff/lab review pending; submission in progress |
 | WI-06 | [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6) | INC-01 / F-02 | Provisional; refinement required |
 | WI-07 | [#7](https://github.com/camiloandcu/Graphene-Segmentation/issues/7) | INC-01 / F-02 | Provisional; refinement required |
 | WI-08 | [#8](https://github.com/camiloandcu/Graphene-Segmentation/issues/8) | INC-01 / F-02 | Provisional; refinement required |
@@ -70,9 +69,11 @@ Stakeholder explicitly accepted WI-03 and WI-04 and authorized continuation to W
 No agent protected-branch operation was performed. Earlier open/pending statements
 are historical submission records.
 
-WI-05: Issue #5 is open and still provisional on GitHub. The single local
-[proposal](../../openspec/changes/wi-05-validated-labeled-datasets/proposal.md)
-is prepared for review; no implementation approval, branch, commit or PR yet.
-After approval, refine the existing Issue, link the work branch and execute its
-AC-1–5. Real lab label/split decisions remain required for a real ready handoff;
-no reviewer attestations were inferred from WI-03 acceptance.
+WI-05: Issue #5 is refined from the explicitly approved proposal/design/specs
+(2026-10-08). Branch `feat/wi-05-validated-labeled-datasets` is linked with
+`gh issue develop 5`; approved-design commit `8447823`. See
+[verification](13_WI_05_VERIFICATION.md) for 84 checks, complete real audit
+reconciliation and fresh wheel consumption. AC-1–5 software behavior is verified;
+genuine real ready handoff requires lab label/group/split decisions and remains
+unverified. The specification is synced and verified software change archived.
+Submission references follow; stakeholder item acceptance/merge remain separate.

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "source_sha256": "bc362e5e774e63cd62e677522abbf2bc632422cadd7b5e9642bbfa3ca97eede3",
+  "pairs": [
+    {
+      "left": "test-001",
+      "right": "valid-002",
+      "evidence": "WI-03 05_DUPLICATE_REVIEW.json: Different rendered fields on pair sheet; no exact duplicate. Physical overlap and shared acquisition identity unresolved. Conservatively co-group the filename cue pending lab confirmation."
+    },
+    {
+      "left": "train-008",
+      "right": "train-030",
+      "evidence": "WI-03 05_DUPLICATE_REVIEW.json: Different rendered fields on pair sheet; no exact duplicate. Physical overlap and shared acquisition identity unresolved. Conservatively co-group the filename cue pending lab confirmation."
+    },
+    {
+      "left": "train-008",
+      "right": "train-018",
+      "evidence": "WI-03 05_DUPLICATE_REVIEW.json: Different rendered fields on pair sheet; no exact duplicate. Physical overlap and shared acquisition identity unresolved. Conservatively co-group the filename cue pending lab confirmation."
+    },
+    {
+      "left": "test-000",
+      "right": "train-007",
+      "evidence": "WI-03 05_DUPLICATE_REVIEW.json: Different rendered fields on pair sheet; no exact duplicate. Physical overlap and shared acquisition identity unresolved. Conservatively co-group the filename cue pending lab confirmation."
+    },
+    {
+      "left": "train-012",
+      "right": "train-018",
+      "evidence": "WI-03 05_DUPLICATE_REVIEW.json: Different rendered fields on pair sheet; no exact duplicate. Physical overlap and shared acquisition identity unresolved. Conservatively co-group the filename cue pending lab confirmation."
+    },
+    {
+      "left": "train-012",
+      "right": "train-030",
+      "evidence": "WI-03 05_DUPLICATE_REVIEW.json: Different rendered fields on pair sheet; no exact duplicate. Physical overlap and shared acquisition identity unresolved. Conservatively co-group the filename cue pending lab confirmation."
+    },
+    {
+      "left": "train-008",
+      "right": "train-012",
+      "evidence": "WI-03 05_DUPLICATE_REVIEW.json: Different rendered fields on pair sheet; no exact duplicate. Physical overlap and shared acquisition identity unresolved. Conservatively co-group the filename cue pending lab confirmation."
+    },
+    {
+      "left": "train-010",
+      "right": "train-030",
+      "evidence": "WI-03 05_DUPLICATE_REVIEW.json: Different rendered fields on pair sheet; no exact duplicate. Physical overlap and shared acquisition identity unresolved. Conservatively co-group the filename cue pending lab confirmation."
+    },
+    {
+      "left": "train-008",
+      "right": "train-010",
+      "evidence": "WI-03 05_DUPLICATE_REVIEW.json: Different rendered fields on pair sheet; no exact duplicate. Physical overlap and shared acquisition identity unresolved. Conservatively co-group the filename cue pending lab confirmation."
+    },
+    {
+      "left": "train-018",
+      "right": "train-030",
+      "evidence": "WI-03 05_DUPLICATE_REVIEW.json: Different rendered fields on pair sheet; no exact duplicate. Physical overlap and shared acquisition identity unresolved. Conservatively co-group the filename cue pending lab confirmation."
+    },
+    {
+      "left": "train-010",
+      "right": "train-012",
+      "evidence": "WI-03 05_DUPLICATE_REVIEW.json: Different rendered fields on pair sheet; no exact duplicate. Physical overlap and shared acquisition identity unresolved. Conservatively co-group the filename cue pending lab confirmation."
+    },
+    {
+      "left": "train-010",
+      "right": "train-018",
+      "evidence": "WI-03 05_DUPLICATE_REVIEW.json: Different rendered fields on pair sheet; no exact duplicate. Physical overlap and shared acquisition identity unresolved. Conservatively co-group the filename cue pending lab confirmation."
+    },
+    {
+      "left": "train-014",
+      "right": "train-017",
+      "evidence": "WI-03 05_DUPLICATE_REVIEW.json: Different rendered fields on pair sheet; no exact duplicate. Physical overlap and shared acquisition identity unresolved. Conservatively co-group the filename cue pending lab confirmation."
+    },
+    {
+      "left": "train-026",
+      "right": "train-029",
+      "evidence": "WI-03 05_DUPLICATE_REVIEW.json: Different rendered fields on pair sheet; no exact duplicate. Physical overlap and shared acquisition identity unresolved. Conservatively co-group the filename cue pending lab confirmation."
+    },
+    {
+      "left": "train-003",
+      "right": "train-004",
+      "evidence": "WI-03 05_DUPLICATE_REVIEW.json: Different rendered fields on pair sheet; no exact duplicate. Physical overlap and shared acquisition identity unresolved. Conservatively co-group the filename cue pending lab confirmation."
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 # Decisions and work item hierarchy
 
 Status: WI-01 through WI-04 merged; WI-03 and WI-04 stakeholder accepted on
-2026-10-08. WI-05 proposal prepared for review; implementation approval pending.
+2026-10-08. WI-05 software is implemented and technically verified; submission in progress.
 Later items remain provisional. Apply the hierarchy **delivery increment -> feature -> executable
 work item -> implementation task**. Epics are optional and are omitted because
 they would duplicate the delivery increments in this project.
@@ -11,7 +11,7 @@ Identifiers below are stable parent/dependency references. The stakeholder asked
 to continue with WI-01 and explicitly approved its single proposal.
 WI-01 and WI-02 are implemented, technically verified and merged. WI-03's approved
 audit is technically verified and stakeholder accepted. WI-04 is implemented,
-merged and stakeholder accepted. WI-05 is proposed below; later candidates
+merged and stakeholder accepted. WI-05 is implemented below; later candidates
 remain provisional.
 
 ## Decision log
@@ -215,18 +215,20 @@ Outcome: a validated canonical dataset with reviewed annotation provenance and
 explicit split identity, or an actionable blocked report when readiness is unresolved.
 Dependencies: merged WI-02 and accepted WI-03; WI-04 is not a prerequisite.
 
-Status: stakeholder authorized continuation on 2026-10-08. A single
-[proposal](../../openspec/changes/wi-05-validated-labeled-datasets/proposal.md),
-[design](../../openspec/changes/wi-05-validated-labeled-datasets/design.md),
-[specification](../../openspec/changes/wi-05-validated-labeled-datasets/specs/validated-labeled-datasets/spec.md)
-and [tasks](../../openspec/changes/wi-05-validated-labeled-datasets/tasks.md) are prepared;
-explicit proposal approval is pending. Issue #5 is reused; no implementation
-branch, code, commits, push or PR yet. All AC-1–5 remain unverified.
+Status: stakeholder explicitly approved the proposal/design/specs on 2026-10-08. The single
+[proposal](../../openspec/changes/archive/2026-10-08-wi-05-validated-labeled-datasets/proposal.md),
+[design](../../openspec/changes/archive/2026-10-08-wi-05-validated-labeled-datasets/design.md),
+[specification](../../openspec/changes/archive/2026-10-08-wi-05-validated-labeled-datasets/specs/validated-labeled-datasets/spec.md)
+and [tasks](../../openspec/changes/archive/2026-10-08-wi-05-validated-labeled-datasets/tasks.md) are archived after software verification.
+Issue #5 is reused; branch `feat/wi-05-validated-labeled-datasets` is linked with
+`gh issue develop 5`. See [verification](13_WI_05_VERIFICATION.md): AC-1–5
+software behavior passes; genuine real ready handoff remains unverified pending
+lab review. Stakeholder item acceptance/merge remain separate.
 
-Scope: offline COCO polygon validation/conversion, versioned review and dataset
+Scope delivered: offline COCO polygon validation/conversion, versioned review and dataset
 contracts, split/group/provenance gates, reproducible artifacts and consumer checks.
 Exclude UI/cloud, annotation editing, pseudo-labeling, training and new split ratios.
-Proposed policies: reviewed eligibility required; reject conflicts unless reviewed
+Approved policies: reviewed eligibility required; reject conflicts unless reviewed
 ignore is authorized; preserve source roles and require explicit effective roles;
 exclude predictions/unknown origins; retain exploratory evaluation limitations.
 
@@ -277,7 +279,9 @@ Keep these separate from item acceptance criteria and implementation tasks:
   export access and a 90-minute limit were provided. WI-04's single proposal was
   explicitly approved, implemented and technically verified.
   WI-03 and WI-04 stakeholder acceptance is confirmed on 2026-10-08.
-  WI-05 has one proposed change awaiting explicit implementation approval.
+  WI-05 proposal/design/specs explicitly approved on 2026-10-08; software
+  implemented, verified, specs synced and change archived. Real-data human gate
+  and item acceptance remain separate.
 - **G-03 — Item acceptance:** record each criterion as passed, failed, or
   unverified with its evidence; required human review is pending until confirmed.
   For US items use Given/When/Then, for fixes preserve reproducer/boundaries,

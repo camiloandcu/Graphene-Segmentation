@@ -1,0 +1,16 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "graphene-dataset-contract"
+version = "1.0.0"
+description = "Offline reviewed graphene dataset preparation and consumption"
+requires-python = ">=3.10,<3.14"
+dependencies = ["graphene-model-contract>=1,<2", "numpy>=1.26,<3", "pillow>=11,<13", "pydantic>=2.10,<3", "pycocotools>=2.0.10,<3"]
+
+[project.scripts]
+graphene-dataset = "graphene_dataset_contract.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/graphene_dataset_contract"]
