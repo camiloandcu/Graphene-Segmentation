@@ -1,20 +1,17 @@
 # Project repair review
 
-Status: WI-01 through WI-03 merged; WI-03 lab acceptance pending. WI-04 proposal
-prepared for review; implementation and broader release remain pending.
+Status: WI-01 through WI-03 merged; WI-04 implemented and technically verified.
+Lab/stakeholder acceptance, merge and broader release remain separate.
 Checked: 2026-10-08.
 
-Current item: the stakeholder requested continuation with WI-04 on 2026-10-08.
-Review its single [change entry point](../../openspec/changes/wi-04-local-model-management/README.md),
-[proposal](../../openspec/changes/wi-04-local-model-management/proposal.md),
-[design](../../openspec/changes/wi-04-local-model-management/design.md),
-[requirements](../../openspec/changes/wi-04-local-model-management/specs/local-model-management/spec.md)
-and [tasks](../../openspec/changes/wi-04-local-model-management/tasks.md).
-Explicit approval is pending; no implementation has started. WI-01/WI-02
-dependencies are merged. All WI-04 acceptance criteria remain unverified.
-Proposal checks on 2026-10-08: strict OpenSpec validation for
-`wi-04-local-model-management` and `git diff --check` passed. Application checks
-are pending implementation.
+Current item: WI-04 proposal/design/specs were explicitly approved on 2026-10-08.
+Implementation on `feat/wi-04-local-model-management` adds bounded local model import,
+immutable registry, explicit selection, schema migration/recovery and Models UI.
+See [WI-04 verification](12_WI_04_VERIFICATION.md) for AC-1–5 evidence and PR status.
+Synthetic packages prove management; no trained-model or prediction claim is made.
+The verified change is synced/archived under
+`openspec/changes/archive/2026-10-08-wi-04-local-model-management/`.
+No subsequent proposal is prepared.
 
 Previous item: the stakeholder approved WI-03 and supplied the export with a
 90-minute investigation limit. Its
@@ -49,6 +46,7 @@ Read in this order:
 9. [WI-01 verification](09_WI_01_VERIFICATION.md): acceptance and browser evidence.
 10. [WI-02 verification](10_WI_02_VERIFICATION.md): contract and geometry evidence.
 11. [WI-03 verification](11_WI_03_VERIFICATION.md): lab data audit and readiness evidence.
+12. [WI-04 verification](12_WI_04_VERIFICATION.md): local model management, migration and browser evidence.
 
 Confirmed stakeholder decisions take precedence over recommendations. Open decisions
 must be resolved or explicitly accepted as assumptions before their dependent work.

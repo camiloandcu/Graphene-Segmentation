@@ -98,7 +98,7 @@ reported results from independently verified lab quality and states that predict
 is pending WI-09. Evidence: browser workflow, keyboard/focus checks and desktop/narrow
 captures using long names, unmeasured and reported fixtures.
 
-AC-1 through AC-5 are **unverified** until implementation. Shared G-02 approval,
+AC-1 through AC-5 are **technically passed**; see `docs/review/12_WI_04_VERIFICATION.md`. Shared G-02 approval,
 G-03 acceptance, G-04 engineering completion and G-05 broader release remain separate.
 
 ## Impact

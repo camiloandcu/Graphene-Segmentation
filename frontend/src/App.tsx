@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { API_BASE_URL } from "./api";
+import ModelWorkspace from "./ModelWorkspace";
 
 interface Health {
   status: "ok";
@@ -11,6 +12,7 @@ interface Health {
 type Connection = "checking" | "ready" | "error";
 
 export default function App() {
+  const [view, setView] = useState<"workspace" | "models">(window.location.hash === "#models" ? "models" : "workspace");
   const [connection, setConnection] = useState<Connection>("checking");
   const request = useRef<AbortController | null>(null);
 
@@ -27,7 +29,7 @@ export default function App() {
       });
       if (!response.ok) throw new Error("Workspace unavailable");
       const health: Health = await response.json();
-      if (health.status !== "ok" || health.runtime !== "local" || !health.storage_ready || health.model_loaded !== false) {
+      if (health.status !== "ok" || health.runtime !== "local" || !health.storage_ready) {
         throw new Error("Workspace not ready");
       }
       if (request.current === controller) setConnection("ready");
@@ -46,6 +48,15 @@ export default function App() {
     };
   }, [checkConnection]);
 
+  useEffect(() => {
+    const navigate = () => {
+      if (window.location.hash === "#models") setView("models");
+      else if (window.location.hash === "#workspace") setView("workspace");
+    };
+    window.addEventListener("hashchange", navigate);
+    return () => window.removeEventListener("hashchange", navigate);
+  }, []);
+
   const label = connection === "ready" ? "Workspace connected" : connection === "error" ? "Connection unavailable" : "Connecting to workspace";
 
   return (
@@ -62,13 +73,14 @@ export default function App() {
       </header>
       <div className="workspace-layout">
         <nav className="workspace-nav" aria-label="Workspace navigation">
-          <a href="#main" aria-current="page">Workspace</a>
+          <a href="#workspace" aria-current={view === "workspace" ? "page" : undefined}>Workspace</a>
+          <a href="#models" aria-current={view === "models" ? "page" : undefined}>Models</a>
           <p>On this computer</p>
         </nav>
         <main id="main" className="workspace-main" tabIndex={-1}>
           <div className="page-heading">
-            <h1>Workspace</h1>
-            <p>Graphene screening for your microscopy images.</p>
+            <h1>{view === "models" ? "Models" : "Workspace"}</h1>
+            <p>{view === "models" ? "Import and choose a model for graphene screening." : "Graphene screening for your microscopy images."}</p>
           </div>
           <section className="connection-section" aria-labelledby="connection-heading">
             <div>
@@ -88,14 +100,7 @@ export default function App() {
               {connection === "checking" ? "Checking…" : "Check connection"}
             </button>
           </section>
-          <section className="empty-workspace" aria-labelledby="model-heading">
-            <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true">
-              <path d="M8 12h32v24H8z M8 20h32 M18 12v24 M24 27h10 M24 31h6" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-            </svg>
-            <h2 id="model-heading">No model available</h2>
-            <p>Model import and prediction are not available in this build yet.</p>
-            <p className="future-work">Once a validated model is available, you’ll be able to inspect graphene masks and rank images by few-layer coverage.</p>
-          </section>
+          <ModelWorkspace view={view} />
           <footer className="workspace-footer">Workspace files stay on this computer.</footer>
         </main>
       </div>

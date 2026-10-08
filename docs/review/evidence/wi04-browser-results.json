@@ -1,0 +1,12 @@
+{
+  "keyboard_import_select_focus": "passed",
+  "explicit_import_selection_and_safe_reported_details": "passed",
+  "invalid_package_preserves_selection": "passed",
+  "backend_browser_restart": "passed",
+  "other_tab_selection_reconciliation": "passed",
+  "connection_failure_retry_stale_state": "passed",
+  "missing_runtime_guidance": "passed",
+  "unavailable_selection_explicit_recovery": "passed",
+  "narrow_layout_and_skip_link": "passed",
+  "page_errors": []
+}

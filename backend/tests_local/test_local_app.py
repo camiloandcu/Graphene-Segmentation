@@ -28,7 +28,7 @@ def test_health_frontend_no_accounts_or_cloud(tmp_path, monkeypatch, caplog):
         response = client.get("/health")
         assert response.status_code == 200
         assert response.json() == {"status": "ok", "runtime": "local", "storage_ready": True,
-                                   "schema_version": 1, "model_loaded": False, "model_framework": None}
+                                   "schema_version": 2, "model_loaded": False, "model_framework": None}
         assert client.get("/").status_code == 200
         assert client.post("/auth/login", json={}).status_code == 405
         assert client.get("/registry/models").status_code == 404
@@ -90,3 +90,29 @@ print('isolated startup passed')
     result = subprocess.run([sys.executable, "-c", script, str(tmp_path)], text=True, capture_output=True)
     assert result.returncode == 0, result.stderr
     assert "isolated startup passed" in result.stdout
+
+
+def test_model_endpoints_without_optional_imports_in_fresh_process(tmp_path):
+    script = '''
+import importlib.abc, sys
+from pathlib import Path
+class NoModels(importlib.abc.MetaPathFinder):
+    def find_spec(self, fullname, path=None, target=None):
+        if fullname.split('.')[0] in {'graphene_model_contract','onnx','onnxruntime','numpy','PIL'}:
+            raise ModuleNotFoundError('Optional models disabled')
+sys.meta_path.insert(0, NoModels())
+from app.main import create_app
+from app.core.local_config import LocalSettings
+from fastapi.testclient import TestClient
+with TestClient(create_app(LocalSettings(Path(sys.argv[1]),Path('/absent')))) as client:
+    assert client.get('/health').json()['schema_version']==2
+    assert client.get('/api/models').json()['validation_available'] is False
+    for response in [client.post('/api/models/import',content=b'x',headers={'Content-Type':'application/zip'}),client.put('/api/models/selection',json={'model_id':'unknown'})]:
+        assert response.status_code==503
+        assert response.json()['code']=='missing_runtime'
+    assert not any(name in sys.modules for name in ('graphene_model_contract','onnx','onnxruntime','numpy','PIL'))
+print('base model endpoints passed')
+'''
+    result = subprocess.run([sys.executable, "-c", script, str(tmp_path)], text=True, capture_output=True)
+    assert result.returncode == 0, result.stderr
+    assert "base model endpoints passed" in result.stdout

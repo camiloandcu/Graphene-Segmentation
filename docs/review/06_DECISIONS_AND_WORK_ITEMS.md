@@ -1,7 +1,7 @@
 # Decisions and work item hierarchy
 
-Status: WI-01 through WI-03 merged; WI-03 lab acceptance pending; WI-04 proposal
-prepared for review; later items
+Status: WI-01 through WI-03 merged; WI-03 lab acceptance pending; WI-04 technically
+verified; later items
 remain subject to review. Apply the hierarchy **delivery increment -> feature -> executable
 work item -> implementation task**. Epics are optional and are omitted because
 they would duplicate the delivery increments in this project.
@@ -11,7 +11,7 @@ Identifiers below are stable parent/dependency references. The stakeholder asked
 to continue with WI-01 and explicitly approved its single proposal.
 WI-01 and WI-02 are implemented, technically verified and merged. WI-03's approved
 audit is technically verified; lab/stakeholder acceptance remains pending.
-WI-04 is refined below with a single proposal awaiting approval. Later candidates
+WI-04 is implemented below following explicit proposal approval. Later candidates
 remain provisional.
 
 ## Decision log
@@ -182,26 +182,28 @@ Parent: **INC-01 / F-03**. Consumer: lab member or occasional trainer importing
 a v1 model ZIP without manually entering ML configuration. Dependencies: merged
 WI-01 and WI-02; WI-03 lab acceptance and real training are not prerequisites.
 
-Status: stakeholder requested continuation on 2026-10-08; one
-[proposal](../../openspec/changes/wi-04-local-model-management/proposal.md) and
-[design](../../openspec/changes/wi-04-local-model-management/design.md) are prepared,
-with explicit approval pending. Reuses Issue #4. No implementation branch/code/PR.
+Status: stakeholder explicitly approved proposal/design/specs on 2026-10-08.
+Implemented and technically verified on `feat/wi-04-local-model-management`, linked
+using `gh issue develop 4`. Reuses Issue #4. See
+[verification](12_WI_04_VERIFICATION.md) for acceptance, checks and PR references.
+The verified OpenSpec change is synced and archived under
+`2026-10-08-wi-04-local-model-management`. Stakeholder acceptance/merge remain separate.
 
-Scope: bounded local ZIP import, validated immutable model registry, readable
-details/evaluation, explicit durable selection, v1 workspace upgrade and recovery,
-UI/API integration. Excludes prediction, training, image/batch upload, model
-deletion/editing, cloud registry and quality certification.
+Scope delivered: bounded local ZIP import, immutable model registry, readable
+metadata/evaluation, explicit durable selection, transactional v1-to-v2 upgrade,
+file recovery and UI/API integration. Prediction, training, image/batch upload,
+model deletion/editing and cloud registry remain outside this item.
 
-Proposed review decisions: import never auto-selects; identical packages reuse the
-existing entry; same model ID with different bundle bytes is rejected; unavailable
-selected models retain their identity until explicit selection of an intact alternative.
+Approved policies: import never auto-selects; identical packages reuse the entry;
+same ID with different bundle bytes is rejected; unavailable selected models retain
+their identity until explicit selection of an intact alternative.
 
-Numbered Given/When/Then acceptance criteria and evidence are authoritative in the
-proposal: **AC-1** import/inspect exact identity; **AC-2** explicit selection across
-restart; **AC-3** failures/concurrency preserve committed state; **AC-4** transactional
-upgrade/recovery and no-extras startup; **AC-5** accessible understandable Models
-workflow. All are **unverified**. Tasks are separately recorded in the change.
-G-02 approval precedes implementation; G-03/G-04 completion and G-05 release stay separate.
+Numbered Given/When/Then criteria remain authoritative in the archived proposal:
+**AC-1** import/inspect exact identity; **AC-2** explicit selection across restart;
+**AC-3** failures/concurrency preserve state; **AC-4** transactional upgrade/recovery
+and no-extras startup; **AC-5** accessible Models workflow. All five are technically
+**passed** with synthetic integration/browser evidence. G-02 approved; G-04 verified;
+human acceptance and G-05 real trained-model/release gates remain pending.
 
 ## Later candidates in dependency order
 
@@ -241,8 +243,8 @@ Keep these separate from item acceptance criteria and implementation tasks:
   explicit approval precede implementation and preparation of another change.
   Status: WI-01 proposal approved/completed; WI-02 proposal explicitly approved
   and implemented. WI-03 proposal is explicitly approved and its audit is verified;
-  export access and a 90-minute limit were provided. WI-04's single proposal is
-  prepared following the continuation request; explicit approval is pending.
+  export access and a 90-minute limit were provided. WI-04's single proposal was
+  explicitly approved, implemented and technically verified.
   No later proposal is prepared.
 - **G-03 — Item acceptance:** record each criterion as passed, failed, or
   unverified with its evidence; required human review is pending until confirmed.
