@@ -1,0 +1,562 @@
+[
+  {
+    "audit_id": "test-000",
+    "class_pixels": {
+      "0": 3248667,
+      "1": 14873,
+      "2": 1651660,
+      "255": 0
+    },
+    "cross_split_candidate": true,
+    "group_candidate": "21ced3b31c76f3f1",
+    "original_role": "test",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "test-001",
+    "class_pixels": {
+      "0": 4457136,
+      "1": 38711,
+      "2": 419120,
+      "255": 233
+    },
+    "cross_split_candidate": true,
+    "group_candidate": "bb123d6499026d7a",
+    "original_role": "test",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "test-002",
+    "class_pixels": {
+      "0": 4886660,
+      "1": 6156,
+      "2": 22384,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "ee7c6f87a7b8bd93",
+    "original_role": "test",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-000",
+    "class_pixels": {
+      "0": 2899186,
+      "1": 52948,
+      "2": 1963066,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "cf887ffa9e417728",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-001",
+    "class_pixels": {
+      "0": 4143443,
+      "1": 77535,
+      "2": 694222,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "17e98c4b39f942dd",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-002",
+    "class_pixels": {
+      "0": 4432795,
+      "1": 8160,
+      "2": 474226,
+      "255": 19
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "61ff3301a2ba1be9",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-003",
+    "class_pixels": {
+      "0": 3513205,
+      "1": 14926,
+      "2": 1387069,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "219cd0433480392a",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-004",
+    "class_pixels": {
+      "0": 3521161,
+      "1": 6637,
+      "2": 1387402,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "219cd0433480392a",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-005",
+    "class_pixels": {
+      "0": 4714740,
+      "1": 7346,
+      "2": 192697,
+      "255": 417
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "26f7f2c50596c7c2",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-006",
+    "class_pixels": {
+      "0": 4632653,
+      "1": 12024,
+      "2": 270523,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "4c7c641e0eb8f69c",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-007",
+    "class_pixels": {
+      "0": 2772295,
+      "1": 8970,
+      "2": 2133935,
+      "255": 0
+    },
+    "cross_split_candidate": true,
+    "group_candidate": "21ced3b31c76f3f1",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-008",
+    "class_pixels": {
+      "0": 3446814,
+      "1": 2459,
+      "2": 1465927,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "a7880a505c738cff",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-009",
+    "class_pixels": {
+      "0": 3756960,
+      "1": 13219,
+      "2": 1145021,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "bcce4f8c4dce4b35",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-010",
+    "class_pixels": {
+      "0": 3814007,
+      "1": 15324,
+      "2": 1085869,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "a7880a505c738cff",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-011",
+    "class_pixels": {
+      "0": 4505129,
+      "1": 64945,
+      "2": 344780,
+      "255": 346
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "f0beef457fd079a7",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-012",
+    "class_pixels": {
+      "0": 3165181,
+      "1": 14169,
+      "2": 1735850,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "a7880a505c738cff",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-013",
+    "class_pixels": {
+      "0": 4477413,
+      "1": 3964,
+      "2": 433823,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "c98224fb83643a69",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-014",
+    "class_pixels": {
+      "0": 4619141,
+      "1": 15677,
+      "2": 278944,
+      "255": 1438
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "e324ffd008d8d5eb",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-015",
+    "class_pixels": {
+      "0": 4115104,
+      "1": 5959,
+      "2": 794137,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "f8e63f5db11fbe65",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-016",
+    "class_pixels": {
+      "0": 2775946,
+      "1": 87818,
+      "2": 2044465,
+      "255": 6971
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "d4bc670263583c9e",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-017",
+    "class_pixels": {
+      "0": 4596049,
+      "1": 19954,
+      "2": 298218,
+      "255": 979
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "e324ffd008d8d5eb",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-018",
+    "class_pixels": {
+      "0": 3605311,
+      "1": 18851,
+      "2": 1291038,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "a7880a505c738cff",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-019",
+    "class_pixels": {
+      "0": 4758109,
+      "1": 3303,
+      "2": 153788,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "4c1db2b7f950649b",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-020",
+    "class_pixels": {
+      "0": 4668571,
+      "1": 3127,
+      "2": 243488,
+      "255": 14
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "099d68cb041f5993",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-021",
+    "class_pixels": {
+      "0": 3520005,
+      "1": 18701,
+      "2": 1376494,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "ea81beb5a133aecd",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-022",
+    "class_pixels": {
+      "0": 3540140,
+      "1": 8744,
+      "2": 1366316,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "876d13f8ee6c487e",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-023",
+    "class_pixels": {
+      "0": 4080133,
+      "1": 6771,
+      "2": 828296,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "1745474861cf4a30",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-024",
+    "class_pixels": {
+      "0": 4675276,
+      "1": 3084,
+      "2": 236840,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "98e09b2990956b21",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-025",
+    "class_pixels": {
+      "0": 3749337,
+      "1": 13814,
+      "2": 1152049,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "477cc74dbfb4d0db",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-026",
+    "class_pixels": {
+      "0": 3950394,
+      "1": 11477,
+      "2": 953329,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "6583f00f622c57a6",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-027",
+    "class_pixels": {
+      "0": 3325644,
+      "1": 17766,
+      "2": 1571790,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "b50f26d2e6e3715b",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-028",
+    "class_pixels": {
+      "0": 3998312,
+      "1": 62804,
+      "2": 853993,
+      "255": 91
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "e069213e8fbd7a77",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-029",
+    "class_pixels": {
+      "0": 3787173,
+      "1": 5772,
+      "2": 1122255,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "6583f00f622c57a6",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-030",
+    "class_pixels": {
+      "0": 2493401,
+      "1": 8401,
+      "2": 2413398,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "a7880a505c738cff",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "train-031",
+    "class_pixels": {
+      "0": 4746917,
+      "1": 2563,
+      "2": 165720,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "f952bba9c58d2d47",
+    "original_role": "train",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "valid-000",
+    "class_pixels": {
+      "0": 2840992,
+      "1": 4388,
+      "2": 2069820,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "3044726ada11d78d",
+    "original_role": "valid",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "valid-001",
+    "class_pixels": {
+      "0": 4299553,
+      "1": 55034,
+      "2": 560543,
+      "255": 70
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "6d33a390034434d4",
+    "original_role": "valid",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "valid-002",
+    "class_pixels": {
+      "0": 4457448,
+      "1": 23458,
+      "2": 434294,
+      "255": 0
+    },
+    "cross_split_candidate": true,
+    "group_candidate": "bb123d6499026d7a",
+    "original_role": "valid",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "valid-003",
+    "class_pixels": {
+      "0": 2554316,
+      "1": 16775,
+      "2": 2344109,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "b721629fc8996df8",
+    "original_role": "valid",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  },
+  {
+    "audit_id": "valid-004",
+    "class_pixels": {
+      "0": 4443197,
+      "1": 16357,
+      "2": 455646,
+      "255": 0
+    },
+    "cross_split_candidate": false,
+    "group_candidate": "a492b6f61ec6be02",
+    "original_role": "valid",
+    "proposed_role": "unassigned",
+    "reason": "Await group/label review; preserve source roles as evidence, no independent test claim"
+  }
+]

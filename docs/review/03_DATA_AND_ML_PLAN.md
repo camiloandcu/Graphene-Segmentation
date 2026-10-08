@@ -2,6 +2,11 @@
 
 Checked: 2026-10-07. No training experiment has been run.
 
+Update 2026-10-08: [WI-03](wi03/00_INDEX.md) inspected the stakeholder-supplied
+version-2 lab export. Its verified counts, class mapping, conflicts and split
+limitations supersede the historical lab-export unknowns below. Broader training
+recommendations remain planning decisions; no experiment has been run.
+
 ## Verified sources and remaining unknowns
 
 | Source | Verified evidence | Unknown / implication |

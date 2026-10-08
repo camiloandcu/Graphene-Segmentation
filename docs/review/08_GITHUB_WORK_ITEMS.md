@@ -1,14 +1,14 @@
 # GitHub work item tracking
 
-Access: `gh`, authorized by the stakeholder. WI-01 and WI-02 implementation is approved;
+Access: `gh`, authorized by the stakeholder. WI-01, WI-02 and WI-03 proposals are approved;
 future items retain their pending/provisional readiness. Creating Issues does not
 approve their implementation or create additional OpenSpec proposals.
 
 | Work item | Issue | Parent | State |
 | --- | --- | --- | --- |
 | WI-01 | [#1](https://github.com/camiloandcu/Graphene-Segmentation/issues/1) | INC-01 / F-03 | Merged via PR #15 |
-| WI-02 | [#2](https://github.com/camiloandcu/Graphene-Segmentation/issues/2) | INC-01 / F-03 | Technically verified; PR #16 open |
-| WI-03 | [#3](https://github.com/camiloandcu/Graphene-Segmentation/issues/3) | INC-01 / F-01 | Proposal/implementation review pending |
+| WI-02 | [#2](https://github.com/camiloandcu/Graphene-Segmentation/issues/2) | INC-01 / F-03 | Merged via PR #16 |
+| WI-03 | [#3](https://github.com/camiloandcu/Graphene-Segmentation/issues/3) | INC-01 / F-01 | Audit technically verified; stakeholder acceptance/PR handoff pending |
 | WI-04 | [#4](https://github.com/camiloandcu/Graphene-Segmentation/issues/4) | INC-01 / F-03 | Provisional; refinement required |
 | WI-05 | [#5](https://github.com/camiloandcu/Graphene-Segmentation/issues/5) | INC-01 / F-01 | Provisional; refinement required |
 | WI-06 | [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6) | INC-01 / F-02 | Provisional; refinement required |
@@ -33,4 +33,13 @@ The prior restriction on protected-branch operations still applies to agent acti
 WI-02 PR [#16](https://github.com/camiloandcu/Graphene-Segmentation/pull/16)
 uses `Closes #2`. Its verified specification is synced and change archived under
 `2026-10-08-wi-02-portable-model-contract`. Stakeholder acceptance, Issue closure,
-merge and release remain separate. No protected branch was updated.
+merge and release remain separate. GitHub confirms PR #16 merged on 2026-10-08;
+no protected branch was updated by this WI-03 work.
+
+WI-03: Issue #3 is open, checked 2026-10-08 using authorized `gh` access. The
+[audit proposal](../../openspec/changes/wi-03-lab-dataset-audit/proposal.md) is
+approved by the stakeholder on 2026-10-08. The stakeholder supplied the ZIP and
+authorized a 90-minute limit. `feat/wi-03-lab-dataset-audit` was linked with
+`gh issue develop 3`. Two local audit runs and 20 focused tests passed. See
+[verification](11_WI_03_VERIFICATION.md). Lab review and stakeholder acceptance
+remain pending; no later proposal is prepared.
