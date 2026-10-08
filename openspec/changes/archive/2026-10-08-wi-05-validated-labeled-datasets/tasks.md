@@ -1,6 +1,6 @@
 # WI-05 implementation tasks
 
-Status: explicitly approved on 2026-10-08; software implemented and technically verified; submission in progress.
+Status: explicitly approved on 2026-10-08; software implemented and technically verified; submitted in PR #19.
 Real ready handoff remains pending genuine lab review, as allowed by the proposal.
 
 - [x] 1. Obtain explicit approval of proposal/design/specs and proposed policies (G-02).
@@ -14,4 +14,4 @@ Real ready handoff remains pending genuine lab review, as allowed by the proposa
 - [x] 9. Run an offline reviewed synthetic ready handoff; run a real ready handoff only if genuine lab decisions are supplied, otherwise mark that evidence pending (AC-2–5).
 - [x] 10. Document setup/review/prepare/check/consumer usage and record passed/failed/unverified evidence in `docs/review/13_WI_05_VERIFICATION.md` (G-03/4).
 - [x] 11. Run relevant package/audit checks, strict OpenSpec validation and whitespace/link checks; sync/archive only verified software work and retain outstanding real-data human gates (G-04).
-- [ ] 12. Push coherent Conventional Commits and open a PR with `Closes #5`, acceptance evidence and explicit pending real-data decisions; update tracking (G-04).
+- [x] 12. Push coherent Conventional Commits and open a PR with `Closes #5`, acceptance evidence and explicit pending real-data decisions; update tracking (G-04).

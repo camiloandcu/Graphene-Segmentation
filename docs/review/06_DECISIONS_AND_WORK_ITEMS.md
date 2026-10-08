@@ -1,7 +1,7 @@
 # Decisions and work item hierarchy
 
 Status: WI-01 through WI-04 merged; WI-03 and WI-04 stakeholder accepted on
-2026-10-08. WI-05 software is implemented and technically verified; submission in progress.
+2026-10-08. WI-05 software is implemented and technically verified; PR #19 open; stakeholder item acceptance/merge pending.
 Later items remain provisional. Apply the hierarchy **delivery increment -> feature -> executable
 work item -> implementation task**. Epics are optional and are omitted because
 they would duplicate the delivery increments in this project.
@@ -223,7 +223,8 @@ and [tasks](../../openspec/changes/archive/2026-10-08-wi-05-validated-labeled-da
 Issue #5 is reused; branch `feat/wi-05-validated-labeled-datasets` is linked with
 `gh issue develop 5`. See [verification](13_WI_05_VERIFICATION.md): AC-1–5
 software behavior passes; genuine real ready handoff remains unverified pending
-lab review. Stakeholder item acceptance/merge remain separate.
+lab review. [PR #19](https://github.com/camiloandcu/Graphene-Segmentation/pull/19) is open with `Closes #5`;
+implementation commit `b17453f` is pushed. Stakeholder item acceptance/merge remain separate.
 
 Scope delivered: offline COCO polygon validation/conversion, versioned review and dataset
 contracts, split/group/provenance gates, reproducible artifacts and consumer checks.

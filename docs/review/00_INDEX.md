@@ -1,7 +1,7 @@
 # Project repair review
 
 Status: WI-01 through WI-04 merged; WI-03 and WI-04 stakeholder accepted on
-2026-10-08. WI-05 software is implemented and technically verified; submission in progress.
+2026-10-08. WI-05 software is implemented and technically verified; PR #19 open; stakeholder item acceptance/merge pending.
 Real label/split decisions and broader release remain separate.
 Checked: 2026-10-08.
 
@@ -13,7 +13,8 @@ reconciliation, synthetic handoff and fresh wheel installation. Real lab label/
 split review remains pending; no real ready handoff or training is claimed.
 Verified software requirements are synced and the change is
 [archived](../../openspec/changes/archive/2026-10-08-wi-05-validated-labeled-datasets/README.md).
-Stakeholder acceptance/merge remain separate; no subsequent proposal is prepared.
+[PR #19](https://github.com/camiloandcu/Graphene-Segmentation/pull/19) is open with `Closes #5`. Stakeholder acceptance/merge
+remain separate; no subsequent proposal is prepared.
 
 Previous item: WI-04 proposal/design/specs were explicitly approved on 2026-10-08.
 Implementation on `feat/wi-04-local-model-management` adds bounded local model import,

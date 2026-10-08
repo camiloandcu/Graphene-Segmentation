@@ -10,7 +10,7 @@ approve their implementation or create additional OpenSpec proposals.
 | WI-02 | [#2](https://github.com/camiloandcu/Graphene-Segmentation/issues/2) | INC-01 / F-03 | Merged via PR #16 |
 | WI-03 | [#3](https://github.com/camiloandcu/Graphene-Segmentation/issues/3) | INC-01 / F-01 | Merged via PR #17; stakeholder accepted 2026-10-08 |
 | WI-04 | [#4](https://github.com/camiloandcu/Graphene-Segmentation/issues/4) | INC-01 / F-03 | Merged via PR #18; stakeholder accepted 2026-10-08 |
-| WI-05 | [#5](https://github.com/camiloandcu/Graphene-Segmentation/issues/5) | INC-01 / F-01 | Software verified; real ready handoff/lab review pending; submission in progress |
+| WI-05 | [#5](https://github.com/camiloandcu/Graphene-Segmentation/issues/5) | INC-01 / F-01 | Software verified; real ready handoff/lab review pending; PR #19 open |
 | WI-06 | [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6) | INC-01 / F-02 | Provisional; refinement required |
 | WI-07 | [#7](https://github.com/camiloandcu/Graphene-Segmentation/issues/7) | INC-01 / F-02 | Provisional; refinement required |
 | WI-08 | [#8](https://github.com/camiloandcu/Graphene-Segmentation/issues/8) | INC-01 / F-02 | Provisional; refinement required |
@@ -76,4 +76,6 @@ WI-05: Issue #5 is refined from the explicitly approved proposal/design/specs
 reconciliation and fresh wheel consumption. AC-1–5 software behavior is verified;
 genuine real ready handoff requires lab label/group/split decisions and remains
 unverified. The specification is synced and verified software change archived.
-Submission references follow; stakeholder item acceptance/merge remain separate.
+[PR #19](https://github.com/camiloandcu/Graphene-Segmentation/pull/19) is open with `Closes #5`; GitHub confirms the closing Issue
+association. Implementation `b17453f` and design `8447823` are pushed; final handoff
+references are committed separately. Stakeholder item acceptance/merge remain separate.

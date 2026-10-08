@@ -5,7 +5,10 @@ Status: software contract implemented and technically verified; stakeholder
 acceptance/merge and genuine real-label/split readiness remain pending.
 Issue: [#5](https://github.com/camiloandcu/Graphene-Segmentation/issues/5).
 Branch: `feat/wi-05-validated-labeled-datasets`, linked with `gh issue develop 5`.
-Approved-design commit: `8447823`. Implementation/PR references are recorded below.
+Approved-design commit: `8447823`. Implementation commit: `b17453f`.
+[PR #19](https://github.com/camiloandcu/Graphene-Segmentation/pull/19) is open with `Closes #5`; GitHub confirms the closing Issue
+association. Both commits are pushed; handoff references are committed separately.
+No automated GitHub checks are configured on this PR (checked via `gh`).
 
 ## Observable result
 
@@ -54,7 +57,9 @@ remain blocked by the separate real-data human gate; no training ran.
   runtime dependency was installed for this path.
 - `scripts/check-dataset-handoff.py`: two complete real blocked runs, all 40 masks
   reconciled, two synthetic ready runs and all active roles consumed.
-- Strict OpenSpec, whitespace and documentation-link checks are recorded at handoff.
+- Strict OpenSpec validation passed all five synced specifications; documentation
+  links and `git diff --check` passed. Verified software change is archived at
+  `openspec/changes/archive/2026-10-08-wi-05-validated-labeled-datasets/`.
   App runtime/UI and the WI-03 audit implementation are unchanged; app build/tests
   were not needed for this isolated package.
 
