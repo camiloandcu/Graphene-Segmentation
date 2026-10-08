@@ -1,0 +1,19 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "graphene-model-contract"
+version = "1.0.0"
+description = "Shared portable graphene segmentation package and geometry contract"
+requires-python = ">=3.10,<3.14"
+dependencies = ["numpy>=1.26,<3", "pillow>=11,<13", "pydantic>=2.10,<3"]
+
+[project.optional-dependencies]
+validation = ["onnx>=1.17,<2", "onnxruntime>=1.20,<2"]
+
+[project.scripts]
+graphene-model-check = "graphene_model_contract.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/graphene_model_contract"]

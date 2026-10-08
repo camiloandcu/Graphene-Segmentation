@@ -1,0 +1,526 @@
+{
+  "$defs": {
+    "Argmax": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "argmax",
+          "title": "Kind",
+          "type": "string"
+        },
+        "ties": {
+          "const": "lower_id",
+          "title": "Ties",
+          "type": "string"
+        },
+        "evidence_ref": {
+          "const": "evaluation",
+          "title": "Evidence Ref",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "ties",
+        "evidence_ref"
+      ],
+      "title": "Argmax",
+      "type": "object"
+    },
+    "FewThreshold": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "few_layer_threshold",
+          "title": "Kind",
+          "type": "string"
+        },
+        "threshold": {
+          "exclusiveMaximum": 1,
+          "exclusiveMinimum": 0,
+          "title": "Threshold",
+          "type": "number"
+        },
+        "ties": {
+          "const": "lower_id",
+          "title": "Ties",
+          "type": "string"
+        },
+        "evidence_ref": {
+          "const": "evaluation",
+          "title": "Evidence Ref",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "threshold",
+        "ties",
+        "evidence_ref"
+      ],
+      "title": "FewThreshold",
+      "type": "object"
+    },
+    "Known": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "known",
+          "title": "Status",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "value"
+      ],
+      "title": "Known",
+      "type": "object"
+    },
+    "Letterbox": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "const": "letterbox",
+          "title": "Mode",
+          "type": "string"
+        },
+        "version": {
+          "const": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "interpolation": {
+          "const": "pillow_bilinear",
+          "title": "Interpolation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "version",
+        "interpolation"
+      ],
+      "title": "Letterbox",
+      "type": "object"
+    },
+    "Metric": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        },
+        "unit": {
+          "enum": [
+            "fraction",
+            "count",
+            "milliseconds"
+          ],
+          "title": "Unit",
+          "type": "string"
+        },
+        "support": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Support"
+        },
+        "definition": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Definition",
+          "type": "string"
+        },
+        "unavailable_reason": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Unavailable Reason"
+        },
+        "support_unknown_reason": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Support Unknown Reason"
+        }
+      },
+      "required": [
+        "name",
+        "value",
+        "unit",
+        "support",
+        "definition",
+        "unavailable_reason",
+        "support_unknown_reason"
+      ],
+      "title": "Metric",
+      "type": "object"
+    },
+    "Preprocessing": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "scale": {
+          "const": 0.00392156862745098,
+          "title": "Scale",
+          "type": "number"
+        },
+        "mean": {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Mean",
+          "type": "array"
+        },
+        "std": {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            }
+          ],
+          "title": "Std",
+          "type": "array"
+        },
+        "padding_rgb": {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            }
+          ],
+          "title": "Padding Rgb",
+          "type": "array"
+        }
+      },
+      "required": [
+        "version",
+        "scale",
+        "mean",
+        "std",
+        "padding_rgb"
+      ],
+      "title": "Preprocessing",
+      "type": "object"
+    },
+    "Reported": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "reported",
+          "title": "Kind",
+          "type": "string"
+        },
+        "source": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "dataset_fingerprint": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Dataset Fingerprint",
+          "type": "string"
+        },
+        "split_fingerprint": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Split Fingerprint",
+          "type": "string"
+        },
+        "metrics": {
+          "items": {
+            "$ref": "#/$defs/Metric"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Metrics",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "source",
+        "dataset_fingerprint",
+        "split_fingerprint",
+        "metrics"
+      ],
+      "title": "Reported",
+      "type": "object"
+    },
+    "Tiles": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "const": "tiles",
+          "title": "Mode",
+          "type": "string"
+        },
+        "version": {
+          "const": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "stride": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "integer"
+            },
+            {
+              "exclusiveMinimum": 0,
+              "type": "integer"
+            }
+          ],
+          "title": "Stride",
+          "type": "array"
+        },
+        "merge": {
+          "const": "mean_logits",
+          "title": "Merge",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "version",
+        "stride",
+        "merge"
+      ],
+      "title": "Tiles",
+      "type": "object"
+    },
+    "Unknown": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "unknown",
+          "title": "Status",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "reason"
+      ],
+      "title": "Unknown",
+      "type": "object"
+    },
+    "Unmeasured": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "unmeasured",
+          "title": "Kind",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "reason"
+      ],
+      "title": "Unmeasured",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "model_id": {
+      "format": "uuid",
+      "title": "Model Id",
+      "type": "string"
+    },
+    "model_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Model Sha256",
+      "type": "string"
+    },
+    "checkpoint": {
+      "discriminator": {
+        "mapping": {
+          "known": "#/$defs/Known",
+          "unknown": "#/$defs/Unknown"
+        },
+        "propertyName": "status"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Known"
+        },
+        {
+          "$ref": "#/$defs/Unknown"
+        }
+      ],
+      "title": "Checkpoint"
+    },
+    "preprocessing": {
+      "$ref": "#/$defs/Preprocessing"
+    },
+    "geometry": {
+      "discriminator": {
+        "mapping": {
+          "letterbox": "#/$defs/Letterbox",
+          "tiles": "#/$defs/Tiles"
+        },
+        "propertyName": "mode"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Letterbox"
+        },
+        {
+          "$ref": "#/$defs/Tiles"
+        }
+      ],
+      "title": "Geometry"
+    },
+    "decision": {
+      "discriminator": {
+        "mapping": {
+          "argmax": "#/$defs/Argmax",
+          "few_layer_threshold": "#/$defs/FewThreshold"
+        },
+        "propertyName": "kind"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Argmax"
+        },
+        {
+          "$ref": "#/$defs/FewThreshold"
+        }
+      ],
+      "title": "Decision"
+    },
+    "evidence": {
+      "discriminator": {
+        "mapping": {
+          "reported": "#/$defs/Reported",
+          "unmeasured": "#/$defs/Unmeasured"
+        },
+        "propertyName": "kind"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Unmeasured"
+        },
+        {
+          "$ref": "#/$defs/Reported"
+        }
+      ],
+      "title": "Evidence"
+    }
+  },
+  "required": [
+    "schema_version",
+    "model_id",
+    "model_sha256",
+    "checkpoint",
+    "preprocessing",
+    "geometry",
+    "decision",
+    "evidence"
+  ],
+  "title": "Evaluation",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:graphene-model-contract:evaluation:v1"
+}

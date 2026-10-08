@@ -1,6 +1,6 @@
 # Decisions and work item hierarchy
 
-Status: WI-01 implementation approved and technically verified; later items
+Status: WI-01 merged; WI-02 implementation approved; later items
 remain subject to review. Apply the hierarchy **delivery increment -> feature -> executable
 work item -> implementation task**. Epics are optional and are omitted because
 they would duplicate the delivery increments in this project.
@@ -8,7 +8,8 @@ they would duplicate the delivery increments in this project.
 The former seven phases were delivery groupings, not atomic executable items.
 Identifiers below are stable parent/dependency references. The stakeholder asked
 to continue with WI-01 and explicitly approved its single proposal.
-WI-01 is implemented and technically verified; later candidates are provisional.
+WI-01 is implemented, technically verified and merged. WI-02 is approved and
+implemented; later candidates are provisional.
 
 ## Decision log
 
@@ -26,7 +27,7 @@ WI-01 is implemented and technically verified; later candidates are provisional.
 | Acquisition metadata absent; lab members supplied labels | Confirmed | Audit duplicates/overlap; do not claim known independent sample groups. |
 | Annotation completeness / physical label validation | Unverified | Stakeholder sees no obvious unlabeled areas; inspect masks and seek lab clarification for ambiguous labels. |
 | Thick_Graphene equivalence to lab bulk | Proposed, requires label review | External-data mapping cannot silently assume equivalent thickness definitions. |
-| ONNX package for app inference | Recommended, awaiting approval | Small CPU runtime; package validation replaces framework guessing. |
+| ONNX package for app inference | WI-02 v1 contract approved | Small CPU runtime; package validation replaces framework guessing. |
 | U-Net baseline / compact SegFormer challenger | Recommended, awaiting approval | Model selection follows measured lab performance, not a SOTA claim. |
 | Frozen small DINOv3 segmentation probe | Optional, access/resource gated | Recent limited-label transfer candidate; include only after license/access, export, and runtime feasibility checks. |
 | Figshare pretraining | Optional, gated by audit/comparison | Include only if it helps held-out lab performance without excessive false detections. |
@@ -64,9 +65,9 @@ not a separate required delivery. Cloud hosting is outside both increments.
 
 ## Detailed work items and readiness
 
-WI-01 is approved, implemented and technically verified. WI-02 and WI-03 remain
-planning records with unverified criteria; their applicable review gates still
-apply. Real training remains dependent on the dataset export.
+WI-01 is merged. WI-02 is approved and implemented; its acceptance evidence is
+recorded separately. WI-03 remains a planning record with unverified criteria.
+Real training remains dependent on the dataset export.
 
 ### WI-01 — Enabler: run and persist the local workspace
 
@@ -103,6 +104,12 @@ WI-01 implementation tasks (completed in its archived OpenSpec change):
 
 ### WI-02 — Enabler: define and validate the portable model contract
 
+Proposal: [WI-02 portable model contract](../../openspec/changes/archive/2026-10-08-wi-02-portable-model-contract/proposal.md).
+Status: explicitly approved and implemented on 2026-10-08. See
+[verification evidence](10_WI_02_VERIFICATION.md) for AC-1 through AC-4.
+Resource/tensor/geometry decisions implement the approved technical design;
+lab calibration is not assumed.
+
 Parent: INC-01 / F-03. Consumers: Colab exporter, inference runtime, and custom-model
 authors. Outcome: both producer and consumer agree on class IDs, preprocessing,
 geometry, output semantics, and model identity before a model can be used.
@@ -112,7 +119,7 @@ preprocessing/geometry policy, compatibility validation, and representative fixt
 Exclusions: app import UI, full training runs, arbitrary framework runtimes,
 and final choice of model architecture.
 
-Dependencies: approval of the proposed ONNX contract (G-01). Initial fixtures can
+Dependencies: approval of the ONNX contract (G-01), received. Initial fixtures can
 use synthetic images; microscope-specific resize/tiling settings remain subject
 to the real-image audit (WI-03). Applicable completion gates: G-01 through G-04.
 
@@ -123,7 +130,7 @@ to the real-image audit (WI-03). Applicable completion gates: G-01 through G-04.
 | WI-02-AC-3 | A one-channel binary output cannot be accepted as background/few-layer/bulk; class mapping is explicit rather than inferred from numeric score ranges. | Binary-output rejection regression and three-class compatibility check. |
 | WI-02-AC-4 | Shared preprocessing and inverse geometry preserve class IDs and original coordinates on square and non-square fixture images. | Paired producer/consumer tensors and original-coordinate mask comparisons. |
 
-Candidate implementation tasks:
+Implementation tasks (recorded in the WI-02 OpenSpec change):
 
 - T-01: specify the package, classes, and geometry policy (AC-1, AC-3, AC-4).
 - T-02: implement bounded compatibility validation (AC-2, AC-3).
@@ -194,7 +201,8 @@ Keep these separate from item acceptance criteria and implementation tasks:
 - **G-02 — Single-item proposal approval:** after the user starts development,
   prepare exactly one OpenSpec change for the next executable item. Review and
   explicit approval precede implementation and preparation of another change.
-  Status: WI-01 proposal explicitly approved. No other change prepared.
+  Status: WI-01 proposal approved/completed; WI-02 proposal explicitly approved
+  and implemented. No later proposal is prepared.
 - **G-03 — Item acceptance:** record each criterion as passed, failed, or
   unverified with its evidence; required human review is pending until confirmed.
   For US items use Given/When/Then, for fixes preserve reproducer/boundaries,
@@ -211,7 +219,7 @@ Keep these separate from item acceptance criteria and implementation tasks:
 
 Implemented/verified, stakeholder-reviewed, merged, and released are separate
 states. Use short-lived local branches and small Conventional Commits after
-approval. Work-branch push and a linked PR are authorized for WI-01; GitHub uses `gh`.
+approval. Work-branch push and a linked PR are authorized for approved items; GitHub uses `gh`.
 No protected-branch push/merge/update, live migration, or cloud deployment is
 authorized. Dataset account access retains its separately agreed MCP route.
 

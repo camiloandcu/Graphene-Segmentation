@@ -1,0 +1,888 @@
+{
+  "$defs": {
+    "Argmax": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "argmax",
+          "title": "Kind",
+          "type": "string"
+        },
+        "ties": {
+          "const": "lower_id",
+          "title": "Ties",
+          "type": "string"
+        },
+        "evidence_ref": {
+          "const": "evaluation",
+          "title": "Evidence Ref",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "ties",
+        "evidence_ref"
+      ],
+      "title": "Argmax",
+      "type": "object"
+    },
+    "ArtifactSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "filename": {
+          "const": "model.onnx",
+          "title": "Filename",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "size": {
+          "exclusiveMinimum": 0,
+          "title": "Size",
+          "type": "integer"
+        },
+        "opset": {
+          "const": 17,
+          "title": "Opset",
+          "type": "integer"
+        },
+        "ir_version": {
+          "enum": [
+            8,
+            9,
+            10
+          ],
+          "title": "Ir Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "filename",
+        "sha256",
+        "size",
+        "opset",
+        "ir_version"
+      ],
+      "title": "ArtifactSpec",
+      "type": "object"
+    },
+    "Background": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "const": 0,
+          "title": "Id",
+          "type": "integer"
+        },
+        "name": {
+          "const": "background",
+          "title": "Name",
+          "type": "string"
+        },
+        "color": {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            }
+          ],
+          "title": "Color",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "color"
+      ],
+      "title": "Background",
+      "type": "object"
+    },
+    "Bulk": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "const": 2,
+          "title": "Id",
+          "type": "integer"
+        },
+        "name": {
+          "const": "bulk",
+          "title": "Name",
+          "type": "string"
+        },
+        "color": {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            }
+          ],
+          "title": "Color",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "color"
+      ],
+      "title": "Bulk",
+      "type": "object"
+    },
+    "FewLayer": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "const": 1,
+          "title": "Id",
+          "type": "integer"
+        },
+        "name": {
+          "const": "few-layer",
+          "title": "Name",
+          "type": "string"
+        },
+        "color": {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            }
+          ],
+          "title": "Color",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "color"
+      ],
+      "title": "FewLayer",
+      "type": "object"
+    },
+    "FewThreshold": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "few_layer_threshold",
+          "title": "Kind",
+          "type": "string"
+        },
+        "threshold": {
+          "exclusiveMaximum": 1,
+          "exclusiveMinimum": 0,
+          "title": "Threshold",
+          "type": "number"
+        },
+        "ties": {
+          "const": "lower_id",
+          "title": "Ties",
+          "type": "string"
+        },
+        "evidence_ref": {
+          "const": "evaluation",
+          "title": "Evidence Ref",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "threshold",
+        "ties",
+        "evidence_ref"
+      ],
+      "title": "FewThreshold",
+      "type": "object"
+    },
+    "InputSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "color_space": {
+          "const": "RGB",
+          "title": "Color Space",
+          "type": "string"
+        },
+        "dtype": {
+          "const": "float32",
+          "title": "Dtype",
+          "type": "string"
+        },
+        "layout": {
+          "const": "NCHW",
+          "title": "Layout",
+          "type": "string"
+        },
+        "shape": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "const": 1,
+              "type": "integer"
+            },
+            {
+              "const": 3,
+              "type": "integer"
+            },
+            {
+              "maximum": 1024,
+              "minimum": 32,
+              "multipleOf": 32,
+              "type": "integer"
+            },
+            {
+              "maximum": 1024,
+              "minimum": 32,
+              "multipleOf": 32,
+              "type": "integer"
+            }
+          ],
+          "title": "Shape",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "color_space",
+        "dtype",
+        "layout",
+        "shape"
+      ],
+      "title": "InputSpec",
+      "type": "object"
+    },
+    "Known": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "known",
+          "title": "Status",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "value"
+      ],
+      "title": "Known",
+      "type": "object"
+    },
+    "Letterbox": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "const": "letterbox",
+          "title": "Mode",
+          "type": "string"
+        },
+        "version": {
+          "const": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "interpolation": {
+          "const": "pillow_bilinear",
+          "title": "Interpolation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "version",
+        "interpolation"
+      ],
+      "title": "Letterbox",
+      "type": "object"
+    },
+    "OutputSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "dtype": {
+          "const": "float32",
+          "title": "Dtype",
+          "type": "string"
+        },
+        "layout": {
+          "const": "NCHW",
+          "title": "Layout",
+          "type": "string"
+        },
+        "semantics": {
+          "const": "logits",
+          "title": "Semantics",
+          "type": "string"
+        },
+        "shape": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "const": 1,
+              "type": "integer"
+            },
+            {
+              "const": 3,
+              "type": "integer"
+            },
+            {
+              "maximum": 1024,
+              "minimum": 32,
+              "multipleOf": 32,
+              "type": "integer"
+            },
+            {
+              "maximum": 1024,
+              "minimum": 32,
+              "multipleOf": 32,
+              "type": "integer"
+            }
+          ],
+          "title": "Shape",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "dtype",
+        "layout",
+        "semantics",
+        "shape"
+      ],
+      "title": "OutputSpec",
+      "type": "object"
+    },
+    "Preprocessing": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "scale": {
+          "const": 0.00392156862745098,
+          "title": "Scale",
+          "type": "number"
+        },
+        "mean": {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Mean",
+          "type": "array"
+        },
+        "std": {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            }
+          ],
+          "title": "Std",
+          "type": "array"
+        },
+        "padding_rgb": {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            }
+          ],
+          "title": "Padding Rgb",
+          "type": "array"
+        }
+      },
+      "required": [
+        "version",
+        "scale",
+        "mean",
+        "std",
+        "padding_rgb"
+      ],
+      "title": "Preprocessing",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "sources": {
+          "items": {
+            "$ref": "#/$defs/Source"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Sources",
+          "type": "array"
+        },
+        "dataset_fingerprint": {
+          "discriminator": {
+            "mapping": {
+              "known": "#/$defs/Known",
+              "unknown": "#/$defs/Unknown"
+            },
+            "propertyName": "status"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/Known"
+            },
+            {
+              "$ref": "#/$defs/Unknown"
+            }
+          ],
+          "title": "Dataset Fingerprint"
+        },
+        "split_fingerprint": {
+          "discriminator": {
+            "mapping": {
+              "known": "#/$defs/Known",
+              "unknown": "#/$defs/Unknown"
+            },
+            "propertyName": "status"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/Known"
+            },
+            {
+              "$ref": "#/$defs/Unknown"
+            }
+          ],
+          "title": "Split Fingerprint"
+        },
+        "checkpoint": {
+          "discriminator": {
+            "mapping": {
+              "known": "#/$defs/Known",
+              "unknown": "#/$defs/Unknown"
+            },
+            "propertyName": "status"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/Known"
+            },
+            {
+              "$ref": "#/$defs/Unknown"
+            }
+          ],
+          "title": "Checkpoint"
+        },
+        "checkpoint_selection": {
+          "discriminator": {
+            "mapping": {
+              "known": "#/$defs/Known",
+              "unknown": "#/$defs/Unknown"
+            },
+            "propertyName": "status"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/Known"
+            },
+            {
+              "$ref": "#/$defs/Unknown"
+            }
+          ],
+          "title": "Checkpoint Selection"
+        },
+        "run_config": {
+          "discriminator": {
+            "mapping": {
+              "known": "#/$defs/Known",
+              "unknown": "#/$defs/Unknown"
+            },
+            "propertyName": "status"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/Known"
+            },
+            {
+              "$ref": "#/$defs/Unknown"
+            }
+          ],
+          "title": "Run Config"
+        },
+        "environment": {
+          "discriminator": {
+            "mapping": {
+              "known": "#/$defs/Known",
+              "unknown": "#/$defs/Unknown"
+            },
+            "propertyName": "status"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/Known"
+            },
+            {
+              "$ref": "#/$defs/Unknown"
+            }
+          ],
+          "title": "Environment"
+        },
+        "seed": {
+          "discriminator": {
+            "mapping": {
+              "known": "#/$defs/Known",
+              "unknown": "#/$defs/Unknown"
+            },
+            "propertyName": "status"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/Known"
+            },
+            {
+              "$ref": "#/$defs/Unknown"
+            }
+          ],
+          "title": "Seed"
+        }
+      },
+      "required": [
+        "sources",
+        "dataset_fingerprint",
+        "split_fingerprint",
+        "checkpoint",
+        "checkpoint_selection",
+        "run_config",
+        "environment",
+        "seed"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "license": {
+          "discriminator": {
+            "mapping": {
+              "known": "#/$defs/Known",
+              "unknown": "#/$defs/Unknown"
+            },
+            "propertyName": "status"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/Known"
+            },
+            {
+              "$ref": "#/$defs/Unknown"
+            }
+          ],
+          "title": "License"
+        }
+      },
+      "required": [
+        "name",
+        "license"
+      ],
+      "title": "Source",
+      "type": "object"
+    },
+    "Tiles": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "const": "tiles",
+          "title": "Mode",
+          "type": "string"
+        },
+        "version": {
+          "const": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "stride": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "integer"
+            },
+            {
+              "exclusiveMinimum": 0,
+              "type": "integer"
+            }
+          ],
+          "title": "Stride",
+          "type": "array"
+        },
+        "merge": {
+          "const": "mean_logits",
+          "title": "Merge",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "version",
+        "stride",
+        "merge"
+      ],
+      "title": "Tiles",
+      "type": "object"
+    },
+    "Unknown": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "unknown",
+          "title": "Status",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "reason"
+      ],
+      "title": "Unknown",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "model_id": {
+      "format": "uuid",
+      "title": "Model Id",
+      "type": "string"
+    },
+    "name": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "model_version": {
+      "maxLength": 64,
+      "minLength": 1,
+      "title": "Model Version",
+      "type": "string"
+    },
+    "architecture": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Architecture",
+      "type": "string"
+    },
+    "artifact": {
+      "$ref": "#/$defs/ArtifactSpec"
+    },
+    "classes": {
+      "maxItems": 3,
+      "minItems": 3,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/Background"
+        },
+        {
+          "$ref": "#/$defs/FewLayer"
+        },
+        {
+          "$ref": "#/$defs/Bulk"
+        }
+      ],
+      "title": "Classes",
+      "type": "array"
+    },
+    "input": {
+      "$ref": "#/$defs/InputSpec"
+    },
+    "output": {
+      "$ref": "#/$defs/OutputSpec"
+    },
+    "preprocessing": {
+      "$ref": "#/$defs/Preprocessing"
+    },
+    "geometry": {
+      "discriminator": {
+        "mapping": {
+          "letterbox": "#/$defs/Letterbox",
+          "tiles": "#/$defs/Tiles"
+        },
+        "propertyName": "mode"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Letterbox"
+        },
+        {
+          "$ref": "#/$defs/Tiles"
+        }
+      ],
+      "title": "Geometry"
+    },
+    "decision": {
+      "discriminator": {
+        "mapping": {
+          "argmax": "#/$defs/Argmax",
+          "few_layer_threshold": "#/$defs/FewThreshold"
+        },
+        "propertyName": "kind"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Argmax"
+        },
+        {
+          "$ref": "#/$defs/FewThreshold"
+        }
+      ],
+      "title": "Decision"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "metadata": {
+      "additionalProperties": {
+        "maxLength": 4096,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxProperties": 64,
+      "propertyNames": {
+        "maxLength": 128,
+        "minLength": 1
+      },
+      "title": "Metadata",
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "model_id",
+    "name",
+    "model_version",
+    "architecture",
+    "artifact",
+    "classes",
+    "input",
+    "output",
+    "preprocessing",
+    "geometry",
+    "decision",
+    "provenance",
+    "metadata"
+  ],
+  "title": "Manifest",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:graphene-model-contract:manifest:v1"
+}
