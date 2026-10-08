@@ -1,17 +1,15 @@
 {
-    "include": [
-        "./src/**/*"
-    ],
-    "compilerOptions": {
-        "strict": true,
-        "esModuleInterop": true,
-        "types": [
-            "vite/client"
-        ],
-        "lib": [
-            "dom",
-            "es2015"
-        ],
-        "jsx": "react-jsx"
-    }
+  "include": ["src/index.tsx", "src/App.tsx", "src/api.ts"],
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "types": ["vite/client"],
+    "lib": ["DOM", "ES2020"],
+    "jsx": "react-jsx",
+    "skipLibCheck": true,
+    "noEmit": true
+  }
 }

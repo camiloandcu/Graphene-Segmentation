@@ -1,0 +1,9 @@
+schema: spec-driven
+context: |
+  Graphene microscopy screening. React/Vite/TypeScript and FastAPI.
+  Linux local-first SQLite/files; no mandatory accounts or cloud.
+  Training in free-tier Colab. English interface. Planning: docs/review/00_INDEX.md.
+  One change per executable work item. Proposal approval precedes implementation.
+  Create/reuse the Issue, push the approved work branch, and open a linked PR using gh.
+  No protected-branch push/merge/update without explicit approval.
+  Existing remote data remains untouched. Unexecuted checks remain unverified.

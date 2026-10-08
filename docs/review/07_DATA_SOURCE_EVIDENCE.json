@@ -1,0 +1,95 @@
+{
+  "checked_date": "2026-10-07",
+  "source_metadata": "https://api.figshare.com/v2/articles/11881053",
+  "source_doi": "10.6084/m9.figshare.11881053.v2",
+  "file_id": 21930396,
+  "file_size_bytes": 2113233250,
+  "archive_md5": "99f9883bbc0e2ecec7891daa2bcee9f2",
+  "inspection_method": "HTTP byte-range reads of ZIP central directory and graphene COCO annotation members; image pixels not inspected",
+  "subsets": [
+    {
+      "file": "DL_2DMaterials/Dataset_DL_2DMaterials/Graphene/annotations/instances_train2019.json",
+      "categories": [
+        {
+          "id": 1,
+          "name": "Mono_Graphene"
+        },
+        {
+          "id": 2,
+          "name": "Few_Graphene"
+        },
+        {
+          "id": 3,
+          "name": "Thick_Graphene"
+        }
+      ],
+      "image_count": 773,
+      "annotation_count": 3719,
+      "annotation_keys": [
+        "image_id",
+        "area",
+        "segmentation",
+        "id",
+        "iscrowd",
+        "bbox",
+        "category_id"
+      ],
+      "annotation_counts": {
+        "2": 1596,
+        "1": 1407,
+        "3": 716
+      },
+      "dimensions": {
+        "2040x1086": 773
+      },
+      "sample_filenames": [
+        "cjlyhoo9awjqq0714crlf57db%2F75a6a1e4-ce6a-d2d1-2363-82a9bb54df51-dl_0000000077_-000020139_0000007228_0000003901.jpg",
+        "cjlyhoo9awjqq0714crlf57db%2F8d9540a2-cdc8-98f5-7a2a-289183d30d40-dl_0000000077_-000013618_0000014754_0000005517.jpg",
+        "cjlyhoo9awjqq0714crlf57db%2Fa5ad611c-38e7-6497-ce73-9a7d36b3cca0-dl_0000000077_-000013091_0000020297_0000004843.jpg",
+        "cjlyhoo9awjqq0714crlf57db%2F464dbca3-48c8-e892-bbd8-befbbd1caa2b-dl_0000000076_-000020559_0000021126_0000018126.jpg"
+      ]
+    },
+    {
+      "file": "DL_2DMaterials/Dataset_DL_2DMaterials/Graphene/annotations/instances_val2019.json",
+      "categories": [
+        {
+          "id": 1,
+          "name": "Mono_Graphene"
+        },
+        {
+          "id": 2,
+          "name": "Few_Graphene"
+        },
+        {
+          "id": 3,
+          "name": "Thick_Graphene"
+        }
+      ],
+      "image_count": 196,
+      "annotation_count": 1093,
+      "annotation_keys": [
+        "image_id",
+        "area",
+        "segmentation",
+        "id",
+        "iscrowd",
+        "bbox",
+        "category_id"
+      ],
+      "annotation_counts": {
+        "1": 449,
+        "2": 485,
+        "3": 159
+      },
+      "dimensions": {
+        "2040x1086": 196
+      },
+      "sample_filenames": [
+        "cjlyhoo9awjqq0714crlf57db%2F447c0889-cd7d-92f2-76d1-8086f3643ed5-dl_0000000073_-000020339_0000007628_0000005005.jpg",
+        "cjlyhoo9awjqq0714crlf57db%2F7933d709-d2b9-ab96-8cd5-0307dfc58fa4-dl_0000000069_0000007857_0000013645_0000005355.jpg",
+        "cjlyhoo9awjqq0714crlf57db%2F7ba6e5e9-34fa-0760-ddcb-09073fb01d86-dl_0000000068_-000020539_0000005628_0000005608.jpg",
+        "cjlyhoo9awjqq0714crlf57db%2Fc05e88ff-5a92-90bd-43dd-1a3eb9286843-dl_0000000067_0000001614_0000021193_0000003586.jpg"
+      ]
+    }
+  ]
+}

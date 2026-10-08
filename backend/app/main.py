@@ -1,55 +1,50 @@
+"""Local app startup deliberately excludes cloud, auth and model modules."""
 from __future__ import annotations
 
+from contextlib import asynccontextmanager
 import logging
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
-from app.api.routes import auth, health, model, registry, datasets, experiments, users, system, user
+from app.core.local_config import LocalSettings
+from app.services.workspace import Workspace, WorkspaceError
 
 logger = logging.getLogger(__name__)
 
 
-def create_app() -> FastAPI:
-    app = FastAPI(title="Image Segmentation API", version="0.1.0")
+def create_app(settings: LocalSettings | None = None) -> FastAPI:
+    settings = settings or LocalSettings.from_environment()
 
+    @asynccontextmanager
+    async def lifespan(app: FastAPI):
+        workspace = Workspace(settings.workspace_dir)
+        try:
+            workspace.open()
+        except WorkspaceError as error:
+            logger.error("Local startup failed: %s", error)
+            raise RuntimeError(str(error)) from None
+        app.state.workspace = workspace
+        try:
+            yield
+        finally:
+            workspace.close()
+
+    app = FastAPI(title="Graphene Workspace", version="0.2.0", lifespan=lifespan)
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
+        allow_origins=["http://127.0.0.1:3000", "http://localhost:3000"],
+        allow_credentials=False,
+        allow_methods=["GET"],
+        allow_headers=["Content-Type"],
     )
 
-    app.include_router(auth.router)
-    app.include_router(health.router)
-    app.include_router(model.router)
-    app.include_router(registry.router)
-    app.include_router(datasets.router)
-    app.include_router(experiments.router)
-    app.include_router(users.router)
-    app.include_router(system.router)
-    app.include_router(user.router)
+    @app.get("/health")
+    def health():
+        return {"status": "ok", "runtime": "local", "storage_ready": app.state.workspace.ready,
+                "schema_version": 1, "model_loaded": False, "model_framework": None}
 
-    @app.on_event("startup")
-    def _load_active_model_on_startup() -> None:
-        """Load the active registry model into memory when the API starts."""
-        try:
-            from app.core.supabase_client import get_supabase_client
-            from app.services.registry import get_model_registry
-            from app.services.model_service import get_model_service
-
-            registry_service = get_model_registry(get_supabase_client())
-            model_service = get_model_service()
-            model_service._registry = registry_service
-
-            active = registry_service.get_active_model()
-            if not active:
-                return
-
-            model_service.load_active_model_from_registry()
-            logger.info("Loaded active model '%s' on startup.", active.id)
-        except Exception:
-            logger.exception("Failed to auto-load active registry model on startup.")
-
+    if settings.frontend_dir.is_dir():
+        app.mount("/", StaticFiles(directory=settings.frontend_dir, html=True), name="frontend")
     return app
