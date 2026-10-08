@@ -1,18 +1,29 @@
 # Project repair review
 
-Status: WI-01 through WI-03 merged; WI-04 implemented and technically verified.
-Lab/stakeholder acceptance, merge and broader release remain separate.
+Status: WI-01 through WI-04 merged; WI-03 and WI-04 stakeholder accepted on
+2026-10-08. WI-05 proposal is ready for review; implementation approval pending.
+Real label/split decisions and broader release remain separate.
 Checked: 2026-10-08.
 
-Current item: WI-04 proposal/design/specs were explicitly approved on 2026-10-08.
+Current item: WI-05 continuation authorized on 2026-10-08. Review its single
+[proposal](../../openspec/changes/wi-05-validated-labeled-datasets/proposal.md),
+[design](../../openspec/changes/wi-05-validated-labeled-datasets/design.md),
+[specification](../../openspec/changes/wi-05-validated-labeled-datasets/specs/validated-labeled-datasets/spec.md)
+and [tasks](../../openspec/changes/wi-05-validated-labeled-datasets/tasks.md).
+The change proposes an offline dataset contract/CLI for the Colab trainer, with
+explicit review, provenance and split gates. Proposal approval precedes coding;
+Issue #5 is reused. No implementation branch or checks exist yet.
+
+Previous item: WI-04 proposal/design/specs were explicitly approved on 2026-10-08.
 Implementation on `feat/wi-04-local-model-management` adds bounded local model import,
 immutable registry, explicit selection, schema migration/recovery and Models UI.
-PR [#18](https://github.com/camiloandcu/Graphene-Segmentation/pull/18) is open with `Closes #4`.
+PR [#18](https://github.com/camiloandcu/Graphene-Segmentation/pull/18) is merged with `Closes #4` (checked via `gh` on 2026-10-08).
+Stakeholder accepted WI-04 on the same date.
 See [WI-04 verification](12_WI_04_VERIFICATION.md) for AC-1–5 evidence and submission references.
 Synthetic packages prove management; no trained-model or prediction claim is made.
 The verified change is synced/archived under
 `openspec/changes/archive/2026-10-08-wi-04-local-model-management/`.
-No subsequent proposal is prepared.
+Only the WI-05 proposal above is prepared.
 
 Previous item: the stakeholder approved WI-03 and supplied the export with a
 90-minute investigation limit. Its
@@ -22,7 +33,8 @@ Previous item: the stakeholder approved WI-03 and supplied the export with a
 and [tasks](../../openspec/changes/archive/2026-10-08-wi-03-lab-dataset-audit/tasks.md) were explicitly
 approved on 2026-10-08. See the [audit report](wi03/00_INDEX.md) and
 [WI-03 verification](11_WI_03_VERIFICATION.md). The audit is technically verified;
-lab review and stakeholder acceptance remain separate. Authorized read-only `gh`
+stakeholder accepted the audit on 2026-10-08. Its remaining label/group decisions
+are still needed before real training readiness. Authorized read-only `gh`
 inspection confirmed PR #17 merged on 2026-10-08; local `main` already contains it.
 
 Previous item: WI-02 is implemented and merged following explicit stakeholder approval;

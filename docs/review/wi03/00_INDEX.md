@@ -16,5 +16,5 @@ Read in order:
 
 Raw data, generated masks, overlays and source-path inventory are local under
 `.workspace/wi03/` and excluded from Git. The source ZIP was moved from the root
-with the stakeholder's authorization. Required lab review and stakeholder acceptance
-remain pending; technical evidence does not certify physical thickness or model accuracy.
+with the stakeholder's authorization. Stakeholder accepted WI-03 on 2026-10-08.
+Required downstream label/group decisions remain pending; technical evidence does not certify physical thickness or model accuracy.

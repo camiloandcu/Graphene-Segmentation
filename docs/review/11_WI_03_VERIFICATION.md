@@ -2,8 +2,9 @@
 
 Checked: 2026-10-08. Issue #3; branch `feat/wi-03-lab-dataset-audit`.
 Proposal approval, source ZIP relocation and a 90-minute investigation limit were
-explicitly authorized by the stakeholder. Technical delivery is verified;
-stakeholder acceptance, merge and release are separate.
+explicitly authorized by the stakeholder. Technical delivery is verified. Stakeholder accepted WI-03 on 2026-10-08;
+PR #17 is merged. Remaining real-label/split decisions and release are separate.
+The handoff paragraph below records the original submission state.
 
 Handoff: [PR #17](https://github.com/camiloandcu/Graphene-Segmentation/pull/17) is
 open with `Closes #3`; GitHub confirms that association. Implementation commit:
@@ -39,7 +40,7 @@ Raw images, masks, overlays and source-path manifests remain under ignored
 | --- | --- | --- |
 | WI-03-AC-1 | Passed | All-file inventory, 40 decoded images, 759 structurally checked polygons, canonical mapping, pixel/image support, version/license, label conflicts and explicit provenance unknowns; 40 contact-sheet overlays and five individual overlays screened. |
 | WI-03-AC-2 | Passed | All 780 image-pair exact checks; 15 candidate-pair sheets screened, two cross-split group cues; original roles preserved with proposed assignment deferred and independence uncertainty explicit. |
-| WI-03-AC-3 | Passed for deliverable | Supported conditional/inconclusive readiness recommendation with blocking questions and next-step owners. Stakeholder review remains pending. |
+| WI-03-AC-3 | Passed for deliverable | Supported conditional/inconclusive readiness recommendation with blocking questions and next-step owners. Stakeholder accepted the audit on 2026-10-08; downstream lab decisions remain. |
 
 The audit's inconclusive evaluation finding is valid spike evidence. It is not a
 failed requirement to train a model, and no trained-model claim is made.

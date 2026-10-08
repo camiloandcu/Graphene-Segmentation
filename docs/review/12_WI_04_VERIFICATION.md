@@ -1,11 +1,12 @@
 # WI-04 model management verification
 
 Checked: 2026-10-08. Proposal/design/specs explicitly approved by stakeholder.
-Status: implemented and technically verified; lab/stakeholder acceptance and merge pending.
+Status: implemented, technically verified and stakeholder accepted on 2026-10-08.
+PR #18 is merged (checked via `gh`); release readiness remains separate.
 Issue: [#4](https://github.com/camiloandcu/Graphene-Segmentation/issues/4).
 Branch: `feat/wi-04-local-model-management`, linked with `gh issue develop 4`.
 Approved-design commit: `50ca4cb`. Implementation commit: `2758654`.
-PR: [#18](https://github.com/camiloandcu/Graphene-Segmentation/pull/18), open with `Closes #4`; GitHub confirms the closing Issue association.
+PR: [#18](https://github.com/camiloandcu/Graphene-Segmentation/pull/18), merged with `Closes #4`; GitHub confirms the closing Issue association.
 
 ## Acceptance evidence
 
@@ -17,9 +18,9 @@ PR: [#18](https://github.com/camiloandcu/Graphene-Segmentation/pull/18), open wi
 | AC-4 — Upgrade/recovery/base installation | Passed | Populated schema-v1 fixture preserves opaque bytes/metadata; failed migration rolls back. Real subprocess exits at staging/publication/commit boundaries recover correctly. Missing/corrupt selected packages retain identity; browser/API can select an intact alternative. Base installation and fresh optional-import-blocked interpreter remain usable with installation guidance. |
 | AC-5 — Accessible understandable workflow | Passed | Chromium desktop 1440×1000 and narrow 390×844: keyboard file import/select, focus feedback and skip link, long names, safe supplied HTML text, reported/unmeasured details, no horizontal overflow, stale connection/retry, other-tab reconciliation, missing runtime and unavailable selection. No page errors or unexpected dialogs. |
 
-These results establish model management with synthetic packages. Human lab
-acceptance, real trained-model usefulness, prediction and INC-01 release gates
-remain unverified; compatible/selectable does not certify accuracy.
+These results establish model management with synthetic packages. Stakeholder
+acceptance is confirmed. Real trained-model usefulness, prediction and INC-01
+release gates remain unverified; compatible/selectable does not certify accuracy.
 
 ## Executed checks
 
