@@ -6,10 +6,10 @@ Checked: 2026-10-08.
 
 Current item: the stakeholder approved WI-03 and supplied the export with a
 90-minute investigation limit. Its
-[proposal](../../openspec/changes/wi-03-lab-dataset-audit/proposal.md),
-[design](../../openspec/changes/wi-03-lab-dataset-audit/design.md),
-[audit requirements](../../openspec/changes/wi-03-lab-dataset-audit/specs/lab-dataset-audit/spec.md)
-and [tasks](../../openspec/changes/wi-03-lab-dataset-audit/tasks.md) were explicitly
+[proposal](../../openspec/changes/archive/2026-10-08-wi-03-lab-dataset-audit/proposal.md),
+[design](../../openspec/changes/archive/2026-10-08-wi-03-lab-dataset-audit/design.md),
+[audit requirements](../../openspec/changes/archive/2026-10-08-wi-03-lab-dataset-audit/specs/lab-dataset-audit/spec.md)
+and [tasks](../../openspec/changes/archive/2026-10-08-wi-03-lab-dataset-audit/tasks.md) were explicitly
 approved on 2026-10-08. See the [audit report](wi03/00_INDEX.md) and
 [WI-03 verification](11_WI_03_VERIFICATION.md). The audit is technically verified;
 lab review, stakeholder acceptance and merge remain separate.

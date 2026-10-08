@@ -2,6 +2,7 @@
   "archive_sha256": "bc362e5e774e63cd62e677522abbf2bc632422cadd7b5e9642bbfa3ca97eede3",
   "audit_started_utc": "2026-10-08T18:05:34Z",
   "budget_minutes": 90,
+  "budget_status": "within 90-minute limit; interruption included",
   "hard_stop_utc": "2026-10-08T19:35:34Z",
   "local_evidence_directory": ".workspace/wi03/audit-02",
   "local_files_sha256": {
@@ -128,5 +129,7 @@
     "train-016",
     "valid-001"
   ],
-  "source_local_directory": ".workspace/wi03/source/"
+  "source_local_directory": ".workspace/wi03/source/",
+  "technical_evidence_finalized_utc": "2026-10-08T18:55:46Z",
+  "wall_minutes_to_technical_evidence": 50.21
 }

@@ -18,4 +18,4 @@
 
 - [x] 4.1 Deliver the audit report, decision recommendation, limitations and blocking next steps; record each acceptance criterion and pending human review (AC-1–AC-3; G-03).
 - [x] 4.2 Link the report/verification evidence from the review index and update WI-03 planning/tracking status; keep raw/private evidence outside Git (G-04).
-- [ ] 4.3 Commit/push coherent changes, open a PR with `Closes #3` and acceptance evidence, and sync/archive after verification; keep merge/release status separate (G-04).
+- [x] 4.3 Commit/push coherent changes, open a PR with `Closes #3` and acceptance evidence, and sync/archive after verification; keep merge/release status separate (G-04).

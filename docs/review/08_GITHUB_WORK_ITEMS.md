@@ -8,7 +8,7 @@ approve their implementation or create additional OpenSpec proposals.
 | --- | --- | --- | --- |
 | WI-01 | [#1](https://github.com/camiloandcu/Graphene-Segmentation/issues/1) | INC-01 / F-03 | Merged via PR #15 |
 | WI-02 | [#2](https://github.com/camiloandcu/Graphene-Segmentation/issues/2) | INC-01 / F-03 | Merged via PR #16 |
-| WI-03 | [#3](https://github.com/camiloandcu/Graphene-Segmentation/issues/3) | INC-01 / F-01 | Audit technically verified; stakeholder acceptance/PR handoff pending |
+| WI-03 | [#3](https://github.com/camiloandcu/Graphene-Segmentation/issues/3) | INC-01 / F-01 | Technically verified; PR #17 open; stakeholder acceptance pending |
 | WI-04 | [#4](https://github.com/camiloandcu/Graphene-Segmentation/issues/4) | INC-01 / F-03 | Provisional; refinement required |
 | WI-05 | [#5](https://github.com/camiloandcu/Graphene-Segmentation/issues/5) | INC-01 / F-01 | Provisional; refinement required |
 | WI-06 | [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6) | INC-01 / F-02 | Provisional; refinement required |
@@ -37,9 +37,16 @@ merge and release remain separate. GitHub confirms PR #16 merged on 2026-10-08;
 no protected branch was updated by this WI-03 work.
 
 WI-03: Issue #3 is open, checked 2026-10-08 using authorized `gh` access. The
-[audit proposal](../../openspec/changes/wi-03-lab-dataset-audit/proposal.md) is
+[audit proposal](../../openspec/changes/archive/2026-10-08-wi-03-lab-dataset-audit/proposal.md) is
 approved by the stakeholder on 2026-10-08. The stakeholder supplied the ZIP and
 authorized a 90-minute limit. `feat/wi-03-lab-dataset-audit` was linked with
 `gh issue develop 3`. Two local audit runs and 20 focused tests passed. See
 [verification](11_WI_03_VERIFICATION.md). Lab review and stakeholder acceptance
 remain pending; no later proposal is prepared.
+
+WI-03 PR [#17](https://github.com/camiloandcu/Graphene-Segmentation/pull/17) uses
+`Closes #3`; GitHub confirms the closing Issue association. Commits `27f4c9a`
+(approved context map) and `d2223bb` (audit/evidence) were pushed on the linked
+branch. The verified audit specification is synced and the change archived under
+`2026-10-08-wi-03-lab-dataset-audit`. Issue closure, lab/stakeholder acceptance,
+merge and release remain separate. No protected branch was updated.

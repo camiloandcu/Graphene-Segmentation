@@ -140,7 +140,7 @@ Implementation tasks (recorded in the WI-02 OpenSpec change):
 
 ### WI-03 — Spike: establish what the lab dataset can support
 
-Proposal: [WI-03 lab dataset audit](../../openspec/changes/wi-03-lab-dataset-audit/proposal.md).
+Proposal: [WI-03 lab dataset audit](../../openspec/changes/archive/2026-10-08-wi-03-lab-dataset-audit/proposal.md).
 Status: proposal explicitly approved on 2026-10-08; stakeholder supplied the local
 export and authorized a 90-minute investigation. AC-1 through AC-3 have technical
 evidence; stakeholder acceptance and merge remain pending. See

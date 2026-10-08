@@ -14,7 +14,7 @@ samples. This spike supplies evidence for WI-05 and later training decisions.
   independence can be supported without acquisition metadata?
 - Status: proposal explicitly approved by the stakeholder on 2026-10-08.
   Two local audit runs are technically verified; stakeholder acceptance is pending.
-- Source: [scope and acceptance criteria](../../../docs/review/06_DECISIONS_AND_WORK_ITEMS.md#wi-03--spike-establish-what-the-lab-dataset-can-support).
+- Source: [scope and acceptance criteria](../../../../docs/review/06_DECISIONS_AND_WORK_ITEMS.md#wi-03--spike-establish-what-the-lab-dataset-can-support).
 - Execution inputs resolved: stakeholder supplied the version-2 COCO ZIP and
   authorized relocation to `.workspace/wi03/source/` and a 90-minute limit.
   Physical label/group definitions remain explicit downstream lab-review questions.
@@ -66,6 +66,6 @@ Implementation, Issue-linked branch, commits/push and PR follow proposal approva
   identifies blocking questions and the next action.
 
 AC-1 through AC-3 have technical evidence in
-[the verification record](../../../docs/review/11_WI_03_VERIFICATION.md).
+[the verification record](../../../../docs/review/11_WI_03_VERIFICATION.md).
 Human review and G-01 through G-04 remain separate from automated checks. The
 supported inconclusive evaluation finding does not certify dataset/model quality.

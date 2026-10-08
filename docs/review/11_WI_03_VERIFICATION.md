@@ -5,6 +5,13 @@ Proposal approval, source ZIP relocation and a 90-minute investigation limit wer
 explicitly authorized by the stakeholder. Technical delivery is verified;
 stakeholder acceptance, merge and release are separate.
 
+Handoff: [PR #17](https://github.com/camiloandcu/Graphene-Segmentation/pull/17) is
+open with `Closes #3`; GitHub confirms that association. Implementation commit:
+`d2223bb`. The preceding `27f4c9a` contains the separately approved project context
+map. The specification is synced at `openspec/specs/lab-dataset-audit/spec.md` and
+the verified change archived at
+`openspec/changes/archive/2026-10-08-wi-03-lab-dataset-audit/`.
+
 ## Result and evidence
 
 The supplied version-2 COCO polygon export contains 40 images at 2560 x 1920 and
@@ -46,7 +53,8 @@ failed requirement to train a model, and no trained-model claim is made.
   20 passed. Source ID reversal, conflicting label order, unknown classes,
   polygon/geometry errors, archive boundaries, missing/unlabeled images, orphan
   annotations, different-byte decoded duplicates and unchanged input are covered.
-- Strict OpenSpec validation and whitespace checks are required at handoff.
+- Strict OpenSpec validation and whitespace checks passed; local evidence
+  fingerprints and documentation links were verified.
 
 An upstream pycocotools/NumPy array-interface deprecation warning is present;
 actual runs and focused checks succeeded. No app runtime or UI changed, so app
