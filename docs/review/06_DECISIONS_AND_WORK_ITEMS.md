@@ -1,6 +1,6 @@
 # Decisions and work item hierarchy
 
-Status: WI-01 merged; WI-02 implementation approved; later items
+Status: WI-01 and WI-02 merged; WI-03 technically verified; later items
 remain subject to review. Apply the hierarchy **delivery increment -> feature -> executable
 work item -> implementation task**. Epics are optional and are omitted because
 they would duplicate the delivery increments in this project.
@@ -8,8 +8,9 @@ they would duplicate the delivery increments in this project.
 The former seven phases were delivery groupings, not atomic executable items.
 Identifiers below are stable parent/dependency references. The stakeholder asked
 to continue with WI-01 and explicitly approved its single proposal.
-WI-01 is implemented, technically verified and merged. WI-02 is approved and
-implemented; later candidates are provisional.
+WI-01 and WI-02 are implemented, technically verified and merged. WI-03's approved
+audit is technically verified; lab/stakeholder acceptance remains pending.
+WI-04 and later candidates are provisional.
 
 ## Decision log
 
@@ -26,6 +27,7 @@ implemented; later candidates are provisional.
 | English interface | Confirmed | User-facing copy, code, and files use English. |
 | Acquisition metadata absent; lab members supplied labels | Confirmed | Audit duplicates/overlap; do not claim known independent sample groups. |
 | Annotation completeness / physical label validation | Unverified | Stakeholder sees no obvious unlabeled areas; inspect masks and seek lab clarification for ambiguous labels. |
+| WI-03 export audit | Technically verified; lab acceptance pending | 40 images, 759 polygon records, reversed source class IDs, 10 conflicting-label images; conditional pilot readiness and inconclusive independent evaluation. See the audit report. |
 | Thick_Graphene equivalence to lab bulk | Proposed, requires label review | External-data mapping cannot silently assume equivalent thickness definitions. |
 | ONNX package for app inference | WI-02 v1 contract approved | Small CPU runtime; package validation replaces framework guessing. |
 | U-Net baseline / compact SegFormer challenger | Recommended, awaiting approval | Model selection follows measured lab performance, not a SOTA claim. |
@@ -65,9 +67,9 @@ not a separate required delivery. Cloud hosting is outside both increments.
 
 ## Detailed work items and readiness
 
-WI-01 is merged. WI-02 is approved and implemented; its acceptance evidence is
-recorded separately. WI-03 remains a planning record with unverified criteria.
-Real training remains dependent on the dataset export.
+WI-01 and WI-02 are merged; their acceptance evidence is recorded separately.
+WI-03 has verified audit evidence and a conditional/inconclusive recommendation.
+Real training remains dependent on reviewed labels and a reviewed split policy.
 
 ### WI-01 — Enabler: run and persist the local workspace
 
@@ -138,6 +140,12 @@ Implementation tasks (recorded in the WI-02 OpenSpec change):
 
 ### WI-03 — Spike: establish what the lab dataset can support
 
+Proposal: [WI-03 lab dataset audit](../../openspec/changes/archive/2026-10-08-wi-03-lab-dataset-audit/proposal.md).
+Status: proposal explicitly approved on 2026-10-08; stakeholder supplied the local
+export and authorized a 90-minute investigation. AC-1 through AC-3 have technical
+evidence; stakeholder acceptance and merge remain pending. See
+[WI-03 verification](11_WI_03_VERIFICATION.md) and [audit report](wi03/00_INDEX.md).
+
 Parent: INC-01 / F-01. Consumers: model trainer and stakeholder.
 Question: are the supplied masks/taxonomy suitable for training, and what
 evaluation independence can be supported without acquisition metadata?
@@ -147,10 +155,12 @@ review, duplicates/overlap, class support, and a recommended split policy.
 Exclusions: new annotation campaigns, production importer implementation,
 Figshare inspection, and training/architecture search.
 
-Dependencies/blockers: dataset export through an authorized route; any ambiguous
-few-layer/bulk definition needs lab clarification. No effort/time budget has
-been agreed: that limit must be reviewed before executing this spike. No invented
-deadline is applied. Applicable completion gates: G-01 through G-04.
+Execution inputs resolved: stakeholder supplied the COCO Segmentation version-2
+ZIP and approved a 90-minute limit. The export is stored under ignored
+`.workspace/wi03/source/`. Physical few-layer/bulk definitions, conflicting-label
+handling, annotation completeness and group identity remain downstream lab-review
+questions; a documented inconclusive audit answer is valid completion.
+Applicable completion gates: G-01 through G-04.
 
 | Criterion | Observable acceptance | Verification evidence |
 | --- | --- | --- |
@@ -202,7 +212,9 @@ Keep these separate from item acceptance criteria and implementation tasks:
   prepare exactly one OpenSpec change for the next executable item. Review and
   explicit approval precede implementation and preparation of another change.
   Status: WI-01 proposal approved/completed; WI-02 proposal explicitly approved
-  and implemented. No later proposal is prepared.
+  and implemented. WI-03 proposal is explicitly approved and its audit is verified;
+  export access and a 90-minute limit were provided. No WI-04 or later proposal
+  is prepared.
 - **G-03 — Item acceptance:** record each criterion as passed, failed, or
   unverified with its evidence; required human review is pending until confirmed.
   For US items use Given/When/Then, for fixes preserve reproducer/boundaries,

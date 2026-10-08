@@ -12,6 +12,10 @@ authors can now use the shared package schema, image transforms, and bounded
 ONNX compatibility validator. No trained model
 or lab performance is claimed.
 
+The [lab dataset audit](docs/review/wi03/00_INDEX.md) now records the supplied
+40-image export's label support, conflicts and evaluation limitations. It supports
+conditional pilot planning; it does not establish an independent test benchmark.
+
 ## Run on Linux
 
 Requirements: Python 3.12, [uv](https://docs.astral.sh/uv/), Node.js 24, and npm.
@@ -76,6 +80,7 @@ requirements, standalone installation, synthetic examples, and resource limits.
 - [Work Items and GitHub Issues](docs/review/08_GITHUB_WORK_ITEMS.md)
 - [WI-01 verification evidence](docs/review/09_WI_01_VERIFICATION.md)
 - [WI-02 verification evidence](docs/review/10_WI_02_VERIFICATION.md)
+- [WI-03 dataset audit evidence](docs/review/11_WI_03_VERIFICATION.md)
 
 Work proceeds one approved OpenSpec change at a time. Implementation branches
 link to their Issue, and PRs include the acceptance evidence and a closing link.

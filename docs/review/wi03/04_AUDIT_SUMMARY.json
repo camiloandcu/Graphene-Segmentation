@@ -1,0 +1,88 @@
+{
+  "actual_image_files": 40,
+  "annotation_count": 759,
+  "annotation_provenance": "lab members, stakeholder-reported; independent validation unknown",
+  "archive_sha256": "bc362e5e774e63cd62e677522abbf2bc632422cadd7b5e9642bbfa3ca97eede3",
+  "candidate_pair_count": 15,
+  "class_image_support": {
+    "0": 40,
+    "1": 40,
+    "2": 40,
+    "255": 10
+  },
+  "class_pixels": {
+    "0": 155987914,
+    "1": 792964,
+    "2": 39816544,
+    "255": 10578
+  },
+  "conflict_images": 10,
+  "conflict_pixels": 10578,
+  "cross_split_candidate_count": 2,
+  "decoded_images": 40,
+  "dimensions": {
+    "2560x1920": 40
+  },
+  "environment": {
+    "numpy": "2.5.3",
+    "pillow": "12.3.0",
+    "pycocotools": "2.0.10",
+    "python": "3.12.13"
+  },
+  "exact_duplicate_pairs": 0,
+  "filename_group_candidates": 31,
+  "independent_evaluation": "unverified; proposed roles unassigned pending group/label review",
+  "issue_count": 0,
+  "mapping_by_name": {
+    "bulk": 2,
+    "few-layer": 1
+  },
+  "metadata_issues": [],
+  "rasterizer": "pycocotools polygon union; incompatible overlaps=255",
+  "referenced_images": 40,
+  "similarity_settings": {
+    "correlation_minimum": 0.9,
+    "dhash_bits": 64,
+    "dhash_max_distance": 12,
+    "filename_groups": "unconfirmed date/sample tokens; no acquisition identity asserted",
+    "gray_thumbnail_shape": [
+      48,
+      64
+    ]
+  },
+  "source_annotation_class_counts": {
+    "bulk": 641,
+    "few-layer": 118
+  },
+  "source_annotation_count": 759,
+  "source_export_timestamp": "2025-09-22T22:11:50+00:00",
+  "source_license": "CC BY 4.0 (supplied README and COCO record)",
+  "source_version": "2",
+  "split_class_pixels": {
+    "test": {
+      "0": 12592463,
+      "1": 59740,
+      "2": 2093164,
+      "255": 233
+    },
+    "train": {
+      "0": 124799945,
+      "1": 617212,
+      "2": 31858968,
+      "255": 10275
+    },
+    "valid": {
+      "0": 18595506,
+      "1": 116012,
+      "2": 5864412,
+      "255": 70
+    }
+  },
+  "split_counts": {
+    "test": 3,
+    "train": 32,
+    "valid": 5
+  },
+  "unreferenced_image_files": [],
+  "visual_review_status": "Agent screening: 40 contact-sheet images, 15 pair sheets, five individual overlays; expert review pending"
+}
