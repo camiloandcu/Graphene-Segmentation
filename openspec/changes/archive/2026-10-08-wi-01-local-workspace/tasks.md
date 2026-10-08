@@ -20,4 +20,4 @@
 - [x] 4.1 Record clean setup/startup without credentials and outbound access after installation; inspect health/UI/listeners/logs and absent external imports/calls (AC-1, AC-3).
 - [x] 4.2 Run affected backend checks and frontend build/type checks; record pass/fail/unverified AC evidence including an actual process restart (AC-1–AC-3; G-03/G-04).
 - [x] 4.3 Update README and operational docs for installation/start/stop, limitations, data location, backup and restore (AC-1, AC-2; G-04).
-- [ ] 4.4 Make coherent Conventional Commits, publish the linked work branch and open its PR with `Closes #1`; after verified completion sync specs and archive, keeping pending stakeholder review explicit. No protected-branch merge/push or next proposal without approval (G-03/G-04).
+- [x] 4.4 Make coherent Conventional Commits, publish the linked work branch and open its PR with `Closes #1`; after verified completion sync specs and archive, keeping pending stakeholder review explicit. No protected-branch merge/push or next proposal without approval (G-03/G-04).

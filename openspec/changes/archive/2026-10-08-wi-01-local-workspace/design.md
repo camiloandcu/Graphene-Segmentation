@@ -3,7 +3,7 @@
 WI-01 establishes the runtime consumed by model management and later dataset/
 results work. The lab selected Linux, local persistence, no accounts, and English.
 This change does not select a model architecture or prove inference. See the
-[architecture proposal](../../../docs/review/04_ARCHITECTURE.md).
+[architecture proposal](../../../../docs/review/04_ARCHITECTURE.md).
 
 `backend/app/main.py` imports all routes and tries cloud-backed model loading.
 Health imports the legacy model service. Configuration prints secrets. React

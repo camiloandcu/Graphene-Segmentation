@@ -1,6 +1,7 @@
 # Architecture proposal
 
-Status: architecture recommended for approval; local-first scope confirmed.
+Status: WI-01 local runtime/persistence architecture approved and implemented;
+model-package, inference and broader ML choices await their item reviews.
 
 ## Deployment and options
 

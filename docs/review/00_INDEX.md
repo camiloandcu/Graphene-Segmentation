@@ -5,10 +5,10 @@ and later proposals remain pending.
 Checked: 2026-10-07.
 
 Current step: WI-01 was approved and implemented. Its single
-[OpenSpec proposal](../../openspec/changes/wi-01-local-workspace/proposal.md),
-[technical design](../../openspec/changes/wi-01-local-workspace/design.md),
-[behavior specification](../../openspec/changes/wi-01-local-workspace/specs/local-workspace/spec.md),
-and [tasks](../../openspec/changes/wi-01-local-workspace/tasks.md) record the approved work.
+[OpenSpec proposal](../../openspec/changes/archive/2026-10-08-wi-01-local-workspace/proposal.md),
+[technical design](../../openspec/changes/archive/2026-10-08-wi-01-local-workspace/design.md),
+[behavior specification](../../openspec/changes/archive/2026-10-08-wi-01-local-workspace/specs/local-workspace/spec.md),
+and [tasks](../../openspec/changes/archive/2026-10-08-wi-01-local-workspace/tasks.md) record the approved work.
 
 Read in this order:
 
@@ -25,7 +25,7 @@ Read in this order:
 
 Confirmed stakeholder decisions take precedence over recommendations. Open decisions
 must be resolved or explicitly accepted as assumptions before their dependent work.
-For WI-01, approve its local architecture, scope and acceptance criteria. Unrelated
+WI-01 local architecture, scope and acceptance criteria were approved. Unrelated
 ML decisions and later work items remain subject to their own review.
 
 Application code changed only for the approved WI-01 local foundation. Dataset inspections

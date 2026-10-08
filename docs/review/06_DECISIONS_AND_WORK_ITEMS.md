@@ -18,7 +18,7 @@ WI-01 is implemented and technically verified; later candidates are provisional.
 | Initial deployment on lab computer | Confirmed | CPU inference required; cloud hosting deferred. |
 | Linux / 16 GB RAM / RTX 3090; 40+ images per batch | Stakeholder-provided planning assumption | Bounded batch queue; optional GPU execution and configurable limits for stronger machines. |
 | Free-tier Colab training/validation | Confirmed | Small models, checkpoint/resume, bounded candidate comparison. |
-| Use MCP for account access | Confirmed | Roboflow plugin discovery returned no match; its public project page returned 403. Request a dataset export or explicitly agree another route before account access. |
+| Use MCP for dataset account access | Confirmed | Roboflow plugin discovery returned no match; its public project page returned 403. Request a dataset export or explicitly agree another route before account access. |
 | Rank images by predicted few-layer coverage; batch upload | Confirmed | Coverage percentage determines ranking; flake recall remains a separate quality metric. |
 | Local persistence; no mandatory accounts/cloud | Confirmed | SQLite/files replace the mandatory Supabase runtime; bind to loopback initially. |
 | Colab-only training | Confirmed | Replace the in-app trainer with a guided Colab handoff. |
@@ -62,12 +62,11 @@ Consumer: stakeholder deciding whether extra training data improves lab screenin
 INC-02 does not block INC-01. DINOv3 is a gated candidate inside model selection,
 not a separate required delivery. Cloud hosting is outside both increments.
 
-## Next work items to refine and review
+## Detailed work items and readiness
 
-These records are detailed for planning review. Their criteria are **unverified**.
-Readiness requires the applicable gates; this update does not approve the design
-or authorize implementation. Technical setup can proceed independently of lab
-data once approved, while real training remains dependent on the dataset export.
+WI-01 is approved, implemented and technically verified. WI-02 and WI-03 remain
+planning records with unverified criteria; their applicable review gates still
+apply. Real training remains dependent on the dataset export.
 
 ### WI-01 — Enabler: run and persist the local workspace
 
@@ -85,7 +84,7 @@ non-completion needs diagnosis before a passing baseline can be claimed. If the
 cause requires an independent investigation, refine a separate spike before work.
 Applicable completion gates: G-01 through G-04.
 
-Proposal: [WI-01 local workspace](../../openspec/changes/wi-01-local-workspace/proposal.md).
+Proposal: [WI-01 local workspace](../../openspec/changes/archive/2026-10-08-wi-01-local-workspace/proposal.md).
 Status: approved and implemented. AC-1 through AC-3 passed; see
 [verification evidence](09_WI_01_VERIFICATION.md). Stakeholder acceptance/merge
 remain separate from technical verification.
@@ -96,7 +95,7 @@ remain separate from technical verification.
 | WI-01-AC-2 | A local metadata/artifact write survives restart; failed writes do not leave a usable record pointing to a missing artifact. | Persistence/recovery integration checks and restart observations. |
 | WI-01-AC-3 | Startup binds to loopback by default and logs contain no secrets; the local path does not initialize cloud services. | Configuration and startup-log inspection with external clients disabled. |
 
-Candidate implementation tasks, to finalize in the single WI-01 OpenSpec change:
+WI-01 implementation tasks (completed in its archived OpenSpec change):
 
 - T-01: connect local metadata/files to the startup path (AC-1, AC-2).
 - T-02: configure local startup and remove mandatory cloud initialization (AC-1, AC-3).

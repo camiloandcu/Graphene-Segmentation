@@ -22,4 +22,5 @@ approve their implementation or create additional OpenSpec proposals.
 | WI-14 | [#14](https://github.com/camiloandcu/Graphene-Segmentation/issues/14) | INC-02 / F-06 | Provisional; refinement required |
 
 WI-01 branch: `feat/wi-01-local-workspace`, linked using `gh issue develop 1`.
-Its implementation PR will use `Closes #1`. Main merge is not authorized.
+PR [#15](https://github.com/camiloandcu/Graphene-Segmentation/pull/15)
+uses `Closes #1`; GitHub confirms the closing Issue association. Main merge is not authorized.

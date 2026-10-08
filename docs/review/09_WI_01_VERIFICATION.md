@@ -2,7 +2,9 @@
 
 Status: implemented and technically verified; stakeholder review/PR merge pending.
 Source Issue: [#1](https://github.com/camiloandcu/Graphene-Segmentation/issues/1).
-Branch: `feat/wi-01-local-workspace`. No main merge/update or remote data migration.
+Branch: `feat/wi-01-local-workspace`.
+PR: [#15](https://github.com/camiloandcu/Graphene-Segmentation/pull/15), open with `Closes #1`.
+Implementation commit: `d78f1b4`. No main merge/update or remote data migration.
 
 ## Acceptance
 
@@ -60,5 +62,7 @@ production dependencies. The committed captures contain only fixture/empty state
 Implementation approval was given in the conversation before coding. Project-only
 GitHub workflow is recorded in `AGENTS.md`; no global guide edit was applied.
 All 14 executable candidates have Issues; WI-01 alone has an OpenSpec change.
-Specification sync/archive and PR traceability are engineering handoff steps;
+The specification is synced to `openspec/specs/local-workspace/spec.md` and the
+change is archived under `2026-10-08-wi-01-local-workspace`. The UTC archive date
+is October 8; the local review date is October 7. PR traceability is verified;
 Issue closure, stakeholder acceptance, merge and release remain separate states.

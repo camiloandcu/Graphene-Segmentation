@@ -13,7 +13,7 @@ health depends on the legacy model service, and the interface requires login.
   Approval covers the local foundation, not all future ML decisions.
   GitHub Issue #1 and linked branch feat/wi-01-local-workspace track this change;
   publishing this branch and its linked PR is authorized.
-- Source: [WI-01 acceptance criteria](../../../docs/review/06_DECISIONS_AND_WORK_ITEMS.md).
+- Source: [WI-01 acceptance criteria](../../../../docs/review/06_DECISIONS_AND_WORK_ITEMS.md).
 
 ## What Changes
 
