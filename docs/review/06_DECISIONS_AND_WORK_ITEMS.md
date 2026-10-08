@@ -104,7 +104,7 @@ WI-01 implementation tasks (completed in its archived OpenSpec change):
 
 ### WI-02 — Enabler: define and validate the portable model contract
 
-Proposal: [WI-02 portable model contract](../../openspec/changes/wi-02-portable-model-contract/proposal.md).
+Proposal: [WI-02 portable model contract](../../openspec/changes/archive/2026-10-08-wi-02-portable-model-contract/proposal.md).
 Status: explicitly approved and implemented on 2026-10-08. See
 [verification evidence](10_WI_02_VERIFICATION.md) for AC-1 through AC-4.
 Resource/tensor/geometry decisions implement the approved technical design;

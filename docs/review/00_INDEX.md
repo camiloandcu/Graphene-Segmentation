@@ -5,10 +5,10 @@ proposals remain pending.
 Checked: 2026-10-08.
 
 Current step: WI-02 is implemented following explicit stakeholder approval;
-review its single [proposal](../../openspec/changes/wi-02-portable-model-contract/proposal.md),
-[technical design](../../openspec/changes/wi-02-portable-model-contract/design.md),
-[specification](../../openspec/changes/wi-02-portable-model-contract/specs/portable-model-contract/spec.md),
-and [tasks](../../openspec/changes/wi-02-portable-model-contract/tasks.md).
+review its single [proposal](../../openspec/changes/archive/2026-10-08-wi-02-portable-model-contract/proposal.md),
+[technical design](../../openspec/changes/archive/2026-10-08-wi-02-portable-model-contract/design.md),
+[specification](../../openspec/changes/archive/2026-10-08-wi-02-portable-model-contract/specs/portable-model-contract/spec.md),
+and [tasks](../../openspec/changes/archive/2026-10-08-wi-02-portable-model-contract/tasks.md).
 See [WI-02 verification](10_WI_02_VERIFICATION.md) for acceptance evidence and
 the boundary between compatibility and real model performance.
 

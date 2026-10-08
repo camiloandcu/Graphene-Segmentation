@@ -4,6 +4,8 @@ Checked: 2026-10-08. Status: approved, implemented and technically verified;
 stakeholder acceptance, merge and release remain separate.
 Issue: [#2](https://github.com/camiloandcu/Graphene-Segmentation/issues/2).
 Branch: `feat/wi-02-portable-model-contract`, linked using `gh issue develop 2`.
+Implementation commit: `955d997`.
+PR: [#16](https://github.com/camiloandcu/Graphene-Segmentation/pull/16), open with `Closes #2`.
 
 ## Acceptance
 
@@ -74,5 +76,6 @@ app import/selection/prediction, lab acceptance and 40+ image batch performance
 remain **unverified**, assigned to later Work Items. No app endpoint or UI was
 added for model import. The default app still opens in its no-model state.
 
-The verified OpenSpec change is synced and archived before handoff. The PR closes
+The verified specification is synced to `openspec/specs/portable-model-contract/spec.md`;
+the change is archived as `2026-10-08-wi-02-portable-model-contract`. The PR closes
 Issue #2 on merge; no protected branch is updated by this implementation.

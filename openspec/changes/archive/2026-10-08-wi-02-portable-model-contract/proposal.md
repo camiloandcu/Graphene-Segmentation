@@ -13,7 +13,7 @@ model import, and gives the Colab exporter one supported target.
   and shared preprocessing/geometry, proved with synthetic producer/consumer fixtures.
 - Status: explicitly approved by the stakeholder and implemented on 2026-10-08.
   WI-01 is merged. This change does not establish a trained-model claim.
-- Source: [WI-02 criteria](../../../docs/review/06_DECISIONS_AND_WORK_ITEMS.md).
+- Source: [WI-02 criteria](../../../../docs/review/06_DECISIONS_AND_WORK_ITEMS.md).
 
 ## What Changes
 

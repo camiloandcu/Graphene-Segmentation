@@ -20,4 +20,4 @@
 - [x] 4.1 Build synthetic packages through the producer helper and validate/reconstruct through a distinct consumer entry; compare to independent expected tensors/logits/masks and record runtime versions (AC-1–AC-4).
 - [x] 4.2 Verify the core library's standalone install/import and WI-01 startup/tests without optional model runtime; run relevant shared/backend checks (AC-1/AC-4; G-04).
 - [x] 4.3 Document export/import contract, unknown/unmeasured evidence, compatibility failures, geometry limitations and pass/fail/unverified acceptance evidence (AC-1–AC-4; G-03/G-04).
-- [ ] 4.4 Commit/push the approved Issue-linked branch, open a PR with `Closes #2`, and after technical verification sync specs/archive. Keep real Colab/model/lab validation unverified and stakeholder/merge/release status distinct (G-03/G-04).
+- [x] 4.4 Commit/push the approved Issue-linked branch, open a PR with `Closes #2`, and after technical verification sync specs/archive. Keep real Colab/model/lab validation unverified and stakeholder/merge/release status distinct (G-03/G-04).
