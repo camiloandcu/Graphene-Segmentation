@@ -294,6 +294,8 @@ role-isolated dataset; **AC-2** actual pretrained optimization/run provenance;
 **AC-3** complete durable state/recovery; **AC-4** original-coordinate best selection;
 **AC-5** real reviewed-data Colab execution plus fresh-runtime resume. Software evidence for AC-1–4 passes; real-data portions remain unverified.
 AC-5 is required for item completion; synthetic/local smoke runs cannot satisfy it.
+Software is submitted in [draft PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20) with `Closes #6`.
+The feature branch is pushed; required real gates keep the Issue/change open.
 G-01/2 approval precedes coding; G-03 real acceptance, G-04 verified sync/archive
 and submission, and G-05 release remain separate.
 

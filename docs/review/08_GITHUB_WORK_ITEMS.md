@@ -13,7 +13,7 @@ approve their implementation or create additional OpenSpec proposals.
 | WI-03 | [#3](https://github.com/camiloandcu/Graphene-Segmentation/issues/3) | INC-01 / F-01 | Merged via PR #17; stakeholder accepted 2026-10-08 |
 | WI-04 | [#4](https://github.com/camiloandcu/Graphene-Segmentation/issues/4) | INC-01 / F-03 | Merged via PR #18; stakeholder accepted 2026-10-08 |
 | WI-05 | [#5](https://github.com/camiloandcu/Graphene-Segmentation/issues/5) | INC-01 / F-01 | Merged via PR #19; software verified; real ready handoff/lab review pending |
-| WI-06 | [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6) | INC-01 / F-02 | Approved; #6 refined and branch linked; software CPU-verified; real Colab acceptance pending |
+| WI-06 | [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6) | INC-01 / F-02 | Approved; [draft PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20); software CPU-verified; real Colab acceptance pending |
 | WI-07 | [#7](https://github.com/camiloandcu/Graphene-Segmentation/issues/7) | INC-01 / F-02 | Provisional; refinement required |
 | WI-08 | [#8](https://github.com/camiloandcu/Graphene-Segmentation/issues/8) | INC-01 / F-02 | Provisional; refinement required |
 | WI-09 | [#9](https://github.com/camiloandcu/Graphene-Segmentation/issues/9) | INC-01 / F-03 | Provisional; refinement required |
@@ -112,3 +112,9 @@ proposal/design/specifications. Issue #6 is refined and executable; branch
 `feat/wi-06-colab-baseline-training` is linked with `gh issue develop 6`. Earlier
 pending statements describe planning history. Implementation is authorized; real
 background/eligibility and Colab evidence remain pending.
+
+WI-06 software handoff, 2026-10-09: branch pushed and [draft PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20)
+opened with `Closes #6`. Partial-v2/trainer/notebook and 158 regressions are verified;
+actual pretrained native CPU model/optimizer replay matches an uninterrupted run.
+See [criterion evidence](14_WI_06_VERIFICATION.md). Lab review/background and real
+Colab AC-5 remain unverified; #6 stays open and the OpenSpec change stays active.

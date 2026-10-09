@@ -103,3 +103,7 @@ WI-06 software verification: [report](14_WI_06_VERIFICATION.md),
 [training and recovery guide](../14_COLAB_BASELINE_TRAINING.md), and
 [notebook](../../notebooks/01_COLAB_BASELINE_TRAINING.ipynb). The change remains
 active; specs are not synced/archived as completed while mandatory AC-5 is unverified.
+
+WI-06 submission: [draft PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20),
+`Closes #6`, branch pushed. No merge/protected-branch change; mandatory real
+Colab verification remains pending.

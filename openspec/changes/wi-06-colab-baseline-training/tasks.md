@@ -18,4 +18,9 @@ pass; real reviewed-data Colab execution remains unverified. See
 - [x] 11. Record actual evidence and AC-1–5 status in `docs/review/14_WI_06_VERIFICATION.md`; update README and authoritative tracking (G-03/4).
 - [x] 12a. Run affected package regressions, strict OpenSpec and whitespace/link checks (G-04).
 - [ ] 12b. Sync specifications/archive only after required real verification passes (G-04); AC-5 remains unverified.
-- [ ] 13. Push coherent Conventional Commits, open PR with `Closes #6` and criterion evidence, and record references/pending gates (G-04). Keep item acceptance open if real execution remains unverified.
+- [x] 13. Push coherent Conventional Commits, open PR with `Closes #6` and criterion evidence, and record references/pending gates (G-04). Keep item acceptance open if real execution remains unverified.
+
+Submission: [draft PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20) contains `Closes #6`.
+The branch is pushed. Tasks 9, 10 and 12b remain pending because the real-data
+handoff/background and fresh-Colab-runtime evidence do not exist. AC-5 is
+unverified; no completed archive/spec sync is claimed.

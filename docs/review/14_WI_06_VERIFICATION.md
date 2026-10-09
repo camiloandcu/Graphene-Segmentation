@@ -5,7 +5,8 @@ Checked: 2026-10-09. Approved change:
 [design](../../openspec/changes/wi-06-colab-baseline-training/design.md),
 [tasks](../../openspec/changes/wi-06-colab-baseline-training/tasks.md).
 Issue: [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6).
-Branch: `feat/wi-06-colab-baseline-training`. The software is implemented and
+Branch: `feat/wi-06-colab-baseline-training`. Draft PR: [#20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20)
+with `Closes #6`; no merge or protected-branch update. The software is implemented and
 CPU-verified; required real reviewed-data Colab evidence remains unverified.
 The change stays active, with no completed spec sync/archive or item acceptance.
 
