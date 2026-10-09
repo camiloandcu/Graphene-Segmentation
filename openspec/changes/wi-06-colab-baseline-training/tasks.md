@@ -13,7 +13,7 @@ pass; real reviewed-data Colab execution remains unverified. See
 - [x] 6. Implement immutable completed-epoch generations, full state/RNG restoration, compatibility checks and persistence recovery (AC-3).
 - [x] 7. Add meaningful loader/geometry/loss/selection and interrupted-versus-resumed CPU checks, including tamper/write/mismatch failures (AC-1–4).
 - [x] 8. Create thin Colab notebook and setup/persistence/recovery guide; verify clean separate installation and notebook syntax (AC-2/5).
-- [ ] 9. Obtain reviewed label eligibility and reliable background anchors for the active v3 dataset plus account/access/persistence choice before real Colab execution; retain unresolved inputs as blockers (AC-1/5).
+- [ ] 9. Laboratory human origin/visual semantics and eight stakeholder-reviewed background interiors are confirmed. MCP is preferred and locally installed/registered; Google Drive is selected. Finish actual browser/account connection before real Colab execution; retain unresolved inputs as blockers (AC-1/5).
 - [ ] 10. Run the pretrained baseline in interactive Colab, retain checkpoints outside transient storage, recreate runtime and resume; reconcile best history/handoff (AC-2–5).
 - [x] 11. Record actual evidence and AC-1–5 status in `docs/review/14_WI_06_VERIFICATION.md`; update README and authoritative tracking (G-03/4).
 - [x] 12a. Run affected package regressions, strict OpenSpec and whitespace/link checks (G-04).
@@ -22,5 +22,5 @@ pass; real reviewed-data Colab execution remains unverified. See
 
 Submission: [draft PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20) contains `Closes #6`.
 The branch is pushed. Tasks 9, 10 and 12b remain pending because the real-data
-handoff/background and fresh-Colab-runtime evidence do not exist. AC-5 is
+authenticated browser/runtime connection and fresh-Colab-runtime evidence remain pending. AC-5 is
 unverified; no completed archive/spec sync is claimed.

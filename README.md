@@ -22,8 +22,8 @@ For trainers, the [offline dataset workflow](docs/13_VALIDATED_DATASETS.md)
 validates the COCO export, preserves canonical classes/provenance and enforces
 reviewed split decisions. The [current v3 review](docs/review/wi06/01_DATASET_V3_REVIEW.md)
 records refined labels on the same 40 images and grouped assignments. Coverage
-remains uncertain. Partial-v2 preparation is implemented; reviewed eligibility
-and background evidence remain pending. Saved predictions cannot enter ground truth automatically.
+remains uncertain. Partial-v2 preparation is implemented; laboratory visual labels and eight
+background regions are stakeholder-confirmed. Real Colab training/recovery remains pending. Saved predictions cannot enter ground truth automatically.
 Regional human review is a planned workflow, not an available feature.
 The [training guide](docs/14_COLAB_BASELINE_TRAINING.md) explains the separate
 CLI/notebook, masked validation metrics and verified checkpoint recovery.

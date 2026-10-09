@@ -1,6 +1,6 @@
 # Data evidence and ML plan
 
-Checked: 2026-10-07. No training experiment has been run.
+Checked: 2026-10-09. Synthetic CPU baseline/recovery checks pass; no real lab training has been run.
 
 Update 2026-10-08: [WI-03](wi03/00_INDEX.md) inspected the stakeholder-supplied
 version-2 lab export. Its verified counts, class mapping, conflicts and split
@@ -17,11 +17,12 @@ coverage; the stakeholder explicitly keeps that uncertainty.
 Confirmed policy for the revised WI-06 design: retain eligible labeled foreground,
 ignore overlaps and treat every other unannotated pixel as unknown. Supervised
 background needs reviewed regions or material-free controls, not absent polygons.
-Extend the dataset contract with an explicit partial-v2 mode, preserving dense-v1
-compatibility and binding anchors/supervision to fingerprints. No such ready v2
-handoff or reviewed background anchors currently exists. The 40 current masks are
-analysis previews only; real training stays blocked pending those inputs and
-the full revised proposal approval.
+The implemented partial-v2 contract preserves dense-v1 compatibility and binds
+anchors/supervision to fingerprints. Laboratory human origin and visual label
+meaning are now confirmed; the stakeholder approved eight exact background
+interiors, four train and four validation. Remaining unannotated pixels stay
+unknown. See [current confirmation and support](wi06/03_LABEL_CONFIRMATION_AND_BACKGROUND_REVIEW.md).
+Real Colab training and recovery remain unexecuted.
 
 Use masked development metrics with fixed supervised support and unknown coverage;
 do not infer whole-image accuracy, full false detections or complete flake recall.
@@ -167,3 +168,15 @@ resume/fine-tuning. Verify PyTorch/ONNX logit agreement and matching class masks
 on representative images, including non-square inputs and boundary cases.
 The package records normalization, class/color mapping, tile/resize policy,
 output layout, operating settings, dataset/split fingerprints, and model identity.
+
+## Lab label confirmation and background proposals, 2026-10-09
+
+The stakeholder confirms that v3 polygons were made by laboratory personnel and
+accepts them for the exploratory baseline, with subjective reliability 7/10. After
+consulting the lab, few/mono means visually somewhat transparent flakes resembling
+previous few/mono examples, using annotator experience. The target remains visual
+lab categories; no measured layer count or >10-layer bulk boundary is claimed.
+The current partial handoff is consumer-valid with zero label-review blockers,
+and eight regional background interiors are now stakeholder-confirmed. Coverage
+uncertainty and grouped 31/4/5 roles remain;
+see [the active review](wi06/03_LABEL_CONFIRMATION_AND_BACKGROUND_REVIEW.md).

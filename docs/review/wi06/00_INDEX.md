@@ -18,3 +18,7 @@ it must not be used as current v3 sample identity or a ready training handoff.
 
 5. [Synthetic CPU smoke record](02_CPU_SMOKE_RECORD.json): actual pretrained weights,
    epoch metrics and new-process CLI recovery; no lab/Colab performance claim.
+
+6. [Label confirmation/background review](03_LABEL_CONFIRMATION_AND_BACKGROUND_REVIEW.md):
+   lab-human visual labels accepted for the exploratory baseline (subjective 7/10),
+   valid partial handoff with no background, and pending source-bound patch proposals.

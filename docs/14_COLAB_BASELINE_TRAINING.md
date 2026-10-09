@@ -31,8 +31,11 @@ graphene-dataset check NEW_DATASET
 
 The current private v3 source is under `.workspace/wi06/source/`; its review and
 candidate evidence are under `.workspace/wi06/dataset-v3/`. The user-approved
-31/4/5 assignment is retained. The v2 preparation has 41 unresolved review blockers,
-zero background support, and no ready manifest. No completeness attestation was
+31/4/5 assignment is retained. Lab-human origin/eligibility and visual label semantics are now confirmed by the
+stakeholder, with subjective reliability 7/10. The partial-v2 handoff is consumer-valid
+with zero review blockers. Eight exact background interiors are stakeholder-confirmed,
+four train and four validation; real Colab training/recovery remains pending.
+See [the candidate review](review/wi06/03_LABEL_CONFIRMATION_AND_BACKGROUND_REVIEW.md). No completeness attestation was
 invented. Regional lab feedback is planned under provisional WI-15; that workflow
 will supply traceable Correct/Incorrect/Unsure judgments for later curation,
 not automatically create pixel truth. No HITL interface is delivered by WI-06.
@@ -157,3 +160,18 @@ retain verified generations outside transient storage, recreate the runtime,
 and resume. Reconcile winning epoch/score/checksum with retained history. Keep
 AC-5 and the OpenSpec change open until this evidence exists. CPU smoke tests,
 synthetic scores and an unexecuted notebook cannot replace it.
+
+WI-06 label/background update, 2026-10-09: laboratory human origin and visual
+class semantics are stakeholder-confirmed (subjective reliability 7/10, not measured
+accuracy). All eight proposed background interiors are approved, four train and
+four validation. Coverage remains non-exhaustive and roles stay 31/4/5. See
+[current confirmation and handoff evidence](review/wi06/03_LABEL_CONFIRMATION_AND_BACKGROUND_REVIEW.md).
+Earlier pending-label/zero-background statements describe historical snapshots.
+Real Colab training and fresh-runtime recovery remain unverified; draft PR #20,
+Issue #6 and the OpenSpec change remain open.
+
+For this machine, an official Colab MCP installation is registered in the ignored,
+project-local `.codex/config.toml`; reload Codex to load it and authorize its browser
+connection. Google Drive is selected for retained checkpoints. See the current
+confirmation record for installation/handshake evidence. Registration does not
+mean Google authentication or remote training has occurred.

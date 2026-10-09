@@ -4,7 +4,8 @@ Status: WI-01 through WI-05 merged; WI-03 and WI-04 stakeholder accepted on
 2026-10-08. WI-05 software is technically verified; genuine lab dataset review
 remains pending. WI-06 revised proposal is explicitly approved on 2026-10-09; software is implemented and CPU-verified; real Colab acceptance remains pending.
 Current v3 has approved grouped roles but incomplete-coverage uncertainty;
-reviewed eligibility/background anchors and broader release remain separate.
+lab-human visual label eligibility and eight background regions are confirmed;
+real Colab execution and broader release remain separate.
 Checked: 2026-10-09.
 
 Current item: WI-06 has one revised approved
@@ -15,13 +16,14 @@ Current item: WI-06 has one revised approved
 and [tasks](../../openspec/changes/wi-06-colab-baseline-training/tasks.md).
 Stakeholder explicitly approved the revised proposal/design/specifications on
 2026-10-09. Issue #6 is refined and `feat/wi-06-colab-baseline-training` is linked
-with `gh issue develop 6`. Real training remains gated by background/eligibility.
+with `gh issue develop 6`. Real Colab execution awaits account/access/persistence choice.
 The stakeholder supplied v3, authorized deletion of the old ZIP and approved
 grouped 31/4/5 roles plus treating unannotated pixels as unknown. See the
 [current data evidence](wi06/00_INDEX.md): 40 unchanged image bytes, 621 polygons,
 six conflict images/1,792 ignored pixels, remapped IDs and partial-mask previews.
 The revised design adds explicit partial-v2 dataset support while preserving v1.
-No ready handoff exists yet; reviewed eligibility/background evidence is pending.
+A partial handoff now contains reviewed background in train and validation.
+See [label confirmation and background review](wi06/03_LABEL_CONFIRMATION_AND_BACKGROUND_REVIEW.md).
 Required real Colab training/resume evidence cannot be replaced by smoke tests.
 Requested regional human review is documented in product/UX/architecture and
 provisional WI-15; no second proposal or UI implementation is prepared.
@@ -107,3 +109,12 @@ active; specs are not synced/archived as completed while mandatory AC-5 is unver
 WI-06 submission: [draft PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20),
 `Closes #6`, branch pushed. No merge/protected-branch change; mandatory real
 Colab verification remains pending.
+
+WI-06 label/background update, 2026-10-09: laboratory human origin and visual
+class semantics are stakeholder-confirmed (subjective reliability 7/10, not measured
+accuracy). All eight proposed background interiors are approved, four train and
+four validation. Coverage remains non-exhaustive and roles stay 31/4/5. See
+[current confirmation and handoff evidence](wi06/03_LABEL_CONFIRMATION_AND_BACKGROUND_REVIEW.md).
+Earlier pending-label/zero-background statements describe historical snapshots.
+Real Colab training and fresh-runtime recovery remain unverified; draft PR #20,
+Issue #6 and the OpenSpec change remain open.

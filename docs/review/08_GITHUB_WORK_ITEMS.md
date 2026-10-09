@@ -118,3 +118,12 @@ opened with `Closes #6`. Partial-v2/trainer/notebook and 158 regressions are ver
 actual pretrained native CPU model/optimizer replay matches an uninterrupted run.
 See [criterion evidence](14_WI_06_VERIFICATION.md). Lab review/background and real
 Colab AC-5 remain unverified; #6 stays open and the OpenSpec change stays active.
+
+WI-06 label/background update, 2026-10-09: laboratory human origin and visual
+class semantics are stakeholder-confirmed (subjective reliability 7/10, not measured
+accuracy). All eight proposed background interiors are approved, four train and
+four validation. Coverage remains non-exhaustive and roles stay 31/4/5. See
+[current confirmation and handoff evidence](wi06/03_LABEL_CONFIRMATION_AND_BACKGROUND_REVIEW.md).
+Earlier pending-label/zero-background statements describe historical snapshots.
+Real Colab training and fresh-runtime recovery remain unverified; draft PR #20,
+Issue #6 and the OpenSpec change remain open.

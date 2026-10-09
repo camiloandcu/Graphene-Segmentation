@@ -292,7 +292,7 @@ No automatic split changes or fabricated reviewer statements.
 Authoritative numbered acceptance criteria are in the proposal: **AC-1** verified
 role-isolated dataset; **AC-2** actual pretrained optimization/run provenance;
 **AC-3** complete durable state/recovery; **AC-4** original-coordinate best selection;
-**AC-5** real reviewed-data Colab execution plus fresh-runtime resume. Software evidence for AC-1–4 passes; real-data portions remain unverified.
+**AC-5** real reviewed-data Colab execution plus fresh-runtime resume. Software evidence for AC-1–4 passes; current reviewed-data preparation/preflight satisfies AC-1. Actual lab optimization/recovery/selection remain unverified.
 AC-5 is required for item completion; synthetic/local smoke runs cannot satisfy it.
 Software is submitted in [draft PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20) with `Closes #6`.
 The feature branch is pushed; required real gates keep the Issue/change open.
@@ -396,3 +396,12 @@ After pilot evaluation, agree minimum few-layer detection recall, acceptable
 false detections per image, matching/size criteria, ranking usefulness, and acceptable
 prediction latency on the actual lab computer. Do not invent guaranteed performance
 from 40 images or claim a completed trained model before evaluation.
+
+WI-06 label/background update, 2026-10-09: laboratory human origin and visual
+class semantics are stakeholder-confirmed (subjective reliability 7/10, not measured
+accuracy). All eight proposed background interiors are approved, four train and
+four validation. Coverage remains non-exhaustive and roles stay 31/4/5. See
+[current confirmation and handoff evidence](wi06/03_LABEL_CONFIRMATION_AND_BACKGROUND_REVIEW.md).
+Earlier pending-label/zero-background statements describe historical snapshots.
+Real Colab training and fresh-runtime recovery remain unverified; draft PR #20,
+Issue #6 and the OpenSpec change remain open.

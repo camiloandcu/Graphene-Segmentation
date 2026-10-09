@@ -37,11 +37,11 @@ Implementation commits: `fc2d9e3` (partial dataset/shared geometry), `845b3ba`
 
 | Criterion | Status | Verified evidence / missing evidence |
 | --- | --- | --- |
-| AC-1: validated isolated data | Unverified on real lab data; software checks passed | Dense compatibility, partial masks/anchors/reconstruction/tamper rejection, public-role loading, no test-role requests and all-class support gates pass. Actual v3 remains review-blocked with zero background; roles retain 31/4/5. |
+| AC-1: validated isolated data | Passed on current reviewed v3 handoff; exploratory limitations retained | Dense compatibility, partial masks/anchors/reconstruction/tamper rejection, public-role loading, no test-role requests and all-class support gates pass. Current v3 has confirmed visual labels and eight reviewed background regions; roles retain 31/4/5. See current preparation/preflight evidence below. |
 | AC-2: pretrained optimization/provenance | Local synthetic pretrained evidence passed; real Colab unverified | Actual ImageNet encoder and U-Net optimization, finite losses, three logits, full provenance and new-process CLI resume pass on CPU. Actual lab/GPU memory and runtime are not measured. |
 | AC-3: durable complete state | Local CPU state/recovery checks passed; real VM trial unverified | Uninterrupted/resumed tensors and metric history match; scheduler/RNG/data order match. Failed epoch repeats; corruption/mismatch/unsafe pickle fail; prior durable epoch survives copy failure; a retained pretrained run resumes in a new Python process. No real Colab VM replacement or Drive execution. |
 | AC-4: original-coordinate best selection | Synthetic software checks passed; real handoff unverified | Hand-calculated original-coordinate counts exclude padding/unknown, absent denominators yield null, non-final winner and earlier exact ties pass; best checksum is reconciled with generations/history. No real-lab winning checkpoint exists. |
-| AC-5: real Colab workflow | Unverified | No genuinely reviewed ready v3, selected Google account/access/persistence workflow, executed lab notebook or fresh-Colab-runtime resume. Synthetic/local evidence is insufficient. |
+| AC-5: real Colab workflow | Unverified | No selected Google account/access/persistence workflow, executed lab notebook or fresh-Colab-runtime resume. Synthetic/local evidence is insufficient. |
 
 ## Checks executed
 
@@ -104,18 +104,20 @@ annotation coverage or generalization.
 Actual source SHA-256:
 `344b2ff3bfcf0d18ac206894b92f0b89892f706bc8ef8dbb540a3a7a40da6a34`.
 The user authorized the v3 replacement and removal of the previous ZIP; all 40
-image bytes are unchanged. The v2 review was migrated to explicit partial schema 2
+image bytes are unchanged. The initial v2 review was migrated to explicit partial schema 2
 without inventing eligibility/semantic approval, reviewer evidence or background.
 Preparation returned **blocked**, 41 review blockers, 621 source polygons and
 1,792 source conflict pixels. Unknown supervision totals 157,745,361 pixels.
 Background support is zero in both training and validation. See
 [the role/support record](wi06/01_DATASET_V3_REVIEW.md#partial-v2-implementation-verification-2026-10-09).
-There is no ready manifest. No model/run was initialized from these lab diagnostics.
+That historical diagnostic had no ready manifest. No model/run was initialized from it.
 
-Remaining authorized work once real inputs exist: confirm source annotation
-eligibility and physical class semantics, obtain conservative reliable background
-anchors (or genuinely verified blank images) in train and validation, prepare/check
-the handoff, choose Google account/access/persistence manually, execute multiple
+Subsequently the stakeholder confirmed laboratory human origin and visual semantics,
+then approved all eight displayed background candidates. See
+[current confirmation, preparation and preflight evidence](wi06/03_LABEL_CONFIRMATION_AND_BACKGROUND_REVIEW.md).
+Coverage uncertainty and test isolation remain unchanged; no real training was run.
+
+Remaining authorized work once real inputs exist: choose Google account/access/persistence method, execute multiple
 pretrained Colab epochs, retain verified generations, recreate runtime and resume,
 and record/reconcile actual winning checkpoint evidence. Coverage uncertainty stays
 non-exhaustive; regional human feedback remains future WI-15 scope. Then finish

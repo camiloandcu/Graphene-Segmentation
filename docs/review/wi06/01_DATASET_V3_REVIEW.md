@@ -139,3 +139,12 @@ only 1,792 are magenta cross-class conflicts. No images were generated and no
 source foreground was erased by uncertainty outside its annotation. Zero background
 in train/validation also blocks the trainer before model/download/output mutation.
 See [WI-06 verification](../14_WI_06_VERIFICATION.md) for software and real-trial status.
+
+WI-06 label/background update, 2026-10-09: laboratory human origin and visual
+class semantics are stakeholder-confirmed (subjective reliability 7/10, not measured
+accuracy). All eight proposed background interiors are approved, four train and
+four validation. Coverage remains non-exhaustive and roles stay 31/4/5. See
+[current confirmation and handoff evidence](03_LABEL_CONFIRMATION_AND_BACKGROUND_REVIEW.md).
+Earlier pending-label/zero-background statements describe historical snapshots.
+Real Colab training and fresh-runtime recovery remain unverified; draft PR #20,
+Issue #6 and the OpenSpec change remain open.
