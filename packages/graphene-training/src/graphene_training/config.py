@@ -42,6 +42,10 @@ class TrainingConfig(Strict):
 
 
 def environment(config):
+    # Native single-thread CPU kernels make the baseline replay stable across processes.
+    if config.device == "cpu":
+        torch.set_num_threads(1)
+        torch.backends.mkldnn.enabled = False
     if config.device == "cuda" and not torch.cuda.is_available():
         raise ValueError("CUDA requested but unavailable; select CPU explicitly")
     try:
@@ -57,6 +61,7 @@ def environment(config):
         "torch", "torchvision", "segmentation-models-pytorch", "timm", "numpy", "Pillow",
         "pydantic", "pycocotools", "graphene-training", "graphene-model-contract", "graphene-dataset-contract")},
         "torch_cuda": torch.version.cuda, "cudnn": torch.backends.cudnn.version(),
+        "cpu_backend": "native-single-thread" if config.device == "cpu" else "cuda",
         "cpu_threads": torch.get_num_threads(), "cpu_interop_threads": torch.get_num_interop_threads(),
         "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
         "device_policy": config.device, "precision": config.precision,

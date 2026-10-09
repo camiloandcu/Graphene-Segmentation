@@ -51,10 +51,16 @@ def preflight(dataset, config):
 
 
 class RoleDataset(torch.utils.data.Dataset):
-    def __init__(self, directory, role, config):
+    def __init__(self, directory, role, config, expected_fingerprint=None):
         if role not in ('train', 'validation'):
             raise ValueError('Baseline consumer uses only train and validation')
+        manifest = check(directory)
+        if expected_fingerprint is not None and manifest.dataset_fingerprint != expected_fingerprint:
+            raise ValueError("Dataset changed after preflight")
+        expected = [s.model_dump() for s in manifest.samples if s.role == role]
         self.items = list(iter_samples(directory, role))
+        if [s.model_dump() for s, _, _ in self.items] != expected or check(directory).dataset_fingerprint != manifest.dataset_fingerprint:
+            raise ValueError("Dataset changed while loading frozen role samples")
         self.role, self.config = role, config
 
     def __len__(self):

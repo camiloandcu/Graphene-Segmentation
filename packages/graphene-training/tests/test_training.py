@@ -261,3 +261,23 @@ def test_persistence_cannot_mutate_generation_directory(dataset,tmp_path):
     with pytest.raises(ValueError,match='separate'):
         persist(output,output/'epochs'/'epoch-000001')
     assert before=={p:p.read_bytes() for p in output.rglob('*') if p.is_file()}
+
+
+def test_changed_dataset_after_preflight_is_rejected(dataset):
+    with pytest.raises(ValueError,match='after preflight'):
+        RoleDataset(dataset,'train',TrainingConfig(input_size=64),expected_fingerprint='0'*64)
+
+
+def test_actual_unet_architecture_resume_matches_cpu(dataset,tmp_path):
+    from graphene_training.model import architecture
+    config=TrainingConfig(input_size=64,epochs=2,horizontal_flip=.5)
+    full,split=tmp_path/'full-unet',tmp_path/'split-unet'
+    run(dataset,config,full,_fixture_factory=architecture)
+    run(dataset,config,split,_fixture_factory=architecture,_stop_after=1)
+    resume(dataset,split,'epoch-000001',_fixture_factory=architecture)
+    a,b=load_state(full,'epoch-000002'),load_state(split,'epoch-000002')
+    assert all(torch.equal(v,b['model'][k]) for k,v in a['model'].items())
+    assert a['scheduler']==b['scheduler']
+    for pid,values in a['optimizer']['state'].items():
+        for key,value in values.items():
+            assert torch.equal(value,b['optimizer']['state'][pid][key])

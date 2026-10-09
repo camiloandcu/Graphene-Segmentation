@@ -118,7 +118,9 @@ def resume(dataset, run_directory, generation, *, _fixture_factory=None, _stop_a
 def train(dataset, config, output, model, optimizer, scheduler, scaler, generator,
           *, start, history, best_epoch, best_score, stop_after):
     if config.persistence_directory: persist(output, config.persistence_directory)
-    training, validation = RoleDataset(dataset, 'train', config), RoleDataset(dataset, 'validation', config)
+    expected = run_record(output)['dataset']['dataset_fingerprint']
+    training = RoleDataset(dataset, 'train', config, expected)
+    validation = RoleDataset(dataset, 'validation', config, expected)
     loader = torch.utils.data.DataLoader(training, batch_size=config.batch_size, shuffle=True,
                                         generator=generator, num_workers=0, drop_last=False)
     for epoch in range(start, config.epochs+1):
