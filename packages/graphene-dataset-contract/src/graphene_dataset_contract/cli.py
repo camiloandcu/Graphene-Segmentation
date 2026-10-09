@@ -14,6 +14,7 @@ def main(argv=None):
     prep = commands.add_parser("prepare", help="Validate a COCO ZIP and prepare a new handoff")
     prep.add_argument("source", type=Path)
     prep.add_argument("--output", type=Path, required=True)
+    prep.add_argument("--partial", action="store_true", help="Version 2: unannotated pixels remain unknown")
     prep.add_argument("--review", type=Path)
     prep.add_argument("--groups", type=Path, help="Additional source-bound candidate evidence JSON")
     verify = commands.add_parser("check", help="Validate a ready artifact before consumption")
@@ -21,7 +22,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         if args.command == "prepare":
-            report = prepare(args.source, args.output, review_path=args.review, groups_path=args.groups)
+            report = prepare(args.source, args.output, review_path=args.review, groups_path=args.groups, partial=args.partial)
             print(json.dumps(report, indent=2))
             return {"ready": 0, "blocked": 2, "invalid": 3}[report["status"]]
         manifest = check(args.dataset)

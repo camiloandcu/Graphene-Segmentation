@@ -33,7 +33,7 @@ def template(records, source_sha256):
                   samples=[Decision(sample_id=s.sample_id, source_path=s.source_path) for s in records])
 
 
-def validate_review(review: Review, records: list[Sample], groups: Groups) -> list[str]:
+def validate_review(review: Review, records: list[Sample], groups: Groups, *, partial: bool = False) -> list[str]:
     blockers = []
 
     def block(message):
@@ -78,9 +78,9 @@ def validate_review(review: Review, records: list[Sample], groups: Groups) -> li
                 block(f"{sid}: active sample has contradictory exclusion reason")
             if d.origin != "human" or d.eligibility_approved is not True or not d.origin_evidence:
                 block(f"{sid}: only reviewed human annotations are eligible; predictions/unknown origins are excluded")
-            if d.completeness not in ("exhaustive", "verified-background"):
+            if d.completeness not in (("exhaustive", "verified-background", "non-exhaustive") if partial else ("exhaustive", "verified-background")):
                 block(f"{sid}: exhaustive annotation or verified background review required")
-            if sample.annotation_count == 0 and d.completeness != "verified-background":
+            if sample.annotation_count == 0 and d.completeness != "verified-background" and not (partial and d.background_anchors):
                 block(f"{sid}: annotation-free image requires verified background review")
             if sample.annotation_count > 0 and d.completeness == "verified-background":
                 block(f"{sid}: foreground annotations contradict background-only review")
