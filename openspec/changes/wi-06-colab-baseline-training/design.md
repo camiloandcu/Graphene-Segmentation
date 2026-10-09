@@ -254,3 +254,13 @@ of the selected training-state digest, architecture/configuration, preprocessing
 dataset/split/supervision identity and explicitly masked exploratory development
 evidence. The regional human-review UI remains a separate provisional candidate;
 no predicted mask or vote is automatically admitted to training.
+
+## Verified CPU replay implementation detail
+
+CPU replay uses native single-thread kernels with oneDNN/MKLDNN disabled and
+records that policy. Multithread optimized CPU kernels produced small first-epoch
+numerical differences on the actual U-Net despite equal seeds and restored RNG.
+The native policy supports the approved deterministic CPU comparison; CUDA keeps
+its explicitly recorded precision/determinism policy without a bitwise cross-GPU
+promise. Role loading also rejects a dataset fingerprint changed after preflight
+and freezes matching source sample identities before optimization.

@@ -2,8 +2,8 @@
 
 Access: `gh`, authorized by the stakeholder. WI-01, WI-02 and WI-03 proposals are approved;
 WI-03 and WI-04 are stakeholder accepted and merged; WI-05 software is approved,
-implemented, technically verified and merged. WI-06 has a proposed OpenSpec change
-awaiting approval; later items retain their provisional readiness. Creating Issues does not
+implemented, technically verified and merged. WI-06 has an approved OpenSpec change with verified software and required
+real-data Colab evidence pending; later items retain their provisional readiness. Creating Issues does not
 approve their implementation or create additional OpenSpec proposals.
 
 | Work item | Issue | Parent | State |
@@ -13,7 +13,7 @@ approve their implementation or create additional OpenSpec proposals.
 | WI-03 | [#3](https://github.com/camiloandcu/Graphene-Segmentation/issues/3) | INC-01 / F-01 | Merged via PR #17; stakeholder accepted 2026-10-08 |
 | WI-04 | [#4](https://github.com/camiloandcu/Graphene-Segmentation/issues/4) | INC-01 / F-03 | Merged via PR #18; stakeholder accepted 2026-10-08 |
 | WI-05 | [#5](https://github.com/camiloandcu/Graphene-Segmentation/issues/5) | INC-01 / F-01 | Merged via PR #19; software verified; real ready handoff/lab review pending |
-| WI-06 | [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6) | INC-01 / F-02 | Single proposal prepared; approval pending; Issue remains provisional |
+| WI-06 | [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6) | INC-01 / F-02 | Approved; #6 refined and branch linked; software CPU-verified; real Colab acceptance pending |
 | WI-07 | [#7](https://github.com/camiloandcu/Graphene-Segmentation/issues/7) | INC-01 / F-02 | Provisional; refinement required |
 | WI-08 | [#8](https://github.com/camiloandcu/Graphene-Segmentation/issues/8) | INC-01 / F-02 | Provisional; refinement required |
 | WI-09 | [#9](https://github.com/camiloandcu/Graphene-Segmentation/issues/9) | INC-01 / F-03 | Provisional; refinement required |

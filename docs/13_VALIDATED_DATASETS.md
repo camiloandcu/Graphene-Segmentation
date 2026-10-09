@@ -3,13 +3,13 @@
 WI-05 provides an offline handoff for the occasional trainer. It supports the
 supplied Roboflow-style `train/valid/test/_annotations.coco.json` polygon ZIP.
 It produces either a validated dataset directory or an actionable diagnostic
-report. WI-06 will add training; dataset preparation itself does not train a model.
+report. WI-06 adds a separate [baseline trainer](14_COLAB_BASELINE_TRAINING.md); dataset preparation itself does not train a model.
 
 Current source, 2026-10-09: the stakeholder supplied v3 and authorized removal of
 the old ZIP. See [v3 review](review/wi06/01_DATASET_V3_REVIEW.md) for remapped IDs,
-approved grouped 31/4/5 roles and coverage uncertainty. The existing software is
-dense dataset-v1: it excludes non-exhaustive active samples. Partial-v2 support
-is proposed in WI-06 and is not implemented. Current v3 previews/partial review
+approved grouped 31/4/5 roles and coverage uncertainty. Dense dataset-v1
+excludes non-exhaustive active samples and remains supported. Partial-v2 support
+is implemented in WI-06; unannotated pixels remain unknown. Current v3 previews/partial review
 therefore produce blocked diagnostics, not a ready training artifact. No instruction
 below authorizes filling pending review fields with positive attestations.
 
@@ -101,11 +101,11 @@ identity. Never copy synthetic fixture attestations into the real lab review.
 
 ## Publish and verify the handoff
 
-The current v3 partial review intentionally remains blocked with the installed v1
-software. This command demonstrates validation; it publishes a ready handoff only
-if genuinely supported dense-v1 decisions exist. Do not mark coverage exhaustive
-to get past that check. Partial-mode preparation will use the approved WI-06 v2
-contract once implemented.
+The current v3 partial-v2 review intentionally remains blocked because genuine
+eligibility/semantic approvals and reviewed background evidence are absent. This
+command demonstrates validation; it publishes a ready handoff only after genuine
+review decisions are present. Schema-2 review selects partial preparation explicitly.
+Do not mark coverage exhaustive or invent reviewer attestations to get past a check.
 
 ```bash
 .workspace/wi05/venv/bin/graphene-dataset prepare \
@@ -182,5 +182,6 @@ Reproduce software and private real-source evidence:
 The v3 audit reads the current source without modifying it. Historical WI-05
 checker evidence used v2, whose source ZIP was deleted with authorization; do not
 run that v2-specific reconciliation against the new IDs/polygons. Genuine real ready
-handoff, partial-mode support, background anchors and training remain pending.
+real ready handoff, background anchors and real Colab training remain pending.
+Partial-mode preparation and the separate trainer are implemented and CPU-verified.
 See [WI-05 verification](review/13_WI_05_VERIFICATION.md) for measured results.

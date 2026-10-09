@@ -74,7 +74,7 @@ provenance confirmation.
 
 ## Partial preview and limits
 
-`.workspace/wi06/dataset-v3/lab-review.json` is a source-bound partial v1 review:
+`.workspace/wi06/dataset-v3/lab-review.json` is now a source-bound schema-v2 partial review:
 roles/groups/overlap policy and exploratory limitations are recorded; annotation
 eligibility/completeness and full physical semantics are not fabricated.
 `group-evidence.json` binds all 15 current candidates to this new source, so the
@@ -102,9 +102,9 @@ the revised WI-06 OpenSpec change passed, as did local links/whitespace across
 
 ## Remaining work and downstream consumers
 
-WI-05 v1 excludes non-exhaustive active samples. WI-06's revised design must extend
-the dataset contract explicitly for partial supervision before these previews can
-become a consumer-validated artifact. Preserve v1 compatibility and distinguish
+WI-05 v1 excludes non-exhaustive active samples. WI-06 implements
+the explicit partial-v2 contract. Its actual v3 preparation remains blocked by
+41 unresolved eligibility/semantic decisions; there is no ready manifest. Preserve v1 compatibility and distinguish
 unknown pixels from confirmed background; never relabel a v1 handoff silently.
 
 For real training, obtain reviewed origin/eligibility and independently supported
@@ -119,3 +119,23 @@ unverified. The full revised proposal requires approval before implementation.
 Human-in-the-loop regional opinions are a requested future screening capability,
 described in the UX/architecture review. They remain separate from pixel ground
 truth and do not silently alter this dataset, splits, checkpoints or frozen test.
+
+## Partial-v2 implementation verification, 2026-10-09
+
+The active review was migrated to explicit schema 2 with `supervision_mode: partial`,
+`non-exhaustive` coverage and empty background anchors. All missing approvals remain
+missing. Preparation against the unchanged v3 ZIP and approved groups produced
+`.workspace/wi06/dataset-v3/partial-v2-blocked-review/`, with 41 blockers.
+Source counts remain 40 images/621 polygons/1,792 conflicts. Supervised support:
+
+| Role | Images | Background | Few-layer | Bulk | Unknown |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Train | 31 | 0 | 993,405 | 27,819,254 | 123,558,541 |
+| Validation | 4 | 0 | 549,443 | 4,831,254 | 14,280,103 |
+| Test | 5 | 0 | 84,933 | 4,584,350 | 19,906,717 |
+
+The 157,745,361 unknown pixels include unannotated area and source conflicts;
+only 1,792 are magenta cross-class conflicts. No images were generated and no
+source foreground was erased by uncertainty outside its annotation. Zero background
+in train/validation also blocks the trainer before model/download/output mutation.
+See [WI-06 verification](../14_WI_06_VERIFICATION.md) for software and real-trial status.

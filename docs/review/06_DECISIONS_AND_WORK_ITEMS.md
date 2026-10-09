@@ -1,7 +1,7 @@
 # Decisions and work item hierarchy
 
 Status: WI-01 through WI-05 merged; WI-03 and WI-04 stakeholder accepted on
-2026-10-08. WI-06 has one revised proposal pending full approval. Its v3 source
+2026-10-08. WI-06 revised proposal is explicitly approved; software is implemented and CPU-verified, with required real Colab evidence pending. Its v3 source
 replacement, partial-label policy and grouped 31/4/5 assignments are recorded.
 Later items remain provisional, including requested regional-review WI-15.
 Apply the hierarchy **delivery increment -> feature -> executable
@@ -37,7 +37,7 @@ remain provisional.
 | WI-03 export audit | Technically verified; stakeholder accepted 2026-10-08 | 40 images, 759 polygon records, reversed source class IDs, 10 conflicting-label images; conditional pilot readiness and inconclusive independent evaluation. See the audit report. |
 | Thick_Graphene equivalence to lab bulk | Proposed, requires label review | External-data mapping cannot silently assume equivalent thickness definitions. |
 | ONNX package for app inference | WI-02 v1 contract approved | Small CPU runtime; package validation replaces framework guessing. |
-| U-Net baseline / compact SegFormer challenger | Recommended, awaiting approval | Model selection follows measured lab performance, not a SOTA claim. |
+| U-Net baseline / compact SegFormer challenger | U-Net baseline approved in WI-06; challenger remains provisional | Model selection follows measured lab performance, not a SOTA claim. |
 | Frozen small DINOv3 segmentation probe | Optional, access/resource gated | Recent limited-label transfer candidate; include only after license/access, export, and runtime feasibility checks. |
 | Figshare pretraining | Optional, gated by audit/comparison | Include only if it helps held-out lab performance without excessive false detections. |
 
@@ -268,11 +268,13 @@ supervision/grouped roles on 2026-10-09. One revised
 [design](../../openspec/changes/wi-06-colab-baseline-training/design.md),
 [specification](../../openspec/changes/wi-06-colab-baseline-training/specs/colab-baseline-training/spec.md)
 and [tasks](../../openspec/changes/wi-06-colab-baseline-training/tasks.md) are
-prepared for explicit review. Full revised proposal/design/specifications explicitly approved on 2026-10-09;
+reviewed. Full revised proposal/design/specifications explicitly approved on 2026-10-09;
 Issue #6 is refined and branch `feat/wi-06-colab-baseline-training` is linked. Dataset-v3 replacement/audit, role record and analysis previews are
-complete; no software implementation, branch, commit, training or account connection.
+complete. The partial-v2 contract and separate trainer/notebook are implemented;
+no real lab training or Google account connection has occurred. See
+[verification](14_WI_06_VERIFICATION.md).
 
-Proposed scope: separate training package/thin notebook, U-Net/ResNet-18 ImageNet
+Approved implemented scope: separate training package/thin notebook, U-Net/ResNet-18 ImageNet
 initialization, 512-pixel letterbox, ignore-aware CE + foreground soft Dice,
 AdamW/schedule, partial-dataset-v2 support with reviewed background anchors,
 original-coordinate supervised validation metrics, durable completed-epoch
@@ -290,7 +292,7 @@ No automatic split changes or fabricated reviewer statements.
 Authoritative numbered acceptance criteria are in the proposal: **AC-1** verified
 role-isolated dataset; **AC-2** actual pretrained optimization/run provenance;
 **AC-3** complete durable state/recovery; **AC-4** original-coordinate best selection;
-**AC-5** real reviewed-data Colab execution plus fresh-runtime resume. All unverified.
+**AC-5** real reviewed-data Colab execution plus fresh-runtime resume. Software evidence for AC-1–4 passes; real-data portions remain unverified.
 AC-5 is required for item completion; synthetic/local smoke runs cannot satisfy it.
 G-01/2 approval precedes coding; G-03 real acceptance, G-04 verified sync/archive
 and submission, and G-05 release remain separate.
@@ -351,9 +353,9 @@ Keep these separate from item acceptance criteria and implementation tasks:
   WI-05 proposal/design/specs explicitly approved on 2026-10-08; software
   implemented, verified, specs synced and change archived. Real-data human gate
   and item acceptance remain separate. WI-06's single proposal is prepared on
-  2026-10-08 and revised on 2026-10-09 for partial v3 data; full approval remains
-  pending before implementation. Only its source transition/policy decisions
-  are approved. WI-15 remains a requested candidate, not a second proposal.
+  2026-10-08, revised on 2026-10-09 for partial v3 data and explicitly approved
+  on 2026-10-09. Software is implemented and CPU-verified; the mandatory real
+  Colab trial remains unverified. WI-15 remains a requested candidate, not a second proposal.
 - **G-03 — Item acceptance:** record each criterion as passed, failed, or
   unverified with its evidence; required human review is pending until confirmed.
   For US items use Given/When/Then, for fixes preserve reproducer/boundaries,

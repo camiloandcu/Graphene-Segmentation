@@ -2,12 +2,12 @@
 
 Status: WI-01 through WI-05 merged; WI-03 and WI-04 stakeholder accepted on
 2026-10-08. WI-05 software is technically verified; genuine lab dataset review
-remains pending. WI-06 revised proposal is explicitly approved on 2026-10-09; implementation starts.
+remains pending. WI-06 revised proposal is explicitly approved on 2026-10-09; software is implemented and CPU-verified; real Colab acceptance remains pending.
 Current v3 has approved grouped roles but incomplete-coverage uncertainty;
 reviewed eligibility/background anchors and broader release remain separate.
 Checked: 2026-10-09.
 
-Current item: WI-06 has one revised proposed
+Current item: WI-06 has one revised approved
 [change](../../openspec/changes/wi-06-colab-baseline-training/proposal.md),
 [design](../../openspec/changes/wi-06-colab-baseline-training/design.md),
 [training specification](../../openspec/changes/wi-06-colab-baseline-training/specs/colab-baseline-training/spec.md),
@@ -98,3 +98,8 @@ Application startup is the WI-01 local foundation; WI-02 adds a shared contract
 library and optional validation dependencies. Dataset inspections
 used public metadata/byte ranges for initial planning and a stakeholder-supplied
 local export for WI-03; no dataset account was accessed.
+
+WI-06 software verification: [report](14_WI_06_VERIFICATION.md),
+[training and recovery guide](../14_COLAB_BASELINE_TRAINING.md), and
+[notebook](../../notebooks/01_COLAB_BASELINE_TRAINING.ipynb). The change remains
+active; specs are not synced/archived as completed while mandatory AC-5 is unverified.
