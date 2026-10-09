@@ -166,3 +166,9 @@ Next user step: reload the Codex client/window so it loads the configured MCP,
 then authorize the browser/account connection when opened. Google Drive is chosen,
 but no Drive mount, notebook upload, remote optimization or recovery trial has
 happened yet. Do not claim mandatory AC-5 or archive WI-06 on installation alone.
+
+Connection follow-up: the browser-opening attempt was interrupted. The resumed
+conversation no longer exposed the native Colab tool, so a private local stdio
+client of the installed official MCP is used as a fallback. No browser connection
+was confirmed within the initial timeout; an interactive client remains available
+for user authorization. No dataset upload, Drive mount or training is claimed.
