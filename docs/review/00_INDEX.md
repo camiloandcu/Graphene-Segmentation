@@ -1,11 +1,32 @@
 # Project repair review
 
-Status: WI-01 through WI-04 merged; WI-03 and WI-04 stakeholder accepted on
-2026-10-08. WI-05 software is implemented and technically verified; PR #19 open; stakeholder item acceptance/merge pending.
-Real label/split decisions and broader release remain separate.
-Checked: 2026-10-08.
+Status: WI-01 through WI-05 merged; WI-03 and WI-04 stakeholder accepted on
+2026-10-08. WI-05 software is technically verified; genuine lab dataset review
+remains pending. WI-06 revised proposal is explicitly approved on 2026-10-09; implementation starts.
+Current v3 has approved grouped roles but incomplete-coverage uncertainty;
+reviewed eligibility/background anchors and broader release remain separate.
+Checked: 2026-10-09.
 
-Current item: WI-05 proposal/design/specs were explicitly approved on 2026-10-08.
+Current item: WI-06 has one revised proposed
+[change](../../openspec/changes/wi-06-colab-baseline-training/proposal.md),
+[design](../../openspec/changes/wi-06-colab-baseline-training/design.md),
+[training specification](../../openspec/changes/wi-06-colab-baseline-training/specs/colab-baseline-training/spec.md),
+[partial-dataset specification](../../openspec/changes/wi-06-colab-baseline-training/specs/validated-labeled-datasets/spec.md)
+and [tasks](../../openspec/changes/wi-06-colab-baseline-training/tasks.md).
+Stakeholder explicitly approved the revised proposal/design/specifications on
+2026-10-09. Issue #6 is refined and `feat/wi-06-colab-baseline-training` is linked
+with `gh issue develop 6`. Real training remains gated by background/eligibility.
+The stakeholder supplied v3, authorized deletion of the old ZIP and approved
+grouped 31/4/5 roles plus treating unannotated pixels as unknown. See the
+[current data evidence](wi06/00_INDEX.md): 40 unchanged image bytes, 621 polygons,
+six conflict images/1,792 ignored pixels, remapped IDs and partial-mask previews.
+The revised design adds explicit partial-v2 dataset support while preserving v1.
+No ready handoff exists yet; reviewed eligibility/background evidence is pending.
+Required real Colab training/resume evidence cannot be replaced by smoke tests.
+Requested regional human review is documented in product/UX/architecture and
+provisional WI-15; no second proposal or UI implementation is prepared.
+
+Previous item: WI-05 proposal/design/specs were explicitly approved on 2026-10-08.
 Its offline dataset contract/CLI and consumer loader are implemented on
 `feat/wi-05-validated-labeled-datasets`, linked to Issue #5. See
 [WI-05 verification](13_WI_05_VERIFICATION.md) for 84 passing checks, real-export
@@ -13,8 +34,10 @@ reconciliation, synthetic handoff and fresh wheel installation. Real lab label/
 split review remains pending; no real ready handoff or training is claimed.
 Verified software requirements are synced and the change is
 [archived](../../openspec/changes/archive/2026-10-08-wi-05-validated-labeled-datasets/README.md).
-[PR #19](https://github.com/camiloandcu/Graphene-Segmentation/pull/19) is open with `Closes #5`. Stakeholder acceptance/merge
-remain separate; no subsequent proposal is prepared.
+[PR #19](https://github.com/camiloandcu/Graphene-Segmentation/pull/19) is merged
+(checked via authorized `gh` on 2026-10-08); local `main` already contains
+`aed35d2`. Merge does not supply the pending real lab review or establish
+stakeholder item acceptance. Only WI-06 is prepared as the next proposal.
 
 Previous item: WI-04 proposal/design/specs were explicitly approved on 2026-10-08.
 Implementation on `feat/wi-04-local-model-management` adds bounded local model import,
@@ -63,6 +86,8 @@ Read in this order:
 11. [WI-03 verification](11_WI_03_VERIFICATION.md): lab data audit and readiness evidence.
 12. [WI-04 verification](12_WI_04_VERIFICATION.md): local model management, migration and browser evidence.
 13. [WI-05 verification](13_WI_05_VERIFICATION.md): offline dataset/review contracts, real blockers and synthetic ready handoff.
+14. [WI-06 data review](wi06/00_INDEX.md): active source v3, grouped roles,
+    partial-label readiness and the single revised training proposal.
 
 Confirmed stakeholder decisions take precedence over recommendations. Open decisions
 must be resolved or explicitly accepted as assumptions before their dependent work.

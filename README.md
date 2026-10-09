@@ -19,8 +19,11 @@ conditional pilot planning; it does not establish an independent test benchmark.
 
 For trainers, the [offline dataset workflow](docs/13_VALIDATED_DATASETS.md)
 validates the COCO export, preserves canonical classes/provenance and enforces
-reviewed split decisions. Real dataset readiness remains blocked until the lab
-supplies its label and grouping review; saved predictions cannot enter ground truth.
+reviewed split decisions. The [current v3 review](docs/review/wi06/01_DATASET_V3_REVIEW.md)
+records refined labels on the same 40 images and grouped assignments. Coverage
+remains uncertain; partial-supervision support and reviewed background evidence
+are still pending. Saved predictions cannot enter ground truth automatically.
+Regional human review is a planned workflow, not an available feature.
 
 ## Run on Linux
 

@@ -7,6 +7,36 @@ version-2 lab export. Its verified counts, class mapping, conflicts and split
 limitations supersede the historical lab-export unknowns below. Broader training
 recommendations remain planning decisions; no experiment has been run.
 
+Update 2026-10-09: the stakeholder-supplied v3 export supersedes v2 for training.
+See [v3 evidence](wi06/01_DATASET_V3_REVIEW.md): same 40 image bytes, 621 polygons,
+39 remapped IDs, six conflict images/1,792 ignored pixels and approved grouped
+31/4/5 assignments. The old source ZIP was deleted with authorization; historical
+WI-03 results remain historical. Relative refinement does not establish exhaustive
+coverage; the stakeholder explicitly keeps that uncertainty.
+
+Confirmed policy for the revised WI-06 design: retain eligible labeled foreground,
+ignore overlaps and treat every other unannotated pixel as unknown. Supervised
+background needs reviewed regions or material-free controls, not absent polygons.
+Extend the dataset contract with an explicit partial-v2 mode, preserving dense-v1
+compatibility and binding anchors/supervision to fingerprints. No such ready v2
+handoff or reviewed background anchors currently exists. The 40 current masks are
+analysis previews only; real training stays blocked pending those inputs and
+the full revised proposal approval.
+
+Use masked development metrics with fixed supervised support and unknown coverage;
+do not infer whole-image accuracy, full false detections or complete flake recall.
+This proposed approach follows the partial-label principle of keeping unannotated
+pixels unknown, as illustrated by
+[ScribbleSup](https://openaccess.thecvf.com/content_cvpr_2016/html/Lin_ScribbleSup_Scribble-Supervised_Convolutional_CVPR_2016_paper.html)
+(primary source checked 2026-10-08); its benchmark performance does not establish
+graphene suitability. Automated propagation/pseudo-labeling is outside WI-06.
+
+Requested future human-in-the-loop review records regional class opinions tied
+to exact predictions. A correct/incorrect/unsure vote does not approve boundaries,
+become pixel ground truth or initiate training. Curate evidence separately, keep
+disagreements/revisions and isolate frozen test groups. See the UX/architecture
+brief and provisional WI-15; no second OpenSpec proposal is prepared.
+
 ## Verified sources and remaining unknowns
 
 | Source | Verified evidence | Unknown / implication |

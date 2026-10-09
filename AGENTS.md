@@ -26,6 +26,8 @@ distinguished in the README and work-item records.
   `docs/10_PORTABLE_MODEL_CONTRACT.md`.
 - Model import, selection and recovery: `docs/11_LOCAL_MODEL_MANAGEMENT.md`.
 - Dataset review, preparation and consumer contract: `docs/13_VALIDATED_DATASETS.md`.
+- Current training-data version review and readiness evidence:
+  `docs/review/wi06/00_INDEX.md`.
 
 For a work-item request, locate its definition and approved OpenSpec change, then
 read only the context relevant to its scope. Treat zero-padded identifiers such

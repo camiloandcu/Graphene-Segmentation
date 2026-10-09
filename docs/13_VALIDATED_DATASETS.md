@@ -5,6 +5,14 @@ supplied Roboflow-style `train/valid/test/_annotations.coco.json` polygon ZIP.
 It produces either a validated dataset directory or an actionable diagnostic
 report. WI-06 will add training; dataset preparation itself does not train a model.
 
+Current source, 2026-10-09: the stakeholder supplied v3 and authorized removal of
+the old ZIP. See [v3 review](review/wi06/01_DATASET_V3_REVIEW.md) for remapped IDs,
+approved grouped 31/4/5 roles and coverage uncertainty. The existing software is
+dense dataset-v1: it excludes non-exhaustive active samples. Partial-v2 support
+is proposed in WI-06 and is not implemented. Current v3 previews/partial review
+therefore produce blocked diagnostics, not a ready training artifact. No instruction
+below authorizes filling pending review fields with positive attestations.
+
 ## Install and start with validation
 
 From the repository root, on Linux with Python 3.12 and `uv`:
@@ -15,8 +23,9 @@ uv pip install --python .workspace/wi05/venv/bin/python \
   -r scripts/requirements-wi05.txt \
   -e packages/graphene-model-contract -e packages/graphene-dataset-contract
 .workspace/wi05/venv/bin/graphene-dataset prepare \
-  '.workspace/wi03/source/2D Materials segmentation.v2i.coco-segmentation.zip' \
-  --output .workspace/wi05/review-needed
+  '.workspace/wi06/source/2D Materials segmentation.v3i.coco-segmentation.zip' \
+  --groups .workspace/wi06/dataset-v3/group-evidence.json \
+  --output .workspace/wi06/dataset-v3/review-needed
 ```
 
 Use a new output directory each time. Without review, exit **2** means expected
@@ -26,7 +35,8 @@ blocked directory. Templates contain null decisions and are never approval recor
 Exit **0** means ready, **3** invalid source/review/artifact and **4** I/O failure.
 The CLI prints JSON with specific affected records/remedies; keep full logs private.
 
-Raw images, reviewer identities and manifests belong in ignored `.workspace/wi05/`.
+Raw images, reviewer identities and manifests belong in ignored `.workspace/`;
+current data is under `.workspace/wi06/`, historical WI-05 fixtures under `.workspace/wi05/`.
 Keep source ZIPs unchanged; a corrected export has a new digest and needs a new
 bound review. Prior output directories are never overwritten.
 
@@ -72,7 +82,7 @@ finding, while `uncertain` is allowed only with explicit exploratory limitations
 when both images remain active. No random split fractions or automatic shuffling
 are applied. Original roles are preserved separately from effective assignments.
 
-For the supplied export, all 15 WI-03 candidate pairs are bundled with source-bound
+For the historical v2 export, all 15 WI-03 candidate pairs are bundled with source-bound
 evidence, including `test-000/train-007` and `test-001/valid-002`. They cannot be
 silently omitted by supplying an empty evidence record. Other exports may supply
 additional source-bound evidence with `--groups groups.json`; its schema contains
@@ -80,17 +90,30 @@ additional source-bound evidence with `--groups groups.json`; its schema contain
 not search new near-duplicates. Missing acquisition/duplicate evidence must remain
 an explicit review limitation, rather than a claim of independence.
 
+For current v3, supply `.workspace/wi06/dataset-v3/group-evidence.json` explicitly:
+it binds the 15 remapped candidates to the new checksum. The confirmed pairs are
+`test-001/valid-003` and `test-002/train-028`, assigned together to test in the
+partial review. Source IDs from v2 must not be copied directly.
+
 WI-03 stakeholder acceptance accepted its conditional/inconclusive audit result.
 It did not confirm class semantics, conflicts, annotation completeness or acquisition
 identity. Never copy synthetic fixture attestations into the real lab review.
 
 ## Publish and verify the handoff
 
+The current v3 partial review intentionally remains blocked with the installed v1
+software. This command demonstrates validation; it publishes a ready handoff only
+if genuinely supported dense-v1 decisions exist. Do not mark coverage exhaustive
+to get past that check. Partial-mode preparation will use the approved WI-06 v2
+contract once implemented.
+
 ```bash
 .workspace/wi05/venv/bin/graphene-dataset prepare \
-  '.workspace/wi03/source/2D Materials segmentation.v2i.coco-segmentation.zip' \
-  --review .workspace/wi05/lab-review.json --output .workspace/wi05/reviewed-dataset
-.workspace/wi05/venv/bin/graphene-dataset check .workspace/wi05/reviewed-dataset
+  '.workspace/wi06/source/2D Materials segmentation.v3i.coco-segmentation.zip' \
+  --review .workspace/wi06/dataset-v3/lab-review.json \
+  --groups .workspace/wi06/dataset-v3/group-evidence.json \
+  --output .workspace/wi06/dataset-v3/prepared-new
+.workspace/wi05/venv/bin/graphene-dataset check .workspace/wi06/dataset-v3/prepared-new
 ```
 
 A ready directory contains `manifest.json`, `validation.json`, `images/` and
@@ -118,9 +141,9 @@ outside what local software can detect. Keep ready artifacts immutable.
 ```python
 from graphene_dataset_contract import check, iter_samples
 
-manifest = check(".workspace/wi05/reviewed-dataset")
+manifest = check("/path/to/a/genuinely-ready-dataset")
 print(manifest.dataset_fingerprint, manifest.split_fingerprint)
-for sample, rgb, mask in iter_samples(".workspace/wi05/reviewed-dataset", "train"):
+for sample, rgb, mask in iter_samples("/path/to/a/genuinely-ready-dataset", "train"):
     # Apply any later resize/patch/augmentation after split isolation.
     # WI-06 loss and metrics must honor ignore label 255.
     pass
@@ -151,12 +174,13 @@ Reproduce software and private real-source evidence:
 ```bash
 .workspace/wi05/venv/bin/python -m pytest \
   packages/graphene-dataset-contract/tests scripts/tests/test_lab_dataset_audit.py -q
-.workspace/wi05/venv/bin/python scripts/check-dataset-handoff.py \
-  --source '.workspace/wi03/source/2D Materials segmentation.v2i.coco-segmentation.zip' \
-  --audit .workspace/wi03/audit-02 --output .workspace/wi05/verification-new
+.workspace/wi03/venv/bin/python scripts/audit_lab_dataset.py \
+  '.workspace/wi06/source/2D Materials segmentation.v3i.coco-segmentation.zip' \
+  .workspace/wi06/dataset-v3/audit-new
 ```
 
-The checker performs two real blocked runs, compares all 40 masks to WI-03, and
-performs two synthetic ready handoffs with consumer iteration. Genuine real ready
-handoff, training and independent evaluation remain gated by lab review.
+The v3 audit reads the current source without modifying it. Historical WI-05
+checker evidence used v2, whose source ZIP was deleted with authorization; do not
+run that v2-specific reconciliation against the new IDs/polygons. Genuine real ready
+handoff, partial-mode support, background anchors and training remain pending.
 See [WI-05 verification](review/13_WI_05_VERIFICATION.md) for measured results.

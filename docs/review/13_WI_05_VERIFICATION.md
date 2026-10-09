@@ -1,12 +1,12 @@
 # WI-05 validated dataset verification
 
 Checked: 2026-10-08. Proposal/design/specs explicitly approved by stakeholder.
-Status: software contract implemented and technically verified; stakeholder
-acceptance/merge and genuine real-label/split readiness remain pending.
+Status: software contract implemented, technically verified and merged via PR #19;
+stakeholder item acceptance and genuine real-label/split readiness remain separate.
 Issue: [#5](https://github.com/camiloandcu/Graphene-Segmentation/issues/5).
 Branch: `feat/wi-05-validated-labeled-datasets`, linked with `gh issue develop 5`.
 Approved-design commit: `8447823`. Implementation commit: `b17453f`.
-[PR #19](https://github.com/camiloandcu/Graphene-Segmentation/pull/19) is open with `Closes #5`; GitHub confirms the closing Issue
+[PR #19](https://github.com/camiloandcu/Graphene-Segmentation/pull/19) is merged with `Closes #5`; GitHub confirms the closing Issue
 association. Both commits are pushed; handoff references are committed separately.
 No automated GitHub checks are configured on this PR (checked via `gh`).
 
@@ -23,9 +23,9 @@ images and 10,578 conflict pixels**, with all source bytes, decoded RGB digests,
 class support and all 40 decoded masks matching WI-03. The source was unchanged.
 All 15 WI-03 grouping candidates are retained, including the two cross-split pairs.
 The real source correctly produces a **blocked** report and no ready manifest:
-physical-category, eligibility/completeness, conflict and split/group decisions
-have not been supplied. Stakeholder acceptance of WI-03 was not substituted for
-those decisions.
+physical-category, eligibility/completeness and split/group decisions remain
+pending. Conflict handling was subsequently approved as described below.
+Stakeholder acceptance of WI-03 was not substituted for the remaining decisions.
 
 Two reviewed synthetic handoffs reproduced dataset and split fingerprints. The
 consumer iterated one sample each in train, validation and test with original
@@ -94,9 +94,57 @@ excluded from Git. The checked summary contains:
 
 ## Remaining human decisions
 
+Current source update, 2026-10-09: v3 now supersedes this historical v2 evidence.
+The old source ZIP was deleted with stakeholder authorization. See the
+[current source review](wi06/01_DATASET_V3_REVIEW.md) for remapped decisions,
+approved grouped 31/4/5 assignments, six remaining overlap images and partial-label
+uncertainty. The old private review and numeric IDs are historical records only.
+WI-05 v1 software remains verified; the v3 partial dataset is not a ready v1 handoff.
+
+On 2026-10-08, the stakeholder approved ignoring only magenta overlap pixels in
+the 10 affected real images, keeping all other labels and image content. The
+source-bound partial review is saved privately at `.workspace/wi05/lab-review.json`:
+only these samples receive `conflict_policy: ignore` and the decision rationale.
+Class semantics, eligibility/completeness, effective roles, groups and evaluation
+remain unapproved in that record; this decision does not authorize training or
+approve the WI-06 proposal.
+
+Targeted verification passed: all 40 regenerated masks match the WI-03 audit,
+all original image bytes are preserved, and exactly 10,578 pixels in 10 images
+are 255 with the approved ignore rationale. Preparation with the partial review
+produced only blocked diagnostics at `.workspace/wi05/conflict-policy-review-01/`,
+with no ready manifest. The source ZIP digest matches the review. No new code or
+training was needed; `git diff --check` passed.
+
+Additional stakeholder clarification, 2026-10-08: few-layer includes monolayer
+and few-layer graphene. Bulk above 10 layers is a stakeholder assumption attributed
+to literature, not a confirmed criterion used by the annotators. The stakeholder
+tentatively considers bulk annotation complete but suspects unmarked few-layer
+regions based on non-expert visual inspection. Missing regions are not confirmed,
+and exhaustive background/foreground coverage is not approved; completeness stays
+unresolved in the private review rather than being promoted to `exhaustive`.
+
+The two cross-role candidates share original filename tokens `070524/Amostra-1`
+(`test-001/valid-002`) and `070524/Amostra-3` (`test-000/train-007`), with
+`Floco-1` versus `Floco-2` in each pair. On 2026-10-08, after reviewing that
+evidence, the stakeholder confirmed shared physical samples and requested grouped
+reorganization. Both pairs now have `co-group` dispositions and matching known
+sample-group identities in the partial review. Final effective roles remain
+pending; confirmed members must be placed in the same role. The other candidate
+groups are not automatically approved by confirmation of these two pairs.
+
+The stakeholder also states that manual pixel-precise labeling/refinement cannot
+be considered reliable. Treating unannotated regions as confirmed background
+therefore remains unsupported. Partial-label supervision with unknown pixels
+ignored and independently supported background anchors is a possible revised
+design, not implemented behavior. WI-05 v1 excludes non-exhaustive samples and
+WI-06 currently assumes its ready dataset; supporting partial supervision requires
+review of the affected dataset/training/evaluation contracts before code changes.
+
 Supply a real source-bound lab review confirming physical categories, annotation
-origin/completeness, conflicting-label correction or justified ignore, acquisition/
+origin/completeness, acquisition/
 candidate grouping, and explicit split assignments or exclusions. Unknown physical
 facts cannot be resolved by successful PNG conversion. Then run real preparation/
 consumer checks and record genuine readiness before WI-06 real training.
-No new proposal, protected branch update, model training or cloud action is included.
+The WI-06 proposal is now separately pending approval. No protected branch update,
+model training or cloud action is included in recording this dataset decision.
