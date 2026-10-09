@@ -1,0 +1,11 @@
+--- a/src/colab_mcp/session.py
++++ b/src/colab_mcp/session.py
+@@ -68,7 +68,7 @@
+         with contextlib.suppress(asyncio.TimeoutError):
+             # wait for the connection to be live and for the proxy client to fully initialize
+             connection_tasks = asyncio.gather(
+-                self.wss.connection_live.wait(), self._start_task
++                self.wss.connection_live.wait(), asyncio.shield(self._start_task)
+             )
+             await asyncio.wait_for(
+                 connection_tasks,

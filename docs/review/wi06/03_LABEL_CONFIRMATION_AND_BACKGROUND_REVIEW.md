@@ -172,3 +172,22 @@ conversation no longer exposed the native Colab tool, so a private local stdio
 client of the installed official MCP is used as a fallback. No browser connection
 was confirmed within the initial timeout; an interactive client remains available
 for user authorization. No dataset upload, Drive mount or training is claimed.
+
+
+## Browser timeout diagnosis and local repair
+
+The restarted host process was listening on IPv4 loopback, and its log recorded
+incoming WebSocket connections after the browser-open tool had timed out. Browser
+access still failed. The installed upstream code passed the long-lived proxy
+initialization task into a gather cancelled by `asyncio.wait_for` on timeout.
+A targeted asynchronous reproduction confirmed that the handshake task became
+cancelled after the timeout.
+
+The private installation now applies [this one-line local patch](../../../scripts/colab-mcp-timeout.patch)
+to the pinned upstream revision: shield the proxy initialization task while waiting.
+Its timeout still returns normally, but initialization can continue when the user
+connects later. Verification passes for early connection, task survival across
+timeout, late initialization and a subsequent wait. The original upstream source
+is retained privately for rollback. This is a local repair, not an upstream release
+or a change to the training package. The corrected host instance was restarted;
+actual browser/notebook access remains unconfirmed and no lab run has started.
