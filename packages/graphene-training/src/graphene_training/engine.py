@@ -12,7 +12,7 @@ from .config import TrainingConfig, compatible, environment
 from .data import RoleDataset, preflight
 from .model import architecture, initialize
 from .objective import evaluate, loss
-from .storage import inspect, load_state, lock, persist, run_record, save_generation, verify_generation
+from .storage import inspect, load_state, lock, persist, run_record, save_generation, separate_destination, verify_generation
 
 
 def seed_all(seed):
@@ -56,6 +56,7 @@ def run(dataset, config, output, *, _fixture_factory=None, _stop_after=None):
     env = environment(config)
     output = Path(output)
     if output.exists() or output.is_symlink(): raise ValueError('Use a new run output')
+    if config.persistence_directory: separate_destination(output, config.persistence_directory)
     seed_all(config.seed)
     if _fixture_factory:
         model = _fixture_factory()

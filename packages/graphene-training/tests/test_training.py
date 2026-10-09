@@ -252,3 +252,12 @@ def test_training_and_selection_never_request_test_role(dataset,tmp_path,monkeyp
     monkeypatch.setattr(data,'iter_samples',monitored)
     run(dataset,TrainingConfig(input_size=64,epochs=1),tmp_path/'run',_fixture_factory=tiny)
     assert set(requested)=={'train','validation'}
+
+
+def test_persistence_cannot_mutate_generation_directory(dataset,tmp_path):
+    output=tmp_path/'run'
+    run(dataset,TrainingConfig(input_size=64,epochs=1),output,_fixture_factory=tiny)
+    before={p:p.read_bytes() for p in output.rglob('*') if p.is_file()}
+    with pytest.raises(ValueError,match='separate'):
+        persist(output,output/'epochs'/'epoch-000001')
+    assert before=={p:p.read_bytes() for p in output.rglob('*') if p.is_file()}

@@ -146,12 +146,17 @@ def load_state(run, generation):
     return state
 
 
+def separate_destination(run, destination):
+    source, target = Path(run).resolve(), Path(destination).resolve()
+    if source == target or source in target.parents or target in source.parents:
+        raise ValueError("Persistence destination must be separate from the run and its parents/children")
+
+
 def persist(run, destination):
     """Copy and verify members; never assume Drive rename/fsync semantics."""
     run, destination = Path(run), Path(destination)
     status = inspect(run)
-    if destination.resolve() == run.resolve():
-        raise ValueError('Persistence destination must differ from transient run')
+    separate_destination(run, destination)
     if destination.is_symlink(): raise ValueError('Persistence destination cannot be a symlink')
     destination.mkdir(parents=True, exist_ok=True)
     def copy_member(source, target):
