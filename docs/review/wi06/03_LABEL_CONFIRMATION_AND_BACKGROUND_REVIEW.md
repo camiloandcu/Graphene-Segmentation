@@ -191,3 +191,13 @@ timeout, late initialization and a subsequent wait. The original upstream source
 is retained privately for rollback. This is a local repair, not an upstream release
 or a change to the training package. The corrected host instance was restarted;
 actual browser/notebook access remains unconfirmed and no lab run has started.
+
+
+Browser connection is now verified: the official MCP returned `result: true`,
+exposed notebook editing/reading tools, and `get_cells` successfully returned one
+empty code cell with no error. The private client adapter was corrected to serialize
+FastMCP's dataclass response through its content/structured-content fields and to
+retain the session on tool errors. Its host restart preserved the connection URL,
+port and token, and the subsequent real read completed without terminating the
+client. This establishes browser/notebook access only; compute-runtime access,
+Drive mounting/authorization, dataset upload and actual training remain unverified.
