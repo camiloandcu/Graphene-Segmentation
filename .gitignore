@@ -9,3 +9,6 @@ __pycache__/
 .impeccable/review/
 .workspace/
 :memory:.ses
+
+# Machine-local MCP registration; executable lives in the private workspace.
+.codex/config.toml

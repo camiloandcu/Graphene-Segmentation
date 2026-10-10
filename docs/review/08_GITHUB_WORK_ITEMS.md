@@ -1,7 +1,9 @@
 # GitHub work item tracking
 
 Access: `gh`, authorized by the stakeholder. WI-01, WI-02 and WI-03 proposals are approved;
-WI-03 and WI-04 are stakeholder accepted and merged; WI-05 software is approved, implemented and technically verified. Later items retain their provisional readiness. Creating Issues does not
+WI-03 and WI-04 are stakeholder accepted and merged; WI-05 software is approved,
+implemented, technically verified and merged. WI-06 has an approved OpenSpec change with verified software and required
+real-data Colab evidence pending; later items retain their provisional readiness. Creating Issues does not
 approve their implementation or create additional OpenSpec proposals.
 
 | Work item | Issue | Parent | State |
@@ -10,8 +12,8 @@ approve their implementation or create additional OpenSpec proposals.
 | WI-02 | [#2](https://github.com/camiloandcu/Graphene-Segmentation/issues/2) | INC-01 / F-03 | Merged via PR #16 |
 | WI-03 | [#3](https://github.com/camiloandcu/Graphene-Segmentation/issues/3) | INC-01 / F-01 | Merged via PR #17; stakeholder accepted 2026-10-08 |
 | WI-04 | [#4](https://github.com/camiloandcu/Graphene-Segmentation/issues/4) | INC-01 / F-03 | Merged via PR #18; stakeholder accepted 2026-10-08 |
-| WI-05 | [#5](https://github.com/camiloandcu/Graphene-Segmentation/issues/5) | INC-01 / F-01 | Software verified; real ready handoff/lab review pending; PR #19 open |
-| WI-06 | [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6) | INC-01 / F-02 | Provisional; refinement required |
+| WI-05 | [#5](https://github.com/camiloandcu/Graphene-Segmentation/issues/5) | INC-01 / F-01 | Merged via PR #19; software verified; real ready handoff/lab review pending |
+| WI-06 | [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6) | INC-01 / F-02 | Approved; [draft PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20); software CPU-verified; real Colab acceptance pending |
 | WI-07 | [#7](https://github.com/camiloandcu/Graphene-Segmentation/issues/7) | INC-01 / F-02 | Provisional; refinement required |
 | WI-08 | [#8](https://github.com/camiloandcu/Graphene-Segmentation/issues/8) | INC-01 / F-02 | Provisional; refinement required |
 | WI-09 | [#9](https://github.com/camiloandcu/Graphene-Segmentation/issues/9) | INC-01 / F-03 | Provisional; refinement required |
@@ -20,6 +22,7 @@ approve their implementation or create additional OpenSpec proposals.
 | WI-12 | [#12](https://github.com/camiloandcu/Graphene-Segmentation/issues/12) | INC-01 / F-04 | Provisional; refinement required |
 | WI-13 | [#13](https://github.com/camiloandcu/Graphene-Segmentation/issues/13) | INC-01 / F-05 | Provisional; refinement required |
 | WI-14 | [#14](https://github.com/camiloandcu/Graphene-Segmentation/issues/14) | INC-02 / F-06 | Provisional; refinement required |
+| WI-15 candidate | Not created | INC-01 / F-04 proposed extension | Requested regional human review; UX/architecture documented; no executable approval or OpenSpec proposal |
 
 WI-01 branch: `feat/wi-01-local-workspace`, linked using `gh issue develop 1`.
 PR [#15](https://github.com/camiloandcu/Graphene-Segmentation/pull/15)
@@ -79,3 +82,48 @@ unverified. The specification is synced and verified software change archived.
 [PR #19](https://github.com/camiloandcu/Graphene-Segmentation/pull/19) is open with `Closes #5`; GitHub confirms the closing Issue
 association. Implementation `b17453f` and design `8447823` are pushed; final handoff
 references are committed separately. Stakeholder item acceptance/merge remain separate.
+
+Current check, 2026-10-08: authorized `gh pr view 19` confirms PR #19 merged;
+local `main` already contains `aed35d2`. No protected branch was updated by the
+WI-06 planning work. Earlier pending-merge statements are historical.
+Real dataset review remains pending; merge does not establish training readiness.
+
+WI-06: the user authorized continuation on 2026-10-08. Issue #6 is open and
+provisional (checked through authorized `gh`). One
+[proposal](../../openspec/changes/wi-06-colab-baseline-training/proposal.md) and
+its design/specification/tasks are prepared locally for review. Explicit approval
+is pending; no Issue promotion, implementation branch, commits or PR yet.
+After approval, reuse/refine #6 and link `feat/wi-06-colab-baseline-training` with
+`gh issue develop 6`. Required actual Colab training/resume stays unverified until
+genuine lab dataset readiness and interactive execution are available.
+No subsequent proposal is prepared.
+
+WI-06 update, 2026-10-09: v3 source replaced the old ZIP with explicit authorization;
+31/4/5 shared-sample assignments and unknown-pixel policy are confirmed. See
+[v3 review](wi06/01_DATASET_V3_REVIEW.md). Its single proposal/design/specs/tasks
+are revised for explicit partial-v2 support and masked development measurements;
+full implementation approval remains pending. Background anchors/eligibility and
+real Colab execution remain unverified. No Issue mutation, branch/commit/push/PR
+or protected-branch update was performed during this planning/data-review work.
+WI-15 is only a requested candidate in the existing review set; no second proposal.
+
+WI-06 approval, 2026-10-09: stakeholder explicitly approved the full revised
+proposal/design/specifications. Issue #6 is refined and executable; branch
+`feat/wi-06-colab-baseline-training` is linked with `gh issue develop 6`. Earlier
+pending statements describe planning history. Implementation is authorized; real
+background/eligibility and Colab evidence remain pending.
+
+WI-06 software handoff, 2026-10-09: branch pushed and [draft PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20)
+opened with `Closes #6`. Partial-v2/trainer/notebook and 158 regressions are verified;
+actual pretrained native CPU model/optimizer replay matches an uninterrupted run.
+See [criterion evidence](14_WI_06_VERIFICATION.md). Lab review/background and real
+Colab AC-5 remain unverified; #6 stays open and the OpenSpec change stays active.
+
+WI-06 label/background update, 2026-10-09: laboratory human origin and visual
+class semantics are stakeholder-confirmed (subjective reliability 7/10, not measured
+accuracy). All eight proposed background interiors are approved, four train and
+four validation. Coverage remains non-exhaustive and roles stay 31/4/5. See
+[current confirmation and handoff evidence](wi06/03_LABEL_CONFIRMATION_AND_BACKGROUND_REVIEW.md).
+Earlier pending-label/zero-background statements describe historical snapshots.
+Real Colab training and fresh-runtime recovery remain unverified; draft PR #20,
+Issue #6 and the OpenSpec change remain open.

@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "evidence_kind": "synthetic pretrained CPU smoke; not lab or Colab acceptance",
+  "checked_date": "2026-10-09",
+  "environment": {
+    "cpu_backend": "native-single-thread",
+    "cpu_interop_threads": 3,
+    "cpu_threads": 1,
+    "cudnn": null,
+    "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+    "device_policy": "cpu",
+    "git_revision": "12be26b90bf3cd576a7574101b36a92246bb004c",
+    "gpu": null,
+    "packages": {
+      "Pillow": "11.3.0",
+      "graphene-dataset-contract": "2.0.0",
+      "graphene-model-contract": "1.0.0",
+      "graphene-training": "1.0.0",
+      "numpy": "2.2.6",
+      "pycocotools": "2.0.10",
+      "pydantic": "2.12.3",
+      "segmentation-models-pytorch": "0.5.0",
+      "timm": "1.0.30",
+      "torch": "2.7.1+cpu",
+      "torchvision": "0.22.1+cpu"
+    },
+    "precision": "float32",
+    "python": "3.12.13",
+    "torch_cuda": null,
+    "training_source_sha256": "ef429d0c1642e053e73a89cb558fcef8fa08ceceb1d7cc6e6ee0a27200ebd183"
+  },
+  "weights": {
+    "identifier": "ResNet18_Weights.IMAGENET1K_V1",
+    "initialization": "pretrained",
+    "sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+    "source": "https://download.pytorch.org/models/resnet18-f37072fd.pth"
+  },
+  "configuration": {
+    "architecture": "unet-resnet18",
+    "batch_size": 2,
+    "device": "cpu",
+    "epochs": 2,
+    "horizontal_flip": 0.0,
+    "input_size": 64,
+    "learning_rate": 0.001,
+    "persistence_directory": ".workspace/wi06/pretrained-native-smoke/durable",
+    "precision": "float32",
+    "schema_version": 1,
+    "seed": 42,
+    "vertical_flip": 0.0,
+    "weight_decay": 0.0001,
+    "weights": "imagenet-resnet18-v1"
+  },
+  "dataset": {
+    "dataset_fingerprint": "8e953730b55506b7bd8638deb22524e5124d82e28cfe4d99a7d290d667203071",
+    "evaluation": {
+      "evidence": "Independent synthetic RGB",
+      "limitations": [
+        "No laboratory or full-image accuracy evidence"
+      ],
+      "status": "exploratory"
+    },
+    "roles": {
+      "train": {
+        "resize_support_losses": [],
+        "samples": 3,
+        "support": [
+          96,
+          180,
+          180
+        ],
+        "transformed_support": [
+          645,
+          1296,
+          1296
+        ],
+        "unknown_fraction": 0.6041666666666666
+      },
+      "validation": {
+        "resize_support_losses": [],
+        "samples": 2,
+        "support": [
+          64,
+          120,
+          120
+        ],
+        "transformed_support": [
+          430,
+          864,
+          864
+        ],
+        "unknown_fraction": 0.6041666666666666
+      }
+    },
+    "schema_version": 2,
+    "split_fingerprint": "980d098b7730b7fcafe5c578044cae2216fba7d342d44dd29038dfb297bbebdd",
+    "supervision_fingerprint": "aee345c9a82db9e1f1d97e625278d7d063abb8e941c2f5e49ea1895d11932588"
+  },
+  "recovery": "Retained epoch 1 copied to a new local directory; public CLI resumed in a new Python process",
+  "cpu_replay_comparison": "Actual pretrained model and optimizer tensors equal to uninterrupted run after new-process CLI resume",
+  "last": "epoch-000002",
+  "best": "epoch-000002",
+  "best_score": 0.2960342469825792,
+  "best_checkpoint_sha256": "065f6a8baaaa5b519ea295cba34f3281f8e8fb23ef16b7018da8980d2ebae82c",
+  "history": [
+    {
+      "cuda_memory_unavailable_reason": "CPU run; CUDA memory not applicable",
+      "elapsed_seconds": 12.710463317998801,
+      "epoch": 1,
+      "learning_rate": 0.001,
+      "loss": 1.9361894130706787,
+      "peak_cuda_bytes": null,
+      "validation": {
+        "classes": [
+          {
+            "class_id": 0,
+            "dice": 0.06060606060606061,
+            "iou": 0.03125,
+            "precision": 1.0,
+            "predicted_support": 2,
+            "recall": 0.03125,
+            "support": 64
+          },
+          {
+            "class_id": 1,
+            "dice": 0.5687203791469194,
+            "iou": 0.3973509933774834,
+            "precision": 0.3973509933774834,
+            "predicted_support": 302,
+            "recall": 1.0,
+            "support": 120
+          },
+          {
+            "class_id": 2,
+            "dice": 0.0,
+            "iou": 0.0,
+            "precision": null,
+            "predicted_support": 0,
+            "recall": 0.0,
+            "support": 120
+          }
+        ],
+        "confusion_matrix": [
+          [
+            2,
+            62,
+            0
+          ],
+          [
+            0,
+            120,
+            0
+          ],
+          [
+            0,
+            120,
+            0
+          ]
+        ],
+        "foreground_macro_dice": 0.2843601895734597,
+        "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+      }
+    },
+    {
+      "cuda_memory_unavailable_reason": "CPU run; CUDA memory not applicable",
+      "elapsed_seconds": 4.642109243999585,
+      "epoch": 2,
+      "learning_rate": 0.0005,
+      "loss": 1.0838735500971477,
+      "peak_cuda_bytes": null,
+      "validation": {
+        "classes": [
+          {
+            "class_id": 0,
+            "dice": 0.17142857142857143,
+            "iou": 0.09375,
+            "precision": 1.0,
+            "predicted_support": 6,
+            "recall": 0.09375,
+            "support": 64
+          },
+          {
+            "class_id": 1,
+            "dice": 0.5755395683453237,
+            "iou": 0.40404040404040403,
+            "precision": 0.40404040404040403,
+            "predicted_support": 297,
+            "recall": 1.0,
+            "support": 120
+          },
+          {
+            "class_id": 2,
+            "dice": 0.01652892561983471,
+            "iou": 0.008333333333333333,
+            "precision": 1.0,
+            "predicted_support": 1,
+            "recall": 0.008333333333333333,
+            "support": 120
+          }
+        ],
+        "confusion_matrix": [
+          [
+            6,
+            58,
+            0
+          ],
+          [
+            0,
+            120,
+            0
+          ],
+          [
+            0,
+            119,
+            1
+          ]
+        ],
+        "foreground_macro_dice": 0.2960342469825792,
+        "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+      }
+    }
+  ]
+}

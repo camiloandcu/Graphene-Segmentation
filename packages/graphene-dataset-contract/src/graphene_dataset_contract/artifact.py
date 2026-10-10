@@ -60,7 +60,17 @@ def publish(stage: Path, destination: Path):
 
 
 def prepare(source: Path, output: Path, *, review_path: Path | None = None,
-            groups_path: Path | None = None) -> dict:
+            groups_path: Path | None = None, partial: bool = False) -> dict:
+    review_version = None
+    if review_path:
+        try:
+            document = read_json(review_path)
+            review_version = document.get("schema_version") if isinstance(document, dict) else None
+        except (DatasetError, ValueError):
+            pass  # Original preparation publishes invalid-review diagnostics.
+    if partial or review_version == 2:
+        from .partial import prepare_partial
+        return prepare_partial(source, output, review_path=review_path, groups_path=groups_path)
     source, output = Path(source), Path(output)
     if output.exists() or output.is_symlink():
         raise DatasetError("Use a new output destination; existing outputs are never overwritten")
@@ -151,6 +161,9 @@ def check(directory: Path) -> Manifest:
         paths = _inventory(directory)
         if "manifest.json" not in paths:
             raise DatasetError("No ready manifest; diagnostic/staging directories are not datasets")
+        if read_json(paths["manifest.json"]).get("schema_version") == 2:
+            from .partial import check_partial
+            return check_partial(directory)
         manifest = Manifest.model_validate(read_json(paths["manifest.json"]))
         report = Report.model_validate(read_json(paths["validation.json"]))
         records, review, groups = manifest.samples, manifest.review, manifest.group_evidence

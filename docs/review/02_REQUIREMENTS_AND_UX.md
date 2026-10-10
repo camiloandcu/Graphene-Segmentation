@@ -42,7 +42,52 @@ confusion matrix to make a prediction. Keep advanced options in the training and
 model detail views. Training runs in Colab; an in-app training server is outside
 the proposed release scope. The interface is English.
 
-## Acceptance criteria
+## Human review of predicted regions
+
+Requested on 2026-10-09; proposed scope addition, not implemented. Consumer:
+lab users inspecting a prediction, then the trainer curating feedback. Surface
+mode: Operate; preserve the existing microscopy inspection workflow. The value
+assumption is that regional judgments expose useful errors and candidates without
+requiring users to draw trustworthy pixel-precise masks.
+
+Flow: open a completed prediction, select a predicted region, inspect the original
+with surrounding context and toggle its overlay, choose **Correct**, **Incorrect**
+or **Unsure**, then save. Explain the question as whether the region contains the
+predicted material; accepting it does not approve every mask pixel or its boundary.
+For **Incorrect**, allow an optional suggested class/reason without forcing a
+guess. **Unsure** is a valid outcome. Keep confidence separate from the user's
+judgment. Original/overlay zoom remains the focal interaction; ML configuration
+is not part of the voting task.
+
+Store the original image and prediction unchanged. Feedback retains exact image,
+model/settings, result, region geometry/digest, decision, reviewer identifier and
+revision/date. A local reviewer label identifies who supplied an opinion without
+introducing mandatory cloud accounts; it does not authenticate expertise.
+Revisiting/correcting a vote produces a traceable revision. Multiple users can
+disagree; show disagreement rather than silently taking a majority as ground truth.
+
+Observable acceptance for a future executable item:
+
+- Given a completed current result, a lab user can inspect region/context and save
+  a correct/incorrect/unsure judgment that survives restart with exact identity.
+- Given competing opinions or an edited vote, every prior decision remains
+  inspectable and disagreement/revision is explicit.
+- Given a changed prediction/model or removed result, feedback is marked stale or
+  unavailable and never silently attached to a different region.
+- Given a saving/error/loading state, communicate progress and recovery; retries
+  do not duplicate feedback. Empty queues and unreviewable results have readable
+  next actions; no ready model routes the user to Models.
+- Keyboard focus, named controls and text alongside color allow the task without
+  relying on color or precision pointing. Region selection can use an accessible
+  list as well as the image overlay.
+- Feedback export retains provenance and its status as a regional opinion. A
+  curator must separately approve any dataset promotion; no automatic retraining,
+  pixel-mask creation, test leakage or model selection occurs on a vote.
+
+Dependency: saved inspectable predictions from WI-09/10. Keep the new candidate
+separate from WI-06 training; this brief does not expand its implementation into UI.
+
+## Core acceptance criteria
 
 - Prediction works on the agreed lab computer and never requires a training GPU.
 - Single-image and batch uploads return the exact selected model ID and settings.

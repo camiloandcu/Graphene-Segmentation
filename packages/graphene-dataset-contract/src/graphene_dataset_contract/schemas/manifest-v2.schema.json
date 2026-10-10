@@ -1,0 +1,874 @@
+{
+  "$defs": {
+    "BackgroundAnchor": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "image_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Image Sha256",
+          "type": "string"
+        },
+        "class_id": {
+          "const": 0,
+          "title": "Class Id",
+          "type": "integer"
+        },
+        "polygons": {
+          "items": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array"
+          },
+          "title": "Polygons",
+          "type": "array"
+        },
+        "evidence": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Evidence",
+          "type": "string"
+        },
+        "reviewer": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Reviewer",
+          "type": "string"
+        },
+        "date": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "title": "Date",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "image_sha256",
+        "class_id",
+        "polygons",
+        "evidence",
+        "reviewer",
+        "date"
+      ],
+      "title": "BackgroundAnchor",
+      "type": "object"
+    },
+    "Disposition": {
+      "additionalProperties": false,
+      "properties": {
+        "left": {
+          "pattern": "^(train|valid|test)-[0-9]{3,}$",
+          "title": "Left",
+          "type": "string"
+        },
+        "right": {
+          "pattern": "^(train|valid|test)-[0-9]{3,}$",
+          "title": "Right",
+          "type": "string"
+        },
+        "decision": {
+          "enum": [
+            "co-group",
+            "excluded",
+            "unrelated",
+            "uncertain"
+          ],
+          "title": "Decision",
+          "type": "string"
+        },
+        "rationale": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        }
+      },
+      "required": [
+        "left",
+        "right",
+        "decision",
+        "rationale"
+      ],
+      "title": "Disposition",
+      "type": "object"
+    },
+    "Evaluation": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "exploratory",
+            "independence-reviewed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "evidence": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Evidence",
+          "type": "string"
+        },
+        "limitations": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "status",
+        "evidence",
+        "limitations"
+      ],
+      "title": "Evaluation",
+      "type": "object"
+    },
+    "Groups": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "source_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Source Sha256",
+          "type": "string"
+        },
+        "pairs": {
+          "items": {
+            "$ref": "#/$defs/Pair"
+          },
+          "title": "Pairs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "source_sha256",
+        "pairs"
+      ],
+      "title": "Groups",
+      "type": "object"
+    },
+    "Pair": {
+      "additionalProperties": false,
+      "properties": {
+        "left": {
+          "pattern": "^(train|valid|test)-[0-9]{3,}$",
+          "title": "Left",
+          "type": "string"
+        },
+        "right": {
+          "pattern": "^(train|valid|test)-[0-9]{3,}$",
+          "title": "Right",
+          "type": "string"
+        },
+        "evidence": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Evidence",
+          "type": "string"
+        }
+      },
+      "required": [
+        "left",
+        "right",
+        "evidence"
+      ],
+      "title": "Pair",
+      "type": "object"
+    },
+    "PartialDecision": {
+      "additionalProperties": false,
+      "properties": {
+        "sample_id": {
+          "pattern": "^(train|valid|test)-[0-9]{3,}$",
+          "title": "Sample Id",
+          "type": "string"
+        },
+        "source_path": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Source Path",
+          "type": "string"
+        },
+        "role": {
+          "anyOf": [
+            {
+              "enum": [
+                "train",
+                "validation",
+                "test",
+                "excluded"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Role"
+        },
+        "exclusion_reason": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exclusion Reason"
+        },
+        "origin": {
+          "anyOf": [
+            {
+              "enum": [
+                "human",
+                "prediction",
+                "unknown"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Origin"
+        },
+        "origin_evidence": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Origin Evidence"
+        },
+        "eligibility_approved": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Eligibility Approved"
+        },
+        "completeness": {
+          "anyOf": [
+            {
+              "enum": [
+                "exhaustive",
+                "verified-background",
+                "non-exhaustive"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Completeness"
+        },
+        "conflict_policy": {
+          "default": "reject",
+          "enum": [
+            "reject",
+            "ignore"
+          ],
+          "title": "Conflict Policy",
+          "type": "string"
+        },
+        "conflict_rationale": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Conflict Rationale"
+        },
+        "group": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Group"
+        },
+        "group_status": {
+          "anyOf": [
+            {
+              "enum": [
+                "known",
+                "unknown"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Group Status"
+        },
+        "group_evidence": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Group Evidence"
+        },
+        "background_anchors": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/BackgroundAnchor"
+          },
+          "title": "Background Anchors",
+          "type": "array"
+        }
+      },
+      "required": [
+        "sample_id",
+        "source_path"
+      ],
+      "title": "PartialDecision",
+      "type": "object"
+    },
+    "PartialReview": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 2,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "source_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Source Sha256",
+          "type": "string"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reference"
+        },
+        "reviewer": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reviewer"
+        },
+        "date": {
+          "anyOf": [
+            {
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Date"
+        },
+        "mapping": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "integer"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mapping"
+        },
+        "class_semantics_approved": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Class Semantics Approved"
+        },
+        "evaluation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Evaluation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "samples": {
+          "items": {
+            "$ref": "#/$defs/PartialDecision"
+          },
+          "title": "Samples",
+          "type": "array"
+        },
+        "dispositions": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Disposition"
+          },
+          "title": "Dispositions",
+          "type": "array"
+        },
+        "supervision_mode": {
+          "const": "partial",
+          "default": "partial",
+          "title": "Supervision Mode",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "source_sha256",
+        "samples"
+      ],
+      "title": "PartialReview",
+      "type": "object"
+    },
+    "PartialSample": {
+      "additionalProperties": false,
+      "properties": {
+        "sample_id": {
+          "pattern": "^(train|valid|test)-[0-9]{3,}$",
+          "title": "Sample Id",
+          "type": "string"
+        },
+        "source_image_id": {
+          "minimum": 0,
+          "title": "Source Image Id",
+          "type": "integer"
+        },
+        "source_path": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Source Path",
+          "type": "string"
+        },
+        "original_role": {
+          "enum": [
+            "train",
+            "valid",
+            "test"
+          ],
+          "title": "Original Role",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "train",
+            "validation",
+            "test",
+            "excluded"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "annotation_count": {
+          "minimum": 0,
+          "title": "Annotation Count",
+          "type": "integer"
+        },
+        "width": {
+          "exclusiveMinimum": 0,
+          "title": "Width",
+          "type": "integer"
+        },
+        "height": {
+          "exclusiveMinimum": 0,
+          "title": "Height",
+          "type": "integer"
+        },
+        "source_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Source Sha256",
+          "type": "string"
+        },
+        "rgb_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Rgb Sha256",
+          "type": "string"
+        },
+        "class_pixels": {
+          "additionalProperties": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "title": "Class Pixels",
+          "type": "object"
+        },
+        "mask_pixels_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Mask Pixels Sha256",
+          "type": "string"
+        },
+        "image_path": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Image Path"
+        },
+        "mask_path": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mask Path"
+        },
+        "image_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Image Sha256"
+        },
+        "mask_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mask Sha256"
+        },
+        "source_class_pixels": {
+          "additionalProperties": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "title": "Source Class Pixels",
+          "type": "object"
+        },
+        "source_mask_pixels_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Source Mask Pixels Sha256",
+          "type": "string"
+        },
+        "source_polygons": {
+          "items": {
+            "$ref": "#/$defs/SourcePolygon"
+          },
+          "title": "Source Polygons",
+          "type": "array"
+        }
+      },
+      "required": [
+        "sample_id",
+        "source_image_id",
+        "source_path",
+        "original_role",
+        "role",
+        "annotation_count",
+        "width",
+        "height",
+        "source_sha256",
+        "rgb_sha256",
+        "class_pixels",
+        "mask_pixels_sha256",
+        "source_class_pixels",
+        "source_mask_pixels_sha256",
+        "source_polygons"
+      ],
+      "title": "PartialSample",
+      "type": "object"
+    },
+    "PixelClass": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maximum": 2,
+          "minimum": 0,
+          "title": "Id",
+          "type": "integer"
+        },
+        "name": {
+          "enum": [
+            "background",
+            "few-layer",
+            "bulk"
+          ],
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ],
+      "title": "PixelClass",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "metadata": {
+          "additionalProperties": true,
+          "title": "Metadata",
+          "type": "object"
+        },
+        "unknowns": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Unknowns",
+          "type": "array"
+        },
+        "annotation_files": {
+          "additionalProperties": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "title": "Annotation Files",
+          "type": "object"
+        }
+      },
+      "required": [
+        "sha256",
+        "metadata",
+        "unknowns",
+        "annotation_files"
+      ],
+      "title": "Source",
+      "type": "object"
+    },
+    "SourcePolygon": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minimum": 0,
+          "title": "Id",
+          "type": "integer"
+        },
+        "category_id": {
+          "enum": [
+            1,
+            2
+          ],
+          "title": "Category Id",
+          "type": "integer"
+        },
+        "segmentation": {
+          "items": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array"
+          },
+          "title": "Segmentation",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "category_id",
+        "segmentation"
+      ],
+      "title": "SourcePolygon",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 2,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "converter_version": {
+      "const": "2.0.0",
+      "title": "Converter Version",
+      "type": "string"
+    },
+    "classes": {
+      "items": {
+        "$ref": "#/$defs/PixelClass"
+      },
+      "title": "Classes",
+      "type": "array"
+    },
+    "ignore_value": {
+      "const": 255,
+      "title": "Ignore Value",
+      "type": "integer"
+    },
+    "source": {
+      "$ref": "#/$defs/Source"
+    },
+    "settings": {
+      "additionalProperties": true,
+      "title": "Settings",
+      "type": "object"
+    },
+    "review": {
+      "$ref": "#/$defs/PartialReview"
+    },
+    "group_evidence": {
+      "$ref": "#/$defs/Groups"
+    },
+    "samples": {
+      "items": {
+        "$ref": "#/$defs/PartialSample"
+      },
+      "title": "Samples",
+      "type": "array"
+    },
+    "split_fingerprint": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Split Fingerprint",
+      "type": "string"
+    },
+    "dataset_fingerprint": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Dataset Fingerprint",
+      "type": "string"
+    },
+    "supervision_mode": {
+      "const": "partial",
+      "default": "partial",
+      "title": "Supervision Mode",
+      "type": "string"
+    },
+    "supervision_fingerprint": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Supervision Fingerprint",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "converter_version",
+    "classes",
+    "ignore_value",
+    "source",
+    "settings",
+    "review",
+    "group_evidence",
+    "samples",
+    "split_fingerprint",
+    "dataset_fingerprint",
+    "supervision_fingerprint"
+  ],
+  "title": "PartialManifest",
+  "type": "object"
+}
