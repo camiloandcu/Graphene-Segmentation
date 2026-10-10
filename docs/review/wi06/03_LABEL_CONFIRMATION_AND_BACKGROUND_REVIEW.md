@@ -214,3 +214,69 @@ will authorize Drive when prompted. No cell was executed during the copy: runtim
 GPU verification, dependency installation, dataset transfer, Drive mounting and
 actual training/recovery remain pending. Private cell IDs/readback records are
 under `.workspace/wi06/colab-notebook-copy.json`.
+
+
+## Live GPU setup and transfer status, 2026-10-10
+
+Executing code through the connected browser verified Python 3.13.15 and a Tesla
+T4 with 15,360 MiB. Installation completed in the Colab runtime; a subsequent
+probe imported the training package and verified Torch 2.7.1+cu126, CUDA
+availability and an actual CUDA tensor operation. Installed package versions were
+Torchvision 0.22.1, segmentation-models-pytorch 0.5.0, graphene-training 1.0.0
+and graphene-dataset-contract 2.0.0. The installation cell exceeded the MCP call
+timeout, but the later executable probe confirmed completion.
+
+Reconnecting the browser reset the visible notebook to one empty cell while
+preserving the GPU runtime and installed packages. The queued archive transfer
+failed before writing any data because its temporary notebook cell no longer
+existed. A new runtime probe confirmed that the transfer ZIP is absent. Notebook
+restoration then exposed an unavailable tool name in the private batch helper;
+the helper was corrected and restarted on the same connection link. Restoration
+must use the actual advertised tool schemas after reconnection.
+
+Notebook restoration subsequently passed type/source readback using the browser's
+advertised `add_text_cell` and `add_code_cell` tools. All 68 transfer commands
+completed. Remote SHA-256 verification matched
+`4aa3bc1ad4d29181338901d773d602613fb2bdc6613ea5d18155e28534ebbea7`
+for the 16,411,686-byte archive, extracted 40 images and confirmed dataset identity
+`d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1`.
+The temporary transfer cell was removed. Private retained evidence is in
+`.workspace/wi06/colab-transfer-verified.json`.
+
+A dependency consistency probe found NumPy 2.1.3 still loaded while 2.2.6 was
+installed. Restarting only the Python kernel through its shutdown/restart API
+resolved the mismatch without replacing the VM or losing staged files. The next
+probe verified NumPy 2.2.6, Pillow 11.3.0, CUDA/Tesla T4, archive size and actual
+Git revision `12be26b90bf3cd576a7574101b36a92246bb004c`. This setup
+restart is not evidence of checkpoint recovery. The stakeholder authorized Drive; notebook output confirms mounting at
+`/content/drive` and completed public trainer preflight. All three classes retain
+support after resizing, with no per-image resize support losses. Private evidence
+is in `.workspace/wi06/colab-preflight-verified.json`.
+
+The trial retained the checksum-verified dataset archive in Drive and downloaded
+the actual pretrained encoder. It then failed on the first GPU loss computation:
+`nll_loss2d_forward_out_cuda_template` rejects sum/mean spatial reduction under
+Torch 2.7 strict deterministic mode. No epoch completed. The original run ID
+`graphene-baseline-wi06-20261010-001` is diagnostic state, not a resumable
+completed generation. Preserve it rather than treating initialization as recovery.
+
+Fix `b0480172dd80181efbd7241b7c8e2853818407f4` computes unreduced per-pixel CE
+then reduces the tensor separately, retaining the ignored-pixel denominator and
+foreground Dice. The pinned [Torch 2.7.1 kernel source](https://github.com/pytorch/pytorch/blob/v2.7.1/aten/src/ATen/native/cuda/NLLLoss2d.cu)
+confirms atomic additions are specific to the spatial sum/mean path. Training
+regressions pass: 21 passed, one CUDA test skipped locally. The new regression
+compares CPU CE values/gradients and the CUDA test requires strict deterministic
+forward/backward with exact repeated values/gradients and zero ignored gradients.
+Actual execution of that CUDA regression and a new lab trial are pending.
+
+The private helper now accepts file-backed commands and handles malformed input
+without terminating; this addresses terminal truncation during the GPU-probe
+submission. The source fix is pushed on the existing feature branch. The user has
+a saved Drive notebook copy and will connect MCP there; inspect its actual cells
+and runtime before edits or execution. Update to the fixed code pin and use a new
+run ID (proposed `graphene-baseline-wi06-20261010-002`) rather than reusing the
+failed initialization. Actual completed epochs, checkpoint retention and
+fresh-runtime recovery remain unverified. Private client/session/transfer
+records remain under `.workspace/wi06/`. Save the browser notebook in Drive to
+preserve cells across scratch-notebook reloads; notebook persistence and verified
+training checkpoint retention are separate requirements.

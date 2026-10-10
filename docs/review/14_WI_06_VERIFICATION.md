@@ -1,6 +1,6 @@
 # WI-06 verification
 
-Checked: 2026-10-09. Approved change:
+Checked: 2026-10-10. Approved change:
 [proposal](../../openspec/changes/wi-06-colab-baseline-training/proposal.md),
 [design](../../openspec/changes/wi-06-colab-baseline-training/design.md),
 [tasks](../../openspec/changes/wi-06-colab-baseline-training/tasks.md).
@@ -28,7 +28,7 @@ The change stays active, with no completed spec sync/archive or item acceptance.
 - A thin notebook, common package pins and the
   [setup/recovery guide](../14_COLAB_BASELINE_TRAINING.md) use that same engine.
   Notebook setup is pinned to code revision
-  `12be26b90bf3cd576a7574101b36a92246bb004c`.
+  `b0480172dd80181efbd7241b7c8e2853818407f4` (deterministic CUDA loss fix).
 
 Implementation commits: `fc2d9e3` (partial dataset/shared geometry), `845b3ba`
 (training engine and regressions), `c885bc6` (persistence isolation), and `12be26b` (native CPU replay/frozen data identity). `85b0cd8` records approved scope/source decisions.
@@ -39,9 +39,9 @@ Implementation commits: `fc2d9e3` (partial dataset/shared geometry), `845b3ba`
 | --- | --- | --- |
 | AC-1: validated isolated data | Passed on current reviewed v3 handoff; exploratory limitations retained | Dense compatibility, partial masks/anchors/reconstruction/tamper rejection, public-role loading, no test-role requests and all-class support gates pass. Current v3 has confirmed visual labels and eight reviewed background regions; roles retain 31/4/5. See current preparation/preflight evidence below. |
 | AC-2: pretrained optimization/provenance | Local synthetic pretrained evidence passed; real Colab unverified | Actual ImageNet encoder and U-Net optimization, finite losses, three logits, full provenance and new-process CLI resume pass on CPU. Actual lab/GPU memory and runtime are not measured. |
-| AC-3: durable complete state | Local CPU state/recovery checks passed; real VM trial unverified | Uninterrupted/resumed tensors and metric history match; scheduler/RNG/data order match. Failed epoch repeats; corruption/mismatch/unsafe pickle fail; prior durable epoch survives copy failure; a retained pretrained run resumes in a new Python process. No real Colab VM replacement or Drive execution. |
+| AC-3: durable complete state | Local CPU state/recovery checks passed; real VM trial unverified | Uninterrupted/resumed tensors and metric history match; scheduler/RNG/data order match. Failed epoch repeats; corruption/mismatch/unsafe pickle fail; prior durable epoch survives copy failure; a retained pretrained run resumes in a new Python process. Drive mounting and dataset retention pass; no completed lab checkpoint or Colab VM recovery yet. |
 | AC-4: original-coordinate best selection | Synthetic software checks passed; real handoff unverified | Hand-calculated original-coordinate counts exclude padding/unknown, absent denominators yield null, non-final winner and earlier exact ties pass; best checksum is reconciled with generations/history. No real-lab winning checkpoint exists. |
-| AC-5: real Colab workflow | Unverified | No selected Google account/access/persistence workflow, executed lab notebook or fresh-Colab-runtime resume. Synthetic/local evidence is insufficient. |
+| AC-5: real Colab workflow | Unverified | MCP, GPU setup, authorized Drive mounting, dataset retention and real preflight pass. First GPU optimization failed before epoch completion; successful lab epochs and fresh-VM resume remain pending. Synthetic/local evidence is insufficient. |
 
 ## Checks executed
 
@@ -116,6 +116,16 @@ Subsequently the stakeholder confirmed laboratory human origin and visual semant
 then approved all eight displayed background candidates. See
 [current confirmation, preparation and preflight evidence](wi06/03_LABEL_CONFIRMATION_AND_BACKGROUND_REVIEW.md).
 Coverage uncertainty and test isolation remain unchanged; no real training was run.
+Actual Colab execution now verifies a Tesla T4, Python 3.13.15 and Torch
+2.7.1+cu126 with CUDA. Browser reconnection preserved installed packages but
+reset notebook cells; restoration and checksum-verified dataset transfer subsequently
+passed. A Python-kernel restart resolved stale NumPy without losing staged files.
+Drive authorization, mounting and real Colab preflight passed; the dataset archive
+is checksum-verified in Drive. The first GPU trial failed before epoch completion
+because Torch 2.7 spatial CE reduction rejects strict determinism. Fix `b048017`
+uses per-pixel CE with a separate tensor sum; 21 training tests passed and one
+CUDA regression was skipped locally. Real CUDA regression, successful lab
+training, retained checkpoints and recovery acceptance remain unverified. See the linked live setup record.
 
 Remaining authorized work once real inputs exist: choose Google account/access/persistence method, execute multiple
 pretrained Colab epochs, retain verified generations, recreate runtime and resume,
