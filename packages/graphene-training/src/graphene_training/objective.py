@@ -10,7 +10,9 @@ def loss(logits, target):
     valid = target != 255
     if not valid.any():
         raise ValueError('Entire batch is ignored')
-    ce = F.cross_entropy(logits.float(), target, ignore_index=255, reduction='sum') / valid.sum()
+    # CUDA's spatial NLL sum uses atomic additions in Torch 2.7. Keep its
+    # per-pixel result and use a separate deterministic tensor reduction.
+    ce = F.cross_entropy(logits.float(), target, ignore_index=255, reduction='none').sum() / valid.sum()
     probability = logits.float().softmax(1)
     terms = []
     for c in (1, 2):

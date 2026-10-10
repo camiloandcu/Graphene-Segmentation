@@ -41,6 +41,44 @@ def test_metrics_absence_is_unavailable():
     assert metrics([[0,1,0],[0,1,0],[0,0,1]])['foreground_macro_dice'] == pytest.approx((2/3+1)/2)
 
 
+def test_masked_background_ce_matches_reference_value_and_gradient():
+    generator = torch.Generator().manual_seed(42)
+    logits = torch.randn(2, 3, 7, 9, generator=generator, requires_grad=True)
+    target = torch.zeros(2, 7, 9, dtype=torch.long)
+    target[:, ::2, ::3] = 255
+    reference = logits.detach().clone().requires_grad_()
+    actual = loss(logits, target)
+    expected = torch.nn.functional.cross_entropy(reference, target, ignore_index=255)
+    actual.backward(); expected.backward()
+    torch.testing.assert_close(actual, expected)
+    torch.testing.assert_close(logits.grad, reference.grad)
+    assert torch.all(logits.grad.permute(0, 2, 3, 1)[target == 255] == 0)
+
+
+@pytest.mark.skipif(not torch.cuda.is_available(), reason='Requires real CUDA runtime')
+def test_cuda_masked_loss_strict_deterministic_backward():
+    previous = torch.are_deterministic_algorithms_enabled()
+    warn_only = torch.is_deterministic_algorithms_warn_only_enabled()
+    try:
+        torch.use_deterministic_algorithms(True)
+        generator = torch.Generator().manual_seed(42)
+        source = torch.randn(2, 3, 512, 512, generator=generator).cuda()
+        target = torch.randint(0, 3, (2, 512, 512), generator=generator).cuda()
+        target[:, ::2, ::3] = 255
+        results = []
+        for _ in range(2):
+            logits = source.clone().requires_grad_()
+            value = loss(logits, target)
+            value.backward()
+            assert torch.isfinite(value) and torch.isfinite(logits.grad).all()
+            assert torch.all(logits.grad.permute(0, 2, 3, 1)[target == 255] == 0)
+            results.append((value.detach().cpu(), logits.grad.cpu()))
+        assert torch.equal(results[0][0], results[1][0])
+        assert torch.equal(results[0][1], results[1][1])
+    finally:
+        torch.use_deterministic_algorithms(previous, warn_only=warn_only)
+
+
 def test_shared_geometry_and_padding(dataset):
     cfg = TrainingConfig(input_size=64)
     evidence = preflight(dataset,cfg)
