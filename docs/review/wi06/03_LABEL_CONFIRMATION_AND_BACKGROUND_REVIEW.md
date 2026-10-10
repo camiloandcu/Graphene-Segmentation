@@ -201,3 +201,16 @@ retain the session on tool errors. Its host restart preserved the connection URL
 port and token, and the subsequent real read completed without terminating the
 client. This establishes browser/notebook access only; compute-runtime access,
 Drive mounting/authorization, dataset upload and actual training remain unverified.
+
+
+Notebook preparation, 2026-10-10: with explicit stakeholder authorization, the ten
+cells from `notebooks/01_COLAB_BASELINE_TRAINING.ipynb` were copied into the
+connected Colab notebook, reusing its original empty code cell. Public `get_cells`
+readback verified every cell's order, type and source. The only source adaptations
+select `PERSISTENCE_CHOICE = "drive"` and run ID
+`graphene-baseline-wi06-20261010-001`; `DEVICE = "cuda"` and the pinned revision
+remain as in the template. The stakeholder reports selecting a GPU runtime and
+will authorize Drive when prompted. No cell was executed during the copy: runtime
+GPU verification, dependency installation, dataset transfer, Drive mounting and
+actual training/recovery remain pending. Private cell IDs/readback records are
+under `.workspace/wi06/colab-notebook-copy.json`.
