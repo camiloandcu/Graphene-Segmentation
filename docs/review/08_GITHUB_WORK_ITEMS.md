@@ -3,7 +3,7 @@
 Access: `gh`, authorized by the stakeholder. WI-01, WI-02 and WI-03 proposals are approved;
 WI-03 and WI-04 are stakeholder accepted and merged; WI-05 software is approved,
 implemented, technically verified and merged. WI-06 has an approved OpenSpec change with verified software and required
-real-data Colab evidence pending; later items retain their provisional readiness. Creating Issues does not
+real-data Colab training/recovery verified; later items retain their provisional readiness. Creating Issues does not
 approve their implementation or create additional OpenSpec proposals.
 
 | Work item | Issue | Parent | State |
@@ -13,7 +13,7 @@ approve their implementation or create additional OpenSpec proposals.
 | WI-03 | [#3](https://github.com/camiloandcu/Graphene-Segmentation/issues/3) | INC-01 / F-01 | Merged via PR #17; stakeholder accepted 2026-10-08 |
 | WI-04 | [#4](https://github.com/camiloandcu/Graphene-Segmentation/issues/4) | INC-01 / F-03 | Merged via PR #18; stakeholder accepted 2026-10-08 |
 | WI-05 | [#5](https://github.com/camiloandcu/Graphene-Segmentation/issues/5) | INC-01 / F-01 | Merged via PR #19; software verified; real ready handoff/lab review pending |
-| WI-06 | [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6) | INC-01 / F-02 | Approved; [draft PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20); software CPU-verified; real Colab acceptance pending |
+| WI-06 | [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6) | INC-01 / F-02 | Approved; [PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20); 30 GPU epochs retained in Drive; replacement-runtime recovery verified |
 | WI-07 | [#7](https://github.com/camiloandcu/Graphene-Segmentation/issues/7) | INC-01 / F-02 | Provisional; refinement required |
 | WI-08 | [#8](https://github.com/camiloandcu/Graphene-Segmentation/issues/8) | INC-01 / F-02 | Provisional; refinement required |
 | WI-09 | [#9](https://github.com/camiloandcu/Graphene-Segmentation/issues/9) | INC-01 / F-03 | Provisional; refinement required |
@@ -90,7 +90,7 @@ Real dataset review remains pending; merge does not establish training readiness
 
 WI-06: the user authorized continuation on 2026-10-08. Issue #6 is open and
 provisional (checked through authorized `gh`). One
-[proposal](../../openspec/changes/wi-06-colab-baseline-training/proposal.md) and
+[proposal](../../openspec/changes/archive/2026-10-10-wi-06-colab-baseline-training/proposal.md) and
 its design/specification/tasks are prepared locally for review. Explicit approval
 is pending; no Issue promotion, implementation branch, commits or PR yet.
 After approval, reuse/refine #6 and link `feat/wi-06-colab-baseline-training` with
@@ -113,7 +113,7 @@ proposal/design/specifications. Issue #6 is refined and executable; branch
 pending statements describe planning history. Implementation is authorized; real
 background/eligibility and Colab evidence remain pending.
 
-WI-06 software handoff, 2026-10-09: branch pushed and [draft PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20)
+WI-06 software handoff, 2026-10-09: branch pushed and [PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20)
 opened with `Closes #6`. Partial-v2/trainer/notebook and 158 regressions are verified;
 actual pretrained native CPU model/optimizer replay matches an uninterrupted run.
 See [criterion evidence](14_WI_06_VERIFICATION.md). Lab review/background and real
@@ -127,3 +127,23 @@ four validation. Coverage remains non-exhaustive and roles stay 31/4/5. See
 Earlier pending-label/zero-background statements describe historical snapshots.
 Real Colab training and fresh-runtime recovery remain unverified; draft PR #20,
 Issue #6 and the OpenSpec change remain open.
+
+
+WI-06 live execution, 2026-10-10: real Tesla T4 setup, fixed deterministic CUDA
+loss regression, reviewed-data preflight and two pretrained GPU epochs passed.
+Both Drive generations were inspected and the interim selected checkpoint matched
+local state. After runtime replacement, pinned setup/data were restored and the
+retained epoch-2 checksum matched again; resume is executing toward the saved
+30-epoch horizon. See [the real trial record](wi06/04_COLAB_REAL_TRIAL_RECORD.json).
+Final recovery/selection evidence and archive/spec sync remain pending; PR #20
+stays draft and no protected branch is updated.
+
+WI-06 final execution, 2026-10-10: 30 pretrained Tesla T4 epochs completed; recovery from verified epoch 2 into a replacement runtime passed. The selected epoch is 23, with foreground macro Dice 0.913150 on annotated validation pixels.
+Selected checkpoint SHA-256: `c199f87a1d3f06f013dbef0db7982c6d4e3e2ba852146c1ca57f735ec25e267f`.
+Final local/Drive integrity and all 30 original-coordinate support/selection checks pass.
+Incomplete coverage remains unknown and final test was not scored.
+See [verified evidence](14_WI_06_VERIFICATION.md).
+
+WI-06 specification sync, 2026-10-10: main training/dataset specifications updated;
+verified change archived as `2026-10-10-wi-06-colab-baseline-training`.
+PR #20 awaits review; Issue #6 stays open until merge. No protected branch update.

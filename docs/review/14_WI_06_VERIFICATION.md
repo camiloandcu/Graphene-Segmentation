@@ -1,14 +1,15 @@
 # WI-06 verification
 
 Checked: 2026-10-10. Approved change:
-[proposal](../../openspec/changes/wi-06-colab-baseline-training/proposal.md),
-[design](../../openspec/changes/wi-06-colab-baseline-training/design.md),
-[tasks](../../openspec/changes/wi-06-colab-baseline-training/tasks.md).
+[proposal](../../openspec/changes/archive/2026-10-10-wi-06-colab-baseline-training/proposal.md),
+[design](../../openspec/changes/archive/2026-10-10-wi-06-colab-baseline-training/design.md),
+[tasks](../../openspec/changes/archive/2026-10-10-wi-06-colab-baseline-training/tasks.md).
 Issue: [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6).
-Branch: `feat/wi-06-colab-baseline-training`. Draft PR: [#20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20)
+Branch: `feat/wi-06-colab-baseline-training`. PR: [#20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20)
 with `Closes #6`; no merge or protected-branch update. The software is implemented and
-CPU-verified; required real reviewed-data Colab evidence remains unverified.
-The change stays active, with no completed spec sync/archive or item acceptance.
+CPU-verified and real reviewed-data Colab acceptance criteria pass.
+Specifications are synced and the verified change is archived; merge and stakeholder
+acceptance are separate.
 
 ## Delivered software
 
@@ -35,13 +36,14 @@ Implementation commits: `fc2d9e3` (partial dataset/shared geometry), `845b3ba`
 
 ## Acceptance evidence
 
-| Criterion | Status | Verified evidence / missing evidence |
+| Criterion | Status | Verified evidence |
 | --- | --- | --- |
 | AC-1: validated isolated data | Passed on current reviewed v3 handoff; exploratory limitations retained | Dense compatibility, partial masks/anchors/reconstruction/tamper rejection, public-role loading, no test-role requests and all-class support gates pass. Current v3 has confirmed visual labels and eight reviewed background regions; roles retain 31/4/5. See current preparation/preflight evidence below. |
-| AC-2: pretrained optimization/provenance | Local synthetic pretrained evidence passed; real Colab unverified | Actual ImageNet encoder and U-Net optimization, finite losses, three logits, full provenance and new-process CLI resume pass on CPU. Actual lab/GPU memory and runtime are not measured. |
-| AC-3: durable complete state | Local CPU state/recovery checks passed; real VM trial unverified | Uninterrupted/resumed tensors and metric history match; scheduler/RNG/data order match. Failed epoch repeats; corruption/mismatch/unsafe pickle fail; prior durable epoch survives copy failure; a retained pretrained run resumes in a new Python process. Drive mounting and dataset retention pass; no completed lab checkpoint or Colab VM recovery yet. |
-| AC-4: original-coordinate best selection | Synthetic software checks passed; real handoff unverified | Hand-calculated original-coordinate counts exclude padding/unknown, absent denominators yield null, non-final winner and earlier exact ties pass; best checksum is reconciled with generations/history. No real-lab winning checkpoint exists. |
-| AC-5: real Colab workflow | Unverified | MCP, GPU setup, authorized Drive mounting, dataset retention and real preflight pass. First GPU optimization failed before epoch completion; successful lab epochs and fresh-VM resume remain pending. Synthetic/local evidence is insufficient. |
+| AC-2: pretrained optimization/provenance | Passed | Actual ImageNet U-Net optimization completed 30 Tesla T4 epochs with finite loss, CUDA memory/time history, frozen environment/configuration/data identity and encoder checksum. |
+| AC-3: durable complete state | Passed | CPU replay/tamper checks pass. After a replacement compute environment lost staged files/packages and the Drive mount, pinned setup and data were restored. Retained epoch 2 was inspected/copied with its unchanged checksum; public resume completed epochs 3–30 in the same run/configuration. Final local and Drive winning identities match. |
+| AC-4: original-coordinate best selection | Passed | All 30 original-coordinate confusion matrices preserve validation support; scores recomputed from counts. Earliest maximum is epoch 23 (0.913150140599); selected generation and verified checkpoint checksum match. Test and unknown pixels were excluded. |
+| AC-5: real Colab workflow | Passed | Authorized MCP, Tesla T4, Drive, ready reviewed partial dataset, pretrained optimization and replacement-runtime recovery were executed. Full final retained-state inspection and independently reconciled history are recorded below. |
+
 
 ## Checks executed
 
@@ -70,8 +72,8 @@ separate from the training package and application.
 All three wheels were built. A fresh `.workspace/wi06/wheel-venv` installed the
 CPU pair, common pins and noneditable wheels. The public dataset CLI checked the
 synthetic partial handoff, and the public training CLI safely inspected/resumed a
-retained run. The notebook has 10 cells, empty outputs and valid Python syntax;
-no Google-dependent cell or full Colab notebook was executed. Local Markdown
+retained run. The tracked template has 10 cells, empty outputs and valid Python syntax;
+Google-dependent execution was initially pending; the later real Colab trial below supplies that evidence. Local Markdown
 links and whitespace are checked before submission. Application code/dependencies
 were not changed; unrelated frontend/backend suites are not claimed.
 
@@ -99,7 +101,7 @@ checkpoints or dataset images are committed. The CPU check demonstrates software
 behavior; it cannot establish real Colab compatibility, lab accuracy, complete
 annotation coverage or generalization.
 
-## Real dataset and remaining work
+## Real dataset and Colab execution
 
 Actual source SHA-256:
 `344b2ff3bfcf0d18ac206894b92f0b89892f706bc8ef8dbb540a3a7a40da6a34`.
@@ -115,7 +117,7 @@ That historical diagnostic had no ready manifest. No model/run was initialized f
 Subsequently the stakeholder confirmed laboratory human origin and visual semantics,
 then approved all eight displayed background candidates. See
 [current confirmation, preparation and preflight evidence](wi06/03_LABEL_CONFIRMATION_AND_BACKGROUND_REVIEW.md).
-Coverage uncertainty and test isolation remain unchanged; no real training was run.
+Coverage uncertainty and test isolation remain unchanged; that preparation stage preceded training.
 Actual Colab execution now verifies a Tesla T4, Python 3.13.15 and Torch
 2.7.1+cu126 with CUDA. Browser reconnection preserved installed packages but
 reset notebook cells; restoration and checksum-verified dataset transfer subsequently
@@ -124,12 +126,50 @@ Drive authorization, mounting and real Colab preflight passed; the dataset archi
 is checksum-verified in Drive. The first GPU trial failed before epoch completion
 because Torch 2.7 spatial CE reduction rejects strict determinism. Fix `b048017`
 uses per-pixel CE with a separate tensor sum; 21 training tests passed and one
-CUDA regression was skipped locally. Real CUDA regression, successful lab
-training, retained checkpoints and recovery acceptance remain unverified. See the linked live setup record.
+CUDA regression was skipped locally. The production loss then passed the actual Tesla T4 strict-determinism regression
+with exact repeated values/gradients and zero ignored gradients. The saved Drive
+notebook's separate runtime recovered the dataset archive from Drive. Two actual GPU epochs completed and both retained generations were inspected before the runtime interruption.
+The replacement environment had no staged repository, dataset, training package or
+Drive mount. Pinned installation, Drive authorization and checksum-verified dataset
+recovery passed. The retained epoch-2 checkpoint kept SHA-256
+`7a3f415ef84dd2e92e4faffd00118d594867d23fe35b1b4e0481013836c1c7a4`;
+the public resume completed epochs 3–30 without changing the saved schedule horizon.
+The original VM identifier was not captured; replacement evidence comes from the
+executable filesystem/package/mount probe, not stale notebook output.
 
-Remaining authorized work once real inputs exist: choose Google account/access/persistence method, execute multiple
-pretrained Colab epochs, retain verified generations, recreate runtime and resume,
-and record/reconcile actual winning checkpoint evidence. Coverage uncertainty stays
-non-exhaustive; regional human feedback remains future WI-15 scope. Then finish
-required acceptance, sync specifications/archive the change, and update the PR.
-No later OpenSpec proposal has been prepared and no protected branch is updated.
+Final local and Drive inspections verified 30 complete generations and the same
+winning identity. Independently recomputed all validation Dice scores from their
+confusion matrices: each contains exactly 5,642,841 supervised pixels, with class
+supports `[262144, 549443, 4831254]`. Earliest maximum is **epoch 23**, foreground
+macro Dice **0.913150**. Selected checkpoint SHA-256:
+`c199f87a1d3f06f013dbef0db7982c6d4e3e2ba852146c1ca57f735ec25e267f`.
+Peak allocated CUDA memory was 0.973 GiB. Per-epoch
+training plus validation time ranged from 4.33
+to 6.23 seconds; these measurements exclude
+checkpoint retention and its Drive I/O overhead.
+
+[Full aggregate provenance/history](wi06/04_COLAB_REAL_TRIAL_RECORD.json) and
+[training curves](wi06/05_COLAB_TRAINING_CURVES.png) are committed; images, model
+weights, checkpoints and account details remain private. The retained run is under
+`MyDrive/Graphene/runs/graphene-baseline-wi06-20261010-002/`; the selected checkpoint
+is `epochs/epoch-000023/checkpoint.pt`. The trial JSON and plot are also in
+`MyDrive/Graphene/trials/`.
+
+These are exploratory metrics on annotated validation pixels, not independent test
+accuracy, exhaustive background recovery or measured layer counts. Unannotated
+regions remain unknown, final test was not scored, and other acquisition identities
+remain unconfirmed beyond the two approved shared-sample pairs. Regional human
+feedback remains future WI-15 scope. WI-07 evaluation/challengers and WI-08 export
+are later work items, with no new proposal prepared here. No protected branch was
+updated.
+
+WI-06 specification sync, 2026-10-10: main training/dataset specifications updated;
+verified change archived as `2026-10-10-wi-06-colab-baseline-training`.
+PR #20 awaits review; Issue #6 stays open until merge. No protected branch update.
+
+Final handoff checks: all six current OpenSpec specifications pass strict validation;
+19 relevant Markdown files have valid local link targets; tracked notebook Python
+syntax and whitespace pass. Production training/dataset/model source checksum
+`bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409`
+matches the final run. The affected loss regression remains 21 CPU tests passed,
+one local CUDA skip, plus the actual Tesla T4 deterministic-loss regression.

@@ -1,7 +1,7 @@
 # Decisions and work item hierarchy
 
 Status: WI-01 through WI-05 merged; WI-03 and WI-04 stakeholder accepted on
-2026-10-08. WI-06 revised proposal is explicitly approved; software is implemented and CPU-verified, with required real Colab evidence pending. Its v3 source
+2026-10-08. WI-06 revised proposal is explicitly approved; software, 30 actual GPU epochs and replacement-runtime recovery are verified. Its v3 source
 replacement, partial-label policy and grouped 31/4/5 assignments are recorded.
 Later items remain provisional, including requested regional-review WI-15.
 Apply the hierarchy **delivery increment -> feature -> executable
@@ -264,14 +264,14 @@ execution also requires genuine lab dataset readiness and permitted Colab access
 
 Status: user authorized continuation to WI-06 on 2026-10-08 and accepted partial
 supervision/grouped roles on 2026-10-09. One revised
-[proposal](../../openspec/changes/wi-06-colab-baseline-training/proposal.md),
-[design](../../openspec/changes/wi-06-colab-baseline-training/design.md),
-[specification](../../openspec/changes/wi-06-colab-baseline-training/specs/colab-baseline-training/spec.md)
-and [tasks](../../openspec/changes/wi-06-colab-baseline-training/tasks.md) are
+[proposal](../../openspec/changes/archive/2026-10-10-wi-06-colab-baseline-training/proposal.md),
+[design](../../openspec/changes/archive/2026-10-10-wi-06-colab-baseline-training/design.md),
+[specification](../../openspec/changes/archive/2026-10-10-wi-06-colab-baseline-training/specs/colab-baseline-training/spec.md)
+and [tasks](../../openspec/changes/archive/2026-10-10-wi-06-colab-baseline-training/tasks.md) are
 reviewed. Full revised proposal/design/specifications explicitly approved on 2026-10-09;
 Issue #6 is refined and branch `feat/wi-06-colab-baseline-training` is linked. Dataset-v3 replacement/audit, role record and analysis previews are
 complete. The partial-v2 contract and separate trainer/notebook are implemented;
-no real lab training or Google account connection has occurred. See
+30 real GPU epochs, Drive retention and replacement-runtime recovery passed. See
 [verification](14_WI_06_VERIFICATION.md).
 
 Approved implemented scope: separate training package/thin notebook, U-Net/ResNet-18 ImageNet
@@ -292,10 +292,10 @@ No automatic split changes or fabricated reviewer statements.
 Authoritative numbered acceptance criteria are in the proposal: **AC-1** verified
 role-isolated dataset; **AC-2** actual pretrained optimization/run provenance;
 **AC-3** complete durable state/recovery; **AC-4** original-coordinate best selection;
-**AC-5** real reviewed-data Colab execution plus fresh-runtime resume. Software evidence for AC-1–4 passes; current reviewed-data preparation/preflight satisfies AC-1. Actual lab optimization/recovery/selection remain unverified.
+**AC-5** real reviewed-data Colab execution plus fresh-runtime resume. Software evidence for AC-1–4 passes; current reviewed-data preparation/preflight satisfies AC-1. Thirty real GPU epochs, replacement-runtime resume and final selection reconciliation pass.
 AC-5 is required for item completion; synthetic/local smoke runs cannot satisfy it.
-Software is submitted in [draft PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20) with `Closes #6`.
-The feature branch is pushed; required real gates keep the Issue/change open.
+Software is submitted in [PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20) with `Closes #6`.
+The feature branch is pushed; the Issue stays open until merge and the verified change is archived.
 G-01/2 approval precedes coding; G-03 real acceptance, G-04 verified sync/archive
 and submission, and G-05 release remain separate.
 
@@ -356,8 +356,8 @@ Keep these separate from item acceptance criteria and implementation tasks:
   implemented, verified, specs synced and change archived. Real-data human gate
   and item acceptance remain separate. WI-06's single proposal is prepared on
   2026-10-08, revised on 2026-10-09 for partial v3 data and explicitly approved
-  on 2026-10-09. Software is implemented and CPU-verified; the mandatory real
-  Colab trial remains unverified. WI-15 remains a requested candidate, not a second proposal.
+  on 2026-10-09. Software, actual 30-epoch Colab optimization and replacement-runtime recovery
+  are verified; specifications are synced and the change is archived. WI-15 remains a requested candidate, not a second proposal.
 - **G-03 — Item acceptance:** record each criterion as passed, failed, or
   unverified with its evidence; required human review is pending until confirmed.
   For US items use Given/When/Then, for fixes preserve reproducer/boundaries,
@@ -405,3 +405,13 @@ four validation. Coverage remains non-exhaustive and roles stay 31/4/5. See
 Earlier pending-label/zero-background statements describe historical snapshots.
 Real Colab training and fresh-runtime recovery remain unverified; draft PR #20,
 Issue #6 and the OpenSpec change remain open.
+
+WI-06 final execution, 2026-10-10: 30 pretrained Tesla T4 epochs completed; recovery from verified epoch 2 into a replacement runtime passed. The selected epoch is 23, with foreground macro Dice 0.913150 on annotated validation pixels.
+Selected checkpoint SHA-256: `c199f87a1d3f06f013dbef0db7982c6d4e3e2ba852146c1ca57f735ec25e267f`.
+Final local/Drive integrity and all 30 original-coordinate support/selection checks pass.
+Incomplete coverage remains unknown and final test was not scored.
+See [verified evidence](14_WI_06_VERIFICATION.md).
+
+WI-06 specification sync, 2026-10-10: main training/dataset specifications updated;
+verified change archived as `2026-10-10-wi-06-colab-baseline-training`.
+PR #20 awaits review; Issue #6 stays open until merge. No protected branch update.

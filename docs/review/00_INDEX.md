@@ -2,21 +2,21 @@
 
 Status: WI-01 through WI-05 merged; WI-03 and WI-04 stakeholder accepted on
 2026-10-08. WI-05 software is technically verified; genuine lab dataset review
-remains pending. WI-06 revised proposal is explicitly approved on 2026-10-09; software is implemented and CPU-verified; real Colab acceptance remains pending.
+remains pending. WI-06 revised proposal is explicitly approved on 2026-10-09; software and real 30-epoch Colab training/recovery are verified.
 Current v3 has approved grouped roles but incomplete-coverage uncertainty;
 lab-human visual label eligibility and eight background regions are confirmed;
 real Colab execution and broader release remain separate.
-Checked: 2026-10-09.
+Checked: 2026-10-10.
 
 Current item: WI-06 has one revised approved
-[change](../../openspec/changes/wi-06-colab-baseline-training/proposal.md),
-[design](../../openspec/changes/wi-06-colab-baseline-training/design.md),
-[training specification](../../openspec/changes/wi-06-colab-baseline-training/specs/colab-baseline-training/spec.md),
-[partial-dataset specification](../../openspec/changes/wi-06-colab-baseline-training/specs/validated-labeled-datasets/spec.md)
-and [tasks](../../openspec/changes/wi-06-colab-baseline-training/tasks.md).
+[change](../../openspec/changes/archive/2026-10-10-wi-06-colab-baseline-training/proposal.md),
+[design](../../openspec/changes/archive/2026-10-10-wi-06-colab-baseline-training/design.md),
+[training specification](../../openspec/changes/archive/2026-10-10-wi-06-colab-baseline-training/specs/colab-baseline-training/spec.md),
+[partial-dataset specification](../../openspec/changes/archive/2026-10-10-wi-06-colab-baseline-training/specs/validated-labeled-datasets/spec.md)
+and [tasks](../../openspec/changes/archive/2026-10-10-wi-06-colab-baseline-training/tasks.md).
 Stakeholder explicitly approved the revised proposal/design/specifications on
 2026-10-09. Issue #6 is refined and `feat/wi-06-colab-baseline-training` is linked
-with `gh issue develop 6`. Real Colab execution awaits account/access/persistence choice.
+with `gh issue develop 6`. MCP and Drive are authorized. All 30 GPU epochs are retained; replacement-runtime checkpoint recovery passed.
 The stakeholder supplied v3, authorized deletion of the old ZIP and approved
 grouped 31/4/5 roles plus treating unannotated pixels as unknown. See the
 [current data evidence](wi06/00_INDEX.md): 40 unchanged image bytes, 621 polygons,
@@ -103,12 +103,11 @@ local export for WI-03; no dataset account was accessed.
 
 WI-06 software verification: [report](14_WI_06_VERIFICATION.md),
 [training and recovery guide](../14_COLAB_BASELINE_TRAINING.md), and
-[notebook](../../notebooks/01_COLAB_BASELINE_TRAINING.ipynb). The change remains
-active; specs are not synced/archived as completed while mandatory AC-5 is unverified.
+[notebook](../../notebooks/01_COLAB_BASELINE_TRAINING.ipynb). All mandatory real acceptance criteria pass; specifications are synced and the change is archived.
 
-WI-06 submission: [draft PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20),
-`Closes #6`, branch pushed. No merge/protected-branch change; mandatory real
-Colab verification remains pending.
+WI-06 submission: [PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20),
+`Closes #6`, branch pushed. No merge/protected-branch change; real
+Colab training and recovery are verified.
 
 WI-06 label/background update, 2026-10-09: laboratory human origin and visual
 class semantics are stakeholder-confirmed (subjective reliability 7/10, not measured
@@ -118,3 +117,13 @@ four validation. Coverage remains non-exhaustive and roles stay 31/4/5. See
 Earlier pending-label/zero-background statements describe historical snapshots.
 Real Colab training and fresh-runtime recovery remain unverified; draft PR #20,
 Issue #6 and the OpenSpec change remain open.
+
+WI-06 final execution, 2026-10-10: 30 pretrained Tesla T4 epochs completed; recovery from verified epoch 2 into a replacement runtime passed. The selected epoch is 23, with foreground macro Dice 0.913150 on annotated validation pixels.
+Selected checkpoint SHA-256: `c199f87a1d3f06f013dbef0db7982c6d4e3e2ba852146c1ca57f735ec25e267f`.
+Final local/Drive integrity and all 30 original-coordinate support/selection checks pass.
+Incomplete coverage remains unknown and final test was not scored.
+See [verified evidence](14_WI_06_VERIFICATION.md).
+
+WI-06 specification sync, 2026-10-10: main training/dataset specifications updated;
+verified change archived as `2026-10-10-wi-06-colab-baseline-training`.
+PR #20 awaits review; Issue #6 stays open until merge. No protected branch update.

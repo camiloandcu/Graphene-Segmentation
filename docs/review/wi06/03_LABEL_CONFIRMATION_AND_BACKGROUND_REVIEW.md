@@ -280,3 +280,47 @@ fresh-runtime recovery remain unverified. Private client/session/transfer
 records remain under `.workspace/wi06/`. Save the browser notebook in Drive to
 preserve cells across scratch-notebook reloads; notebook persistence and verified
 training checkpoint retention are separate requirements.
+
+
+## Saved Drive notebook and real CUDA loss regression
+
+The stakeholder connected MCP to their saved Drive copy. Its separate runtime
+required package installation, which completed from fixed revision
+`b0480172dd80181efbd7241b7c8e2853818407f4`. A Python-only restart then
+verified Python 3.13.15, Torch 2.7.1+cu126, NumPy 2.2.6, Pillow 11.3.0 and
+Tesla T4. The checked-in CUDA regression function was executed against the
+installed production loss: strict deterministic forward/backward passed; repeated
+loss/gradient tensors matched exactly, all gradients were finite, and ignored
+pixels had zero gradients. Private evidence:
+`.workspace/wi06/colab-gpu-loss-regression-pass.json`.
+
+The stakeholder authorized Drive in the separate runtime. Notebook output
+confirms mounting and checksum-verified archive recovery directly from Drive.
+The configuration uses new run ID `graphene-baseline-wi06-20261010-002`;
+its Colab preflight is executing. The two-epoch trial cell is prepared with
+periodic local/Drive completion-marker reports and full retained-state inspection
+before success is claimed. Marker reports alone do not prove integrity or resume.
+No successful lab epoch/checkpoint or fresh-VM checkpoint recovery is claimed yet.
+
+
+## Two completed GPU epochs and runtime replacement
+
+Run `graphene-baseline-wi06-20261010-002` completed epochs 1 and 2 with the fixed
+production loss and the approved 30-epoch horizon. Full retained-state inspection
+verified both Drive generations and matched the local winning checkpoint identity.
+Epoch 2 is currently selected; supervised validation foreground macro Dice is
+0.6843806221051649 and checkpoint SHA-256 is
+`7a3f415ef84dd2e92e4faffd00118d594867d23fe35b1b4e0481013836c1c7a4`.
+This is an interim score over annotated pixels, not final-test performance or
+coverage/accuracy of unannotated regions. See the [real trial record](04_COLAB_REAL_TRIAL_RECORD.json).
+
+The user returned after an interruption and reported runtime disconnection. A
+fresh executable probe found the repository, dataset, training package and Drive
+mount absent, with default Torch 2.11.0+cu130 and a Tesla T4. This is a replaced
+compute environment rather than evidence drawn from saved notebook outputs.
+Pinned software, dataset recovery and replacement-runtime preflight passed. The
+retained epoch-2 checksum matched before resume, and all 30 epochs are now verified
+in Drive. 30 pretrained Tesla T4 epochs completed; recovery from verified epoch 2 into a replacement runtime passed. The selected epoch is 23, with foreground macro Dice 0.913150 on annotated validation pixels. See [the real trial record](04_COLAB_REAL_TRIAL_RECORD.json).
+The planned before-replacement snapshot was interrupted; no original VM identifier
+is claimed. The preserved completed generations and executable replacement-runtime
+probe supply recovery evidence.

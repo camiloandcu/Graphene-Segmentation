@@ -62,7 +62,7 @@ WI-02 and WI-05 are merged; local `main` already contains WI-05 merge `aed35d2`.
 GitHub PR #19 merge was checked via authorized `gh` on 2026-10-08. This confirms
 software availability, not real-label review or stakeholder item acceptance.
 
-The [v3 review](../../../docs/review/wi06/01_DATASET_V3_REVIEW.md) supersedes v2
+The [v3 review](../../../../docs/review/wi06/01_DATASET_V3_REVIEW.md) supersedes v2
 for current training. The old ZIP was removed with explicit authorization. The
 new source is structurally valid but coverage remains uncertain; 40 partial masks
 are analysis previews with no supervised background, not ready training data.

@@ -4,7 +4,9 @@ WI-06 delivers a separate training package and a thin
 [Colab notebook](../notebooks/01_COLAB_BASELINE_TRAINING.ipynb). Local CPU verification
 and synthetic pretrained optimization are recorded in
 [the verification report](review/14_WI_06_VERIFICATION.md). Real reviewed-data Colab
-training and fresh-runtime resume remain unverified; no lab performance is claimed.
+training and replacement-runtime resume are verified: 30 pretrained Tesla T4 epochs completed; recovery from verified epoch 2 into a replacement runtime passed. The selected epoch is 23, with foreground macro Dice 0.913150 on annotated validation pixels.
+See [the run record](review/wi06/04_COLAB_REAL_TRIAL_RECORD.json) and
+[training curves](review/wi06/05_COLAB_TRAINING_CURVES.png).
 
 ## Dataset readiness
 
@@ -175,3 +177,9 @@ project-local `.codex/config.toml`; reload Codex to load it and authorize its br
 connection. Google Drive is selected for retained checkpoints. See the current
 confirmation record for installation/handshake evidence. Registration does not
 mean Google authentication or remote training has occurred.
+
+WI-06 final execution, 2026-10-10: 30 pretrained Tesla T4 epochs completed; recovery from verified epoch 2 into a replacement runtime passed. The selected epoch is 23, with foreground macro Dice 0.913150 on annotated validation pixels.
+Selected checkpoint SHA-256: `c199f87a1d3f06f013dbef0db7982c6d4e3e2ba852146c1ca57f735ec25e267f`.
+Final local/Drive integrity and all 30 original-coordinate support/selection checks pass.
+Incomplete coverage remains unknown and final test was not scored.
+See [verified evidence](review/14_WI_06_VERIFICATION.md).
