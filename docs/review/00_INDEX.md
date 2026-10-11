@@ -1,14 +1,26 @@
 # Project repair review
 
-Status: WI-01 through WI-05 merged; WI-03 and WI-04 stakeholder accepted on
-2026-10-08. WI-05 software is technically verified; genuine lab dataset review
-remains pending. WI-06 revised proposal is explicitly approved on 2026-10-09; software and real 30-epoch Colab training/recovery are verified.
-Current v3 has approved grouped roles but incomplete-coverage uncertainty;
-lab-human visual label eligibility and eight background regions are confirmed;
-real Colab execution and broader release remain separate.
-Checked: 2026-10-10.
+Status: WI-01 through WI-06 merged; WI-03 and WI-04 stakeholder accepted on
+2026-10-08. WI-06 software, 30 real Colab epochs and replacement-runtime recovery
+are verified. Current v3 has approved grouped roles, human visual-label eligibility
+and eight reviewed background regions; incomplete-coverage uncertainty persists.
+WI-07's complete evaluation proposal/design/specifications are explicitly approved
+on 2026-10-11; implementation is on `feat/wi-07-model-selection`, linked to Issue #7.
+Checked: 2026-10-11.
 
-Current item: WI-06 has one revised approved
+Current item: [WI-07 review](wi07/00_INDEX.md),
+[primary-source candidate evidence](wi07/01_LITERATURE_AND_CANDIDATES.md),
+[proposal](../../openspec/changes/wi-07-model-selection/proposal.md),
+[design](../../openspec/changes/wi-07-model-selection/design.md),
+[specification](../../openspec/changes/wi-07-model-selection/specs/model-selection-evaluation/spec.md)
+and [tasks](../../openspec/changes/wi-07-model-selection/tasks.md).
+Stakeholder selected U-Net + SegFormer-B0 + gated DINOv3, requested domain/related
+microscopy evidence and accepts Colab work across day sessions. Finite experiment
+stages, fourth-candidate fallback, partial-label metrics and test freeze are
+approved on 2026-10-11. Issue #7 is refined; implementation has started.
+Real candidate execution/selection and final-test scoring remain unverified.
+
+Previous item: WI-06 has one revised approved
 [change](../../openspec/changes/archive/2026-10-10-wi-06-colab-baseline-training/proposal.md),
 [design](../../openspec/changes/archive/2026-10-10-wi-06-colab-baseline-training/design.md),
 [training specification](../../openspec/changes/archive/2026-10-10-wi-06-colab-baseline-training/specs/colab-baseline-training/spec.md),
@@ -126,4 +138,6 @@ See [verified evidence](14_WI_06_VERIFICATION.md).
 
 WI-06 specification sync, 2026-10-10: main training/dataset specifications updated;
 verified change archived as `2026-10-10-wi-06-colab-baseline-training`.
-PR #20 awaits review; Issue #6 stays open until merge. No protected branch update.
+PR #20 awaited review at that handoff. On 2026-10-11, authorized `gh` confirms it
+merged; local `main` already contains `7d4954d`. No protected branch was updated
+by this WI-07 work. Historical dated records below retain earlier states.
