@@ -50,6 +50,27 @@ supported model formats to a documented package contract; arbitrary Keras,
 pickle/joblib, or undocumented state dictionaries are not a useful first-release promise.
 Custom models are supported when exported to that contract; broader runtimes are separate work.
 
+## Proposed regional feedback boundary
+
+The requested human-in-the-loop capability reuses local SQLite/files and the
+prediction inspector. An immutable prediction/region identity is the parent of
+append-only review events (correct/incorrect/unsure, optional proposed class/note,
+local reviewer identifier, timestamp/revision). Retain image hash, package/model
+identity, settings, region geometry and predicted-mask digest so a new prediction
+cannot reinterpret old votes. Do not overwrite original outputs or require a
+mandatory cloud account. Save/retry has a stable event identity; concurrent users'
+opinions remain separate, with explicit disagreements and superseding revisions.
+
+Feedback is a separate artifact type from dataset review, pixel labels and reported
+evaluation. A later curator may use it to select regions/images for review or
+approve evidence-backed anchors; acceptance of a predicted region alone does not
+validate all pixels or convert model output into human ground truth. Export records
+the distinction and source split/group. Frozen test feedback cannot enter training
+or tune the current model; any later training reuse retires that evaluation group
+and requires a new independent holdout. No automatic training job follows a vote.
+This is proposed design for the regional-review candidate, not current API/storage
+behavior and not additional WI-06 implementation scope.
+
 ## Model package contract
 
 Proposed archive contents: `model.onnx`, `manifest.json`, `evaluation.json`.

@@ -47,11 +47,20 @@ Prediction is the default workspace. Model management and a guided Colab trainin
 workflow are secondary destinations. Detailed evaluation is available to users who
 need it. Existing framework and interface foundations can be reused where sound.
 
-The stakeholder reports that the lab images lack metadata and were labeled by
-lab members; no obviously unlabeled areas were noticed by the stakeholder.
-Acquisition independence and physical label validation are not established.
+The stakeholder reports lab-member labels and limited acquisition metadata.
+The current v3 export refines annotations on the same 40 images, but the stakeholder
+cannot guarantee complete few-layer coverage. Two shared-sample pairs are confirmed
+and grouped; wider acquisition independence and the bulk boundary remain uncertain.
+See [current data review](wi06/01_DATASET_V3_REVIEW.md).
 
-Pending inputs: dataset export and actual image dimensions; physical definition
-of the thickness boundary; numeric performance acceptance
+The stakeholder requested human-in-the-loop review: lab users judge predicted
+regions as correct, incorrect or uncertain. This can collect practical screening
+feedback without demanding reliable pixel-by-pixel refinement. Its success is a
+traceable regional decision tied to the exact prediction, available for later
+curation; region opinions do not certify mask boundaries or automatically retrain
+the model. This is a proposed additional capability, not delivered behavior.
+
+Pending inputs: reviewed partial-label eligibility/background anchors, physical
+definition of the thickness boundary, and numeric performance acceptance
 after pilot error review. Duplicate/overlap auditing substitutes for missing
 group metadata where evidence supports it; residual uncertainty remains explicit.

@@ -84,8 +84,18 @@ def prepare_letterbox(
         raise ContractError(
             "geometry_mismatch", "Package requires native tiles, not letterbox."
         )
+    return prepare_letterbox_rgb(rgb, manifest.input.shape[2:], manifest.preprocessing, limits)
+
+
+def prepare_letterbox_rgb(
+    rgb: np.ndarray, tensor_hw: tuple[int, int], preprocessing: Preprocessing,
+    limits: GeometryLimits = GeometryLimits(),
+) -> Prepared:
+    """Shared training/inference geometry without fabricating an inference manifest."""
+    check_rgb(rgb, limits)
+    check_size(tensor_hw, limits)
     h, w = rgb.shape[:2]
-    th, tw = manifest.input.shape[2:]
+    th, tw = tensor_hw
     scale = min(th / h, tw / w)
     rh = min(th, max(1, math.floor(h * scale + 0.5)))
     rw = min(tw, max(1, math.floor(w * scale + 0.5)))
@@ -94,10 +104,10 @@ def prepare_letterbox(
         Image.fromarray(rgb).resize((rw, rh), Image.Resampling.BILINEAR)
     )
     padded = np.empty((th, tw, 3), dtype=np.uint8)
-    padded[:] = manifest.preprocessing.padding_rgb
+    padded[:] = preprocessing.padding_rgb
     padded[top : top + rh, left : left + rw] = resized
     record = GeometryRecord("letterbox", (h, w), (rh, rw), (th, tw), top, left)
-    return Prepared(normalize(padded, manifest.preprocessing), record)
+    return Prepared(normalize(padded, preprocessing), record)
 
 
 def check_logits(logits: np.ndarray, hw: tuple[int, int]) -> np.ndarray:

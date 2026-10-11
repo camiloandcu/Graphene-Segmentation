@@ -29,7 +29,7 @@ class Strict(BaseModel):
     def integer_constants(cls, value):
         # Python equality makes True/1.0 match Literal[1]; JSON versions must be integers.
         if isinstance(value, dict):
-            for key in ("schema_version", "ignore_value"):
+            for key in ("schema_version", "ignore_value", "class_id", "category_id"):
                 if key in value and type(value[key]) is not int:
                     raise ValueError(f"{key} must be a JSON integer")
         return value

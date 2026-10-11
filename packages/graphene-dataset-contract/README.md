@@ -24,3 +24,14 @@ The supplied lab export remains blocked until genuine label/group/split review i
 provided. Successful validation records reviewer claims; it does not authenticate
 physical thickness or certify independent evaluation. Predictions and unknown
 annotation origins are ineligible under v1.
+
+## Partial schema 2
+
+Package 2.0 continues to check dense schema 1 without changing its semantics.
+`prepare --partial` produces a schema-2 review template; a schema-2 review also
+selects partial preparation explicitly. Unannotated pixels remain 255. Source-bound
+reviewed background anchors or positively reviewed blank images supply class 0.
+Consumers reconstruct supervision from declared source polygons and reviewed
+anchors, in addition to checking digests and split/group invariants. Source support
+and supervised support remain distinct. V1-only schema validators reject v2.
+See [partial review and training](../../docs/14_COLAB_BASELINE_TRAINING.md).

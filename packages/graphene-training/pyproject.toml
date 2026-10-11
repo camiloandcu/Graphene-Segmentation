@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "graphene-training"
+version = "1.0.0"
+description = "Reproducible partial-supervision graphene segmentation baseline"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "graphene-dataset-contract>=2,<3", "graphene-model-contract>=1,<2",
+  "torch==2.7.1", "torchvision==0.22.1", "segmentation-models-pytorch==0.5.0",
+  "numpy==2.2.6", "Pillow==11.3.0", "pydantic==2.12.3", "pycocotools==2.0.10",
+]
+
+[project.scripts]
+graphene-train = "graphene_training.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/graphene_training"]

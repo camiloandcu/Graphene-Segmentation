@@ -2,16 +2,18 @@
 
 A local microscopy workspace for a lab studying graphene. The intended workflow
 is to inspect segmentation masks and prioritize image batches by the fraction
-covered by few-layer graphene. Training will run separately in free-tier Colab.
+covered by few-layer graphene. Training runs separately in Colab.
 
 **Current delivery: local workspace, portable model contract, dataset audit and
-model management and offline dataset preparation (WI-01 through WI-05).** Open without an account, import a
+model management, offline dataset preparation and a separate baseline trainer (WI-01 through WI-06 software).** Open without an account, import a
 compatible model ZIP, inspect its supplied evaluation, and explicitly select it.
 Model files, metadata and selection persist locally across restarts.
 
-Prediction, batch ranking, result exports and Colab training are later Work Items
-and are not available in this build. Compatibility does not certify lab accuracy;
-no trained model or lab performance is claimed.
+Prediction, batch ranking and result exports are later Work Items and are not
+available in this build. The separate trainer and Colab notebook are available;
+30 pretrained Tesla T4 epochs completed; recovery from verified epoch 2 into a replacement runtime passed. The selected epoch is 23, with foreground macro Dice 0.913150 on annotated validation pixels.
+The selected checkpoint is retained in Drive; app-compatible export is a later item.
+Incomplete label coverage and limited sample identity prevent an independent accuracy claim.
 
 The [lab dataset audit](docs/review/wi03/00_INDEX.md) now records the supplied
 40-image export's label support, conflicts and evaluation limitations. It supports
@@ -19,8 +21,13 @@ conditional pilot planning; it does not establish an independent test benchmark.
 
 For trainers, the [offline dataset workflow](docs/13_VALIDATED_DATASETS.md)
 validates the COCO export, preserves canonical classes/provenance and enforces
-reviewed split decisions. Real dataset readiness remains blocked until the lab
-supplies its label and grouping review; saved predictions cannot enter ground truth.
+reviewed split decisions. The [current v3 review](docs/review/wi06/01_DATASET_V3_REVIEW.md)
+records refined labels on the same 40 images and grouped assignments. Coverage
+remains uncertain. Partial-v2 preparation is implemented; laboratory visual labels and eight
+background regions are stakeholder-confirmed. Real Colab training and replacement-runtime recovery are verified. Saved predictions cannot enter ground truth automatically.
+Regional human review is a planned workflow, not an available feature.
+The [training guide](docs/14_COLAB_BASELINE_TRAINING.md) explains the separate
+CLI/notebook, masked validation metrics and verified checkpoint recovery.
 
 ## Run on Linux
 
