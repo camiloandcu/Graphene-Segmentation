@@ -38,7 +38,10 @@ records actual Drive checkpoint verification and the connected T4 setup. The rea
 passed real-weight CPU and T4 admission. DINOv3's approved pinned weights also
 passed [actual T4 admission](04_DINOV3_GPU_ADMISSION.json). The first SegFormer
 run's saved history survived but its checkpoint files are missing; strict recovery
-failed and a replacement run is required. Challenger quality and stakeholder
+failed and a replacement run is required. DINOv3 completed 30 epochs and its
+[checkpoint-bound validation summary](05_DINOV3_INITIAL_VALIDATION.json) reproduces
+foreground macro Dice 0.551403 at argmax. The selected/latest archive and dataset
+hashes survived the account migration. Other challenger quality and stakeholder
 selection remain pending. See the [baseline aggregate record](03_INITIAL_ADMISSION_AND_BASELINE.json).
 
 Planning verification: `openspec validate --all --strict` passed all six current

@@ -61,7 +61,7 @@ establish commercial deployment rights. Its pinned PyTorch state is loaded with
 restricted `weights_only=True` under Torch >=2.6. No arbitrary unpickling or random
 pretrained substitution is provided. The stakeholder subsequently reported DINO
 access approval and enabled the notebook secret; actual authenticated weight
-download/admission remains pending. DINO execution
+download/admission subsequently passed, as recorded below. DINO execution
 requires actual approved credentials; no terms were accepted
 on the stakeholder's behalf. See [literature gates](01_LITERATURE_AND_CANDIDATES.md)
 for 2D-TLK and MaskTerial's distinct compatibility limitations.
@@ -150,7 +150,7 @@ reproduced from weights. A new, identically configured seed-42 run is prepared
 under `wi07-segformer-b0-seed42-20261012-rerun`; stronger independent retention
 and replacement-session verification remain required.
 
-DINO admission has not launched: `userdata.get('HF_TOKEN')` timed out through MCP.
+DINO admission was initially blocked: `userdata.get('HF_TOKEN')` timed out through MCP.
 A first notebook cell requested the secret from a manual UI execution without
 printing or persisting its value. That step succeeded, and actual pretrained T4
 admission subsequently passed. See [the complete admission record](04_DINOV3_GPU_ADMISSION.json):
@@ -196,10 +196,44 @@ These fixtures do not prove remote Drive durability or explain the missing weigh
 The active DINO run remains on `8abeb9f`; do not update its installed bundle while
 it is running or use the newer source for its strict recovery.
 
-The T4 environment and Drive mount are verified; actual baseline counts reproduce
-exactly. Pinned source `8abeb9f` remains the immutable training bundle. Finish
-the initial SegFormer run and run admitted challengers sequentially, preserve durable run records and verify
-replacement-session recovery. Then obtain stakeholder shortlist priorities,
+The initial baseline counts reproduce exactly. Preserve `8abeb9f` for original
+run provenance; new experiments use `33eb57`. Complete the SegFormer replacement
+and remaining admitted challengers sequentially, preserve durable run records and
+verify actual continued-training recovery. Then obtain stakeholder shortlist priorities,
 execute approved finalist screens/seeds and record a reviewed selection or
 inconclusive outcome. No WI-08 proposal or model export is authorized by this
 implementation. Keep this change active until the real acceptance gates are met.
+
+## Storage-account migration
+
+The stakeholder copied the notebook/data to another account and mounted Drive in
+a fresh Python 3.13.15/T4 runtime. The actual data directory is
+`/content/drive/MyDrive/Graphene (1)`; the sibling `Graphene` is a regular file.
+Use the verified directory directly rather than changing user files. Both uploaded
+archives were copied to local runtime storage and their SHA-256 matched exactly:
+DINO selected/latest `80927f63525182578bad075763d7fd9ff2864b6855ff2ed309e91bd3c97e4264`
+(161,134,926 bytes) and the approved dataset
+`4aa3bc1ad4d29181338901d773d602613fb2bdc6613ea5d18155e28534ebbea7`
+(16,411,686 bytes). This establishes archive retention across runtime/account
+replacement, separately from strict state/model loading and continued training.
+The two-generation archive cannot pass full contiguous-run inspection.
+
+The uploaded [DINO validation aggregate](05_DINOV3_INITIAL_VALIDATION.json) was
+recovered locally. Its finite threshold-0.2 result has foreground macro Dice
+0.817734, few-layer pixel recall 0.816278, 1/15 matched annotated components and
+seven unknown-intersecting unmatched predictions. Neither argmax nor this
+threshold surpasses the retained U-Net development results. This is evidence
+about this frozen probe/configuration, not a general judgement on DINOv3.
+
+The pinned `33eb57` installation completed. A fresh process confirms
+Torch 2.7.1+cu126 and CUDA/T4. Both DINO generations pass checksum verification
+and safe state loading; the selected model loads strictly and its complete
+dataset/report binding matches the recovered summary. The identical SegFormer
+seed-42 rerun completed all 30 epochs. Strict final inspection selected epoch 19
+with foreground macro Dice 0.9305392399304415, exactly reproducing the lost run
+history. All 30 checkpoint files now exist in the new Drive mount; independent
+validation and replacement-runtime retention remain separate checks. A bounded
+sequential worker prepares selected-checkpoint retention/validation, then the
+approved DeepLab admission/training/validation after SegFormer completes.
+It stops on failure; no test predictions or automatic selection are authorized.
+Actual continued-training recovery remains pending. Test remains untouched.
