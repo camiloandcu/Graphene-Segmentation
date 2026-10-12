@@ -1,0 +1,19 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "graphene-evaluation"
+version = "1.0.0"
+description = "Partial-label graphene model selection and resumable candidate experiments"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "graphene-training==1.0.0", "scipy==1.15.3", "transformers==4.57.6",
+]
+
+[project.scripts]
+graphene-evaluate = "graphene_evaluation.cli:main"
+graphene-experiment = "graphene_evaluation.experiments:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/graphene_evaluation"]

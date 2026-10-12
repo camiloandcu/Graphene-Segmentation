@@ -28,6 +28,8 @@ distinguished in the README and work-item records.
 - Dataset review, preparation and consumer contract: `docs/13_VALIDATED_DATASETS.md`.
 - Baseline training and recovery: `docs/14_COLAB_BASELINE_TRAINING.md`.
 - Baseline implementation evidence: `docs/review/14_WI_06_VERIFICATION.md`.
+- Evaluation protocol, CLI and model-selection session evidence:
+  `docs/15_MODEL_SELECTION_EVALUATION.md` and `docs/review/wi07/00_INDEX.md`.
 - Current training-data version review and readiness evidence:
   `docs/review/wi06/00_INDEX.md`.
 - Model-selection proposal, literature evidence and experiment review:

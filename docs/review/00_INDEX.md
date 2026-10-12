@@ -10,6 +10,7 @@ Checked: 2026-10-11.
 
 Current item: [WI-07 review](wi07/00_INDEX.md),
 [primary-source candidate evidence](wi07/01_LITERATURE_AND_CANDIDATES.md),
+[implementation/session evidence](wi07/02_IMPLEMENTATION_AND_SESSION_RECORD.md),
 [proposal](../../openspec/changes/wi-07-model-selection/proposal.md),
 [design](../../openspec/changes/wi-07-model-selection/design.md),
 [specification](../../openspec/changes/wi-07-model-selection/specs/model-selection-evaluation/spec.md)
