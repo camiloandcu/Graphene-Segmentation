@@ -166,6 +166,23 @@ epochs. Its history selects epoch 20 with foreground macro Dice
 are being produced. All 30 checkpoint files are present in the current Drive
 mount. Actual error analysis and replacement-mount/session durability remain pending.
 
+Separate evaluation completed and exactly reproduced selected DINO Dice
+0.5514027542991692. Argmax few-layer recall is 0.12351417708479315; annotated
+component matches are 0/15, with eight unknown-intersecting unmatched predictions
+and zero wholly known-support unmatched predictions. Private report/panels are
+under `trials/wi07-dinov3-validation-20261012`. The selected/latest archive is
+161,134,926 bytes with SHA-256
+`80927f63525182578bad075763d7fd9ff2864b6855ff2ed309e91bd3c97e4264`.
+The archive was checked through the current mount, but remount verification has
+not succeeded. A synchronous Drive flush exceeded MCP timeouts and was interrupted
+by the stakeholder; kernel responsiveness was restored. Drive logs contain many
+quota-related entries, but specific storage-error classification remains pending.
+The stakeholder reports storage is nearly exhausted and proposes migration to
+another account with more space. Preserve the local `/content` archive and summary
+before releasing this runtime: folder copies cannot recover unsynced weights.
+SegFormer replacement and DeepLab admission/run have **not** started. Next runner
+is installed separately at `/content/wi07-next-site`; DINO remains on `8abeb9f`.
+
 DINO resource sidecars exposed a persistence bottleneck: epochs 24–26 spent
 95–102 seconds persisting after approximately four seconds optimizing/validating,
 with the GPU idle during hashing. The next source bundle changes only challenger
