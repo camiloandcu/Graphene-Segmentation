@@ -34,8 +34,9 @@ Issue [#7](https://github.com/camiloandcu/Graphene-Segmentation/issues/7) is ref
 from the approved proposal. Branch `feat/wi-07-model-selection` is linked using
 `gh issue develop 7`. The evaluator, challenger adapters, CLI and notebook are implemented and verified
 with synthetic contracts. [Implementation/session evidence](02_IMPLEMENTATION_AND_SESSION_RECORD.md)
-records actual Drive checkpoint verification and the connected T4 setup. Real
-validation reproduction, challenger training and stakeholder selection remain pending.
+records actual Drive checkpoint verification and the connected T4 setup. The real baseline confusion counts and Dice reproduce exactly; SegFormer has
+passed real-weight CPU and T4 admission. GPU challenger training and stakeholder selection
+remain pending. See the [actual aggregate record](03_INITIAL_ADMISSION_AND_BASELINE.json).
 
 Planning verification: `openspec validate --all --strict` passed all six current
 specifications and the single WI-07 change (7 passed, 0 failed). Local-link,

@@ -9,11 +9,11 @@
 
 ## 2. Identity and offline evaluation
 
-- [ ] 2.1 Add checkpoint-oriented reports/CLI and role/digest/support validation;
+- [x] 2.1 Add checkpoint-oriented reports/CLI and role/digest/support validation;
   preserve WI-06 config/checkpoint compatibility (AC-1).
-- [ ] 2.2 Reproduce retained baseline validation counts and save actual checkpoint-
+- [x] 2.2 Reproduce retained baseline validation counts and save actual checkpoint-
   bound original-coordinate development outputs (AC-1/2).
-- [ ] 2.3 Implement confusion metrics, component matching/censoring, null reasons,
+- [x] 2.3 Implement confusion metrics, component matching/censoring, null reasons,
   deterministic panels and finite decision sweep; verify hand-calculated geometry,
   missing-support, unknown-bridge, matching/tie and leakage cases (AC-3/4).
 

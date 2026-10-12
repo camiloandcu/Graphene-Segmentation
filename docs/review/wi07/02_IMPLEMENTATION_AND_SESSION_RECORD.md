@@ -34,13 +34,15 @@ Through the previously authorized Colab MCP connection:
 - Drive mount succeeded. The retained baseline generation exists with
   172,151,774 checkpoint bytes. Streaming SHA-256 exactly reproduced
   `c199f87a1d3f06f013dbef0db7982c6d4e3e2ba852146c1ca57f735ec25e267f`.
-  This verifies retained bytes, not yet evaluator metric reproduction.
+  Evaluator validation has now reproduced the retained confusion counts and
+  foreground macro Dice exactly. See the [actual aggregate record](03_INITIAL_ADMISSION_AND_BASELINE.json).
 - The approved ready-dataset archive exists in the existing Graphene datasets
   directory, named by SHA-256
   `4aa3bc1ad4d29181338901d773d602613fb2bdc6613ea5d18155e28534ebbea7`.
 - The stakeholder switched to GPU and confirmed reconnection. The replacement
   runtime reports Python 3.13.15, Torch 2.11.0+cu130 and Tesla T4. It needs the
   pinned package environment and a new Drive mount before real comparison runs.
+  Both now succeeded: fresh process Torch 2.7.1+cu126 reports CUDA on Tesla T4.
   Do not interpret Colab's preinstalled Torch as the reviewed training environment.
 
 Pinned Hugging Face metadata checked directly on 2026-10-11:
@@ -59,6 +61,31 @@ keep this candidate pending rather than declaring exclusion. DINO execution
 requires actual approved credentials; no terms were accepted
 on the stakeholder's behalf. See [literature gates](01_LITERATURE_AND_CANDIDATES.md)
 for 2D-TLK and MaskTerial's distinct compatibility limitations.
+
+## Actual initial measurements
+
+The four-image baseline validation report has exact foreground macro Dice
+0.913150140598536 and few-layer pixel recall 0.8238106591584569. At argmax,
+5/15 annotated few-layer semantic components match at the reviewed IoU proxy;
+71 unmatched prediction components touch unknown coverage and are indeterminate,
+and one unmatched component lies wholly on known support. Unknown coverage is
+71.299% of role pixels. Threshold 0.2 raises component matches to 6/15 while
+lowering foreground macro Dice to 0.892941 and increasing indeterminate unmatched
+components to 129. These are development trade-offs, not a chosen operating point.
+Full reports and original-coordinate panels are retained privately on Drive under
+`Graphene/trials/wi07-baseline-validation-20261011`. Test is untouched.
+
+SegFormer's real pinned pretrained bytes passed CPU forward/backward admission
+on synthetic objective inputs, with 3,714,915 trainable parameters, finite loss
+and exactly zero objective gradients at ignored output pixels. The weight-byte
+identity is `d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b`.
+T4 admission also passed with the same pinned bytes, finite backward loss and
+zero ignored-output gradients: 903,049,728 peak allocated bytes and 1,140,850,688
+peak reserved bytes at batch 2/512/float32. The admission uses synthetic inputs
+and does not establish real-data accuracy. Initial real seed-42 training started as
+`wi07-segformer-b0-seed42-20261011`, retaining complete epochs under the existing
+Drive `Graphene/runs` directory. Completion/quality/recovery remain pending.
+An initial cache-write sandbox failure was retried with approved escalation.
 
 ## Verification and acceptance status
 
@@ -83,18 +110,17 @@ successfully. No specification has been synced or archived as completed.
 
 | Criterion | Status | Evidence/remaining work |
 | --- | --- | --- |
-| AC-1 traceability/isolation | Partially verified | Synthetic identity/freeze tests; actual baseline digest verified; real validation-count reproduction pending |
-| AC-2 candidates/recovery | Partially verified | Adapter/replay tests and actual access gates; real pretrained admission and challenger runs pending |
+| AC-1 traceability/isolation | Partially verified | Synthetic identity/freeze tests; actual baseline digest and exact validation-count reproduction verified |
+| AC-2 candidates/recovery | Partially verified | Adapter/replay tests, real-weight CPU admission and actual access gates; SegFormer GPU admission verified; challenger runs and actual recovery pending |
 | AC-3 supported quality/errors | Implementation verified synthetically | Actual candidate metrics and stakeholder panels pending |
 | AC-4 sensitivity/resources | Implemented; real evidence unverified | Benchmarks/comparison tools; finalist geometry/seeds/actual resources pending |
 | AC-5 reviewed selection/test | Unverified | Stakeholder shortlist, recommendation and exact freeze or explicit deferral pending; test untouched |
 
 ## Continuation
 
-The stakeholder confirmed Drive authorization for the T4 runtime. Pinned source
-`8abeb9f` is being installed in a separate Colab process; fresh CLI processes will
-use the pinned dependencies. Complete setup, reproduce baseline validation counts,
-run admitted challengers sequentially, preserve durable run records and verify
+The T4 environment and Drive mount are verified; actual baseline counts reproduce
+exactly. Pinned source `8abeb9f` remains the immutable training bundle. Finish
+the initial SegFormer run and run admitted challengers sequentially, preserve durable run records and verify
 replacement-session recovery. Then obtain stakeholder shortlist priorities,
 execute approved finalist screens/seeds and record a reviewed selection or
 inconclusive outcome. No WI-08 proposal or model export is authorized by this
