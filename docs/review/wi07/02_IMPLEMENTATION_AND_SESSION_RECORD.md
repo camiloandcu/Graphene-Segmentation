@@ -24,6 +24,9 @@ This implementation detail is recorded rather than silently dropping an image.
 Guide: [model selection](../../15_MODEL_SELECTION_EVALUATION.md).
 Notebook: [interactive Colab comparison](../../../notebooks/02_COLAB_MODEL_SELECTION.ipynb).
 Reviewed source commit for Colab: `8abeb9f2d10762d5420c539748832a5b29d28c16`.
+The completed DINO initial run retains that bundle. New runs use persistence-fix
+commit `33eb57af378b32ed80a552c44119c4ab7e805ff7`; the notebook pins this newer
+bundle. Keep the source corresponding to each recorded run for strict recovery.
 Source and synthetic tests: `packages/graphene-evaluation/`.
 
 ## Actual access and recovery checks
@@ -157,8 +160,11 @@ zero ignored-output gradients, frozen encoder, 186,051,072 allocated and
 `643110675d072f171af2af5a5228d0453e00ca476b3066ffa13e8215721faf39`.
 Pinned author configuration and adapter configuration have no substantive
 differences. This remains a synthetic-input feasibility check, not accuracy.
-Initial training started as `wi07-dinov3-vits16-linear-seed42-20261012`;
-completion, checkpoint retention, actual error analysis and recovery remain pending.
+Initial training `wi07-dinov3-vits16-linear-seed42-20261012` completed all 30
+epochs. Its history selects epoch 20 with foreground macro Dice
+0.5514027542991692; a separate checkpoint-bound development report and archive
+are being produced. All 30 checkpoint files are present in the current Drive
+mount. Actual error analysis and replacement-mount/session durability remain pending.
 
 DINO resource sidecars exposed a persistence bottleneck: epochs 24–26 spent
 95–102 seconds persisting after approximately four seconds optimizing/validating,
