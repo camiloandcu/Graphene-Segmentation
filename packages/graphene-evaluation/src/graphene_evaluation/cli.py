@@ -30,6 +30,7 @@ def main(argv=None):
     p.add_argument('--checkpoint', required=True); p.add_argument('--output', type=Path, required=True)
     p.add_argument('--size', type=int); p.add_argument('--geometry', choices=['letterbox','tiles'], default='letterbox')
     p.add_argument('--stride', type=int, default=384); p.add_argument('--device', choices=['cpu','cuda'], default='cpu')
+    p.add_argument('--threshold', type=float)
     p = commands.add_parser('compare'); p.add_argument('reports', type=Path, nargs='+')
     p.add_argument('--output', type=Path, required=True); p.add_argument('--setting', default='argmax')
     args = parser.parse_args(argv)
@@ -38,7 +39,7 @@ def main(argv=None):
             if args.output.exists(): raise ValueError('Use a new immutable output')
             result = compare(args.reports, setting=args.setting) if args.command == 'compare' else benchmark(
                 args.dataset, args.run, args.checkpoint, size=args.size, geometry=args.geometry,
-                stride=args.stride, device=args.device)
+                stride=args.stride, device=args.device, threshold=args.threshold)
             write_json(args.output, result)
         elif args.command == 'freeze':
             result = freeze_report(args.report, args.output, reviewer=args.reviewer, date=args.date, evidence=args.evidence, setting=args.setting)

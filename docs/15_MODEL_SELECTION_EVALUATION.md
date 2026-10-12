@@ -100,8 +100,12 @@ graphene-evaluate compare DEVELOPMENT_A/report.json DEVELOPMENT_B/report.json \
 ```
 
 Benchmarks use two warmups and five repetitions per validation image, one CPU
-thread, and record normalization/inference/restoration latency. File decoding
-and plotting are excluded. RSS is cumulative process high-water memory, not
+thread, and record image read/checksum/decode, normalization/inference/restoration
+and decision latency, with per-phase timings. Checkpoint/data verification,
+model construction/loading and device transfer are measured separately as
+initialization. Repeated image reads use the operating system cache; these are
+not cold-disk timings. Plotting is excluded. `benchmark --threshold 0.2` binds
+timing to the corresponding decision rule. RSS is cumulative process high-water memory, not
 model-exclusive RAM. CUDA measurements require actual GPU execution. Comparisons
 reject test reports or changed supervision and use shared group bootstrap draws.
 Few groups make these exploratory sensitivity estimates. Seed summaries only
