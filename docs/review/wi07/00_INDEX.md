@@ -1,6 +1,6 @@
 # WI-07 model-selection review
 
-Checked: 2026-10-11. Consumer: stakeholder selecting a feasible exploratory model
+Checked: 2026-10-12. Consumer: stakeholder selecting a feasible exploratory model
 and WI-08 exporter. Status: full proposal/design/specifications explicitly approved;
 implementation started. Real-run/selection acceptance remains separate.
 
@@ -35,8 +35,11 @@ from the approved proposal. Branch `feat/wi-07-model-selection` is linked using
 `gh issue develop 7`. The evaluator, challenger adapters, CLI and notebook are implemented and verified
 with synthetic contracts. [Implementation/session evidence](02_IMPLEMENTATION_AND_SESSION_RECORD.md)
 records actual Drive checkpoint verification and the connected T4 setup. The real baseline confusion counts and Dice reproduce exactly; SegFormer has
-passed real-weight CPU and T4 admission. GPU challenger training and stakeholder selection
-remain pending. See the [actual aggregate record](03_INITIAL_ADMISSION_AND_BASELINE.json).
+passed real-weight CPU and T4 admission. DINOv3's approved pinned weights also
+passed [actual T4 admission](04_DINOV3_GPU_ADMISSION.json). The first SegFormer
+run's saved history survived but its checkpoint files are missing; strict recovery
+failed and a replacement run is required. Challenger quality and stakeholder
+selection remain pending. See the [baseline aggregate record](03_INITIAL_ADMISSION_AND_BASELINE.json).
 
 Planning verification: `openspec validate --all --strict` passed all six current
 specifications and the single WI-07 change (7 passed, 0 failed). Local-link,

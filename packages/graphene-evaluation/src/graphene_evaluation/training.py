@@ -7,12 +7,13 @@ from graphene_dataset_contract.common import write_json
 from graphene_training.data import RoleDataset
 from graphene_training.engine import rng_state
 from graphene_training.objective import loss, evaluate
-from graphene_training.storage import run_record, save_generation, persist, inspect, load_state
+from graphene_training.storage import run_record, save_generation, inspect, load_state
+from .persistence import IncrementalPersistence
 
 
 def train(dataset, config, output, model, optimizer, scheduler, scaler, generator,
           *, start, history, best_epoch, best_score, stop_after):
-    if config.persistence_directory: persist(output, config.persistence_directory)
+    persistence = IncrementalPersistence(output, config.persistence_directory) if config.persistence_directory else None
     expected=run_record(output)['dataset']['dataset_fingerprint']
     training=RoleDataset(dataset,'train',config,expected)
     validation=RoleDataset(dataset,'validation',config,expected)
@@ -50,7 +51,7 @@ def train(dataset, config, output, model, optimizer, scheduler, scaler, generato
                'generator':generator.get_state()}
         save_generation(output,epoch,state,history,best_epoch,best_score)
         checkpointed=time.monotonic()
-        if config.persistence_directory: persist(output,config.persistence_directory)
+        if persistence: persistence.append(epoch)
         # Sidecar is resource telemetry, never checkpoint/recovery authority. A
         # disconnected copy may omit it; epoch completion markers remain definitive.
         telemetry={'epoch':epoch,'checkpoint_seconds':checkpointed-validated,

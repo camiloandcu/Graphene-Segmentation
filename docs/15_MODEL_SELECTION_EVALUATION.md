@@ -69,6 +69,14 @@ path. Resume only the latest completed epoch, with matching data, source and
 runtime. An interrupted/incomplete epoch has no authority. Retain the recorded
 package bundle across replacement sessions; source edits invalidate recovery.
 
+The challenger runner fully verifies source and retained generations when opening
+a persistence session, then checks and copies only newly completed epochs.
+It writes each completion marker after all member checksums match. Recovery still
+fully verifies every retained generation. This avoids repeatedly rereading the
+entire history during each epoch. A successful readback through the current Drive
+mount does not establish survival of a runtime disconnect: retain selected/latest
+state archives and verify them after remounting or in a replacement runtime.
+
 ## Error analysis and resource evidence
 
 Pixel metrics include per-class support, IoU, Dice, precision and recall. Zero

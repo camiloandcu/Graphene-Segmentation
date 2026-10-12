@@ -4,7 +4,7 @@
   metric proxies, candidate gates, resource decision and test-freeze policy.
 - [x] 1.2 Refine executable Issue #7, link the short-lived branch using
   `gh issue develop 7`, and commit approved planning (shared G-02/G-04).
-- [ ] 1.3 Verify continuing interactive Colab/Drive access; resolve DINO license/
+- [x] 1.3 Verify continuing interactive Colab/Drive access; resolve DINO license/
   weight access without assuming authority to accept terms or buy resources (AC-2).
 
 ## 2. Identity and offline evaluation
@@ -19,7 +19,7 @@
 
 ## 3. Candidate admission and actual runs
 
-- [ ] 3.1 Add SegFormer-B0 and frozen DINOv3 semantic adapters with explicit pinned
+- [x] 3.1 Add SegFormer-B0 and frozen DINOv3 semantic adapters with explicit pinned
   initialization and ignore-aware objective; execute admission checks (AC-2).
 - [ ] 3.2 Record reproducibility/license/runtime/contract gates for 2D-TLK and
   MaskTerial; use the fourth-slot DeepLabv3+ fallback if needed, run only admitted

@@ -135,6 +135,44 @@ endpoint/link was prepared. Runtime installation/recovery workers are ready in
 private workspace storage but have not executed. Reconnect before claiming any
 replacement-session checkpoint or DINO admission result.
 
+The fresh endpoint subsequently connected and installed source `8abeb9f` with
+the pinned packages successfully. Actual replacement-runtime recovery **failed**:
+all 30 SegFormer epoch directories contain the three JSON members but lack
+`checkpoint.pt`, both on Drive and after local copy. Strict inspection rejected
+the missing members. The original U-Net checkpoint remains present. The
+stakeholder confirmed no checkpoint move/deletion. The persistence-loss cause is
+unknown; do not use SegFormer history alone as checkpoint-bound selection evidence.
+Its history names epoch 19 with Dice 0.9305392399304415, but that score has not been
+reproduced from weights. A new, identically configured seed-42 run is prepared
+under `wi07-segformer-b0-seed42-20261012-rerun`; stronger independent retention
+and replacement-session verification remain required.
+
+DINO admission has not launched: `userdata.get('HF_TOKEN')` timed out through MCP.
+A first notebook cell requested the secret from a manual UI execution without
+printing or persisting its value. That step succeeded, and actual pretrained T4
+admission subsequently passed. See [the complete admission record](04_DINOV3_GPU_ADMISSION.json):
+21,597,699 total parameters, 1,155 trainable head parameters, finite loss,
+zero ignored-output gradients, frozen encoder, 186,051,072 allocated and
+195,035,136 reserved peak CUDA bytes. Weight digest:
+`643110675d072f171af2af5a5228d0453e00ca476b3066ffa13e8215721faf39`.
+Pinned author configuration and adapter configuration have no substantive
+differences. This remains a synthetic-input feasibility check, not accuracy.
+Initial training started as `wi07-dinov3-vits16-linear-seed42-20261012`;
+completion, checkpoint retention, actual error analysis and recovery remain pending.
+
+DINO resource sidecars exposed a persistence bottleneck: epochs 24–26 spent
+95–102 seconds persisting after approximately four seconds optimizing/validating,
+with the GPU idle during hashing. The next source bundle changes only challenger
+persistence to full inspection at session entry and incremental verified copies
+of new epochs; WI-06 storage/source remains unchanged. Completion-last markers,
+collision rejection and full checksum-first recovery remain mandatory. Four
+focused synthetic cases passed (32.68 seconds): uninterrupted versus resumed
+state/RNG/generator equality, interrupted-copy authority, rejection of a corrupted
+old acknowledgement in a new session, and the existing exact experiment replay.
+These fixtures do not prove remote Drive durability or explain the missing weights.
+The active DINO run remains on `8abeb9f`; do not update its installed bundle while
+it is running or use the newer source for its strict recovery.
+
 The T4 environment and Drive mount are verified; actual baseline counts reproduce
 exactly. Pinned source `8abeb9f` remains the immutable training bundle. Finish
 the initial SegFormer run and run admitted challengers sequentially, preserve durable run records and verify
