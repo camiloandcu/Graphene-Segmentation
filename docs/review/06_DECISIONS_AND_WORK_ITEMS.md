@@ -327,6 +327,11 @@ review and explicitly approved in full on 2026-10-11. Issue #7 is refined;
 `feat/wi-07-model-selection` is linked using `gh issue develop 7`.
 See [current evidence/next step](wi07/00_INDEX.md) and
 [primary-source candidate review](wi07/01_LITERATURE_AND_CANDIDATES.md).
+Evaluator/adapters are committed as `8abeb9f` and pushed in draft
+[PR #21](https://github.com/camiloandcu/Graphene-Segmentation/pull/21).
+[Implementation/session evidence](wi07/02_IMPLEMENTATION_AND_SESSION_RECORD.md)
+records synthetic checks and actual checkpoint-byte recovery; real comparisons
+and stakeholder model selection remain pending.
 
 Confirmed choices: U-Net + SegFormer-B0 + gated DINOv3; seek the best feasible
 model, account for Colab quotas and permit recovery across multiple day sessions.

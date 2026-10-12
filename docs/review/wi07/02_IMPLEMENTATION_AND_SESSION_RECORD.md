@@ -1,7 +1,9 @@
 # WI-07 implementation and session evidence
 
 Checked: 2026-10-11. Issue [#7](https://github.com/camiloandcu/Graphene-Segmentation/issues/7).
-Branch: `feat/wi-07-model-selection`. Planning commit: `b23f65b`.
+Branch: `feat/wi-07-model-selection`. Planning commit: `b23f65b`. Implementation commit: `8abeb9f` (pushed).
+Draft [PR #21](https://github.com/camiloandcu/Graphene-Segmentation/pull/21)
+contains `Closes #7` and explicitly records pending real-run acceptance.
 Status: implementing; model selection and final test remain unverified.
 
 ## Delivered implementation
@@ -21,6 +23,7 @@ This implementation detail is recorded rather than silently dropping an image.
 
 Guide: [model selection](../../15_MODEL_SELECTION_EVALUATION.md).
 Notebook: [interactive Colab comparison](../../../notebooks/02_COLAB_MODEL_SELECTION.ipynb).
+Reviewed source commit for Colab: `8abeb9f2d10762d5420c539748832a5b29d28c16`.
 Source and synthetic tests: `packages/graphene-evaluation/`.
 
 ## Actual access and recovery checks
@@ -51,8 +54,9 @@ SegFormer source links its model license to the [author license](https://github.
 which limits use to research/evaluation. Approved research comparison does not
 establish commercial deployment rights. Its pinned PyTorch state is loaded with
 restricted `weights_only=True` under Torch >=2.6. No arbitrary unpickling or random
-pretrained substitution is provided. DINO access remains pending an actual
-approved account credential or a documented exclusion; no terms were accepted
+pretrained substitution is provided. The stakeholder submitted the DINO access request and will report approval;
+keep this candidate pending rather than declaring exclusion. DINO execution
+requires actual approved credentials; no terms were accepted
 on the stakeholder's behalf. See [literature gates](01_LITERATURE_AND_CANDIDATES.md)
 for 2D-TLK and MaskTerial's distinct compatibility limitations.
 
@@ -71,7 +75,9 @@ After adding resource/source records and deterministic evaluation, all 8 evaluat
 cases passed again (58.06 seconds). The unchanged WI-06 regression cases passed in
 the combined run. Existing pycocotools/NumPy deprecation warnings remain.
 
-`openspec validate --all --strict`: 7 passed, 0 failed. A separate `npx openspec`
+`openspec validate --all --strict`: 7 passed, 0 failed. Python syntax, all 8
+notebook code cells (no outputs), 75 local links across 8 Markdown files and
+`git diff --check` passed. A separate `npx openspec`
 attempt could not write npm's global cache; the installed project CLI was used
 successfully. No specification has been synced or archived as completed.
 
@@ -85,7 +91,9 @@ successfully. No specification has been synced or archived as completed.
 
 ## Continuation
 
-Complete pinned T4 setup and Drive mount, reproduce baseline validation counts,
+The stakeholder confirmed Drive authorization for the T4 runtime. Pinned source
+`8abeb9f` is being installed in a separate Colab process; fresh CLI processes will
+use the pinned dependencies. Complete setup, reproduce baseline validation counts,
 run admitted challengers sequentially, preserve durable run records and verify
 replacement-session recovery. Then obtain stakeholder shortlist priorities,
 execute approved finalist screens/seeds and record a reviewed selection or
