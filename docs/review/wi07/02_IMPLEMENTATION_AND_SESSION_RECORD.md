@@ -1,6 +1,6 @@
 # WI-07 implementation and session evidence
 
-Checked: 2026-10-11. Issue [#7](https://github.com/camiloandcu/Graphene-Segmentation/issues/7).
+Checked: 2026-10-12. Issue [#7](https://github.com/camiloandcu/Graphene-Segmentation/issues/7).
 Branch: `feat/wi-07-model-selection`. Planning commit: `b23f65b`. Implementation commit: `8abeb9f` (pushed).
 Draft [PR #21](https://github.com/camiloandcu/Graphene-Segmentation/pull/21)
 contains `Closes #7` and explicitly records pending real-run acceptance.
@@ -56,8 +56,9 @@ SegFormer source links its model license to the [author license](https://github.
 which limits use to research/evaluation. Approved research comparison does not
 establish commercial deployment rights. Its pinned PyTorch state is loaded with
 restricted `weights_only=True` under Torch >=2.6. No arbitrary unpickling or random
-pretrained substitution is provided. The stakeholder submitted the DINO access request and will report approval;
-keep this candidate pending rather than declaring exclusion. DINO execution
+pretrained substitution is provided. The stakeholder subsequently reported DINO
+access approval and enabled the notebook secret; actual authenticated weight
+download/admission remains pending. DINO execution
 requires actual approved credentials; no terms were accepted
 on the stakeholder's behalf. See [literature gates](01_LITERATURE_AND_CANDIDATES.md)
 for 2D-TLK and MaskTerial's distinct compatibility limitations.
@@ -117,6 +118,22 @@ successfully. No specification has been synced or archived as completed.
 | AC-5 reviewed selection/test | Unverified | Stakeholder shortlist, recommendation and exact freeze or explicit deferral pending; test untouched |
 
 ## Continuation
+
+On 2026-10-12, the stakeholder reported the runtime had ended after eight hours
+and reconnected a replacement T4 runtime. Python 3.13.15 and the new Drive mount
+were observed. Drive contains 30 SegFormer completion markers and its completed
+summary; cryptographic generation verification and selected-checkpoint evaluation
+in the replacement runtime remain pending. Do not infer quality or successful
+recovery from marker counts alone. The stakeholder also reported DINO access
+approval and enabled the Colab `HF_TOKEN` secret. Before interruption, secret
+retrieval and pinned repository metadata succeeded without exposing credentials;
+authenticated weight download and real-weight admission remain pending.
+The local MCP bridge stopped after an invalid command-file request. Its private
+client now catches invalid files without terminating. A restarted stable endpoint
+did not receive a browser connection despite stakeholder confirmation; a fresh
+endpoint/link was prepared. Runtime installation/recovery workers are ready in
+private workspace storage but have not executed. Reconnect before claiming any
+replacement-session checkpoint or DINO admission result.
 
 The T4 environment and Drive mount are verified; actual baseline counts reproduce
 exactly. Pinned source `8abeb9f` remains the immutable training bundle. Finish
