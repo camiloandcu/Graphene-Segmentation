@@ -1,0 +1,889 @@
+{
+  "schema_version": 1,
+  "checked": "2026-10-12",
+  "scope": "Actual four-model validation comparison: full report fingerprints and exact image/mask/supervised support/group identities verified by compare(); no automatic winner or test inputs.",
+  "bootstrap": {
+    "available": false,
+    "limitation": "Few reviewed groups; exploratory sensitivity, not a generalization guarantee",
+    "repeats": 1000,
+    "seed": 20261011,
+    "unit": "reviewed group"
+  },
+  "seed_summaries": {
+    "deeplabv3plus-resnet18": {
+      "foreground_dice_mean": 0.8696227513813641,
+      "foreground_dice_range": [
+        0.8696227513813641,
+        0.8696227513813641
+      ],
+      "sample_std": null,
+      "seeds": [
+        42
+      ]
+    },
+    "dinov3-vits16-linear": {
+      "foreground_dice_mean": 0.5514027542991692,
+      "foreground_dice_range": [
+        0.5514027542991692,
+        0.5514027542991692
+      ],
+      "sample_std": null,
+      "seeds": [
+        42
+      ]
+    },
+    "segformer-b0": {
+      "foreground_dice_mean": 0.9305392399304415,
+      "foreground_dice_range": [
+        0.9305392399304415,
+        0.9305392399304415
+      ],
+      "sample_std": null,
+      "seeds": [
+        42
+      ]
+    },
+    "unet-resnet18": {
+      "foreground_dice_mean": 0.913150140598536,
+      "foreground_dice_range": [
+        0.913150140598536,
+        0.913150140598536
+      ],
+      "sample_std": null,
+      "seeds": [
+        42
+      ]
+    }
+  },
+  "decision": "Stakeholder reviews few-layer/component recall, known-support errors and resources; no automatic scalar winner",
+  "candidates": [
+    {
+      "binding": {
+        "architecture": "unet-resnet18",
+        "checkpoint_sha256": "c199f87a1d3f06f013dbef0db7982c6d4e3e2ba852146c1ca57f735ec25e267f",
+        "config": {
+          "architecture": "unet-resnet18",
+          "batch_size": 2,
+          "device": "cuda",
+          "epochs": 30,
+          "horizontal_flip": 0.0,
+          "input_size": 512,
+          "learning_rate": 0.001,
+          "persistence_directory": "/content/drive/MyDrive/Graphene/runs/graphene-baseline-wi06-20261010-002",
+          "precision": "float32",
+          "schema_version": 1,
+          "seed": 42,
+          "vertical_flip": 0.0,
+          "weight_decay": 0.0001,
+          "weights": "imagenet-resnet18-v1"
+        },
+        "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+        "generation": "epoch-000023",
+        "preprocessing": {
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "padding_rgb": [
+            0,
+            0,
+            0
+          ],
+          "scale": 0.00392156862745098,
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ],
+          "version": 1
+        },
+        "recorded_best_epoch": 23,
+        "run_fingerprint": "657e88412a7690f9d7436d326fa62e92506ab1f3280a58397a2839ef440b449e",
+        "seed": 42,
+        "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+        "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+        "training_environment": {
+          "cpu_backend": "cuda",
+          "cpu_interop_threads": 1,
+          "cpu_threads": 1,
+          "cudnn": 90501,
+          "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+          "device_policy": "cuda",
+          "git_revision": "b0480172dd80181efbd7241b7c8e2853818407f4",
+          "gpu": "Tesla T4",
+          "packages": {
+            "Pillow": "11.3.0",
+            "graphene-dataset-contract": "2.0.0",
+            "graphene-model-contract": "1.0.0",
+            "graphene-training": "1.0.0",
+            "numpy": "2.2.6",
+            "pycocotools": "2.0.10",
+            "pydantic": "2.12.3",
+            "segmentation-models-pytorch": "0.5.0",
+            "timm": "1.0.30",
+            "torch": "2.7.1+cu126",
+            "torchvision": "0.22.1+cu126"
+          },
+          "precision": "float32",
+          "python": "3.13.15",
+          "torch_cuda": "12.6",
+          "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+        },
+        "weights": {
+          "identifier": "ResNet18_Weights.IMAGENET1K_V1",
+          "initialization": "pretrained",
+          "sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+          "source": "https://download.pytorch.org/models/resnet18-f37072fd.pth"
+        }
+      },
+      "settings": {
+        "decision": "argmax",
+        "geometry": "letterbox",
+        "input_size": 512,
+        "stride": null,
+        "threshold": null,
+        "ties": "lower_id"
+      },
+      "pixels": {
+        "classes": [
+          {
+            "class_id": 0,
+            "dice": 0.9816197189691166,
+            "iou": 0.9639029125499612,
+            "precision": 0.9639029125499612,
+            "predicted_support": 271961,
+            "recall": 1.0,
+            "support": 262144,
+            "unavailable_reasons": {}
+          },
+          {
+            "class_id": 1,
+            "dice": 0.8427417215213913,
+            "iou": 0.7282226769890148,
+            "precision": 0.8625633148994394,
+            "predicted_support": 524758,
+            "recall": 0.8238106591584569,
+            "support": 549443,
+            "unavailable_reasons": {}
+          },
+          {
+            "class_id": 2,
+            "dice": 0.9835585596756807,
+            "iou": 0.9676490161222209,
+            "precision": 0.9820497709302407,
+            "predicted_support": 4846122,
+            "recall": 0.9850719916609643,
+            "support": 4831254,
+            "unavailable_reasons": {}
+          }
+        ],
+        "confusion_matrix": [
+          [
+            262144,
+            0,
+            0
+          ],
+          [
+            9817,
+            452637,
+            86989
+          ],
+          [
+            0,
+            72121,
+            4759133
+          ]
+        ],
+        "foreground_macro_dice": 0.913150140598536,
+        "foreground_macro_iou": 0.8479358465556178,
+        "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+      },
+      "components": {
+        "annotated_component_recall_proxy": 0.3333333333333333,
+        "indeterminate_unmatched": 71,
+        "known_support_unmatched": 1,
+        "matched_components": 5,
+        "reference_components": 15
+      },
+      "resources": {
+        "cpu": "x86_64",
+        "cpu_feasibility": "Hardware-specific pilot only; stakeholder lab latency/RAM acceptance pending",
+        "definition": "Single pass per role image; normalization, model, restoration included; not warmed benchmark",
+        "device": "cuda",
+        "elapsed_seconds": 185.64758538,
+        "inference_ms": [
+          1034.202255999844,
+          228.13889200006088,
+          255.88433300004,
+          172.41310899999007
+        ],
+        "median_ms": 242.01161250005043,
+        "numpy": "2.2.6",
+        "p95_ms": 917.4545675498732,
+        "process_peak_rss_bytes": 1638473728,
+        "repeat_count": 1,
+        "threads": 1,
+        "torch": "2.7.1",
+        "warmup": 0
+      },
+      "group_bootstrap_foreground_dice_95_percentile_interval": null,
+      "per_image": [
+        {
+          "component_recall": 0.3333333333333333,
+          "foreground_macro_dice": 0.9875558477847984,
+          "validation_order": 1
+        },
+        {
+          "component_recall": 0.5,
+          "foreground_macro_dice": 0.9262883775350772,
+          "validation_order": 2
+        },
+        {
+          "component_recall": 0.2,
+          "foreground_macro_dice": 0.7990679533813705,
+          "validation_order": 3
+        },
+        {
+          "component_recall": 0.5,
+          "foreground_macro_dice": 0.9230201601346657,
+          "validation_order": 4
+        }
+      ],
+      "per_group": [],
+      "mean_per_image_foreground_macro_dice": 0.9089830847089779
+    },
+    {
+      "binding": {
+        "architecture": "segformer-b0",
+        "checkpoint_sha256": "a3dc42c64f1e13bde09c1c97aabb36fdbced679b2f11309e3e334760a8533831",
+        "config": {
+          "architecture": "segformer-b0",
+          "batch_size": 2,
+          "device": "cuda",
+          "epochs": 30,
+          "horizontal_flip": 0.0,
+          "input_size": 512,
+          "learning_rate": 0.001,
+          "license_approved": true,
+          "persistence_directory": "/content/drive/MyDrive/Graphene (1)/runs/wi07-segformer-b0-seed42-20261012-rerun",
+          "precision": "float32",
+          "schema_version": 2,
+          "seed": 42,
+          "vertical_flip": 0.0,
+          "weight_decay": 0.0001,
+          "weights": "nvidia/mit-b0",
+          "weights_directory": null,
+          "weights_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+          "weights_sha256": "d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b"
+        },
+        "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+        "generation": "epoch-000019",
+        "preprocessing": {
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "padding_rgb": [
+            0,
+            0,
+            0
+          ],
+          "scale": 0.00392156862745098,
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ],
+          "version": 1
+        },
+        "recorded_best_epoch": 19,
+        "run_fingerprint": "48b44083bee53f44130a1f70a7b16d5d024fb99a78d587b3b4dc7eba7ad5b8dd",
+        "seed": 42,
+        "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+        "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+        "training_environment": {
+          "cpu_backend": "cuda",
+          "cpu_interop_threads": 1,
+          "cpu_threads": 1,
+          "cudnn": 90501,
+          "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+          "device_policy": "cuda",
+          "evaluation_packages": {
+            "graphene-evaluation": "1.0.0",
+            "huggingface-hub": "0.36.2",
+            "scipy": "1.15.3",
+            "transformers": "4.57.6"
+          },
+          "evaluation_source_sha256": "f3be8477bb429dace0a0eed2bfcd82ec14c25709f894cbf3fb8ea5c7b6d54cb2",
+          "git_revision": null,
+          "gpu": "Tesla T4",
+          "packages": {
+            "Pillow": "11.3.0",
+            "graphene-dataset-contract": "2.0.0",
+            "graphene-model-contract": "1.0.0",
+            "graphene-training": "1.0.0",
+            "numpy": "2.2.6",
+            "pycocotools": "2.0.10",
+            "pydantic": "2.12.3",
+            "segmentation-models-pytorch": "0.5.0",
+            "timm": "1.0.30",
+            "torch": "2.7.1",
+            "torchvision": "0.22.1"
+          },
+          "precision": "float32",
+          "python": "3.13.15",
+          "torch_cuda": "12.6",
+          "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+        },
+        "weights": {
+          "checksum_definition": "SHA-256 of sorted weight filename + file SHA-256 pairs",
+          "format": "pytorch restricted weights_only=True",
+          "identifier": "nvidia/mit-b0",
+          "initialization": "pretrained",
+          "license_approved": true,
+          "revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+          "sha256": "d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b",
+          "source": "https://huggingface.co/nvidia/mit-b0"
+        }
+      },
+      "settings": {
+        "decision": "argmax",
+        "geometry": "letterbox",
+        "input_size": 512,
+        "stride": null,
+        "threshold": null,
+        "ties": "lower_id"
+      },
+      "pixels": {
+        "classes": [
+          {
+            "class_id": 0,
+            "dice": 0.9316612607403258,
+            "iou": 0.8720654100645441,
+            "precision": 0.8850927518617323,
+            "predicted_support": 291261,
+            "recall": 0.9834022521972656,
+            "support": 262144,
+            "unavailable_reasons": {}
+          },
+          {
+            "class_id": 1,
+            "dice": 0.8723187130920137,
+            "iou": 0.7735507569553125,
+            "precision": 0.8765572309360384,
+            "predicted_support": 544155,
+            "recall": 0.8681209879823749,
+            "support": 549443,
+            "unavailable_reasons": {}
+          },
+          {
+            "class_id": 2,
+            "dice": 0.9887597667688695,
+            "iou": 0.9777694105480444,
+            "precision": 0.991210263290639,
+            "predicted_support": 4807425,
+            "recall": 0.9863213567326412,
+            "support": 4831254,
+            "unavailable_reasons": {}
+          }
+        ],
+        "confusion_matrix": [
+          [
+            257793,
+            4351,
+            0
+          ],
+          [
+            30204,
+            476983,
+            42256
+          ],
+          [
+            3264,
+            62821,
+            4765169
+          ]
+        ],
+        "foreground_macro_dice": 0.9305392399304415,
+        "foreground_macro_iou": 0.8756600837516785,
+        "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+      },
+      "components": {
+        "annotated_component_recall_proxy": 0.3333333333333333,
+        "indeterminate_unmatched": 149,
+        "known_support_unmatched": 13,
+        "matched_components": 5,
+        "reference_components": 15
+      },
+      "resources": {
+        "cpu": "x86_64",
+        "cpu_feasibility": "Hardware-specific pilot only; stakeholder lab latency/RAM acceptance pending",
+        "definition": "Single pass per role image; normalization, model, restoration included; not warmed benchmark",
+        "device": "cuda",
+        "elapsed_seconds": 195.21470696100005,
+        "inference_ms": [
+          629.4555529998433,
+          167.8900550000435,
+          290.00072100006946,
+          179.60536700002194
+        ],
+        "median_ms": 234.8030440000457,
+        "numpy": "2.2.6",
+        "p95_ms": 578.5373281998772,
+        "process_peak_rss_bytes": 2557644800,
+        "repeat_count": 1,
+        "threads": 1,
+        "torch": "2.7.1",
+        "warmup": 0
+      },
+      "group_bootstrap_foreground_dice_95_percentile_interval": null,
+      "per_image": [
+        {
+          "component_recall": 0.16666666666666666,
+          "foreground_macro_dice": 0.7616020486032609,
+          "validation_order": 1
+        },
+        {
+          "component_recall": 1.0,
+          "foreground_macro_dice": 0.9635500113208029,
+          "validation_order": 2
+        },
+        {
+          "component_recall": 0.4,
+          "foreground_macro_dice": 0.8264283119755756,
+          "validation_order": 3
+        },
+        {
+          "component_recall": 0.0,
+          "foreground_macro_dice": 0.6073764277415181,
+          "validation_order": 4
+        }
+      ],
+      "per_group": [],
+      "mean_per_image_foreground_macro_dice": 0.7897391999102894
+    },
+    {
+      "binding": {
+        "architecture": "dinov3-vits16-linear",
+        "checkpoint_sha256": "fbac32d25a9c83e523364d816a8b7afaddd902a43655ddc8516a7195c57af61a",
+        "config": {
+          "architecture": "dinov3-vits16-linear",
+          "batch_size": 2,
+          "device": "cuda",
+          "epochs": 30,
+          "horizontal_flip": 0.0,
+          "input_size": 512,
+          "learning_rate": 0.001,
+          "license_approved": true,
+          "persistence_directory": "/content/drive/MyDrive/Graphene/runs/wi07-dinov3-vits16-linear-seed42-20261012",
+          "precision": "float32",
+          "schema_version": 2,
+          "seed": 42,
+          "vertical_flip": 0.0,
+          "weight_decay": 0.0001,
+          "weights": "facebook/dinov3-vits16-pretrain-lvd1689m",
+          "weights_directory": null,
+          "weights_revision": "114c1379950215c8b35dfcd4e90a5c251dde0d32",
+          "weights_sha256": "643110675d072f171af2af5a5228d0453e00ca476b3066ffa13e8215721faf39"
+        },
+        "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+        "generation": "epoch-000020",
+        "preprocessing": {
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "padding_rgb": [
+            0,
+            0,
+            0
+          ],
+          "scale": 0.00392156862745098,
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ],
+          "version": 1
+        },
+        "recorded_best_epoch": 20,
+        "run_fingerprint": "40fbf877e5053a894b070cb31bdf540e02cab4bbd1206e44e25e47b443486f75",
+        "seed": 42,
+        "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+        "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+        "training_environment": {
+          "cpu_backend": "cuda",
+          "cpu_interop_threads": 1,
+          "cpu_threads": 1,
+          "cudnn": 90501,
+          "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+          "device_policy": "cuda",
+          "evaluation_packages": {
+            "graphene-evaluation": "1.0.0",
+            "huggingface-hub": "0.36.2",
+            "scipy": "1.15.3",
+            "transformers": "4.57.6"
+          },
+          "evaluation_source_sha256": "4347b74a8fc2a9d819fb7aa8b4ca3528c20fe6ca781026c0885db64413a33def",
+          "git_revision": null,
+          "gpu": "Tesla T4",
+          "packages": {
+            "Pillow": "11.3.0",
+            "graphene-dataset-contract": "2.0.0",
+            "graphene-model-contract": "1.0.0",
+            "graphene-training": "1.0.0",
+            "numpy": "2.2.6",
+            "pycocotools": "2.0.10",
+            "pydantic": "2.12.3",
+            "segmentation-models-pytorch": "0.5.0",
+            "timm": "1.0.30",
+            "torch": "2.7.1",
+            "torchvision": "0.22.1"
+          },
+          "precision": "float32",
+          "python": "3.13.15",
+          "torch_cuda": "12.6",
+          "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+        },
+        "weights": {
+          "checksum_definition": "SHA-256 of sorted weight filename + file SHA-256 pairs",
+          "format": "safetensors",
+          "identifier": "facebook/dinov3-vits16-pretrain-lvd1689m",
+          "initialization": "pretrained",
+          "license_approved": true,
+          "revision": "114c1379950215c8b35dfcd4e90a5c251dde0d32",
+          "sha256": "643110675d072f171af2af5a5228d0453e00ca476b3066ffa13e8215721faf39",
+          "source": "https://huggingface.co/facebook/dinov3-vits16-pretrain-lvd1689m"
+        }
+      },
+      "settings": {
+        "decision": "argmax",
+        "geometry": "letterbox",
+        "input_size": 512,
+        "stride": null,
+        "threshold": null,
+        "ties": "lower_id"
+      },
+      "pixels": {
+        "classes": [
+          {
+            "class_id": 0,
+            "dice": 0.0,
+            "iou": 0.0,
+            "precision": null,
+            "predicted_support": 0,
+            "recall": 0.0,
+            "support": 262144,
+            "unavailable_reasons": {
+              "precision": "Zero denominator on supervised reference/prediction support"
+            }
+          },
+          {
+            "class_id": 1,
+            "dice": 0.15179793677919243,
+            "iou": 0.0821327601564618,
+            "precision": 0.19688244321758783,
+            "predicted_support": 344693,
+            "recall": 0.12351417708479315,
+            "support": 549443,
+            "unavailable_reasons": {}
+          },
+          {
+            "class_id": 2,
+            "dice": 0.9510075718191459,
+            "iou": 0.9065914550673811,
+            "precision": 0.909104275682748,
+            "predicted_support": 5298148,
+            "recall": 0.9969604164881416,
+            "support": 4831254,
+            "unavailable_reasons": {}
+          }
+        ],
+        "confusion_matrix": [
+          [
+            0,
+            262144,
+            0
+          ],
+          [
+            0,
+            67864,
+            481579
+          ],
+          [
+            0,
+            14685,
+            4816569
+          ]
+        ],
+        "foreground_macro_dice": 0.5514027542991692,
+        "foreground_macro_iou": 0.49436210761192145,
+        "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+      },
+      "components": {
+        "annotated_component_recall_proxy": 0.0,
+        "indeterminate_unmatched": 8,
+        "known_support_unmatched": 0,
+        "matched_components": 0,
+        "reference_components": 15
+      },
+      "resources": {
+        "cpu": "x86_64",
+        "cpu_feasibility": "Hardware-specific pilot only; stakeholder lab latency/RAM acceptance pending",
+        "definition": "Single pass per role image; normalization, model, restoration included; not warmed benchmark",
+        "device": "cuda",
+        "elapsed_seconds": 50.41897414899995,
+        "inference_ms": [
+          478.0828900002234,
+          198.59799300047598,
+          186.5058069997758,
+          258.04602399966825
+        ],
+        "median_ms": 228.32200850007212,
+        "numpy": "2.2.6",
+        "p95_ms": 445.0773601001401,
+        "process_peak_rss_bytes": 2537353216,
+        "repeat_count": 1,
+        "threads": 1,
+        "torch": "2.7.1",
+        "warmup": 0
+      },
+      "group_bootstrap_foreground_dice_95_percentile_interval": null,
+      "per_image": [
+        {
+          "component_recall": 0.0,
+          "foreground_macro_dice": 0.6593824195019774,
+          "validation_order": 1
+        },
+        {
+          "component_recall": 0.0,
+          "foreground_macro_dice": 0.47080866884294925,
+          "validation_order": 2
+        },
+        {
+          "component_recall": 0.0,
+          "foreground_macro_dice": 0.6219386348331026,
+          "validation_order": 3
+        },
+        {
+          "component_recall": 0.0,
+          "foreground_macro_dice": 0.5475689824604139,
+          "validation_order": 4
+        }
+      ],
+      "per_group": [],
+      "mean_per_image_foreground_macro_dice": 0.5749246764096108
+    },
+    {
+      "binding": {
+        "architecture": "deeplabv3plus-resnet18",
+        "checkpoint_sha256": "da759e0969e9ecfd594956b4a0bb6b1a37a7e427ab851e5f4f54907ec08d98b8",
+        "config": {
+          "architecture": "deeplabv3plus-resnet18",
+          "batch_size": 2,
+          "device": "cuda",
+          "epochs": 30,
+          "horizontal_flip": 0.0,
+          "input_size": 512,
+          "learning_rate": 0.001,
+          "license_approved": true,
+          "persistence_directory": "/content/drive/MyDrive/Graphene (1)/runs/wi07-deeplabv3plus-resnet18-seed42-20261012",
+          "precision": "float32",
+          "schema_version": 2,
+          "seed": 42,
+          "vertical_flip": 0.0,
+          "weight_decay": 0.0001,
+          "weights": "imagenet-resnet18-v1",
+          "weights_directory": null,
+          "weights_revision": null,
+          "weights_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec"
+        },
+        "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+        "generation": "epoch-000004",
+        "preprocessing": {
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "padding_rgb": [
+            0,
+            0,
+            0
+          ],
+          "scale": 0.00392156862745098,
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ],
+          "version": 1
+        },
+        "recorded_best_epoch": 4,
+        "run_fingerprint": "10f3af863ef337c6df1e6dcc7422c30e13229da3e41d121a4196228ed3d13b4d",
+        "seed": 42,
+        "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+        "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+        "training_environment": {
+          "cpu_backend": "cuda",
+          "cpu_interop_threads": 1,
+          "cpu_threads": 1,
+          "cudnn": 90501,
+          "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+          "device_policy": "cuda",
+          "evaluation_packages": {
+            "graphene-evaluation": "1.0.0",
+            "huggingface-hub": "0.36.2",
+            "scipy": "1.15.3",
+            "transformers": "4.57.6"
+          },
+          "evaluation_source_sha256": "f3be8477bb429dace0a0eed2bfcd82ec14c25709f894cbf3fb8ea5c7b6d54cb2",
+          "git_revision": null,
+          "gpu": "Tesla T4",
+          "packages": {
+            "Pillow": "11.3.0",
+            "graphene-dataset-contract": "2.0.0",
+            "graphene-model-contract": "1.0.0",
+            "graphene-training": "1.0.0",
+            "numpy": "2.2.6",
+            "pycocotools": "2.0.10",
+            "pydantic": "2.12.3",
+            "segmentation-models-pytorch": "0.5.0",
+            "timm": "1.0.30",
+            "torch": "2.7.1",
+            "torchvision": "0.22.1"
+          },
+          "precision": "float32",
+          "python": "3.13.15",
+          "torch_cuda": "12.6",
+          "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+        },
+        "weights": {
+          "identifier": "ResNet18_Weights.IMAGENET1K_V1",
+          "initialization": "pretrained",
+          "sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+          "source": "https://download.pytorch.org/models/resnet18-f37072fd.pth"
+        }
+      },
+      "settings": {
+        "decision": "argmax",
+        "geometry": "letterbox",
+        "input_size": 512,
+        "stride": null,
+        "threshold": null,
+        "ties": "lower_id"
+      },
+      "pixels": {
+        "classes": [
+          {
+            "class_id": 0,
+            "dice": 0.7053797863477917,
+            "iou": 0.5448546059371877,
+            "precision": 0.7610497908633567,
+            "predicted_support": 226407,
+            "recall": 0.6572990417480469,
+            "support": 262144,
+            "unavailable_reasons": {}
+          },
+          {
+            "class_id": 1,
+            "dice": 0.7530501296197185,
+            "iou": 0.6039137157855924,
+            "precision": 0.751928925535853,
+            "predicted_support": 551084,
+            "recall": 0.7541746823601356,
+            "support": 549443,
+            "unavailable_reasons": {}
+          },
+          {
+            "class_id": 2,
+            "dice": 0.9861953731430096,
+            "iou": 0.9727666919418436,
+            "precision": 0.9827397823383723,
+            "predicted_support": 4865350,
+            "recall": 0.9896753513684025,
+            "support": 4831254,
+            "unavailable_reasons": {}
+          }
+        ],
+        "confusion_matrix": [
+          [
+            172307,
+            89837,
+            0
+          ],
+          [
+            51090,
+            414376,
+            83977
+          ],
+          [
+            3010,
+            46871,
+            4781373
+          ]
+        ],
+        "foreground_macro_dice": 0.8696227513813641,
+        "foreground_macro_iou": 0.788340203863718,
+        "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+      },
+      "components": {
+        "annotated_component_recall_proxy": 0.13333333333333333,
+        "indeterminate_unmatched": 21,
+        "known_support_unmatched": 0,
+        "matched_components": 2,
+        "reference_components": 15
+      },
+      "resources": {
+        "cpu": "x86_64",
+        "cpu_feasibility": "Hardware-specific pilot only; stakeholder lab latency/RAM acceptance pending",
+        "definition": "Single pass per role image; normalization, model, restoration included; not warmed benchmark",
+        "device": "cuda",
+        "elapsed_seconds": 198.54242202800015,
+        "inference_ms": [
+          772.902286000317,
+          168.5845749998407,
+          440.2863470004377,
+          157.4896889997035
+        ],
+        "median_ms": 304.4354610001392,
+        "numpy": "2.2.6",
+        "p95_ms": 723.009895150335,
+        "process_peak_rss_bytes": 2613714944,
+        "repeat_count": 1,
+        "threads": 1,
+        "torch": "2.7.1",
+        "warmup": 0
+      },
+      "group_bootstrap_foreground_dice_95_percentile_interval": null,
+      "per_image": [
+        {
+          "component_recall": 0.16666666666666666,
+          "foreground_macro_dice": 0.6357751401235041,
+          "validation_order": 1
+        },
+        {
+          "component_recall": 0.5,
+          "foreground_macro_dice": 0.9203873273936344,
+          "validation_order": 2
+        },
+        {
+          "component_recall": 0.0,
+          "foreground_macro_dice": 0.6209331902908484,
+          "validation_order": 3
+        },
+        {
+          "component_recall": 0.0,
+          "foreground_macro_dice": 0.6049205515906777,
+          "validation_order": 4
+        }
+      ],
+      "per_group": [],
+      "mean_per_image_foreground_macro_dice": 0.6955040523496662
+    }
+  ],
+  "uncertainty": "No verified acquisition groups on the four validation images; group resampling unavailable. No generalization interval reported. One seed per model is not a seed-sensitivity study."
+}

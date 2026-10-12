@@ -1,239 +1,229 @@
 # WI-07 implementation and session evidence
 
 Checked: 2026-10-12. Issue [#7](https://github.com/camiloandcu/Graphene-Segmentation/issues/7).
-Branch: `feat/wi-07-model-selection`. Planning commit: `b23f65b`. Implementation commit: `8abeb9f` (pushed).
-Draft [PR #21](https://github.com/camiloandcu/Graphene-Segmentation/pull/21)
-contains `Closes #7` and explicitly records pending real-run acceptance.
-Status: implementing; model selection and final test remain unverified.
+Branch: `feat/wi-07-model-selection`; draft [PR #21](https://github.com/camiloandcu/Graphene-Segmentation/pull/21), `Closes #7`.
+Status: implementing. Initial challenger training/validation is complete;
+continued-training recovery, finalist sensitivity and stakeholder selection remain pending.
+Test is untouched. The approved OpenSpec change remains active.
 
-## Delivered implementation
+## Implementation and immutable source
 
-The separate `graphene-evaluation` package provides checkpoint-bound scoring,
-original-coordinate confusion/component metrics, censored unknown detections,
-finite threshold sweeps, panels, warmed benchmarks, common-support/group/seed
-comparisons and a reviewed freeze gate. Its challenger runner preserves immutable
-WI-06 epoch formats while recording its own source/runtime identity and additional
-training/resource telemetry. WI-06 source remains unchanged.
-
-SegFormer-B0, frozen DINOv3 ViT-S/16 plus 1x1 head, and DeepLabv3+/ResNet18 adapters
-are implemented. DeepLab's newly initialized global-pooling head uses 32-group
-GroupNorm instead of BatchNorm to handle the real training role's final singleton
-batch. Encoder initialization remains the same approved ImageNet ResNet18.
-This implementation detail is recorded rather than silently dropping an image.
-
+The separate `graphene-evaluation` package implements checkpoint-bound original-
+coordinate scoring, unknown-pixel exclusion, component matching/censoring, finite
+threshold sweeps, panels, common-support/group/seed comparison, benchmarks and
+stakeholder freeze enforcement. WI-06 source/configuration remains unchanged.
 Guide: [model selection](../../15_MODEL_SELECTION_EVALUATION.md).
-Notebook: [interactive Colab comparison](../../../notebooks/02_COLAB_MODEL_SELECTION.ipynb).
-Reviewed source commit for Colab: `8abeb9f2d10762d5420c539748832a5b29d28c16`.
-The completed DINO initial run retains that bundle. New runs use persistence-fix
-commit `33eb57af378b32ed80a552c44119c4ab7e805ff7`; the notebook pins this newer
-bundle. Keep the source corresponding to each recorded run for strict recovery.
-Source and synthetic tests: `packages/graphene-evaluation/`.
+Notebook: [Colab evaluation](../../../notebooks/02_COLAB_MODEL_SELECTION.ipynb).
 
-## Actual access and recovery checks
-
-Through the previously authorized Colab MCP connection:
-
-- The first connected runtime reported Python 3.13.16 and CUDA unavailable.
-- Drive mount succeeded. The retained baseline generation exists with
-  172,151,774 checkpoint bytes. Streaming SHA-256 exactly reproduced
-  `c199f87a1d3f06f013dbef0db7982c6d4e3e2ba852146c1ca57f735ec25e267f`.
-  Evaluator validation has now reproduced the retained confusion counts and
-  foreground macro Dice exactly. See the [actual aggregate record](03_INITIAL_ADMISSION_AND_BASELINE.json).
-- The approved ready-dataset archive exists in the existing Graphene datasets
-  directory, named by SHA-256
-  `4aa3bc1ad4d29181338901d773d602613fb2bdc6613ea5d18155e28534ebbea7`.
-- The stakeholder switched to GPU and confirmed reconnection. The replacement
-  runtime reports Python 3.13.15, Torch 2.11.0+cu130 and Tesla T4. It needs the
-  pinned package environment and a new Drive mount before real comparison runs.
-  Both now succeeded: fresh process Torch 2.7.1+cu126 reports CUDA on Tesla T4.
-  Do not interpret Colab's preinstalled Torch as the reviewed training environment.
-
-Pinned Hugging Face metadata checked directly on 2026-10-11:
-
-| Candidate | Revision | Verified access observation |
+| Run/evaluator | Pinned source | Purpose |
 | --- | --- | --- |
-| SegFormer encoder `nvidia/mit-b0` | `80983a413c30d36a39c20203974ae7807835e2b4` | Public repository, PyTorch weights; no safetensor artifact at this revision |
-| DINOv3 `facebook/dinov3-vits16-pretrain-lvd1689m` | `114c1379950215c8b35dfcd4e90a5c251dde0d32` | Manual access gate; pinned safetensor HEAD request returned HTTP 401, `GatedRepo`, without credentials |
+| Original SegFormer and completed DINO probe | `8abeb9f2d10762d5420c539748832a5b29d28c16` | Original approved evaluator/training bundle |
+| SegFormer replacement and DeepLab | `33eb57af378b32ed80a552c44119c4ab7e805ff7` | Incremental verified challenger persistence |
+| Corrected benchmarks/new notebook | `9bea06aad3ae97858090c94f8e040a26d3d0564d` | Complete inference timing and separate initialization |
 
-SegFormer source links its model license to the [author license](https://github.com/NVlabs/SegFormer/blob/master/LICENSE),
-which limits use to research/evaluation. Approved research comparison does not
-establish commercial deployment rights. Its pinned PyTorch state is loaded with
-restricted `weights_only=True` under Torch >=2.6. No arbitrary unpickling or random
-pretrained substitution is provided. The stakeholder subsequently reported DINO
-access approval and enabled the notebook secret; actual authenticated weight
-download/admission subsequently passed, as recorded below. DINO execution
-requires actual approved credentials; no terms were accepted
-on the stakeholder's behalf. See [literature gates](01_LITERATURE_AND_CANDIDATES.md)
-for 2D-TLK and MaskTerial's distinct compatibility limitations.
+Strict training recovery must use each run's recorded source/runtime. The newer
+benchmark evaluator is installed separately; it does not modify active training.
+The original DINO model/state can be loaded for inference with unchanged adapters.
+Training the same configuration does not imply byte-identical checkpoint files.
 
-## Actual initial measurements
+DeepLab's newly initialized global-pooling decoder uses 32-group GroupNorm in
+place of BatchNorm to retain the final singleton batch. Its approved ResNet18
+ImageNet encoder initialization remains unchanged. This is recorded explicitly.
 
-The four-image baseline validation report has exact foreground macro Dice
-0.913150140598536 and few-layer pixel recall 0.8238106591584569. At argmax,
-5/15 annotated few-layer semantic components match at the reviewed IoU proxy;
-71 unmatched prediction components touch unknown coverage and are indeterminate,
-and one unmatched component lies wholly on known support. Unknown coverage is
-71.299% of role pixels. Threshold 0.2 raises component matches to 6/15 while
-lowering foreground macro Dice to 0.892941 and increasing indeterminate unmatched
-components to 129. These are development trade-offs, not a chosen operating point.
-Full reports and original-coordinate panels are retained privately on Drive under
-`Graphene/trials/wi07-baseline-validation-20261011`. Test is untouched.
+## Actual candidate gates
 
-SegFormer's real pinned pretrained bytes passed CPU forward/backward admission
-on synthetic objective inputs, with 3,714,915 trainable parameters, finite loss
-and exactly zero objective gradients at ignored output pixels. The weight-byte
-identity is `d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b`.
-T4 admission also passed with the same pinned bytes, finite backward loss and
-zero ignored-output gradients: 903,049,728 peak allocated bytes and 1,140,850,688
-peak reserved bytes at batch 2/512/float32. The admission uses synthetic inputs
-and does not establish real-data accuracy. Initial real seed-42 training started as
-`wi07-segformer-b0-seed42-20261011`, retaining complete epochs under the existing
-Drive `Graphene/runs` directory. Completion/quality/recovery remain pending.
-An initial cache-write sandbox failure was retried with approved escalation.
+SegFormer real pinned pretrained CPU and T4 admission passed: 3,714,915 trainable
+parameters, finite backward loss, zero ignored-output gradients. Weight digest
+`d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b`;
+revision `80983a413c30d36a39c20203974ae7807835e2b4`. Admission peaks:
+903,049,728 allocated / 1,140,850,688 reserved CUDA bytes.
+Its [author license](https://github.com/NVlabs/SegFormer/blob/master/LICENSE)
+permits the approved research comparison; this is not commercial deployment approval.
 
-## Verification and acceptance status
+DINO access was granted to the stakeholder, who enabled `HF_TOKEN` and retrieved
+it manually through Colab's UI. No token was printed or persisted. Actual pinned
+T4 admission passed: 21,597,699 total / 1,155 trainable parameters, finite loss,
+zero ignored-output gradients, frozen encoder. Pinned author/adapter configuration
+has no substantive differences. See [admission](04_DINOV3_GPU_ADMISSION.json).
+Weight digest `643110675d072f171af2af5a5228d0453e00ca476b3066ffa13e8215721faf39`;
+revision `114c1379950215c8b35dfcd4e90a5c251dde0d32`. Peaks:
+186,051,072 allocated / 195,035,136 reserved CUDA bytes.
 
-Synthetic contract cases cover unknown bridges/censoring, hand-counted confusion,
-component misses/ties, original-coordinate letterbox/tiling, interrupted replay,
-freeze identity and test rejection, common-support comparison and real adapter
-forward/backward shapes/frozen DINO gradients. Synthetic runs are not microscopy
-quality or pretrained admission evidence.
+DeepLab real-weight T4 admission passed: 12,329,811 trainable parameters,
+641,131,520 allocated peak bytes. See [admission](07_DEEPLAB_GPU_ADMISSION.json).
+All admission inputs are synthetic objective fixtures, not accuracy evidence.
 
-The initial combined regression run passed 28 cases and skipped the CUDA-only
-case, with one DeepLab singleton BatchNorm failure. The decoder correction passed
-its focused check; the full evaluator suite subsequently passed all 8 cases.
-After adding resource/source records and deterministic evaluation, all 8 evaluator
-cases passed again (58.06 seconds). The unchanged WI-06 regression cases passed in
-the combined run. Existing pycocotools/NumPy deprecation warnings remain.
+2D-TLK was not admitted because usable author licensing, pinned pretrained
+identity and partial three-class reproduction remain unestablished. The approved
+DeepLab fallback occupies that slot. MaskTerial remains a compatibility assessment:
+class-agnostic detection and physical thickness classes do not establish this
+visual few/bulk/background semantic contract. See
+[literature and gates](01_LITERATURE_AND_CANDIDATES.md).
 
-`openspec validate --all --strict`: 7 passed, 0 failed. Python syntax, all 8
-notebook code cells (no outputs), 75 local links across 8 Markdown files and
-`git diff --check` passed. A separate `npx openspec`
-attempt could not write npm's global cache; the installed project CLI was used
-successfully. No specification has been synced or archived as completed.
+## Initial real validation
 
-| Criterion | Status | Evidence/remaining work |
-| --- | --- | --- |
-| AC-1 traceability/isolation | Partially verified | Synthetic identity/freeze tests; actual baseline digest and exact validation-count reproduction verified |
-| AC-2 candidates/recovery | Partially verified | Adapter/replay tests, real-weight CPU admission and actual access gates; SegFormer GPU admission verified; challenger runs and actual recovery pending |
-| AC-3 supported quality/errors | Implementation verified synthetically | Actual candidate metrics and stakeholder panels pending |
-| AC-4 sensitivity/resources | Implemented; real evidence unverified | Benchmarks/comparison tools; finalist geometry/seeds/actual resources pending |
-| AC-5 reviewed selection/test | Unverified | Stakeholder shortlist, recommendation and exact freeze or explicit deferral pending; test untouched |
+Each challenger completed the common seed-42, 30-epoch protocol. All reports use
+the same four validation images, dataset/split/supervision identities and original
+coordinates. Unknown pixels are 14,017,959/19,660,800 (71.299%); they do not become
+background negatives. Component counts refer to annotated semantic components
+at the reviewed IoU proxy, not a census of physical flakes.
 
-## Continuation
+| Candidate/checkpoint | Foreground macro Dice | Few-layer pixel recall | Matched components | Unknown-intersecting unmatched | Wholly known-support unmatched |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| U-Net/ResNet18, epoch 23 | 0.913150 | 0.823811 | 5/15 | 71 | 1 |
+| SegFormer-B0, replacement epoch 19 | 0.930539 | 0.868121 | 5/15 | 149 | 13 |
+| Frozen DINOv3 probe, epoch 20 | 0.551403 | 0.123514 | 0/15 | 8 | 0 |
+| DeepLabv3+/ResNet18, epoch 4 | 0.869623 | 0.754175 | 2/15 | 21 | 0 |
 
-On 2026-10-12, the stakeholder reported the runtime had ended after eight hours
-and reconnected a replacement T4 runtime. Python 3.13.15 and the new Drive mount
-were observed. Drive contains 30 SegFormer completion markers and its completed
-summary; cryptographic generation verification and selected-checkpoint evaluation
-in the replacement runtime remain pending. Do not infer quality or successful
-recovery from marker counts alone. The stakeholder also reported DINO access
-approval and enabled the Colab `HF_TOKEN` secret. Before interruption, secret
-retrieval and pinned repository metadata succeeded without exposing credentials;
-authenticated weight download and real-weight admission remain pending.
-The local MCP bridge stopped after an invalid command-file request. Its private
-client now catches invalid files without terminating. A restarted stable endpoint
-did not receive a browser connection despite stakeholder confirmation; a fresh
-endpoint/link was prepared. Runtime installation/recovery workers are ready in
-private workspace storage but have not executed. Reconnect before claiming any
-replacement-session checkpoint or DINO admission result.
+Independent checkpoint-bound evaluation exactly reproduces the selected training
+scores. U-Net also reproduces retained confusion counts exactly. Public aggregates:
+[baseline](03_INITIAL_ADMISSION_AND_BASELINE.json),
+[DINO](05_DINOV3_INITIAL_VALIDATION.json),
+[SegFormer](06_SEGFORMER_INITIAL_VALIDATION.json),
+[DeepLab](08_DEEPLAB_INITIAL_VALIDATION.json).
+Their report fingerprints identify full private reports; extracted summaries
+are not themselves those complete reports.
 
-The fresh endpoint subsequently connected and installed source `8abeb9f` with
-the pinned packages successfully. Actual replacement-runtime recovery **failed**:
-all 30 SegFormer epoch directories contain the three JSON members but lack
-`checkpoint.pt`, both on Drive and after local copy. Strict inspection rejected
-the missing members. The original U-Net checkpoint remains present. The
-stakeholder confirmed no checkpoint move/deletion. The persistence-loss cause is
-unknown; do not use SegFormer history alone as checkpoint-bound selection evidence.
-Its history names epoch 19 with Dice 0.9305392399304415, but that score has not been
-reproduced from weights. A new, identically configured seed-42 run is prepared
-under `wi07-segformer-b0-seed42-20261012-rerun`; stronger independent retention
-and replacement-session verification remain required.
+Finite threshold trade-offs include:
 
-DINO admission was initially blocked: `userdata.get('HF_TOKEN')` timed out through MCP.
-A first notebook cell requested the secret from a manual UI execution without
-printing or persisting its value. That step succeeded, and actual pretrained T4
-admission subsequently passed. See [the complete admission record](04_DINOV3_GPU_ADMISSION.json):
-21,597,699 total parameters, 1,155 trainable head parameters, finite loss,
-zero ignored-output gradients, frozen encoder, 186,051,072 allocated and
-195,035,136 reserved peak CUDA bytes. Weight digest:
-`643110675d072f171af2af5a5228d0453e00ca476b3066ffa13e8215721faf39`.
-Pinned author configuration and adapter configuration have no substantive
-differences. This remains a synthetic-input feasibility check, not accuracy.
-Initial training `wi07-dinov3-vits16-linear-seed42-20261012` completed all 30
-epochs. Its history selects epoch 20 with foreground macro Dice
-0.5514027542991692; a separate checkpoint-bound development report and archive
-are being produced. All 30 checkpoint files are present in the current Drive
-mount. Actual error analysis and replacement-mount/session durability remain pending.
+- U-Net threshold 0.2: Dice 0.892941, 6/15 component matches, 129 indeterminate
+  unmatched predictions.
+- SegFormer threshold 0.3: Dice 0.9178, few-layer recall 0.9130, 8/15 matches,
+  197 indeterminate and five wholly known-support unmatched predictions.
+- DINO threshold 0.2: Dice 0.817734, recall 0.816278, 1/15 matches, seven
+  indeterminate unmatched predictions. Its initial probe remains weaker than
+  U-Net on these development results; no general claim about DINOv3 follows.
+- DeepLab threshold 0.2: Dice 0.8838, recall 0.8160, 3/15 matches, 32
+  indeterminate and one wholly known-support unmatched prediction.
 
-Separate evaluation completed and exactly reproduced selected DINO Dice
-0.5514027542991692. Argmax few-layer recall is 0.12351417708479315; annotated
-component matches are 0/15, with eight unknown-intersecting unmatched predictions
-and zero wholly known-support unmatched predictions. Private report/panels are
-under `trials/wi07-dinov3-validation-20261012`. The selected/latest archive is
-161,134,926 bytes with SHA-256
-`80927f63525182578bad075763d7fd9ff2864b6855ff2ed309e91bd3c97e4264`.
-The archive was checked through the current mount, but remount verification has
-not succeeded. A synchronous Drive flush exceeded MCP timeouts and was interrupted
-by the stakeholder; kernel responsiveness was restored. Drive logs contain many
-quota-related entries, but specific storage-error classification remains pending.
-The stakeholder reports storage is nearly exhausted and proposes migration to
-another account with more space. Preserve the local `/content` archive and summary
-before releasing this runtime: folder copies cannot recover unsynced weights.
-SegFormer replacement and DeepLab admission/run have **not** started. Next runner
-is installed separately at `/content/wi07-next-site`; DINO remains on `8abeb9f`.
+These are development trade-offs, not selected operating points. Four images and
+one seed do not establish architectural superiority. The stakeholder must review
+pilot errors and a Pareto shortlist of at most two before finalist screens/seeds.
+Full reports/panels stay privately under Drive `trials`; no test ranking is permitted.
 
-DINO resource sidecars exposed a persistence bottleneck: epochs 24–26 spent
-95–102 seconds persisting after approximately four seconds optimizing/validating,
-with the GPU idle during hashing. The next source bundle changes only challenger
-persistence to full inspection at session entry and incremental verified copies
-of new epochs; WI-06 storage/source remains unchanged. Completion-last markers,
-collision rejection and full checksum-first recovery remain mandatory. Four
-focused synthetic cases passed (32.68 seconds): uninterrupted versus resumed
-state/RNG/generator equality, interrupted-copy authority, rejection of a corrupted
-old acknowledgement in a new session, and the existing exact experiment replay.
-These fixtures do not prove remote Drive durability or explain the missing weights.
-The active DINO run remains on `8abeb9f`; do not update its installed bundle while
-it is running or use the newer source for its strict recovery.
+## Storage migration and recovery
 
-The initial baseline counts reproduce exactly. Preserve `8abeb9f` for original
-run provenance; new experiments use `33eb57`. Complete the SegFormer replacement
-and remaining admitted challengers sequentially, preserve durable run records and
-verify actual continued-training recovery. Then obtain stakeholder shortlist priorities,
-execute approved finalist screens/seeds and record a reviewed selection or
-inconclusive outcome. No WI-08 proposal or model export is authorized by this
-implementation. Keep this change active until the real acceptance gates are met.
+The first SegFormer run, `wi07-segformer-b0-seed42-20261011`, completed 30 epochs
+but all `checkpoint.pt` files were absent in the replacement runtime despite
+surviving histories/markers. Strict recovery failed. The stakeholder confirmed
+no move/deletion. Storage was nearly exhausted; specific loss causation is
+unproven. Its history alone was never treated as checkpoint-bound quality evidence.
 
-## Storage-account migration
+The stakeholder migrated actual files and notebook to another storage account.
+The verified data directory is `/content/drive/MyDrive/Graphene (1)`; the sibling
+`Graphene` is a regular file. Use this path directly. The approved dataset archive
+matches SHA-256 `4aa3bc1ad4d29181338901d773d602613fb2bdc6613ea5d18155e28534ebbea7`
+and is 16,411,686 bytes. The DINO selected/latest archive retained exactly
+161,134,926 bytes and SHA-256
+`80927f63525182578bad075763d7fd9ff2864b6855ff2ed309e91bd3c97e4264`
+across account/runtime replacement. Both generations pass checksum verification
+and safe state loading. The selected model loads strictly and its complete
+report/dataset binding matches. This is actual retention/inference recovery;
+the two-generation archive cannot prove contiguous-run continued training.
 
-The stakeholder copied the notebook/data to another account and mounted Drive in
-a fresh Python 3.13.15/T4 runtime. The actual data directory is
-`/content/drive/MyDrive/Graphene (1)`; the sibling `Graphene` is a regular file.
-Use the verified directory directly rather than changing user files. Both uploaded
-archives were copied to local runtime storage and their SHA-256 matched exactly:
-DINO selected/latest `80927f63525182578bad075763d7fd9ff2864b6855ff2ed309e91bd3c97e4264`
-(161,134,926 bytes) and the approved dataset
-`4aa3bc1ad4d29181338901d773d602613fb2bdc6613ea5d18155e28534ebbea7`
-(16,411,686 bytes). This establishes archive retention across runtime/account
-replacement, separately from strict state/model loading and continued training.
-The two-generation archive cannot pass full contiguous-run inspection.
+The replacement SegFormer run, `wi07-segformer-b0-seed42-20261012-rerun`, exactly
+reproduces the lost run's best score and epoch. Its selected SHA-256 is
+`a3dc42c64f1e13bde09c1c97aabb36fdbced679b2f11309e3e334760a8533831`.
+The selected/latest archive is 83,091,065 bytes, SHA-256
+`b3d0054594b3efb23208b975800335036d9b97fbc4c5d2d31b9b4a3bc9e0d8d9`.
+DeepLab run `wi07-deeplabv3plus-resnet18-seed42-20261012` has selected SHA-256
+`da759e0969e9ecfd594956b4a0bb6b1a37a7e427ab851e5f4f54907ec08d98b8`.
+Its archive is 274,585,646 bytes, SHA-256
+`83e6317723f2823442565ef0ab3547527947e6626219a4c7de3155b0e511bded`.
+Both new runs have all 30 checkpoints visible in Drive; their archives pass
+current-mount readback hashes. Replacement-runtime continued-training recovery
+remains required. Do not infer remote durability from marker counts alone.
 
-The uploaded [DINO validation aggregate](05_DINOV3_INITIAL_VALIDATION.json) was
-recovered locally. Its finite threshold-0.2 result has foreground macro Dice
-0.817734, few-layer pixel recall 0.816278, 1/15 matched annotated components and
-seven unknown-intersecting unmatched predictions. Neither argmax nor this
-threshold surpasses the retained U-Net development results. This is evidence
-about this frozen probe/configuration, not a general judgement on DINOv3.
+A synchronous Drive flush blocked MCP and was interrupted by the stakeholder;
+its remount check did not finish. Do not repeat synchronous unbounded flushing.
+The stable bridge is connected. Private command files and session/worker details
+are maintained in `.workspace/wi07/ledger.json` and `.workspace/wi06/`.
 
-The pinned `33eb57` installation completed. A fresh process confirms
-Torch 2.7.1+cu126 and CUDA/T4. Both DINO generations pass checksum verification
-and safe state loading; the selected model loads strictly and its complete
-dataset/report binding matches the recovered summary. The identical SegFormer
-seed-42 rerun completed all 30 epochs. Strict final inspection selected epoch 19
-with foreground macro Dice 0.9305392399304415, exactly reproducing the lost run
-history. All 30 checkpoint files now exist in the new Drive mount; independent
-validation and replacement-runtime retention remain separate checks. A bounded
-sequential worker prepares selected-checkpoint retention/validation, then the
-approved DeepLab admission/training/validation after SegFormer completes.
-It stops on failure; no test predictions or automatic selection are authorized.
-Actual continued-training recovery remains pending. Test remains untouched.
+## Resource evidence and feasibility assumptions
+
+The fresh process uses Python 3.13.15, Torch 2.7.1+cu126/CuDNN 90501 and T4;
+Colab's preinstalled Torch 2.11 is not the reviewed runtime. The measured CPU is
+Intel Xeon @ 2.00 GHz, two logical CPUs, with 13,605,830,656 RAM bytes.
+The stakeholder accepts a Colab-equivalent machine with at least 16 GB RAM,
+a two-minute target and three-minute ceiling per image. Actual laboratory
+hardware equivalence is assumed, not directly verified.
+
+SegFormer actual training peaks: 968,481,792 allocated / 1,193,279,488 reserved
+CUDA bytes. Median persistence is 1.048 seconds and median total epoch time
+10.015 seconds. The older DINO run spent 95–102 seconds persisting epochs
+24–26 after approximately four seconds optimizing/validating. The new runner
+fully inspects at session entry, then verifies each newly copied generation with
+completion markers last. These observations are not a controlled cross-model
+speed comparison or an explanation of the old missing weights.
+
+Benchmark timing initially excluded decoding/decision despite AC-4. The corrected
+benchmark includes image read/checksum/decode, normalization, inference,
+original-coordinate restoration and the bound decision, with per-phase repeats.
+Checkpoint/data verification, construction/state load and device transfer are
+measured separately as initialization. Reads use operating-system caches;
+plotting is excluded. RSS is cumulative process high-water, not model-exclusive
+RAM. Fresh processes run one model/device at a time after training/evaluation
+exits. Common protocol: one CPU thread, two warmups and five repeats per image.
+
+All eight fresh-process CPU/T4 benchmarks completed. See
+[resource aggregates](09_INITIAL_RESOURCE_BENCHMARKS.json). CPU medians are
+2.142 seconds (U-Net), 1.023 (SegFormer), 1.050 (DINO) and 1.085 (DeepLab);
+p95 values are all below 2.61 seconds. GPU medians are 0.368/0.413/0.382/0.346
+seconds respectively. Initialization, including checkpoint/data verification,
+is 31–44 seconds and is reported separately. Every measured process high-water
+RSS is below 2.31 GB, within the accepted >=16 GB machine assumption. These
+measurements cover the four validation images at 512 letterbox, not every
+possible future image or native-tile geometry. DINO argmax panels/full per-image
+inputs were restored. The regenerated DINO argmax report exactly reproduces
+its selected Dice. The [four-model common-support comparison](10_INITIAL_COMMON_SUPPORT_COMPARISON.json)
+verifies full report fingerprints, per-image image/mask/supervised counts and
+group identities. Acquisition groups are unverified, so group resampling and
+a generalization interval are unavailable. U-Net scores better on two of
+four individual images despite SegFormer's higher pooled foreground Dice.
+
+## Verification and acceptance
+
+- Initial evaluator contract suite: all eight cases passed, including the
+  corrected DeepLab singleton adapter; unchanged WI-06 cases passed in the
+  combined regression run, with the local CUDA-only case skipped.
+- Persistence/replay focused checks: four passed (32.68 seconds), including
+  exact model/RNG/generator replay, interrupted-copy authority and corrupt prior
+  acknowledgement rejection. Synthetic replay does not replace actual recovery.
+- Benchmark focused checks: two passed (25.14 seconds), covering phase timing,
+  role isolation, threshold binding and rejecting changed bytes in repeated reads.
+- `openspec validate --all --strict`: seven passed, zero failed. Python/notebook
+  syntax (eight code cells, no outputs), aggregate support and whitespace checks
+  passed. Existing pycocotools/NumPy deprecation warnings remain.
+
+| Criterion | Current evidence and remaining work |
+| --- | --- |
+| AC-1 traceability/isolation | Actual checkpoint/data/support binding and baseline exact counts/panels verified; test remains gated |
+| AC-2 candidates/recovery | Real admissions and initial runs verified; DINO retention/model load across replacement verified; actual interrupted challenger continuation pending |
+| AC-3 supported quality/errors | Initial checkpoint-bound metrics/panels complete; common-support comparison verified; stakeholder pilot-error review pending |
+| AC-4 sensitivity/resources | Training telemetry measured, all initial CPU/T4 benchmarks verified; finalist geometry, any justified adjustment and seeds 42/43/44 pending |
+| AC-5 reviewed selection/test | Shortlist, final recommendation, exact freeze or explicit inconclusive/test-deferral decision pending |
+
+Continue with the paired pilot/resource review, stakeholder shortlist, approved
+finalist screens/seeds and genuine replacement-runtime training continuation.
+Only after stakeholder checkpoint/settings freeze may the single selection use
+the five-image test role; test lacks reviewed background. Sync specifications and
+archive only once the actual required outcome is verified. No WI-08 proposal or
+model export is authorized by this implementation.
+
+The migrated baseline folder lacked the full-image panels needed for visual
+review. A fresh argmax evaluator reproduced its full pixel metrics and component
+totals exactly, then restored the four panels to
+`trials/wi07-baseline-migrated-argmax-20261012`. All four candidates now have
+private original-coordinate pilot panels in the migrated account.
+[Initial pilot and shortlist review](11_INITIAL_PILOT_AND_SHORTLIST_REVIEW.md)
+recommends U-Net/ResNet18 and SegFormer-B0; stakeholder approval remains pending.
+U-Net leads on two individual images and SegFormer on the other two.
+The mean per-image Dice favors U-Net; pooled Dice favors SegFormer.
+
+The private four-image contact sheet was generated and visually inspected. DINO
+and DeepLab show broad few-layer predictions including reviewed background
+patches. Reviewed-background recall at argmax is 1.0000/0.9834/0.0000/0.6573
+for U-Net/SegFormer/DINO/DeepLab, respectively. A zero wholly-known unmatched
+component count does not establish zero known pixel errors. Additional regions
+on unknown support remain review candidates. The contact sheet is a thumbnail
+overview; exact small-component boundaries require full-resolution panels.

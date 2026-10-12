@@ -21,12 +21,12 @@
 
 - [x] 3.1 Add SegFormer-B0 and frozen DINOv3 semantic adapters with explicit pinned
   initialization and ignore-aware objective; execute admission checks (AC-2).
-- [ ] 3.2 Record reproducibility/license/runtime/contract gates for 2D-TLK and
+- [x] 3.2 Record reproducibility/license/runtime/contract gates for 2D-TLK and
   MaskTerial; use the fourth-slot DeepLabv3+ fallback if needed, run only admitted
   scope and preserve unsupported class/detection distinctions (AC-2/3).
 - [ ] 3.3 Execute initial real semantic challenger runs sequentially, preserve
   histories/selected checkpoints and verify replacement-runtime recovery (AC-2).
-- [ ] 3.4 Update private durable experiment ledger at each session boundary;
+- [x] 3.4 Update private durable experiment ledger at each session boundary;
   quota interruptions retain state and remaining work (AC-2).
 
 ## 4. Shortlist, resource checks and decision
@@ -48,7 +48,7 @@
   remaining human decisions and reproducible aggregate report/guide (AC-1–5).
 - [ ] 5.2 Run relevant regressions and strict OpenSpec/link/whitespace checks;
   sync specifications and archive only verified work (G-04).
-- [ ] 5.3 Push coherent Conventional Commits and open a PR with `Closes #7`,
+- [x] 5.3 Push coherent Conventional Commits and open a PR with `Closes #7`,
   acceptance evidence and remaining limitations; preserve protected branches.
 - [ ] 5.4 Update work-item/review/Issue records and WI-08 checkpoint/settings
   handoff; no subsequent proposal without stakeholder authorization.

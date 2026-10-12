@@ -1,0 +1,459 @@
+{
+  "schema_version": 1,
+  "checked": "2026-10-12",
+  "scope": "Actual eight fresh-process, common-protocol CPU/T4 argmax benchmarks; fingerprints identify complete private benchmark records, not these aggregate extracts. No test inputs.",
+  "hardware": {
+    "cpu_model": "Intel(R) Xeon(R) CPU @ 2.00GHz",
+    "logical_cpus": 2,
+    "runtime_memory_bytes": 13605830656,
+    "gpu": "Tesla T4",
+    "feasibility_assumption": "Stakeholder: Colab equivalent with >=16 GB RAM, 120s target/180s ceiling"
+  },
+  "support": {
+    "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+    "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+    "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a"
+  },
+  "settings": {
+    "decision": "argmax",
+    "geometry": "letterbox",
+    "input_size": 512,
+    "stride": null,
+    "threshold": null,
+    "ties": "lower_id"
+  },
+  "evaluation_environment": {
+    "cpu_backend": "native-single-thread",
+    "cpu_interop_threads": 1,
+    "cpu_threads": 1,
+    "cudnn": 90501,
+    "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+    "device_policy": "cpu",
+    "evaluation_packages": {
+      "graphene-evaluation": "1.0.0",
+      "huggingface-hub": "0.36.2",
+      "scipy": "1.15.3",
+      "transformers": "4.57.6"
+    },
+    "evaluation_source_sha256": "6effe1d7011c48f2a2df1798c3ffbf68e096d1c2bf35b26585d87cdbc39bfe50",
+    "git_revision": null,
+    "gpu": null,
+    "packages": {
+      "Pillow": "11.3.0",
+      "graphene-dataset-contract": "2.0.0",
+      "graphene-model-contract": "1.0.0",
+      "graphene-training": "1.0.0",
+      "numpy": "2.2.6",
+      "pycocotools": "2.0.10",
+      "pydantic": "2.12.3",
+      "segmentation-models-pytorch": "0.5.0",
+      "timm": "1.0.30",
+      "torch": "2.7.1",
+      "torchvision": "0.22.1"
+    },
+    "precision": "float32",
+    "python": "3.13.15",
+    "torch_cuda": "12.6",
+    "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+  },
+  "protocol": {
+    "threads": 1,
+    "warmup_per_image": 2,
+    "repeats_per_image": 5,
+    "validation_images": 4,
+    "definition": "Image read/checksum/decode, normalization, inference, original-coordinate restoration and decision; excludes plotting and initial checkpoint/data validation",
+    "initialization_definition": "Checkpoint/data verification, model construction/state loading and device transfer; measured separately before warmup",
+    "limitations": [
+      "Process RSS is cumulative high-water, not model-exclusive memory",
+      "Repeated image reads use the operating system cache; not cold disk latency",
+      "Same-machine pilot; intended laboratory hardware acceptance remains stakeholder-reviewed"
+    ],
+    "execution": "One model/device at a time after initial training and validation workers exited"
+  },
+  "measurements": [
+    {
+      "architecture": "deeplabv3plus-resnet18",
+      "device": "cpu",
+      "generation": "epoch-000004",
+      "checkpoint_sha256": "da759e0969e9ecfd594956b4a0bb6b1a37a7e427ab851e5f4f54907ec08d98b8",
+      "run_fingerprint": "10f3af863ef337c6df1e6dcc7422c30e13229da3e41d121a4196228ed3d13b4d",
+      "benchmark_fingerprint": "3ef7be5ea7c07a6612ea9c933a5fa4fea57734b0f533aa81c226c0f16b9e53ff",
+      "median_ms": 1084.757535499648,
+      "p95_ms": 1612.389711650485,
+      "initialization_seconds": 31.417316447999838,
+      "process_peak_rss_bytes": 1035091968,
+      "peak_cuda_allocated_bytes": null,
+      "phase_medians_ms": {
+        "decode_and_integrity_ms": 36.35616749943438,
+        "inference_and_restoration_ms": 946.0150735003481,
+        "decision_ms": 101.89023949988041
+      },
+      "per_image": [
+        {
+          "validation_order": 1,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 1080.7015199998204,
+          "p95_ms": 1097.8469765999762
+        },
+        {
+          "validation_order": 2,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 1548.192475000178,
+          "p95_ms": 1613.3636563996333
+        },
+        {
+          "validation_order": 3,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 1058.3905640005469,
+          "p95_ms": 1071.250181600044
+        },
+        {
+          "validation_order": 4,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 1142.7856510008496,
+          "p95_ms": 1491.8975967993902
+        }
+      ]
+    },
+    {
+      "architecture": "deeplabv3plus-resnet18",
+      "device": "cuda",
+      "generation": "epoch-000004",
+      "checkpoint_sha256": "da759e0969e9ecfd594956b4a0bb6b1a37a7e427ab851e5f4f54907ec08d98b8",
+      "run_fingerprint": "10f3af863ef337c6df1e6dcc7422c30e13229da3e41d121a4196228ed3d13b4d",
+      "benchmark_fingerprint": "5dec50cd2e0e106b75977ae256acfd7262600f1bf461c591df10d790af02db51",
+      "median_ms": 345.6450815001517,
+      "p95_ms": 467.8584879495247,
+      "initialization_seconds": 31.00223127299978,
+      "process_peak_rss_bytes": 1442217984,
+      "peak_cuda_allocated_bytes": 231589888,
+      "phase_medians_ms": {
+        "decode_and_integrity_ms": 46.688508999977785,
+        "inference_and_restoration_ms": 188.72638849961731,
+        "decision_ms": 109.91190549975727
+      },
+      "per_image": [
+        {
+          "validation_order": 1,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 452.7232680002271,
+          "p95_ms": 490.78994720021
+        },
+        {
+          "validation_order": 2,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 346.21643500031496,
+          "p95_ms": 360.7174214001134
+        },
+        {
+          "validation_order": 3,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 340.0590089995603,
+          "p95_ms": 350.85373100009747
+        },
+        {
+          "validation_order": 4,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 345.0737279999885,
+          "p95_ms": 352.5991252003223
+        }
+      ]
+    },
+    {
+      "architecture": "dinov3-vits16-linear",
+      "device": "cpu",
+      "generation": "epoch-000020",
+      "checkpoint_sha256": "fbac32d25a9c83e523364d816a8b7afaddd902a43655ddc8516a7195c57af61a",
+      "run_fingerprint": "40fbf877e5053a894b070cb31bdf540e02cab4bbd1206e44e25e47b443486f75",
+      "benchmark_fingerprint": "6ec002513141ffdd2a181aa70a25feb685e4d887993ddf89a558bedac952218d",
+      "median_ms": 1049.8508055002276,
+      "p95_ms": 1562.2135929006618,
+      "initialization_seconds": 37.402148731000125,
+      "process_peak_rss_bytes": 1940037632,
+      "peak_cuda_allocated_bytes": null,
+      "phase_medians_ms": {
+        "decode_and_integrity_ms": 36.72751150043041,
+        "inference_and_restoration_ms": 902.8485614999227,
+        "decision_ms": 108.37667700025122
+      },
+      "per_image": [
+        {
+          "validation_order": 1,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 1052.4420900001132,
+          "p95_ms": 1392.4766229996749
+        },
+        {
+          "validation_order": 2,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 1025.5025559999922,
+          "p95_ms": 1186.5473297995777
+        },
+        {
+          "validation_order": 3,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 1089.3623560004926,
+          "p95_ms": 1593.840206400273
+        },
+        {
+          "validation_order": 4,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 1032.0576350004558,
+          "p95_ms": 1063.6187336001967
+        }
+      ]
+    },
+    {
+      "architecture": "dinov3-vits16-linear",
+      "device": "cuda",
+      "generation": "epoch-000020",
+      "checkpoint_sha256": "fbac32d25a9c83e523364d816a8b7afaddd902a43655ddc8516a7195c57af61a",
+      "run_fingerprint": "40fbf877e5053a894b070cb31bdf540e02cab4bbd1206e44e25e47b443486f75",
+      "benchmark_fingerprint": "4b4a01dd5ac83f3aba035d650f6509171455f0e1e3536b06cb72fe033f3371b8",
+      "median_ms": 381.9586689996868,
+      "p95_ms": 574.8753261002548,
+      "initialization_seconds": 36.72198059300081,
+      "process_peak_rss_bytes": 2233475072,
+      "peak_cuda_allocated_bytes": 148169728,
+      "phase_medians_ms": {
+        "decode_and_integrity_ms": 48.085376000472024,
+        "inference_and_restoration_ms": 222.5071255002149,
+        "decision_ms": 111.66191399979652
+      },
+      "per_image": [
+        {
+          "validation_order": 1,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 385.89578899973276,
+          "p95_ms": 417.43193859929306
+        },
+        {
+          "validation_order": 2,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 564.9115100004565,
+          "p95_ms": 580.325427599746
+        },
+        {
+          "validation_order": 3,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 374.70161100009136,
+          "p95_ms": 383.225321199825
+        },
+        {
+          "validation_order": 4,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 372.73320800068177,
+          "p95_ms": 387.48170180042507
+        }
+      ]
+    },
+    {
+      "architecture": "segformer-b0",
+      "device": "cpu",
+      "generation": "epoch-000019",
+      "checkpoint_sha256": "a3dc42c64f1e13bde09c1c97aabb36fdbced679b2f11309e3e334760a8533831",
+      "run_fingerprint": "48b44083bee53f44130a1f70a7b16d5d024fb99a78d587b3b4dc7eba7ad5b8dd",
+      "benchmark_fingerprint": "2b50cbafd0b91feda4bd5c7c6a4f139f4fda2ad82be25d66844460e2aedc454d",
+      "median_ms": 1023.0600300001242,
+      "p95_ms": 1395.7625576998907,
+      "initialization_seconds": 43.63902185799998,
+      "process_peak_rss_bytes": 1846353920,
+      "peak_cuda_allocated_bytes": null,
+      "phase_medians_ms": {
+        "decode_and_integrity_ms": 51.63783400030297,
+        "inference_and_restoration_ms": 863.3153580003636,
+        "decision_ms": 117.35234150000906
+      },
+      "per_image": [
+        {
+          "validation_order": 1,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 1015.5175200006852,
+          "p95_ms": 1042.764287999853
+        },
+        {
+          "validation_order": 2,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 1310.9676419999232,
+          "p95_ms": 1456.647990199781
+        },
+        {
+          "validation_order": 3,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 1001.0824600003616,
+          "p95_ms": 1030.076408199966
+        },
+        {
+          "validation_order": 4,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 1088.5645609996573,
+          "p95_ms": 1370.030384799793
+        }
+      ]
+    },
+    {
+      "architecture": "segformer-b0",
+      "device": "cuda",
+      "generation": "epoch-000019",
+      "checkpoint_sha256": "a3dc42c64f1e13bde09c1c97aabb36fdbced679b2f11309e3e334760a8533831",
+      "run_fingerprint": "48b44083bee53f44130a1f70a7b16d5d024fb99a78d587b3b4dc7eba7ad5b8dd",
+      "benchmark_fingerprint": "29010c91f6af22069fd93c052ec4c49cf35dd12162033af7564bee5087c23698",
+      "median_ms": 413.17868900023313,
+      "p95_ms": 825.0308288502765,
+      "initialization_seconds": 36.42294790899996,
+      "process_peak_rss_bytes": 2300162048,
+      "peak_cuda_allocated_bytes": 223695872,
+      "phase_medians_ms": {
+        "decode_and_integrity_ms": 55.40463150055075,
+        "inference_and_restoration_ms": 242.8228045000651,
+        "decision_ms": 127.34840799976155
+      },
+      "per_image": [
+        {
+          "validation_order": 1,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 352.9016540005614,
+          "p95_ms": 371.81698120002693
+        },
+        {
+          "validation_order": 2,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 802.1942589994069,
+          "p95_ms": 842.558896599985
+        },
+        {
+          "validation_order": 3,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 576.3231130003987,
+          "p95_ms": 591.3471141995615
+        },
+        {
+          "validation_order": 4,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 368.3809720005229,
+          "p95_ms": 376.94644180010073
+        }
+      ]
+    },
+    {
+      "architecture": "unet-resnet18",
+      "device": "cpu",
+      "generation": "epoch-000023",
+      "checkpoint_sha256": "c199f87a1d3f06f013dbef0db7982c6d4e3e2ba852146c1ca57f735ec25e267f",
+      "run_fingerprint": "657e88412a7690f9d7436d326fa62e92506ab1f3280a58397a2839ef440b449e",
+      "benchmark_fingerprint": "3fb63ab82bcd44ebfbb7c116af8aacae31f433f1b07e2f4e4cadbd60144ec42d",
+      "median_ms": 2141.5285529997163,
+      "p95_ms": 2608.584490600151,
+      "initialization_seconds": 33.075600710999424,
+      "process_peak_rss_bytes": 1247305728,
+      "peak_cuda_allocated_bytes": null,
+      "phase_medians_ms": {
+        "decode_and_integrity_ms": 37.08070950006004,
+        "inference_and_restoration_ms": 1960.5778769996505,
+        "decision_ms": 105.20734850024382
+      },
+      "per_image": [
+        {
+          "validation_order": 1,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 2100.0195030001123,
+          "p95_ms": 2552.0153248005954
+        },
+        {
+          "validation_order": 2,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 2036.6082010004902,
+          "p95_ms": 2574.800270600099
+        },
+        {
+          "validation_order": 3,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 2183.0376029993204,
+          "p95_ms": 2612.0073878000767
+        },
+        {
+          "validation_order": 4,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 2211.27496400004,
+          "p95_ms": 2508.9439585992295
+        }
+      ]
+    },
+    {
+      "architecture": "unet-resnet18",
+      "device": "cuda",
+      "generation": "epoch-000023",
+      "checkpoint_sha256": "c199f87a1d3f06f013dbef0db7982c6d4e3e2ba852146c1ca57f735ec25e267f",
+      "run_fingerprint": "657e88412a7690f9d7436d326fa62e92506ab1f3280a58397a2839ef440b449e",
+      "benchmark_fingerprint": "40e15becf453ff213be069fcb94870e1d8007b464fa542fe699bf609bd4fad0b",
+      "median_ms": 367.85565949958254,
+      "p95_ms": 586.0939820997373,
+      "initialization_seconds": 31.168700872000045,
+      "process_peak_rss_bytes": 1326927872,
+      "peak_cuda_allocated_bytes": 161920512,
+      "phase_medians_ms": {
+        "decode_and_integrity_ms": 50.07726149960945,
+        "inference_and_restoration_ms": 204.64404800031843,
+        "decision_ms": 113.58227250048003
+      },
+      "per_image": [
+        {
+          "validation_order": 1,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 562.5841930004754,
+          "p95_ms": 612.4421885999254
+        },
+        {
+          "validation_order": 2,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 360.658390000026,
+          "p95_ms": 370.26219139988825
+        },
+        {
+          "validation_order": 3,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 367.4169099995197,
+          "p95_ms": 373.07519239984686
+        },
+        {
+          "validation_order": 4,
+          "height": 1920,
+          "width": 2560,
+          "median_ms": 366.9548609996127,
+          "p95_ms": 371.34142800005066
+        }
+      ]
+    }
+  ]
+}

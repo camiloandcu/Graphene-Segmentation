@@ -41,7 +41,10 @@ run's saved history survived but its checkpoint files are missing; strict recove
 failed and a replacement run is required. DINOv3 completed 30 epochs and its
 [checkpoint-bound validation summary](05_DINOV3_INITIAL_VALIDATION.json) reproduces
 foreground macro Dice 0.551403 at argmax. The selected/latest archive and dataset
-hashes survived the account migration. Other challenger quality and stakeholder
+hashes survived the account migration. The [SegFormer replacement report](06_SEGFORMER_INITIAL_VALIDATION.json)
+reproduces Dice 0.930539 and retains all 30 checkpoints in the current mount.
+The [DeepLab fallback admission](07_DEEPLAB_GPU_ADMISSION.json) passed and its
+[initial validation](08_DEEPLAB_INITIAL_VALIDATION.json) reproduces Dice 0.869623. Other real-run acceptance and stakeholder
 selection remain pending. See the [baseline aggregate record](03_INITIAL_ADMISSION_AND_BASELINE.json).
 
 Planning verification: `openspec validate --all --strict` passed all six current
@@ -49,3 +52,12 @@ specifications and the single WI-07 change (7 passed, 0 failed). Local-link,
 newline and whitespace checks passed for all 11 affected Markdown files and
 103 link targets; `git diff --check` passed. Planning verification is distinct from the subsequent implementation checks;
 see the linked session record for current checks and acceptance limitations.
+
+Initial [CPU/T4 resources](09_INITIAL_RESOURCE_BENCHMARKS.json) and
+[common-support comparison](10_INITIAL_COMMON_SUPPORT_COMPARISON.json) are
+verified. All measured initial settings fit the accepted Colab-equivalent
+>=16 GB RAM / 2–3 minutes per image assumptions. Stakeholder shortlist,
+finalist geometry/seeds, actual continued-training recovery and test freeze
+remain open. Initial pooled Dice is not a final model ranking.
+
+Next stakeholder decision: [initial pilot and recommended shortlist](11_INITIAL_PILOT_AND_SHORTLIST_REVIEW.md).

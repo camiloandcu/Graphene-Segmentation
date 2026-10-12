@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "checked": "2026-10-12",
+  "scope": "Actual pinned pretrained admission on synthetic objective inputs; no accuracy evidence.",
+  "admission": {
+    "config": {
+      "architecture": "deeplabv3plus-resnet18",
+      "batch_size": 2,
+      "device": "cuda",
+      "epochs": 30,
+      "horizontal_flip": 0.0,
+      "input_size": 512,
+      "learning_rate": 0.001,
+      "license_approved": true,
+      "persistence_directory": null,
+      "precision": "float32",
+      "schema_version": 2,
+      "seed": 42,
+      "vertical_flip": 0.0,
+      "weight_decay": 0.0001,
+      "weights": "imagenet-resnet18-v1",
+      "weights_directory": null,
+      "weights_revision": null,
+      "weights_sha256": null
+    },
+    "environment": {
+      "cpu_backend": "cuda",
+      "cpu_interop_threads": 1,
+      "cpu_threads": 1,
+      "cudnn": 90501,
+      "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+      "device_policy": "cuda",
+      "evaluation_packages": {
+        "graphene-evaluation": "1.0.0",
+        "huggingface-hub": "0.36.2",
+        "scipy": "1.15.3",
+        "transformers": "4.57.6"
+      },
+      "evaluation_source_sha256": "f3be8477bb429dace0a0eed2bfcd82ec14c25709f894cbf3fb8ea5c7b6d54cb2",
+      "git_revision": null,
+      "gpu": "Tesla T4",
+      "packages": {
+        "Pillow": "11.3.0",
+        "graphene-dataset-contract": "2.0.0",
+        "graphene-model-contract": "1.0.0",
+        "graphene-training": "1.0.0",
+        "numpy": "2.2.6",
+        "pycocotools": "2.0.10",
+        "pydantic": "2.12.3",
+        "segmentation-models-pytorch": "0.5.0",
+        "timm": "1.0.30",
+        "torch": "2.7.1",
+        "torchvision": "0.22.1"
+      },
+      "precision": "float32",
+      "python": "3.13.15",
+      "torch_cuda": "12.6",
+      "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+    },
+    "finite_loss": 1.96941339969635,
+    "ignore_gradients_zero": true,
+    "parameters": 12329811,
+    "peak_cuda_allocated_bytes": 641131520,
+    "peak_cuda_reserved_bytes": 778043392,
+    "schema_version": 1,
+    "scope": "Synthetic input admission of real pretrained bytes, not real-data quality evidence",
+    "seconds": 2.6021934350001175,
+    "status": "admitted",
+    "trainable_parameters": 12329811,
+    "weights": {
+      "identifier": "ResNet18_Weights.IMAGENET1K_V1",
+      "initialization": "pretrained",
+      "sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+      "source": "https://download.pytorch.org/models/resnet18-f37072fd.pth"
+    }
+  }
+}
