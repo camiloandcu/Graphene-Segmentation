@@ -34,7 +34,12 @@ At original 512 inference, U-Net completely misses three other/reference regions
 of 4403, 1792 and 917 pixels; SegFormer completely misses regions of 1974 and
 917 pixels. Increased inference resolution recovers some coverage but introduces
 major known-pixel confusion and does not establish better localization.
-Changing only inference resolution therefore cannot justify a deployment change.
+The private eight-row contact sheet (`.workspace/wi07/geometry-panels.jpg`)
+was inspected: U-Net tiles cover reviewed background with few-layer predictions,
+whereas SegFormer tiles miss known few-layer interiors. Thumbnail review does
+not establish fine boundaries; the original-coordinate reports/panels remain
+authoritative. Changing only inference resolution therefore cannot justify a
+deployment change.
 The inference scale shift also does not establish the quality of a model trained
 at the new resolution.
 
@@ -52,8 +57,14 @@ Preserve the original 512 trial and the single 1024 adjustment trial. Review the
 supported errors and resources, freeze each finalist's training configuration,
 then run seeds 42/43/44 without mixing configurations. A completed seed-42 run
 may contribute only to the matching frozen configuration. No second adjustment
-or further geometry search is included. Matching CPU/T4 geometry benchmarks and
-checkpoint-bound private logits are being collected before the adjustment trials.
+or further geometry search is included. [Matching CPU/T4 geometry benchmarks](14_FINALIST_GEOMETRY_RESOURCES.json)
+completed before adjustment training: CPU median / p95 is U-Net 1024
+9.20 / 11.87 s, U-Net tiles 70.44 / 71.81 s, SegFormer 1024 6.26 / 6.72 s
+and SegFormer tiles 28.49 / 28.80 s. T4 medians are 0.47 / 1.00 / 0.56 / 1.79 s
+respectively. All measured settings fit the accepted time/RAM assumptions.
+Initialization is measured separately and OS-cached reads are not cold-disk
+latency. Private checkpoint-bound logits are retained; all 128 cached decisions
+reproduced the exact per-image supervised confusion before training began.
 
 The SegFormer adjustment trial will intentionally pause after epoch 5 with its
 original 30-epoch schedule. Its complete contiguous state and resume archive will

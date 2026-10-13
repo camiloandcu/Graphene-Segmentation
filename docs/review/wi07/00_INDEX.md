@@ -57,10 +57,12 @@ Initial [CPU/T4 resources](09_INITIAL_RESOURCE_BENCHMARKS.json) and
 [common-support comparison](10_INITIAL_COMMON_SUPPORT_COMPARISON.json) are
 verified. All measured initial settings fit the accepted Colab-equivalent
 >=16 GB RAM / 2–3 minutes per image assumptions. The stakeholder approved U-Net/ResNet18 + SegFormer-B0 on 2026-10-12;
-geometry resource verification, finalist training/seeds, actual continued-training recovery and test freeze
+finalist training/seeds, actual continued-training recovery and test freeze
 remain open. Initial pooled Dice is not a final model ranking.
 
 Approved shortlist: [initial pilot and finalist review](11_INITIAL_PILOT_AND_SHORTLIST_REVIEW.md).
 
 Finalist screens: [geometry evidence](12_FINALIST_GEOMETRY_SCREEN.json) and
 [declared training adjustment](13_FINALIST_GEOMETRY_AND_TRAINING_DECISION.md).
+[All eight geometry resource benchmarks](14_FINALIST_GEOMETRY_RESOURCES.json)
+and cached validation decisions are verified.

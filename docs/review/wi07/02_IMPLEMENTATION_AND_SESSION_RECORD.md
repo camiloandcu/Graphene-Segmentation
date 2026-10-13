@@ -200,7 +200,7 @@ four individual images despite SegFormer's higher pooled foreground Dice.
 | AC-1 traceability/isolation | Actual checkpoint/data/support binding and baseline exact counts/panels verified; test remains gated |
 | AC-2 candidates/recovery | Real admissions and initial runs verified; DINO retention/model load across replacement verified; actual interrupted challenger continuation pending |
 | AC-3 supported quality/errors | Initial checkpoint-bound metrics/panels complete; common-support comparison verified; stakeholder pilot/shortlist approved 2026-10-12 |
-| AC-4 sensitivity/resources | Training telemetry measured, all initial CPU/T4 benchmarks verified; four finalist geometry screens complete; matching resources, single declared adjustment and seeds 42/43/44 pending |
+| AC-4 sensitivity/resources | Training telemetry measured, all initial CPU/T4 benchmarks verified; four finalist geometry screens complete; matching resources verified; single declared adjustment and seeds 42/43/44 pending |
 | AC-5 reviewed selection/test | Shortlist approved; final recommendation, exact freeze or explicit inconclusive/test-deferral decision pending |
 
 Continue with the approved U-Net/ResNet18 and SegFormer-B0
@@ -232,5 +232,8 @@ overview; exact small-component boundaries require full-resolution panels.
 The four finalist inference geometry screens completed on the migrated T4.
 [Geometry evidence and the single declared training adjustment](13_FINALIST_GEOMETRY_AND_TRAINING_DECISION.md)
 record the scale-shift failures, supported small-region misses and next finite
-1024-training trials. Matching geometry resources, cache retention and actual
-replacement-runtime continuation remain to be verified.
+1024-training trials. All eight matching CPU/T4 geometry benchmarks and current-mount private cache
+retention are verified. All 128 cached decisions reproduce exact validation
+confusion. U-Net 1024 training admission passed at 3,578,601,472 allocated GPU
+bytes; training is active. Actual replacement-runtime continuation remains
+to be verified.

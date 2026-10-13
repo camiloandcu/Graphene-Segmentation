@@ -1,0 +1,2946 @@
+{
+  "schema_version": 1,
+  "checked_date": "2026-10-12",
+  "stage": "finalist_geometry_argmax_resources",
+  "status": "eight_complete",
+  "source_commit": "9bea06aad3ae97858090c94f8e040a26d3d0564d",
+  "scope": "Extracted aggregates identify the full private reports/cache records. Fresh sequential process per model/geometry/device; four validation images only; no training or cache work overlaps benchmarks",
+  "target_hardware_assumption": "Colab-equivalent >=16GB RAM; 120-second target/180-second ceiling per image",
+  "measured_runtime_ram_bytes": 13605830656,
+  "warmup_per_image": 2,
+  "repeats_per_image": 5,
+  "benchmarks": [
+    {
+      "benchmark_fingerprint": "983f57f2ff2cd6ea01a86ffd3d7de82d4c22805e0a43418b853d07b548b8bed4",
+      "binding": {
+        "architecture": "segformer-b0",
+        "checkpoint_sha256": "a3dc42c64f1e13bde09c1c97aabb36fdbced679b2f11309e3e334760a8533831",
+        "config": {
+          "architecture": "segformer-b0",
+          "batch_size": 2,
+          "device": "cuda",
+          "epochs": 30,
+          "horizontal_flip": 0.0,
+          "input_size": 512,
+          "learning_rate": 0.001,
+          "license_approved": true,
+          "persistence_directory": "/content/drive/MyDrive/Graphene (1)/runs/wi07-segformer-b0-seed42-20261012-rerun",
+          "precision": "float32",
+          "schema_version": 2,
+          "seed": 42,
+          "vertical_flip": 0.0,
+          "weight_decay": 0.0001,
+          "weights": "nvidia/mit-b0",
+          "weights_directory": null,
+          "weights_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+          "weights_sha256": "d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b"
+        },
+        "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+        "generation": "epoch-000019",
+        "preprocessing": {
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "padding_rgb": [
+            0,
+            0,
+            0
+          ],
+          "scale": 0.00392156862745098,
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ],
+          "version": 1
+        },
+        "recorded_best_epoch": 19,
+        "run_fingerprint": "48b44083bee53f44130a1f70a7b16d5d024fb99a78d587b3b4dc7eba7ad5b8dd",
+        "seed": 42,
+        "settings": {
+          "decision": "argmax",
+          "geometry": "letterbox",
+          "input_size": 1024,
+          "stride": null,
+          "threshold": null,
+          "ties": "lower_id"
+        },
+        "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+        "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+        "training_environment": {
+          "cpu_backend": "cuda",
+          "cpu_interop_threads": 1,
+          "cpu_threads": 1,
+          "cudnn": 90501,
+          "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+          "device_policy": "cuda",
+          "evaluation_packages": {
+            "graphene-evaluation": "1.0.0",
+            "huggingface-hub": "0.36.2",
+            "scipy": "1.15.3",
+            "transformers": "4.57.6"
+          },
+          "evaluation_source_sha256": "f3be8477bb429dace0a0eed2bfcd82ec14c25709f894cbf3fb8ea5c7b6d54cb2",
+          "git_revision": null,
+          "gpu": "Tesla T4",
+          "packages": {
+            "Pillow": "11.3.0",
+            "graphene-dataset-contract": "2.0.0",
+            "graphene-model-contract": "1.0.0",
+            "graphene-training": "1.0.0",
+            "numpy": "2.2.6",
+            "pycocotools": "2.0.10",
+            "pydantic": "2.12.3",
+            "segmentation-models-pytorch": "0.5.0",
+            "timm": "1.0.30",
+            "torch": "2.7.1",
+            "torchvision": "0.22.1"
+          },
+          "precision": "float32",
+          "python": "3.13.15",
+          "torch_cuda": "12.6",
+          "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+        },
+        "weights": {
+          "checksum_definition": "SHA-256 of sorted weight filename + file SHA-256 pairs",
+          "format": "pytorch restricted weights_only=True",
+          "identifier": "nvidia/mit-b0",
+          "initialization": "pretrained",
+          "license_approved": true,
+          "revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+          "sha256": "d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b",
+          "source": "https://huggingface.co/nvidia/mit-b0"
+        }
+      },
+      "cpu": "x86_64",
+      "definition": "Image read/checksum/decode, normalization, inference, original-coordinate restoration and decision; excludes plotting and initial checkpoint/data validation",
+      "device": "cpu",
+      "evaluation_environment": {
+        "cpu_backend": "native-single-thread",
+        "cpu_interop_threads": 1,
+        "cpu_threads": 1,
+        "cudnn": 90501,
+        "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+        "device_policy": "cpu",
+        "evaluation_packages": {
+          "graphene-evaluation": "1.0.0",
+          "huggingface-hub": "0.36.2",
+          "scipy": "1.15.3",
+          "transformers": "4.57.6"
+        },
+        "evaluation_source_sha256": "6effe1d7011c48f2a2df1798c3ffbf68e096d1c2bf35b26585d87cdbc39bfe50",
+        "git_revision": null,
+        "gpu": null,
+        "packages": {
+          "Pillow": "11.3.0",
+          "graphene-dataset-contract": "2.0.0",
+          "graphene-model-contract": "1.0.0",
+          "graphene-training": "1.0.0",
+          "numpy": "2.2.6",
+          "pycocotools": "2.0.10",
+          "pydantic": "2.12.3",
+          "segmentation-models-pytorch": "0.5.0",
+          "timm": "1.0.30",
+          "torch": "2.7.1",
+          "torchvision": "0.22.1"
+        },
+        "precision": "float32",
+        "python": "3.13.15",
+        "torch_cuda": "12.6",
+        "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+      },
+      "gpu": null,
+      "initialization_definition": "Checkpoint/data verification, model construction/state loading and device transfer; measured separately before warmup",
+      "initialization_seconds": 35.55561146100081,
+      "limitations": [
+        "Process RSS is cumulative high-water, not model-exclusive memory",
+        "Repeated image reads use the operating system cache; not cold disk latency",
+        "Same-machine pilot; intended laboratory hardware acceptance remains stakeholder-reviewed"
+      ],
+      "median_ms": 6259.493555502559,
+      "p95_ms": 6718.975141449846,
+      "process_peak_rss_bytes": 2342211584,
+      "repeats_per_image": 5,
+      "role": "validation",
+      "schema_version": 1,
+      "threads": 1,
+      "torch": "2.7.1+cu126",
+      "warmup_per_image": 2,
+      "samples": [
+        {
+          "decision_ms": [
+            109.2428799966001,
+            111.73539299852564,
+            194.39234400124406,
+            103.5507350025,
+            163.24975500174332
+          ],
+          "decode_and_integrity_ms": [
+            42.09017799803405,
+            37.75524800221319,
+            37.11796900097397,
+            49.533186000189744,
+            36.52354199948604
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            6636.231503001909,
+            5576.604640998994,
+            6068.130063998979,
+            6122.32529999892,
+            5582.823030999862
+          ],
+          "median_ms": 6275.40922100161,
+          "milliseconds": [
+            6787.564560996543,
+            5726.095281999733,
+            6299.640377001197,
+            6275.40922100161,
+            5782.596328001091
+          ],
+          "p95_ms": 6689.979724197474,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null,
+          "width": 2560,
+          "validation_order": 1
+        },
+        {
+          "decision_ms": [
+            130.5983499987633,
+            116.12125900137471,
+            182.1480349972262,
+            113.30221300158883,
+            108.3114850007405
+          ],
+          "decode_and_integrity_ms": [
+            36.109423999732826,
+            36.73323399925721,
+            39.77059300086694,
+            50.344307001068955,
+            35.7216000011249
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            6489.980126003502,
+            5528.181754001707,
+            6084.030717000132,
+            6093.31751100035,
+            5534.07629999856
+          ],
+          "median_ms": 6256.964031003008,
+          "milliseconds": [
+            6656.687900001998,
+            5681.036247002339,
+            6305.949344998226,
+            6256.964031003008,
+            5678.109385000425
+          ],
+          "p95_ms": 6586.540189001244,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null,
+          "width": 2560,
+          "validation_order": 2
+        },
+        {
+          "decision_ms": [
+            106.49617400122224,
+            104.32042800312047,
+            206.76567100235843,
+            103.86396499961847,
+            104.97768099958193
+          ],
+          "decode_and_integrity_ms": [
+            35.524281000107294,
+            37.38180200161878,
+            35.62179200162063,
+            51.280104999023024,
+            35.19402800156968
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            6563.550484999723,
+            5644.325189998199,
+            6019.63561699813,
+            6124.857677001273,
+            5540.8201399986865
+          ],
+          "median_ms": 6262.023080002109,
+          "milliseconds": [
+            6705.570940001053,
+            5786.027420002938,
+            6262.023080002109,
+            6280.001746999915,
+            5680.991848999838
+          ],
+          "p95_ms": 6620.457101400825,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null,
+          "width": 2560,
+          "validation_order": 3
+        },
+        {
+          "decision_ms": [
+            188.07980500059784,
+            104.49773199798074,
+            190.63494500005618,
+            103.89282699907199,
+            121.2281170010101
+          ],
+          "decode_and_integrity_ms": [
+            34.76457400029176,
+            37.247682997985976,
+            35.416637001617346,
+            49.0328080013569,
+            36.15190900018206
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            6492.52079299913,
+            5607.391935001942,
+            6006.404509997083,
+            6291.750958000193,
+            5561.672363997786
+          ],
+          "median_ms": 6232.456091998756,
+          "milliseconds": [
+            6715.36517200002,
+            5749.137349997909,
+            6232.456091998756,
+            6444.676593000622,
+            5719.0523899989785
+          ],
+          "p95_ms": 6661.22745620014,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null,
+          "width": 2560,
+          "validation_order": 4
+        }
+      ]
+    },
+    {
+      "benchmark_fingerprint": "5cebdc7b30606022e484606232d15caabb6c09d50da590cd95ce712d892905ee",
+      "binding": {
+        "architecture": "segformer-b0",
+        "checkpoint_sha256": "a3dc42c64f1e13bde09c1c97aabb36fdbced679b2f11309e3e334760a8533831",
+        "config": {
+          "architecture": "segformer-b0",
+          "batch_size": 2,
+          "device": "cuda",
+          "epochs": 30,
+          "horizontal_flip": 0.0,
+          "input_size": 512,
+          "learning_rate": 0.001,
+          "license_approved": true,
+          "persistence_directory": "/content/drive/MyDrive/Graphene (1)/runs/wi07-segformer-b0-seed42-20261012-rerun",
+          "precision": "float32",
+          "schema_version": 2,
+          "seed": 42,
+          "vertical_flip": 0.0,
+          "weight_decay": 0.0001,
+          "weights": "nvidia/mit-b0",
+          "weights_directory": null,
+          "weights_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+          "weights_sha256": "d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b"
+        },
+        "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+        "generation": "epoch-000019",
+        "preprocessing": {
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "padding_rgb": [
+            0,
+            0,
+            0
+          ],
+          "scale": 0.00392156862745098,
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ],
+          "version": 1
+        },
+        "recorded_best_epoch": 19,
+        "run_fingerprint": "48b44083bee53f44130a1f70a7b16d5d024fb99a78d587b3b4dc7eba7ad5b8dd",
+        "seed": 42,
+        "settings": {
+          "decision": "argmax",
+          "geometry": "letterbox",
+          "input_size": 1024,
+          "stride": null,
+          "threshold": null,
+          "ties": "lower_id"
+        },
+        "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+        "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+        "training_environment": {
+          "cpu_backend": "cuda",
+          "cpu_interop_threads": 1,
+          "cpu_threads": 1,
+          "cudnn": 90501,
+          "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+          "device_policy": "cuda",
+          "evaluation_packages": {
+            "graphene-evaluation": "1.0.0",
+            "huggingface-hub": "0.36.2",
+            "scipy": "1.15.3",
+            "transformers": "4.57.6"
+          },
+          "evaluation_source_sha256": "f3be8477bb429dace0a0eed2bfcd82ec14c25709f894cbf3fb8ea5c7b6d54cb2",
+          "git_revision": null,
+          "gpu": "Tesla T4",
+          "packages": {
+            "Pillow": "11.3.0",
+            "graphene-dataset-contract": "2.0.0",
+            "graphene-model-contract": "1.0.0",
+            "graphene-training": "1.0.0",
+            "numpy": "2.2.6",
+            "pycocotools": "2.0.10",
+            "pydantic": "2.12.3",
+            "segmentation-models-pytorch": "0.5.0",
+            "timm": "1.0.30",
+            "torch": "2.7.1",
+            "torchvision": "0.22.1"
+          },
+          "precision": "float32",
+          "python": "3.13.15",
+          "torch_cuda": "12.6",
+          "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+        },
+        "weights": {
+          "checksum_definition": "SHA-256 of sorted weight filename + file SHA-256 pairs",
+          "format": "pytorch restricted weights_only=True",
+          "identifier": "nvidia/mit-b0",
+          "initialization": "pretrained",
+          "license_approved": true,
+          "revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+          "sha256": "d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b",
+          "source": "https://huggingface.co/nvidia/mit-b0"
+        }
+      },
+      "cpu": "x86_64",
+      "definition": "Image read/checksum/decode, normalization, inference, original-coordinate restoration and decision; excludes plotting and initial checkpoint/data validation",
+      "device": "cuda",
+      "evaluation_environment": {
+        "cpu_backend": "cuda",
+        "cpu_interop_threads": 1,
+        "cpu_threads": 1,
+        "cudnn": 90501,
+        "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+        "device_policy": "cuda",
+        "evaluation_packages": {
+          "graphene-evaluation": "1.0.0",
+          "huggingface-hub": "0.36.2",
+          "scipy": "1.15.3",
+          "transformers": "4.57.6"
+        },
+        "evaluation_source_sha256": "6effe1d7011c48f2a2df1798c3ffbf68e096d1c2bf35b26585d87cdbc39bfe50",
+        "git_revision": null,
+        "gpu": "Tesla T4",
+        "packages": {
+          "Pillow": "11.3.0",
+          "graphene-dataset-contract": "2.0.0",
+          "graphene-model-contract": "1.0.0",
+          "graphene-training": "1.0.0",
+          "numpy": "2.2.6",
+          "pycocotools": "2.0.10",
+          "pydantic": "2.12.3",
+          "segmentation-models-pytorch": "0.5.0",
+          "timm": "1.0.30",
+          "torch": "2.7.1",
+          "torchvision": "0.22.1"
+        },
+        "precision": "float32",
+        "python": "3.13.15",
+        "torch_cuda": "12.6",
+        "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+      },
+      "gpu": "Tesla T4",
+      "initialization_definition": "Checkpoint/data verification, model construction/state loading and device transfer; measured separately before warmup",
+      "initialization_seconds": 35.68669182599842,
+      "limitations": [
+        "Process RSS is cumulative high-water, not model-exclusive memory",
+        "Repeated image reads use the operating system cache; not cold disk latency",
+        "Same-machine pilot; intended laboratory hardware acceptance remains stakeholder-reviewed"
+      ],
+      "median_ms": 563.7624065002456,
+      "p95_ms": 845.2567672497025,
+      "process_peak_rss_bytes": 2226782208,
+      "repeats_per_image": 5,
+      "role": "validation",
+      "schema_version": 1,
+      "threads": 1,
+      "torch": "2.7.1+cu126",
+      "warmup_per_image": 2,
+      "samples": [
+        {
+          "decision_ms": [
+            179.18606800230918,
+            258.5519509993901,
+            185.7749389964738,
+            223.66991999660968,
+            113.92121400058386
+          ],
+          "decode_and_integrity_ms": [
+            64.8527240009571,
+            68.2942949970311,
+            58.21877899870742,
+            79.67086599819595,
+            70.9059740001976
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            570.630539998092,
+            529.8707560032199,
+            529.5361080025032,
+            527.0403240028827,
+            437.7061240011244
+          ],
+          "median_ms": 814.6693320013583,
+          "milliseconds": [
+            814.6693320013583,
+            856.7170019996411,
+            773.5298259976844,
+            830.3811099976883,
+            622.5333120019059
+          ],
+          "p95_ms": 851.4498235992505,
+          "peak_cuda_allocated_bytes": 749955584,
+          "peak_cuda_reserved_bytes": 1056964608,
+          "width": 2560,
+          "validation_order": 1
+        },
+        {
+          "decision_ms": [
+            107.47616400112747,
+            109.74073499892256,
+            105.99412699957611,
+            115.45947199920192,
+            107.01732500092476
+          ],
+          "decode_and_integrity_ms": [
+            58.4383829991566,
+            43.67065099722822,
+            59.7222629985481,
+            43.206262998864986,
+            57.57843399987905
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            379.39288900088286,
+            368.73363900303957,
+            379.3281880025461,
+            377.80015200041817,
+            378.6300069987192
+          ],
+          "median_ms": 543.225765999523,
+          "milliseconds": [
+            545.3074360011669,
+            522.1450249991904,
+            545.0445780006703,
+            536.4658869984851,
+            543.225765999523
+          ],
+          "p95_ms": 545.2548644010676,
+          "peak_cuda_allocated_bytes": 749955584,
+          "peak_cuda_reserved_bytes": 1056964608,
+          "width": 2560,
+          "validation_order": 2
+        },
+        {
+          "decision_ms": [
+            124.18629999956465,
+            128.66727300206549,
+            108.05456999878515,
+            119.33955199856427,
+            106.54125799919711
+          ],
+          "decode_and_integrity_ms": [
+            49.851298001158284,
+            58.36802100020577,
+            43.572482998570194,
+            58.953235999069875,
+            42.69515000123647
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            385.20193599833874,
+            379.9096399998234,
+            380.78619400039315,
+            382.2870910007623,
+            375.3395069979888
+          ],
+          "median_ms": 559.2395339990617,
+          "milliseconds": [
+            559.2395339990617,
+            566.9449340020947,
+            532.4132469977485,
+            560.5798789983965,
+            524.5759149984224
+          ],
+          "p95_ms": 565.671923001355,
+          "peak_cuda_allocated_bytes": 749955584,
+          "peak_cuda_reserved_bytes": 1056964608,
+          "width": 2560,
+          "validation_order": 3
+        },
+        {
+          "decision_ms": [
+            111.12078400037717,
+            180.12985799941816,
+            186.06362600257853,
+            228.28821900111507,
+            213.5244720011542
+          ],
+          "decode_and_integrity_ms": [
+            56.9157770005404,
+            44.155387997307116,
+            83.73037999990629,
+            60.25529600083246,
+            79.95080500040785
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            386.06886499837856,
+            455.21517200177186,
+            523.048397997627,
+            556.1100819977582,
+            538.0445980008517
+          ],
+          "median_ms": 792.8424040001119,
+          "milliseconds": [
+            554.1054259992961,
+            679.5004179984971,
+            792.8424040001119,
+            844.6535969997058,
+            831.5198750024138
+          ],
+          "p95_ms": 842.0268526002474,
+          "peak_cuda_allocated_bytes": 749955584,
+          "peak_cuda_reserved_bytes": 1056964608,
+          "width": 2560,
+          "validation_order": 4
+        }
+      ]
+    },
+    {
+      "benchmark_fingerprint": "a2bada23f2c51ec8d7e361ae430140968340191620e93b5ac64f4a66513b6017",
+      "binding": {
+        "architecture": "segformer-b0",
+        "checkpoint_sha256": "a3dc42c64f1e13bde09c1c97aabb36fdbced679b2f11309e3e334760a8533831",
+        "config": {
+          "architecture": "segformer-b0",
+          "batch_size": 2,
+          "device": "cuda",
+          "epochs": 30,
+          "horizontal_flip": 0.0,
+          "input_size": 512,
+          "learning_rate": 0.001,
+          "license_approved": true,
+          "persistence_directory": "/content/drive/MyDrive/Graphene (1)/runs/wi07-segformer-b0-seed42-20261012-rerun",
+          "precision": "float32",
+          "schema_version": 2,
+          "seed": 42,
+          "vertical_flip": 0.0,
+          "weight_decay": 0.0001,
+          "weights": "nvidia/mit-b0",
+          "weights_directory": null,
+          "weights_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+          "weights_sha256": "d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b"
+        },
+        "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+        "generation": "epoch-000019",
+        "preprocessing": {
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "padding_rgb": [
+            0,
+            0,
+            0
+          ],
+          "scale": 0.00392156862745098,
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ],
+          "version": 1
+        },
+        "recorded_best_epoch": 19,
+        "run_fingerprint": "48b44083bee53f44130a1f70a7b16d5d024fb99a78d587b3b4dc7eba7ad5b8dd",
+        "seed": 42,
+        "settings": {
+          "decision": "argmax",
+          "geometry": "tiles",
+          "input_size": 512,
+          "stride": 384,
+          "threshold": null,
+          "ties": "lower_id"
+        },
+        "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+        "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+        "training_environment": {
+          "cpu_backend": "cuda",
+          "cpu_interop_threads": 1,
+          "cpu_threads": 1,
+          "cudnn": 90501,
+          "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+          "device_policy": "cuda",
+          "evaluation_packages": {
+            "graphene-evaluation": "1.0.0",
+            "huggingface-hub": "0.36.2",
+            "scipy": "1.15.3",
+            "transformers": "4.57.6"
+          },
+          "evaluation_source_sha256": "f3be8477bb429dace0a0eed2bfcd82ec14c25709f894cbf3fb8ea5c7b6d54cb2",
+          "git_revision": null,
+          "gpu": "Tesla T4",
+          "packages": {
+            "Pillow": "11.3.0",
+            "graphene-dataset-contract": "2.0.0",
+            "graphene-model-contract": "1.0.0",
+            "graphene-training": "1.0.0",
+            "numpy": "2.2.6",
+            "pycocotools": "2.0.10",
+            "pydantic": "2.12.3",
+            "segmentation-models-pytorch": "0.5.0",
+            "timm": "1.0.30",
+            "torch": "2.7.1",
+            "torchvision": "0.22.1"
+          },
+          "precision": "float32",
+          "python": "3.13.15",
+          "torch_cuda": "12.6",
+          "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+        },
+        "weights": {
+          "checksum_definition": "SHA-256 of sorted weight filename + file SHA-256 pairs",
+          "format": "pytorch restricted weights_only=True",
+          "identifier": "nvidia/mit-b0",
+          "initialization": "pretrained",
+          "license_approved": true,
+          "revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+          "sha256": "d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b",
+          "source": "https://huggingface.co/nvidia/mit-b0"
+        }
+      },
+      "cpu": "x86_64",
+      "definition": "Image read/checksum/decode, normalization, inference, original-coordinate restoration and decision; excludes plotting and initial checkpoint/data validation",
+      "device": "cpu",
+      "evaluation_environment": {
+        "cpu_backend": "native-single-thread",
+        "cpu_interop_threads": 1,
+        "cpu_threads": 1,
+        "cudnn": 90501,
+        "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+        "device_policy": "cpu",
+        "evaluation_packages": {
+          "graphene-evaluation": "1.0.0",
+          "huggingface-hub": "0.36.2",
+          "scipy": "1.15.3",
+          "transformers": "4.57.6"
+        },
+        "evaluation_source_sha256": "6effe1d7011c48f2a2df1798c3ffbf68e096d1c2bf35b26585d87cdbc39bfe50",
+        "git_revision": null,
+        "gpu": null,
+        "packages": {
+          "Pillow": "11.3.0",
+          "graphene-dataset-contract": "2.0.0",
+          "graphene-model-contract": "1.0.0",
+          "graphene-training": "1.0.0",
+          "numpy": "2.2.6",
+          "pycocotools": "2.0.10",
+          "pydantic": "2.12.3",
+          "segmentation-models-pytorch": "0.5.0",
+          "timm": "1.0.30",
+          "torch": "2.7.1",
+          "torchvision": "0.22.1"
+        },
+        "precision": "float32",
+        "python": "3.13.15",
+        "torch_cuda": "12.6",
+        "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+      },
+      "gpu": null,
+      "initialization_definition": "Checkpoint/data verification, model construction/state loading and device transfer; measured separately before warmup",
+      "initialization_seconds": 41.845273614999314,
+      "limitations": [
+        "Process RSS is cumulative high-water, not model-exclusive memory",
+        "Repeated image reads use the operating system cache; not cold disk latency",
+        "Same-machine pilot; intended laboratory hardware acceptance remains stakeholder-reviewed"
+      ],
+      "median_ms": 28494.34382400068,
+      "p95_ms": 28798.628001349425,
+      "process_peak_rss_bytes": 1892122624,
+      "repeats_per_image": 5,
+      "role": "validation",
+      "schema_version": 1,
+      "threads": 1,
+      "torch": "2.7.1+cu126",
+      "warmup_per_image": 2,
+      "samples": [
+        {
+          "decision_ms": [
+            105.22697000124026,
+            115.55320899788057,
+            106.21049100154778,
+            122.91823099803878,
+            105.61168099957285
+          ],
+          "decode_and_integrity_ms": [
+            39.61003099902882,
+            38.761389998398954,
+            39.55904900067253,
+            34.84093899896834,
+            42.13639400040847
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            28420.910373999504,
+            28428.557594001177,
+            28356.783380997513,
+            29011.863522002386,
+            28307.732276000024
+          ],
+          "median_ms": 28565.747374999773,
+          "milliseconds": [
+            28565.747374999773,
+            28582.872192997456,
+            28502.552920999733,
+            29169.622691999393,
+            28455.480351000006
+          ],
+          "p95_ms": 29052.272592199006,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null,
+          "width": 2560,
+          "validation_order": 1
+        },
+        {
+          "decision_ms": [
+            104.16908000115654,
+            108.93869799838285,
+            103.4966910010553,
+            174.9347220029449,
+            183.9459579969116
+          ],
+          "decode_and_integrity_ms": [
+            33.96075000273413,
+            41.6601510005421,
+            35.14000900031533,
+            40.9352749993559,
+            37.79417899932014
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            28219.050854997477,
+            28416.91489799996,
+            28221.726249998028,
+            28323.68790200053,
+            28557.361828003195
+          ],
+          "median_ms": 28539.55789900283,
+          "milliseconds": [
+            28357.180685001367,
+            28567.513746998884,
+            28360.3629499994,
+            28539.55789900283,
+            28779.101964999427
+          ],
+          "p95_ms": 28736.78432139932,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null,
+          "width": 2560,
+          "validation_order": 2
+        },
+        {
+          "decision_ms": [
+            185.36157000198727,
+            174.997894999251,
+            104.42737600169494,
+            122.98283299969626,
+            103.16738500114297
+          ],
+          "decode_and_integrity_ms": [
+            51.78294500001357,
+            44.379260998539394,
+            57.64187800014042,
+            33.74458999678609,
+            37.62076900238753
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            28092.926853998506,
+            27993.02313899898,
+            28264.490353998553,
+            28218.005064001773,
+            28345.346572998096
+          ],
+          "median_ms": 28374.732486998255,
+          "milliseconds": [
+            28330.071369000507,
+            28212.40029499677,
+            28426.55960800039,
+            28374.732486998255,
+            28486.134727001627
+          ],
+          "p95_ms": 28474.21970320138,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null,
+          "width": 2560,
+          "validation_order": 3
+        },
+        {
+          "decision_ms": [
+            103.35621899866965,
+            104.9982069998805,
+            106.39478200027952,
+            103.38450899871532,
+            113.48590100169531
+          ],
+          "decode_and_integrity_ms": [
+            33.63717999673099,
+            39.21468000044115,
+            35.618075999082066,
+            40.18943800110719,
+            33.142884996777866
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            28522.50603700304,
+            28592.848355998285,
+            28228.64513699824,
+            28137.254943001608,
+            28427.94003200106
+          ],
+          "median_ms": 28574.568817999534,
+          "milliseconds": [
+            28659.49943599844,
+            28737.061242998607,
+            28370.6579949976,
+            28280.82889000143,
+            28574.568817999534
+          ],
+          "p95_ms": 28721.548881598574,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null,
+          "width": 2560,
+          "validation_order": 4
+        }
+      ]
+    },
+    {
+      "benchmark_fingerprint": "5e0172150522e5998d3cbaca901773abbef86a22e32e2ef7f838c4af172e4c65",
+      "binding": {
+        "architecture": "segformer-b0",
+        "checkpoint_sha256": "a3dc42c64f1e13bde09c1c97aabb36fdbced679b2f11309e3e334760a8533831",
+        "config": {
+          "architecture": "segformer-b0",
+          "batch_size": 2,
+          "device": "cuda",
+          "epochs": 30,
+          "horizontal_flip": 0.0,
+          "input_size": 512,
+          "learning_rate": 0.001,
+          "license_approved": true,
+          "persistence_directory": "/content/drive/MyDrive/Graphene (1)/runs/wi07-segformer-b0-seed42-20261012-rerun",
+          "precision": "float32",
+          "schema_version": 2,
+          "seed": 42,
+          "vertical_flip": 0.0,
+          "weight_decay": 0.0001,
+          "weights": "nvidia/mit-b0",
+          "weights_directory": null,
+          "weights_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+          "weights_sha256": "d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b"
+        },
+        "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+        "generation": "epoch-000019",
+        "preprocessing": {
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "padding_rgb": [
+            0,
+            0,
+            0
+          ],
+          "scale": 0.00392156862745098,
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ],
+          "version": 1
+        },
+        "recorded_best_epoch": 19,
+        "run_fingerprint": "48b44083bee53f44130a1f70a7b16d5d024fb99a78d587b3b4dc7eba7ad5b8dd",
+        "seed": 42,
+        "settings": {
+          "decision": "argmax",
+          "geometry": "tiles",
+          "input_size": 512,
+          "stride": 384,
+          "threshold": null,
+          "ties": "lower_id"
+        },
+        "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+        "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+        "training_environment": {
+          "cpu_backend": "cuda",
+          "cpu_interop_threads": 1,
+          "cpu_threads": 1,
+          "cudnn": 90501,
+          "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+          "device_policy": "cuda",
+          "evaluation_packages": {
+            "graphene-evaluation": "1.0.0",
+            "huggingface-hub": "0.36.2",
+            "scipy": "1.15.3",
+            "transformers": "4.57.6"
+          },
+          "evaluation_source_sha256": "f3be8477bb429dace0a0eed2bfcd82ec14c25709f894cbf3fb8ea5c7b6d54cb2",
+          "git_revision": null,
+          "gpu": "Tesla T4",
+          "packages": {
+            "Pillow": "11.3.0",
+            "graphene-dataset-contract": "2.0.0",
+            "graphene-model-contract": "1.0.0",
+            "graphene-training": "1.0.0",
+            "numpy": "2.2.6",
+            "pycocotools": "2.0.10",
+            "pydantic": "2.12.3",
+            "segmentation-models-pytorch": "0.5.0",
+            "timm": "1.0.30",
+            "torch": "2.7.1",
+            "torchvision": "0.22.1"
+          },
+          "precision": "float32",
+          "python": "3.13.15",
+          "torch_cuda": "12.6",
+          "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+        },
+        "weights": {
+          "checksum_definition": "SHA-256 of sorted weight filename + file SHA-256 pairs",
+          "format": "pytorch restricted weights_only=True",
+          "identifier": "nvidia/mit-b0",
+          "initialization": "pretrained",
+          "license_approved": true,
+          "revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+          "sha256": "d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b",
+          "source": "https://huggingface.co/nvidia/mit-b0"
+        }
+      },
+      "cpu": "x86_64",
+      "definition": "Image read/checksum/decode, normalization, inference, original-coordinate restoration and decision; excludes plotting and initial checkpoint/data validation",
+      "device": "cuda",
+      "evaluation_environment": {
+        "cpu_backend": "cuda",
+        "cpu_interop_threads": 1,
+        "cpu_threads": 1,
+        "cudnn": 90501,
+        "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+        "device_policy": "cuda",
+        "evaluation_packages": {
+          "graphene-evaluation": "1.0.0",
+          "huggingface-hub": "0.36.2",
+          "scipy": "1.15.3",
+          "transformers": "4.57.6"
+        },
+        "evaluation_source_sha256": "6effe1d7011c48f2a2df1798c3ffbf68e096d1c2bf35b26585d87cdbc39bfe50",
+        "git_revision": null,
+        "gpu": "Tesla T4",
+        "packages": {
+          "Pillow": "11.3.0",
+          "graphene-dataset-contract": "2.0.0",
+          "graphene-model-contract": "1.0.0",
+          "graphene-training": "1.0.0",
+          "numpy": "2.2.6",
+          "pycocotools": "2.0.10",
+          "pydantic": "2.12.3",
+          "segmentation-models-pytorch": "0.5.0",
+          "timm": "1.0.30",
+          "torch": "2.7.1",
+          "torchvision": "0.22.1"
+        },
+        "precision": "float32",
+        "python": "3.13.15",
+        "torch_cuda": "12.6",
+        "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+      },
+      "gpu": "Tesla T4",
+      "initialization_definition": "Checkpoint/data verification, model construction/state loading and device transfer; measured separately before warmup",
+      "initialization_seconds": 37.17685333099871,
+      "limitations": [
+        "Process RSS is cumulative high-water, not model-exclusive memory",
+        "Repeated image reads use the operating system cache; not cold disk latency",
+        "Same-machine pilot; intended laboratory hardware acceptance remains stakeholder-reviewed"
+      ],
+      "median_ms": 1788.7169375007943,
+      "p95_ms": 2326.320445752208,
+      "process_peak_rss_bytes": 2241191936,
+      "repeats_per_image": 5,
+      "role": "validation",
+      "schema_version": 1,
+      "threads": 1,
+      "torch": "2.7.1+cu126",
+      "warmup_per_image": 2,
+      "samples": [
+        {
+          "decision_ms": [
+            104.72073799974169,
+            185.0206769995566,
+            181.3883180002449,
+            105.44059899984859,
+            106.47577800045838
+          ],
+          "decode_and_integrity_ms": [
+            50.92231599701336,
+            55.73934600033681,
+            65.00463499833131,
+            66.48163099816884,
+            49.505188999319216
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            1548.3290910015057,
+            1730.8004699989397,
+            2070.1891550015716,
+            1824.8749150006915,
+            1518.7915450005676
+          ],
+          "median_ms": 1971.560492998833,
+          "milliseconds": [
+            1703.9721449982608,
+            1971.560492998833,
+            2316.582108000148,
+            1996.797144998709,
+            1674.7725120003452
+          ],
+          "p95_ms": 2252.62511539986,
+          "peak_cuda_allocated_bytes": 223695872,
+          "peak_cuda_reserved_bytes": 310378496,
+          "width": 2560,
+          "validation_order": 1
+        },
+        {
+          "decision_ms": [
+            103.01569600051153,
+            112.0973889992456,
+            170.17767099969205,
+            179.72709200330428,
+            106.09877800015965
+          ],
+          "decode_and_integrity_ms": [
+            49.55187400264549,
+            48.47700699974666,
+            55.69643499984522,
+            70.15601300008711,
+            75.29309800156625
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            1521.9699299996137,
+            1538.5965050008963,
+            1879.8948089970509,
+            2074.5527389990457,
+            1648.53371999925
+          ],
+          "median_ms": 1829.925596000976,
+          "milliseconds": [
+            1674.5375000027707,
+            1699.1709009998885,
+            2105.768914996588,
+            2324.435844002437,
+            1829.925596000976
+          ],
+          "p95_ms": 2280.7024582012673,
+          "peak_cuda_allocated_bytes": 223695872,
+          "peak_cuda_reserved_bytes": 310378496,
+          "width": 2560,
+          "validation_order": 2
+        },
+        {
+          "decision_ms": [
+            109.95493600057671,
+            106.93821099994238,
+            120.36076200092793,
+            178.0684969999129,
+            106.71184500097297
+          ],
+          "decode_and_integrity_ms": [
+            48.79648800124414,
+            53.30408599911607,
+            49.37178099862649,
+            57.41860499983886,
+            67.53549299901351
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            1544.929128998774,
+            1587.2659820015542,
+            1549.4869130016014,
+            2083.1501059983566,
+            2110.483959000703
+          ],
+          "median_ms": 1747.5082790006127,
+          "milliseconds": [
+            1703.680553000595,
+            1747.5082790006127,
+            1719.2194560011558,
+            2318.6372079981084,
+            2284.7312970006897
+          ],
+          "p95_ms": 2311.8560257986246,
+          "peak_cuda_allocated_bytes": 223695872,
+          "peak_cuda_reserved_bytes": 310378496,
+          "width": 2560,
+          "validation_order": 3
+        },
+        {
+          "decision_ms": [
+            104.79517599742394,
+            105.15388999920106,
+            102.74735400162172,
+            184.61753399969894,
+            190.1140949994442
+          ],
+          "decode_and_integrity_ms": [
+            52.131734002614394,
+            49.03015099989716,
+            50.20188399794279,
+            48.66980699807755,
+            67.37430700013647
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            1563.296688000264,
+            1518.4690530004445,
+            1522.0520729999407,
+            1681.293313002243,
+            2104.6394769982726
+          ],
+          "median_ms": 1720.2235980003024,
+          "milliseconds": [
+            1720.2235980003024,
+            1672.6530939995428,
+            1675.0013109995052,
+            1914.5806540000194,
+            2362.1278789978533
+          ],
+          "p95_ms": 2272.6184339982865,
+          "peak_cuda_allocated_bytes": 223695872,
+          "peak_cuda_reserved_bytes": 310378496,
+          "width": 2560,
+          "validation_order": 4
+        }
+      ]
+    },
+    {
+      "benchmark_fingerprint": "255d9695badf7163238140581c078c6014ea01025232570ba5a9ef8929d27d93",
+      "binding": {
+        "architecture": "unet-resnet18",
+        "checkpoint_sha256": "c199f87a1d3f06f013dbef0db7982c6d4e3e2ba852146c1ca57f735ec25e267f",
+        "config": {
+          "architecture": "unet-resnet18",
+          "batch_size": 2,
+          "device": "cuda",
+          "epochs": 30,
+          "horizontal_flip": 0.0,
+          "input_size": 512,
+          "learning_rate": 0.001,
+          "persistence_directory": "/content/drive/MyDrive/Graphene/runs/graphene-baseline-wi06-20261010-002",
+          "precision": "float32",
+          "schema_version": 1,
+          "seed": 42,
+          "vertical_flip": 0.0,
+          "weight_decay": 0.0001,
+          "weights": "imagenet-resnet18-v1"
+        },
+        "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+        "generation": "epoch-000023",
+        "preprocessing": {
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "padding_rgb": [
+            0,
+            0,
+            0
+          ],
+          "scale": 0.00392156862745098,
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ],
+          "version": 1
+        },
+        "recorded_best_epoch": 23,
+        "run_fingerprint": "657e88412a7690f9d7436d326fa62e92506ab1f3280a58397a2839ef440b449e",
+        "seed": 42,
+        "settings": {
+          "decision": "argmax",
+          "geometry": "letterbox",
+          "input_size": 1024,
+          "stride": null,
+          "threshold": null,
+          "ties": "lower_id"
+        },
+        "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+        "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+        "training_environment": {
+          "cpu_backend": "cuda",
+          "cpu_interop_threads": 1,
+          "cpu_threads": 1,
+          "cudnn": 90501,
+          "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+          "device_policy": "cuda",
+          "git_revision": "b0480172dd80181efbd7241b7c8e2853818407f4",
+          "gpu": "Tesla T4",
+          "packages": {
+            "Pillow": "11.3.0",
+            "graphene-dataset-contract": "2.0.0",
+            "graphene-model-contract": "1.0.0",
+            "graphene-training": "1.0.0",
+            "numpy": "2.2.6",
+            "pycocotools": "2.0.10",
+            "pydantic": "2.12.3",
+            "segmentation-models-pytorch": "0.5.0",
+            "timm": "1.0.30",
+            "torch": "2.7.1+cu126",
+            "torchvision": "0.22.1+cu126"
+          },
+          "precision": "float32",
+          "python": "3.13.15",
+          "torch_cuda": "12.6",
+          "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+        },
+        "weights": {
+          "identifier": "ResNet18_Weights.IMAGENET1K_V1",
+          "initialization": "pretrained",
+          "sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+          "source": "https://download.pytorch.org/models/resnet18-f37072fd.pth"
+        }
+      },
+      "cpu": "x86_64",
+      "definition": "Image read/checksum/decode, normalization, inference, original-coordinate restoration and decision; excludes plotting and initial checkpoint/data validation",
+      "device": "cpu",
+      "evaluation_environment": {
+        "cpu_backend": "native-single-thread",
+        "cpu_interop_threads": 1,
+        "cpu_threads": 1,
+        "cudnn": 90501,
+        "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+        "device_policy": "cpu",
+        "evaluation_packages": {
+          "graphene-evaluation": "1.0.0",
+          "huggingface-hub": "0.36.2",
+          "scipy": "1.15.3",
+          "transformers": "4.57.6"
+        },
+        "evaluation_source_sha256": "6effe1d7011c48f2a2df1798c3ffbf68e096d1c2bf35b26585d87cdbc39bfe50",
+        "git_revision": null,
+        "gpu": null,
+        "packages": {
+          "Pillow": "11.3.0",
+          "graphene-dataset-contract": "2.0.0",
+          "graphene-model-contract": "1.0.0",
+          "graphene-training": "1.0.0",
+          "numpy": "2.2.6",
+          "pycocotools": "2.0.10",
+          "pydantic": "2.12.3",
+          "segmentation-models-pytorch": "0.5.0",
+          "timm": "1.0.30",
+          "torch": "2.7.1",
+          "torchvision": "0.22.1"
+        },
+        "precision": "float32",
+        "python": "3.13.15",
+        "torch_cuda": "12.6",
+        "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+      },
+      "gpu": null,
+      "initialization_definition": "Checkpoint/data verification, model construction/state loading and device transfer; measured separately before warmup",
+      "initialization_seconds": 31.90188403100001,
+      "limitations": [
+        "Process RSS is cumulative high-water, not model-exclusive memory",
+        "Repeated image reads use the operating system cache; not cold disk latency",
+        "Same-machine pilot; intended laboratory hardware acceptance remains stakeholder-reviewed"
+      ],
+      "median_ms": 9201.26343550055,
+      "p95_ms": 11874.373286050743,
+      "process_peak_rss_bytes": 2476752896,
+      "repeats_per_image": 5,
+      "role": "validation",
+      "schema_version": 1,
+      "threads": 1,
+      "torch": "2.7.1+cu126",
+      "warmup_per_image": 2,
+      "samples": [
+        {
+          "decision_ms": [
+            107.65218100095808,
+            115.79118000008748,
+            107.00444500071171,
+            106.58142899956147,
+            115.54111599980388
+          ],
+          "decode_and_integrity_ms": [
+            36.733032000483945,
+            34.62319600112096,
+            34.86468600021908,
+            35.92324500095856,
+            34.07847599919478
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            8279.27764999913,
+            11655.901305999578,
+            9023.877560999608,
+            8356.186492999768,
+            9221.785775000171
+          ],
+          "median_ms": 9165.746692000539,
+          "milliseconds": [
+            8423.662863000573,
+            11806.315682000786,
+            9165.746692000539,
+            8498.691167000288,
+            9371.40536699917
+          ],
+          "p95_ms": 11319.333619000463,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null,
+          "width": 2560,
+          "validation_order": 1
+        },
+        {
+          "decision_ms": [
+            185.99523000011686,
+            191.25262999841652,
+            189.672052001697,
+            107.77089400107798,
+            122.62928400014061
+          ],
+          "decode_and_integrity_ms": [
+            53.798480999830645,
+            48.53292200095893,
+            52.0065649998287,
+            50.228583999341936,
+            36.94732800067868
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            11045.191473998784,
+            12927.682211000501,
+            9520.645606999096,
+            9762.982153999474,
+            9046.32176800078
+          ],
+          "median_ms": 9920.981631999894,
+          "milliseconds": [
+            11284.985184998732,
+            13167.467762999877,
+            9762.324224000622,
+            9920.981631999894,
+            9205.8983800016
+          ],
+          "p95_ms": 12790.971247399648,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null,
+          "width": 2560,
+          "validation_order": 2
+        },
+        {
+          "decision_ms": [
+            134.63810800021747,
+            109.36584999944898,
+            108.72544399899198,
+            184.1521369988186,
+            111.37233399858815
+          ],
+          "decode_and_integrity_ms": [
+            36.67485799996939,
+            34.73612000016146,
+            33.180029000504874,
+            36.62669999903301,
+            44.696797000142396
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            9133.805305000351,
+            8425.72336900048,
+            9221.500617999482,
+            8815.523093000593,
+            8873.196935001033
+          ],
+          "median_ms": 9036.301929998444,
+          "milliseconds": [
+            9305.118271000538,
+            8569.82533900009,
+            9363.406090998978,
+            9036.301929998444,
+            9029.266065999764
+          ],
+          "p95_ms": 9351.74852699929,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null,
+          "width": 2560,
+          "validation_order": 3
+        },
+        {
+          "decision_ms": [
+            106.24804500002938,
+            108.37321899998642,
+            106.68610699940473,
+            109.40860099981364,
+            190.5799019987171
+          ],
+          "decode_and_integrity_ms": [
+            48.47749100008514,
+            35.267613999167224,
+            34.731469000689685,
+            35.24137899876223,
+            45.439158000590396
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            9352.854755999942,
+            9042.158645999734,
+            8392.05546300036,
+            9051.978511000925,
+            8767.701992001093
+          ],
+          "median_ms": 9185.799478998888,
+          "milliseconds": [
+            9507.580292000057,
+            9185.799478998888,
+            8533.473039000455,
+            9196.628490999501,
+            9003.721052000401
+          ],
+          "p95_ms": 9445.389931799946,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null,
+          "width": 2560,
+          "validation_order": 4
+        }
+      ]
+    },
+    {
+      "benchmark_fingerprint": "de0a0189f6b0656a3ebfdf8de713f003effaa9698f95013531b63ea73f863dd7",
+      "binding": {
+        "architecture": "unet-resnet18",
+        "checkpoint_sha256": "c199f87a1d3f06f013dbef0db7982c6d4e3e2ba852146c1ca57f735ec25e267f",
+        "config": {
+          "architecture": "unet-resnet18",
+          "batch_size": 2,
+          "device": "cuda",
+          "epochs": 30,
+          "horizontal_flip": 0.0,
+          "input_size": 512,
+          "learning_rate": 0.001,
+          "persistence_directory": "/content/drive/MyDrive/Graphene/runs/graphene-baseline-wi06-20261010-002",
+          "precision": "float32",
+          "schema_version": 1,
+          "seed": 42,
+          "vertical_flip": 0.0,
+          "weight_decay": 0.0001,
+          "weights": "imagenet-resnet18-v1"
+        },
+        "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+        "generation": "epoch-000023",
+        "preprocessing": {
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "padding_rgb": [
+            0,
+            0,
+            0
+          ],
+          "scale": 0.00392156862745098,
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ],
+          "version": 1
+        },
+        "recorded_best_epoch": 23,
+        "run_fingerprint": "657e88412a7690f9d7436d326fa62e92506ab1f3280a58397a2839ef440b449e",
+        "seed": 42,
+        "settings": {
+          "decision": "argmax",
+          "geometry": "letterbox",
+          "input_size": 1024,
+          "stride": null,
+          "threshold": null,
+          "ties": "lower_id"
+        },
+        "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+        "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+        "training_environment": {
+          "cpu_backend": "cuda",
+          "cpu_interop_threads": 1,
+          "cpu_threads": 1,
+          "cudnn": 90501,
+          "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+          "device_policy": "cuda",
+          "git_revision": "b0480172dd80181efbd7241b7c8e2853818407f4",
+          "gpu": "Tesla T4",
+          "packages": {
+            "Pillow": "11.3.0",
+            "graphene-dataset-contract": "2.0.0",
+            "graphene-model-contract": "1.0.0",
+            "graphene-training": "1.0.0",
+            "numpy": "2.2.6",
+            "pycocotools": "2.0.10",
+            "pydantic": "2.12.3",
+            "segmentation-models-pytorch": "0.5.0",
+            "timm": "1.0.30",
+            "torch": "2.7.1+cu126",
+            "torchvision": "0.22.1+cu126"
+          },
+          "precision": "float32",
+          "python": "3.13.15",
+          "torch_cuda": "12.6",
+          "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+        },
+        "weights": {
+          "identifier": "ResNet18_Weights.IMAGENET1K_V1",
+          "initialization": "pretrained",
+          "sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+          "source": "https://download.pytorch.org/models/resnet18-f37072fd.pth"
+        }
+      },
+      "cpu": "x86_64",
+      "definition": "Image read/checksum/decode, normalization, inference, original-coordinate restoration and decision; excludes plotting and initial checkpoint/data validation",
+      "device": "cuda",
+      "evaluation_environment": {
+        "cpu_backend": "cuda",
+        "cpu_interop_threads": 1,
+        "cpu_threads": 1,
+        "cudnn": 90501,
+        "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+        "device_policy": "cuda",
+        "evaluation_packages": {
+          "graphene-evaluation": "1.0.0",
+          "huggingface-hub": "0.36.2",
+          "scipy": "1.15.3",
+          "transformers": "4.57.6"
+        },
+        "evaluation_source_sha256": "6effe1d7011c48f2a2df1798c3ffbf68e096d1c2bf35b26585d87cdbc39bfe50",
+        "git_revision": null,
+        "gpu": "Tesla T4",
+        "packages": {
+          "Pillow": "11.3.0",
+          "graphene-dataset-contract": "2.0.0",
+          "graphene-model-contract": "1.0.0",
+          "graphene-training": "1.0.0",
+          "numpy": "2.2.6",
+          "pycocotools": "2.0.10",
+          "pydantic": "2.12.3",
+          "segmentation-models-pytorch": "0.5.0",
+          "timm": "1.0.30",
+          "torch": "2.7.1",
+          "torchvision": "0.22.1"
+        },
+        "precision": "float32",
+        "python": "3.13.15",
+        "torch_cuda": "12.6",
+        "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+      },
+      "gpu": "Tesla T4",
+      "initialization_definition": "Checkpoint/data verification, model construction/state loading and device transfer; measured separately before warmup",
+      "initialization_seconds": 31.428256496999893,
+      "limitations": [
+        "Process RSS is cumulative high-water, not model-exclusive memory",
+        "Repeated image reads use the operating system cache; not cold disk latency",
+        "Same-machine pilot; intended laboratory hardware acceptance remains stakeholder-reviewed"
+      ],
+      "median_ms": 472.3443110005974,
+      "p95_ms": 704.6787143499387,
+      "process_peak_rss_bytes": 1312419840,
+      "repeats_per_image": 5,
+      "role": "validation",
+      "schema_version": 1,
+      "threads": 1,
+      "torch": "2.7.1+cu126",
+      "warmup_per_image": 2,
+      "samples": [
+        {
+          "decision_ms": [
+            187.61613799870247,
+            174.49587500050256,
+            192.21896800081595,
+            115.28360200099996,
+            122.93389300066337
+          ],
+          "decode_and_integrity_ms": [
+            63.51750300018466,
+            63.18869300048391,
+            58.886834000077215,
+            61.62781599959999,
+            43.72057900036452
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            453.0438060010056,
+            476.5182259998255,
+            442.3372189994552,
+            379.74276800014195,
+            313.4704839994811
+          ],
+          "median_ms": 693.4430210003484,
+          "milliseconds": [
+            704.1774469998927,
+            714.202794000812,
+            693.4430210003484,
+            556.6541860007419,
+            480.124956000509
+          ],
+          "p95_ms": 712.1977246006281,
+          "peak_cuda_allocated_bytes": 471774720,
+          "peak_cuda_reserved_bytes": 656408576,
+          "width": 2560,
+          "validation_order": 1
+        },
+        {
+          "decision_ms": [
+            116.31158000091091,
+            116.28672900042147,
+            114.8488279995945,
+            115.09106300036365,
+            114.0026859993668
+          ],
+          "decode_and_integrity_ms": [
+            45.41181100103131,
+            45.547815001555136,
+            56.62442799985001,
+            44.77762900023663,
+            45.639977000973886
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            306.7448499987222,
+            317.3364579997724,
+            311.92337600077735,
+            316.35168899993005,
+            333.60276100029296
+          ],
+          "median_ms": 479.171002001749,
+          "milliseconds": [
+            468.4682410006644,
+            479.171002001749,
+            483.39663200022187,
+            476.2203810005303,
+            493.24542400063365
+          ],
+          "p95_ms": 491.2756656005513,
+          "peak_cuda_allocated_bytes": 471774720,
+          "peak_cuda_reserved_bytes": 656408576,
+          "width": 2560,
+          "validation_order": 2
+        },
+        {
+          "decision_ms": [
+            105.51475300053426,
+            111.66919700008293,
+            107.41759399934381,
+            103.67961900010414,
+            105.73439500149107
+          ],
+          "decode_and_integrity_ms": [
+            39.99477700017451,
+            42.05292000006011,
+            42.16850000011618,
+            40.449264999551815,
+            47.2775210000691
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            294.83060399979877,
+            297.77538599955733,
+            296.18129300069995,
+            301.54449400106387,
+            291.84128399901965
+          ],
+          "median_ms": 445.6733780007198,
+          "milliseconds": [
+            440.34013400050753,
+            451.4975029997004,
+            445.76738700015994,
+            445.6733780007198,
+            444.8532000005798
+          ],
+          "p95_ms": 450.3514797997923,
+          "peak_cuda_allocated_bytes": 471774720,
+          "peak_cuda_reserved_bytes": 656408576,
+          "width": 2560,
+          "validation_order": 3
+        },
+        {
+          "decision_ms": [
+            105.94641299940122,
+            104.72490299980564,
+            108.1477059997269,
+            127.21363700075017,
+            194.19319400003587
+          ],
+          "decode_and_integrity_ms": [
+            41.931526000553276,
+            43.3795189983357,
+            40.8615109990933,
+            41.23464199983573,
+            57.84217200016428
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            306.7551719996118,
+            302.8375200010487,
+            292.8778400000738,
+            290.3519930005132,
+            429.75824600034684
+          ],
+          "median_ms": 454.63311099956627,
+          "milliseconds": [
+            454.63311099956627,
+            450.94194199919,
+            441.88705699889397,
+            458.8002720010991,
+            681.793612000547
+          ],
+          "p95_ms": 637.1949440006574,
+          "peak_cuda_allocated_bytes": 471774720,
+          "peak_cuda_reserved_bytes": 656408576,
+          "width": 2560,
+          "validation_order": 4
+        }
+      ]
+    },
+    {
+      "benchmark_fingerprint": "22908baedd2c9d1bf78a3fccb7efbe9dc16416b866f6cd41304362fe90a196ab",
+      "binding": {
+        "architecture": "unet-resnet18",
+        "checkpoint_sha256": "c199f87a1d3f06f013dbef0db7982c6d4e3e2ba852146c1ca57f735ec25e267f",
+        "config": {
+          "architecture": "unet-resnet18",
+          "batch_size": 2,
+          "device": "cuda",
+          "epochs": 30,
+          "horizontal_flip": 0.0,
+          "input_size": 512,
+          "learning_rate": 0.001,
+          "persistence_directory": "/content/drive/MyDrive/Graphene/runs/graphene-baseline-wi06-20261010-002",
+          "precision": "float32",
+          "schema_version": 1,
+          "seed": 42,
+          "vertical_flip": 0.0,
+          "weight_decay": 0.0001,
+          "weights": "imagenet-resnet18-v1"
+        },
+        "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+        "generation": "epoch-000023",
+        "preprocessing": {
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "padding_rgb": [
+            0,
+            0,
+            0
+          ],
+          "scale": 0.00392156862745098,
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ],
+          "version": 1
+        },
+        "recorded_best_epoch": 23,
+        "run_fingerprint": "657e88412a7690f9d7436d326fa62e92506ab1f3280a58397a2839ef440b449e",
+        "seed": 42,
+        "settings": {
+          "decision": "argmax",
+          "geometry": "tiles",
+          "input_size": 512,
+          "stride": 384,
+          "threshold": null,
+          "ties": "lower_id"
+        },
+        "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+        "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+        "training_environment": {
+          "cpu_backend": "cuda",
+          "cpu_interop_threads": 1,
+          "cpu_threads": 1,
+          "cudnn": 90501,
+          "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+          "device_policy": "cuda",
+          "git_revision": "b0480172dd80181efbd7241b7c8e2853818407f4",
+          "gpu": "Tesla T4",
+          "packages": {
+            "Pillow": "11.3.0",
+            "graphene-dataset-contract": "2.0.0",
+            "graphene-model-contract": "1.0.0",
+            "graphene-training": "1.0.0",
+            "numpy": "2.2.6",
+            "pycocotools": "2.0.10",
+            "pydantic": "2.12.3",
+            "segmentation-models-pytorch": "0.5.0",
+            "timm": "1.0.30",
+            "torch": "2.7.1+cu126",
+            "torchvision": "0.22.1+cu126"
+          },
+          "precision": "float32",
+          "python": "3.13.15",
+          "torch_cuda": "12.6",
+          "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+        },
+        "weights": {
+          "identifier": "ResNet18_Weights.IMAGENET1K_V1",
+          "initialization": "pretrained",
+          "sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+          "source": "https://download.pytorch.org/models/resnet18-f37072fd.pth"
+        }
+      },
+      "cpu": "x86_64",
+      "definition": "Image read/checksum/decode, normalization, inference, original-coordinate restoration and decision; excludes plotting and initial checkpoint/data validation",
+      "device": "cpu",
+      "evaluation_environment": {
+        "cpu_backend": "native-single-thread",
+        "cpu_interop_threads": 1,
+        "cpu_threads": 1,
+        "cudnn": 90501,
+        "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+        "device_policy": "cpu",
+        "evaluation_packages": {
+          "graphene-evaluation": "1.0.0",
+          "huggingface-hub": "0.36.2",
+          "scipy": "1.15.3",
+          "transformers": "4.57.6"
+        },
+        "evaluation_source_sha256": "6effe1d7011c48f2a2df1798c3ffbf68e096d1c2bf35b26585d87cdbc39bfe50",
+        "git_revision": null,
+        "gpu": null,
+        "packages": {
+          "Pillow": "11.3.0",
+          "graphene-dataset-contract": "2.0.0",
+          "graphene-model-contract": "1.0.0",
+          "graphene-training": "1.0.0",
+          "numpy": "2.2.6",
+          "pycocotools": "2.0.10",
+          "pydantic": "2.12.3",
+          "segmentation-models-pytorch": "0.5.0",
+          "timm": "1.0.30",
+          "torch": "2.7.1",
+          "torchvision": "0.22.1"
+        },
+        "precision": "float32",
+        "python": "3.13.15",
+        "torch_cuda": "12.6",
+        "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+      },
+      "gpu": null,
+      "initialization_definition": "Checkpoint/data verification, model construction/state loading and device transfer; measured separately before warmup",
+      "initialization_seconds": 31.001870054000392,
+      "limitations": [
+        "Process RSS is cumulative high-water, not model-exclusive memory",
+        "Repeated image reads use the operating system cache; not cold disk latency",
+        "Same-machine pilot; intended laboratory hardware acceptance remains stakeholder-reviewed"
+      ],
+      "median_ms": 70439.44811099936,
+      "p95_ms": 71812.50386859938,
+      "process_peak_rss_bytes": 1326956544,
+      "repeats_per_image": 5,
+      "role": "validation",
+      "schema_version": 1,
+      "threads": 1,
+      "torch": "2.7.1+cu126",
+      "warmup_per_image": 2,
+      "samples": [
+        {
+          "decision_ms": [
+            93.02805799961789,
+            93.29051100030483,
+            94.04922099929536,
+            96.46292300021742,
+            174.89433999980974
+          ],
+          "decode_and_integrity_ms": [
+            34.234800999911386,
+            34.94848800073669,
+            35.00543500013009,
+            35.347601000466966,
+            37.122478999663144
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            70513.68498800002,
+            72718.3652269996,
+            71629.02287799989,
+            71568.92174699897,
+            69877.83658800072
+          ],
+          "median_ms": 71700.73227099965,
+          "milliseconds": [
+            70640.94784699955,
+            72846.60422600064,
+            71758.07753399931,
+            71700.73227099965,
+            70089.85340700019
+          ],
+          "p95_ms": 72628.89888760037,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null,
+          "width": 2560,
+          "validation_order": 1
+        },
+        {
+          "decision_ms": [
+            96.06578500097385,
+            91.79963799942925,
+            102.32746800102177,
+            94.09436299938534,
+            96.7098460005218
+          ],
+          "decode_and_integrity_ms": [
+            37.834294000276714,
+            35.93283199916186,
+            36.671120000391966,
+            48.274017999574426,
+            37.43905699957395
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            70508.87639599932,
+            70298.63850100082,
+            69976.07473099924,
+            70316.91668500025,
+            69915.40163399986
+          ],
+          "median_ms": 70426.37097099941,
+          "milliseconds": [
+            70642.77647500057,
+            70426.37097099941,
+            70115.07331900066,
+            70459.28506599921,
+            70049.55053699996
+          ],
+          "p95_ms": 70606.0781932003,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null,
+          "width": 2560,
+          "validation_order": 2
+        },
+        {
+          "decision_ms": [
+            107.16423000121722,
+            93.18513099970005,
+            96.49251099835965,
+            93.49879199908173,
+            139.93449400004465
+          ],
+          "decode_and_integrity_ms": [
+            34.89875599916559,
+            34.90955399865925,
+            34.70475100039039,
+            36.66557399992598,
+            34.4573610000225
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            70282.09419499944,
+            69793.50967400023,
+            69989.13095900025,
+            70031.13733300052,
+            70041.34758799955
+          ],
+          "median_ms": 70161.30169899952,
+          "milliseconds": [
+            70424.15718099983,
+            69921.6043589986,
+            70120.328220999,
+            70161.30169899952,
+            70215.73944299962
+          ],
+          "p95_ms": 70382.47363339979,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null,
+          "width": 2560,
+          "validation_order": 3
+        },
+        {
+          "decision_ms": [
+            96.85530900060257,
+            94.18423599890957,
+            93.79546899981506,
+            102.7292890012177,
+            91.79230600057053
+          ],
+          "decode_and_integrity_ms": [
+            58.00976699902094,
+            36.73599200010358,
+            36.23536099985358,
+            37.2238109994214,
+            36.3784660003148
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            70282.18026099967,
+            70310.93065700043,
+            70695.18651399994,
+            70513.81450699955,
+            70499.71049199848
+          ],
+          "median_ms": 70627.88126399937,
+          "milliseconds": [
+            70437.04533699929,
+            70441.85088499944,
+            70825.21734399961,
+            70653.76760700019,
+            70627.88126399937
+          ],
+          "p95_ms": 70790.92739659973,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null,
+          "width": 2560,
+          "validation_order": 4
+        }
+      ]
+    },
+    {
+      "benchmark_fingerprint": "890265642b18cec4482dbc74ffcbc24f665b56257304e0509ad40b310dbb0788",
+      "binding": {
+        "architecture": "unet-resnet18",
+        "checkpoint_sha256": "c199f87a1d3f06f013dbef0db7982c6d4e3e2ba852146c1ca57f735ec25e267f",
+        "config": {
+          "architecture": "unet-resnet18",
+          "batch_size": 2,
+          "device": "cuda",
+          "epochs": 30,
+          "horizontal_flip": 0.0,
+          "input_size": 512,
+          "learning_rate": 0.001,
+          "persistence_directory": "/content/drive/MyDrive/Graphene/runs/graphene-baseline-wi06-20261010-002",
+          "precision": "float32",
+          "schema_version": 1,
+          "seed": 42,
+          "vertical_flip": 0.0,
+          "weight_decay": 0.0001,
+          "weights": "imagenet-resnet18-v1"
+        },
+        "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+        "generation": "epoch-000023",
+        "preprocessing": {
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "padding_rgb": [
+            0,
+            0,
+            0
+          ],
+          "scale": 0.00392156862745098,
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ],
+          "version": 1
+        },
+        "recorded_best_epoch": 23,
+        "run_fingerprint": "657e88412a7690f9d7436d326fa62e92506ab1f3280a58397a2839ef440b449e",
+        "seed": 42,
+        "settings": {
+          "decision": "argmax",
+          "geometry": "tiles",
+          "input_size": 512,
+          "stride": 384,
+          "threshold": null,
+          "ties": "lower_id"
+        },
+        "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+        "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+        "training_environment": {
+          "cpu_backend": "cuda",
+          "cpu_interop_threads": 1,
+          "cpu_threads": 1,
+          "cudnn": 90501,
+          "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+          "device_policy": "cuda",
+          "git_revision": "b0480172dd80181efbd7241b7c8e2853818407f4",
+          "gpu": "Tesla T4",
+          "packages": {
+            "Pillow": "11.3.0",
+            "graphene-dataset-contract": "2.0.0",
+            "graphene-model-contract": "1.0.0",
+            "graphene-training": "1.0.0",
+            "numpy": "2.2.6",
+            "pycocotools": "2.0.10",
+            "pydantic": "2.12.3",
+            "segmentation-models-pytorch": "0.5.0",
+            "timm": "1.0.30",
+            "torch": "2.7.1+cu126",
+            "torchvision": "0.22.1+cu126"
+          },
+          "precision": "float32",
+          "python": "3.13.15",
+          "torch_cuda": "12.6",
+          "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+        },
+        "weights": {
+          "identifier": "ResNet18_Weights.IMAGENET1K_V1",
+          "initialization": "pretrained",
+          "sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+          "source": "https://download.pytorch.org/models/resnet18-f37072fd.pth"
+        }
+      },
+      "cpu": "x86_64",
+      "definition": "Image read/checksum/decode, normalization, inference, original-coordinate restoration and decision; excludes plotting and initial checkpoint/data validation",
+      "device": "cuda",
+      "evaluation_environment": {
+        "cpu_backend": "cuda",
+        "cpu_interop_threads": 1,
+        "cpu_threads": 1,
+        "cudnn": 90501,
+        "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+        "device_policy": "cuda",
+        "evaluation_packages": {
+          "graphene-evaluation": "1.0.0",
+          "huggingface-hub": "0.36.2",
+          "scipy": "1.15.3",
+          "transformers": "4.57.6"
+        },
+        "evaluation_source_sha256": "6effe1d7011c48f2a2df1798c3ffbf68e096d1c2bf35b26585d87cdbc39bfe50",
+        "git_revision": null,
+        "gpu": "Tesla T4",
+        "packages": {
+          "Pillow": "11.3.0",
+          "graphene-dataset-contract": "2.0.0",
+          "graphene-model-contract": "1.0.0",
+          "graphene-training": "1.0.0",
+          "numpy": "2.2.6",
+          "pycocotools": "2.0.10",
+          "pydantic": "2.12.3",
+          "segmentation-models-pytorch": "0.5.0",
+          "timm": "1.0.30",
+          "torch": "2.7.1",
+          "torchvision": "0.22.1"
+        },
+        "precision": "float32",
+        "python": "3.13.15",
+        "torch_cuda": "12.6",
+        "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+      },
+      "gpu": "Tesla T4",
+      "initialization_definition": "Checkpoint/data verification, model construction/state loading and device transfer; measured separately before warmup",
+      "initialization_seconds": 31.84806448100062,
+      "limitations": [
+        "Process RSS is cumulative high-water, not model-exclusive memory",
+        "Repeated image reads use the operating system cache; not cold disk latency",
+        "Same-machine pilot; intended laboratory hardware acceptance remains stakeholder-reviewed"
+      ],
+      "median_ms": 1002.040933999524,
+      "p95_ms": 1283.3265763986674,
+      "process_peak_rss_bytes": 1349603328,
+      "repeats_per_image": 5,
+      "role": "validation",
+      "schema_version": 1,
+      "threads": 1,
+      "torch": "2.7.1+cu126",
+      "warmup_per_image": 2,
+      "samples": [
+        {
+          "decision_ms": [
+            168.91288599981635,
+            106.77942199981771,
+            100.27553500003705,
+            106.34091700012505,
+            96.62176500023634
+          ],
+          "decode_and_integrity_ms": [
+            49.038861001463374,
+            51.35720200087235,
+            37.55124899907969,
+            35.80407799927343,
+            39.8147659998358
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            1067.1459219993267,
+            958.1004920000851,
+            857.1905349999724,
+            860.801464999895,
+            862.4362030004704
+          ],
+          "median_ms": 1002.9464599992934,
+          "milliseconds": [
+            1285.0976690006064,
+            1116.2371160007751,
+            995.0173189990892,
+            1002.9464599992934,
+            998.8727340005426
+          ],
+          "p95_ms": 1251.3255584006401,
+          "peak_cuda_allocated_bytes": 161920512,
+          "peak_cuda_reserved_bytes": 201326592,
+          "width": 2560,
+          "validation_order": 1
+        },
+        {
+          "decision_ms": [
+            99.24582700114115,
+            98.37030800008506,
+            108.48901200006367,
+            120.09224999928847,
+            185.11994700020296
+          ],
+          "decode_and_integrity_ms": [
+            38.867503999426845,
+            35.058221999861416,
+            36.75327500059211,
+            38.00885400050902,
+            38.285249000182375
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            857.62828299994,
+            858.7002020012733,
+            861.7993099996966,
+            852.8638959996897,
+            1009.9474099988583
+          ],
+          "median_ms": 1007.0415970003523,
+          "milliseconds": [
+            995.741614000508,
+            992.1287320012198,
+            1007.0415970003523,
+            1010.9649999994872,
+            1233.3526059992437
+          ],
+          "p95_ms": 1188.8750847992924,
+          "peak_cuda_allocated_bytes": 161920512,
+          "peak_cuda_reserved_bytes": 201326592,
+          "width": 2560,
+          "validation_order": 2
+        },
+        {
+          "decision_ms": [
+            104.2109909994906,
+            103.20471300110512,
+            101.82065300068643,
+            96.39754799900402,
+            95.4173690006428
+          ],
+          "decode_and_integrity_ms": [
+            44.5107569994434,
+            35.79060899937758,
+            36.465109000346274,
+            36.14477999872179,
+            34.04687500005821
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            1034.1429769996466,
+            862.1400859992718,
+            881.281632999162,
+            853.5846200011292,
+            850.4187599992292
+          ],
+          "median_ms": 1001.1354079997545,
+          "milliseconds": [
+            1182.8647249985806,
+            1001.1354079997545,
+            1019.5673950001947,
+            986.126947998855,
+            979.8830039999302
+          ],
+          "p95_ms": 1150.2052589989034,
+          "peak_cuda_allocated_bytes": 161920512,
+          "peak_cuda_reserved_bytes": 201326592,
+          "width": 2560,
+          "validation_order": 3
+        },
+        {
+          "decision_ms": [
+            96.95669900065695,
+            97.46215299855976,
+            105.70537500097998,
+            170.30942199926358,
+            176.3988859984238
+          ],
+          "decode_and_integrity_ms": [
+            35.72370599977148,
+            34.51082900028268,
+            33.920567999302875,
+            34.83162200063816,
+            47.47594299988123
+          ],
+          "height": 1920,
+          "inference_and_restoration_ms": [
+            864.7536799999216,
+            859.9184270005935,
+            860.6578559993068,
+            915.4518249997636,
+            1059.3585320002603
+          ],
+          "median_ms": 1000.2837989995896,
+          "milliseconds": [
+            997.43408500035,
+            991.891408999436,
+            1000.2837989995896,
+            1120.5928689996654,
+            1283.2333609985653
+          ],
+          "p95_ms": 1250.7052625987853,
+          "peak_cuda_allocated_bytes": 161920512,
+          "peak_cuda_reserved_bytes": 201326592,
+          "width": 2560,
+          "validation_order": 4
+        }
+      ]
+    }
+  ],
+  "cache_records": [
+    {
+      "binding": {
+        "architecture": "segformer-b0",
+        "checkpoint_sha256": "a3dc42c64f1e13bde09c1c97aabb36fdbced679b2f11309e3e334760a8533831",
+        "config": {
+          "architecture": "segformer-b0",
+          "batch_size": 2,
+          "device": "cuda",
+          "epochs": 30,
+          "horizontal_flip": 0.0,
+          "input_size": 512,
+          "learning_rate": 0.001,
+          "license_approved": true,
+          "persistence_directory": "/content/drive/MyDrive/Graphene (1)/runs/wi07-segformer-b0-seed42-20261012-rerun",
+          "precision": "float32",
+          "schema_version": 2,
+          "seed": 42,
+          "vertical_flip": 0.0,
+          "weight_decay": 0.0001,
+          "weights": "nvidia/mit-b0",
+          "weights_directory": null,
+          "weights_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+          "weights_sha256": "d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b"
+        },
+        "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+        "generation": "epoch-000019",
+        "preprocessing": {
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "padding_rgb": [
+            0,
+            0,
+            0
+          ],
+          "scale": 0.00392156862745098,
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ],
+          "version": 1
+        },
+        "recorded_best_epoch": 19,
+        "run_fingerprint": "48b44083bee53f44130a1f70a7b16d5d024fb99a78d587b3b4dc7eba7ad5b8dd",
+        "seed": 42,
+        "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+        "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+        "training_environment": {
+          "cpu_backend": "cuda",
+          "cpu_interop_threads": 1,
+          "cpu_threads": 1,
+          "cudnn": 90501,
+          "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+          "device_policy": "cuda",
+          "evaluation_packages": {
+            "graphene-evaluation": "1.0.0",
+            "huggingface-hub": "0.36.2",
+            "scipy": "1.15.3",
+            "transformers": "4.57.6"
+          },
+          "evaluation_source_sha256": "f3be8477bb429dace0a0eed2bfcd82ec14c25709f894cbf3fb8ea5c7b6d54cb2",
+          "git_revision": null,
+          "gpu": "Tesla T4",
+          "packages": {
+            "Pillow": "11.3.0",
+            "graphene-dataset-contract": "2.0.0",
+            "graphene-model-contract": "1.0.0",
+            "graphene-training": "1.0.0",
+            "numpy": "2.2.6",
+            "pycocotools": "2.0.10",
+            "pydantic": "2.12.3",
+            "segmentation-models-pytorch": "0.5.0",
+            "timm": "1.0.30",
+            "torch": "2.7.1",
+            "torchvision": "0.22.1"
+          },
+          "precision": "float32",
+          "python": "3.13.15",
+          "torch_cuda": "12.6",
+          "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+        },
+        "weights": {
+          "checksum_definition": "SHA-256 of sorted weight filename + file SHA-256 pairs",
+          "format": "pytorch restricted weights_only=True",
+          "identifier": "nvidia/mit-b0",
+          "initialization": "pretrained",
+          "license_approved": true,
+          "revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+          "sha256": "d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b",
+          "source": "https://huggingface.co/nvidia/mit-b0"
+        }
+      },
+      "cache_fingerprint": "c8f7f20044328b9941cc750880a551bbf6ddec663b1ed17acd298fd5557870e3",
+      "development_report_fingerprint": "c42573f8e4d9a4fdf3bb08b8374f58e1174677e93e392afd62218732e7bbbb4b",
+      "role": "validation",
+      "schema_version": 1,
+      "settings": {
+        "decision": "argmax",
+        "geometry": "letterbox",
+        "input_size": 1024,
+        "stride": null,
+        "threshold": null,
+        "ties": "lower_id"
+      },
+      "verification": "Exact argmax supervised confusion reproduced for every validation image",
+      "files": [
+        {
+          "bytes": 58982528,
+          "image_sha256": "260c2b5d9f1b0dcfe7cdc7307eb88d1bc27a57a7011419550195e6d0fd0a83ba",
+          "sha256": "db21b2acdbd3f58236dfefd77b6ba5fdf2fbbf4b081ea262bd5ab8c602ba624f",
+          "validation_order": 1
+        },
+        {
+          "bytes": 58982528,
+          "image_sha256": "d97b62ac05e56ff8285d984cbd376cb55a1464a5adcea9e6c879ba5884e7bcce",
+          "sha256": "0b13938cd77528bcbc7308abe9ae91a9b4d552fa524da1db82ed7f1b253e6405",
+          "validation_order": 2
+        },
+        {
+          "bytes": 58982528,
+          "image_sha256": "9862264cc2ddd81b6aadedf2fd0b45fd6c62809095dc1bc5d1b22503b75f00e0",
+          "sha256": "207b4d70777d0ca4887b11429b5fa9b62cfb5e0de2ebdd25806e7c2a13aac92f",
+          "validation_order": 3
+        },
+        {
+          "bytes": 58982528,
+          "image_sha256": "447d1fa2ac7eb139d27495f1cf58bd4a528f5b5a40f06e6425ddcf880e702ce2",
+          "sha256": "1ed48a3136714a9577a1fc3e156af5dca562c89f456b13cb7312b57fd0aff483",
+          "validation_order": 4
+        }
+      ]
+    },
+    {
+      "binding": {
+        "architecture": "segformer-b0",
+        "checkpoint_sha256": "a3dc42c64f1e13bde09c1c97aabb36fdbced679b2f11309e3e334760a8533831",
+        "config": {
+          "architecture": "segformer-b0",
+          "batch_size": 2,
+          "device": "cuda",
+          "epochs": 30,
+          "horizontal_flip": 0.0,
+          "input_size": 512,
+          "learning_rate": 0.001,
+          "license_approved": true,
+          "persistence_directory": "/content/drive/MyDrive/Graphene (1)/runs/wi07-segformer-b0-seed42-20261012-rerun",
+          "precision": "float32",
+          "schema_version": 2,
+          "seed": 42,
+          "vertical_flip": 0.0,
+          "weight_decay": 0.0001,
+          "weights": "nvidia/mit-b0",
+          "weights_directory": null,
+          "weights_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+          "weights_sha256": "d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b"
+        },
+        "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+        "generation": "epoch-000019",
+        "preprocessing": {
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "padding_rgb": [
+            0,
+            0,
+            0
+          ],
+          "scale": 0.00392156862745098,
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ],
+          "version": 1
+        },
+        "recorded_best_epoch": 19,
+        "run_fingerprint": "48b44083bee53f44130a1f70a7b16d5d024fb99a78d587b3b4dc7eba7ad5b8dd",
+        "seed": 42,
+        "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+        "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+        "training_environment": {
+          "cpu_backend": "cuda",
+          "cpu_interop_threads": 1,
+          "cpu_threads": 1,
+          "cudnn": 90501,
+          "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+          "device_policy": "cuda",
+          "evaluation_packages": {
+            "graphene-evaluation": "1.0.0",
+            "huggingface-hub": "0.36.2",
+            "scipy": "1.15.3",
+            "transformers": "4.57.6"
+          },
+          "evaluation_source_sha256": "f3be8477bb429dace0a0eed2bfcd82ec14c25709f894cbf3fb8ea5c7b6d54cb2",
+          "git_revision": null,
+          "gpu": "Tesla T4",
+          "packages": {
+            "Pillow": "11.3.0",
+            "graphene-dataset-contract": "2.0.0",
+            "graphene-model-contract": "1.0.0",
+            "graphene-training": "1.0.0",
+            "numpy": "2.2.6",
+            "pycocotools": "2.0.10",
+            "pydantic": "2.12.3",
+            "segmentation-models-pytorch": "0.5.0",
+            "timm": "1.0.30",
+            "torch": "2.7.1",
+            "torchvision": "0.22.1"
+          },
+          "precision": "float32",
+          "python": "3.13.15",
+          "torch_cuda": "12.6",
+          "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+        },
+        "weights": {
+          "checksum_definition": "SHA-256 of sorted weight filename + file SHA-256 pairs",
+          "format": "pytorch restricted weights_only=True",
+          "identifier": "nvidia/mit-b0",
+          "initialization": "pretrained",
+          "license_approved": true,
+          "revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+          "sha256": "d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b",
+          "source": "https://huggingface.co/nvidia/mit-b0"
+        }
+      },
+      "cache_fingerprint": "f100d7474662f6c1ce9196fdec44a8165f52ac7fccc24e6c8f499bf3f10dc756",
+      "development_report_fingerprint": "ccbd41bf16a2d7709a8e76e9a9b8d5d30e7aba3f4651912e367f6f2ac2355f31",
+      "role": "validation",
+      "schema_version": 1,
+      "settings": {
+        "decision": "argmax",
+        "geometry": "tiles",
+        "input_size": 512,
+        "stride": 384,
+        "threshold": null,
+        "ties": "lower_id"
+      },
+      "verification": "Exact argmax supervised confusion reproduced for every validation image",
+      "files": [
+        {
+          "bytes": 58982528,
+          "image_sha256": "260c2b5d9f1b0dcfe7cdc7307eb88d1bc27a57a7011419550195e6d0fd0a83ba",
+          "sha256": "f30dda97a2cf3967cd10575b6b0f171c9207454df423406208f751c7d0272e95",
+          "validation_order": 1
+        },
+        {
+          "bytes": 58982528,
+          "image_sha256": "d97b62ac05e56ff8285d984cbd376cb55a1464a5adcea9e6c879ba5884e7bcce",
+          "sha256": "c7d988c4faad4f4aefb13cd659a6b23be933a89e78cd03ac4cea90002a697a5a",
+          "validation_order": 2
+        },
+        {
+          "bytes": 58982528,
+          "image_sha256": "9862264cc2ddd81b6aadedf2fd0b45fd6c62809095dc1bc5d1b22503b75f00e0",
+          "sha256": "533e6d0aa4a8ef29b619aa524439b79f9255bef38b5be58613c00ab40d99961a",
+          "validation_order": 3
+        },
+        {
+          "bytes": 58982528,
+          "image_sha256": "447d1fa2ac7eb139d27495f1cf58bd4a528f5b5a40f06e6425ddcf880e702ce2",
+          "sha256": "5523912f8480a858aa47ccbac9d8559ae0136a53fad286f52db471feb30461dc",
+          "validation_order": 4
+        }
+      ]
+    },
+    {
+      "binding": {
+        "architecture": "unet-resnet18",
+        "checkpoint_sha256": "c199f87a1d3f06f013dbef0db7982c6d4e3e2ba852146c1ca57f735ec25e267f",
+        "config": {
+          "architecture": "unet-resnet18",
+          "batch_size": 2,
+          "device": "cuda",
+          "epochs": 30,
+          "horizontal_flip": 0.0,
+          "input_size": 512,
+          "learning_rate": 0.001,
+          "persistence_directory": "/content/drive/MyDrive/Graphene/runs/graphene-baseline-wi06-20261010-002",
+          "precision": "float32",
+          "schema_version": 1,
+          "seed": 42,
+          "vertical_flip": 0.0,
+          "weight_decay": 0.0001,
+          "weights": "imagenet-resnet18-v1"
+        },
+        "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+        "generation": "epoch-000023",
+        "preprocessing": {
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "padding_rgb": [
+            0,
+            0,
+            0
+          ],
+          "scale": 0.00392156862745098,
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ],
+          "version": 1
+        },
+        "recorded_best_epoch": 23,
+        "run_fingerprint": "657e88412a7690f9d7436d326fa62e92506ab1f3280a58397a2839ef440b449e",
+        "seed": 42,
+        "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+        "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+        "training_environment": {
+          "cpu_backend": "cuda",
+          "cpu_interop_threads": 1,
+          "cpu_threads": 1,
+          "cudnn": 90501,
+          "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+          "device_policy": "cuda",
+          "git_revision": "b0480172dd80181efbd7241b7c8e2853818407f4",
+          "gpu": "Tesla T4",
+          "packages": {
+            "Pillow": "11.3.0",
+            "graphene-dataset-contract": "2.0.0",
+            "graphene-model-contract": "1.0.0",
+            "graphene-training": "1.0.0",
+            "numpy": "2.2.6",
+            "pycocotools": "2.0.10",
+            "pydantic": "2.12.3",
+            "segmentation-models-pytorch": "0.5.0",
+            "timm": "1.0.30",
+            "torch": "2.7.1+cu126",
+            "torchvision": "0.22.1+cu126"
+          },
+          "precision": "float32",
+          "python": "3.13.15",
+          "torch_cuda": "12.6",
+          "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+        },
+        "weights": {
+          "identifier": "ResNet18_Weights.IMAGENET1K_V1",
+          "initialization": "pretrained",
+          "sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+          "source": "https://download.pytorch.org/models/resnet18-f37072fd.pth"
+        }
+      },
+      "cache_fingerprint": "a25094e20244fa85085d979824dabd84f6c3f46ab5b10aa524e292f02fee0fd1",
+      "development_report_fingerprint": "ee9ddf23357950dc820b12274ef0079ba58391328f76e12e9f27fd9fdcd44b37",
+      "role": "validation",
+      "schema_version": 1,
+      "settings": {
+        "decision": "argmax",
+        "geometry": "letterbox",
+        "input_size": 1024,
+        "stride": null,
+        "threshold": null,
+        "ties": "lower_id"
+      },
+      "verification": "Exact argmax supervised confusion reproduced for every validation image",
+      "files": [
+        {
+          "bytes": 58982528,
+          "image_sha256": "260c2b5d9f1b0dcfe7cdc7307eb88d1bc27a57a7011419550195e6d0fd0a83ba",
+          "sha256": "ab2306f9223f36fa5fb3c3376e8dec6e48f4b0ae4616c20ecf90e71c8090edea",
+          "validation_order": 1
+        },
+        {
+          "bytes": 58982528,
+          "image_sha256": "d97b62ac05e56ff8285d984cbd376cb55a1464a5adcea9e6c879ba5884e7bcce",
+          "sha256": "f01fb9e2417507999a65708aa1a8eb66c859890778b7a1728a9088c8c6684d41",
+          "validation_order": 2
+        },
+        {
+          "bytes": 58982528,
+          "image_sha256": "9862264cc2ddd81b6aadedf2fd0b45fd6c62809095dc1bc5d1b22503b75f00e0",
+          "sha256": "5bf2e65492982544d491a94286a46e677b7f7ffb84bf8a8dd1cbd85898de2aa5",
+          "validation_order": 3
+        },
+        {
+          "bytes": 58982528,
+          "image_sha256": "447d1fa2ac7eb139d27495f1cf58bd4a528f5b5a40f06e6425ddcf880e702ce2",
+          "sha256": "096c3231626df8d4199db33f025452ac6040d24d9124491d9af13bbb041d9d59",
+          "validation_order": 4
+        }
+      ]
+    },
+    {
+      "binding": {
+        "architecture": "unet-resnet18",
+        "checkpoint_sha256": "c199f87a1d3f06f013dbef0db7982c6d4e3e2ba852146c1ca57f735ec25e267f",
+        "config": {
+          "architecture": "unet-resnet18",
+          "batch_size": 2,
+          "device": "cuda",
+          "epochs": 30,
+          "horizontal_flip": 0.0,
+          "input_size": 512,
+          "learning_rate": 0.001,
+          "persistence_directory": "/content/drive/MyDrive/Graphene/runs/graphene-baseline-wi06-20261010-002",
+          "precision": "float32",
+          "schema_version": 1,
+          "seed": 42,
+          "vertical_flip": 0.0,
+          "weight_decay": 0.0001,
+          "weights": "imagenet-resnet18-v1"
+        },
+        "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+        "generation": "epoch-000023",
+        "preprocessing": {
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "padding_rgb": [
+            0,
+            0,
+            0
+          ],
+          "scale": 0.00392156862745098,
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ],
+          "version": 1
+        },
+        "recorded_best_epoch": 23,
+        "run_fingerprint": "657e88412a7690f9d7436d326fa62e92506ab1f3280a58397a2839ef440b449e",
+        "seed": 42,
+        "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+        "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+        "training_environment": {
+          "cpu_backend": "cuda",
+          "cpu_interop_threads": 1,
+          "cpu_threads": 1,
+          "cudnn": 90501,
+          "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+          "device_policy": "cuda",
+          "git_revision": "b0480172dd80181efbd7241b7c8e2853818407f4",
+          "gpu": "Tesla T4",
+          "packages": {
+            "Pillow": "11.3.0",
+            "graphene-dataset-contract": "2.0.0",
+            "graphene-model-contract": "1.0.0",
+            "graphene-training": "1.0.0",
+            "numpy": "2.2.6",
+            "pycocotools": "2.0.10",
+            "pydantic": "2.12.3",
+            "segmentation-models-pytorch": "0.5.0",
+            "timm": "1.0.30",
+            "torch": "2.7.1+cu126",
+            "torchvision": "0.22.1+cu126"
+          },
+          "precision": "float32",
+          "python": "3.13.15",
+          "torch_cuda": "12.6",
+          "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+        },
+        "weights": {
+          "identifier": "ResNet18_Weights.IMAGENET1K_V1",
+          "initialization": "pretrained",
+          "sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+          "source": "https://download.pytorch.org/models/resnet18-f37072fd.pth"
+        }
+      },
+      "cache_fingerprint": "522c353bd863a010acf57d767aa9ce94ba2f5f86976b6aa43133728b192cfffc",
+      "development_report_fingerprint": "8d43edefba64a54685427301f6ab0ad35c349e4bf1d25beaa6d97387c4f853c7",
+      "role": "validation",
+      "schema_version": 1,
+      "settings": {
+        "decision": "argmax",
+        "geometry": "tiles",
+        "input_size": 512,
+        "stride": 384,
+        "threshold": null,
+        "ties": "lower_id"
+      },
+      "verification": "Exact argmax supervised confusion reproduced for every validation image",
+      "files": [
+        {
+          "bytes": 58982528,
+          "image_sha256": "260c2b5d9f1b0dcfe7cdc7307eb88d1bc27a57a7011419550195e6d0fd0a83ba",
+          "sha256": "4eb04f095207d02fa24f51d3bf445fb3aa6557154cbd49194bab9945b06450e7",
+          "validation_order": 1
+        },
+        {
+          "bytes": 58982528,
+          "image_sha256": "d97b62ac05e56ff8285d984cbd376cb55a1464a5adcea9e6c879ba5884e7bcce",
+          "sha256": "7852ef2f9ffba05d5649d2bacd6e0f452e3a7f15af5d93358d4fe2d702ef29ec",
+          "validation_order": 2
+        },
+        {
+          "bytes": 58982528,
+          "image_sha256": "9862264cc2ddd81b6aadedf2fd0b45fd6c62809095dc1bc5d1b22503b75f00e0",
+          "sha256": "dcb3535f587ac7c88ac82f8555a6f36155f01e7d6b89de9f283a3d60ea05a8b3",
+          "validation_order": 3
+        },
+        {
+          "bytes": 58982528,
+          "image_sha256": "447d1fa2ac7eb139d27495f1cf58bd4a528f5b5a40f06e6425ddcf880e702ce2",
+          "sha256": "937029fb1f13a0e29ce3fb2b8eee5500b0e28ef34c70782741b18ad1fb30e227",
+          "validation_order": 4
+        }
+      ]
+    }
+  ],
+  "cache_verification": "128/128 cached validation decisions reproduce exact per-image supervised confusion before adjustment training",
+  "limitations": [
+    "Inference geometry differs from 512 training scale",
+    "Process RSS is cumulative high-water, not exclusive model memory",
+    "OS-cached image reads are not cold disk latency",
+    "Current-mount retention is not independent runtime durability",
+    "Actual target hardware equivalence and arbitrary image sizes remain unmeasured"
+  ]
+}
