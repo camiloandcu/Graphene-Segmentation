@@ -21,6 +21,13 @@ prove independent retention after a replacement runtime.
 | SegFormer / 1024 letterbox | 0.8649 | 0.8555 | 0.6683 | 0.6229 | 3 | 27 |
 | SegFormer / native tiles | 0.5424 | 0.1118 | 0.1655 | 0.9985 | 3 | 237 |
 
+![Finite geometry recall/precision and reviewed-background trade-offs](figures/01_FINALIST_GEOMETRY_TRADEOFFS.png)
+
+The figure uses the same screened validation decisions; stars mark argmax.
+[Vector figure](figures/01_FINALIST_GEOMETRY_TRADEOFFS.svg);
+[Matplotlib renderer](figures/01_PLOT_GEOMETRY_TRADEOFFS.py) uses only the public
+aggregate records and can reproduce both formats.
+
 These rows use argmax. The complete finite sweep is retained in
 [geometry aggregates](12_FINALIST_GEOMETRY_SCREEN.json). Neither geometry
 improved pooled Dice at any of its screened thresholds relative to the original
