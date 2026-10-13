@@ -237,3 +237,10 @@ retention are verified. All 128 cached decisions reproduce exact validation
 confusion. U-Net 1024 training admission passed at 3,578,601,472 allocated GPU
 bytes; training is active. Actual replacement-runtime continuation remains
 to be verified.
+
+The unchanged U-Net persistence reread approximately 284 GB by epoch 17.
+WI-07 now adds U-Net to its schema-2 incremental experiment transport while
+preserving WI-06 source. Two new initializer/full-state parity cases and three
+existing persistence/replay cases passed (24.80 seconds). These fixtures verify
+numerical/recovery equivalence, not actual laboratory quality; the full evaluator suite subsequently passed (15 tests, 34.76 seconds).
+Real CUDA parity and use of the new pinned source remain pending.

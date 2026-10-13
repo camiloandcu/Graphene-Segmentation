@@ -71,6 +71,13 @@ def architecture(name):
 def pretrained(config, cache):
     if not config.license_approved:
         raise ValueError('Pretrained use requires recorded stakeholder license approval')
+    if config.architecture == 'unet-resnet18':
+        # Initialize exactly once: an extra decoder construction consumes RNG
+        # and changes the baseline's initialization/data-order state.
+        model, evidence = initialize_resnet(cache)
+        if config.weights_sha256 and evidence['sha256'] != config.weights_sha256:
+            raise ValueError('Pretrained weight identity mismatch')
+        return model, evidence
     model = architecture(config.architecture)
     if config.architecture == 'deeplabv3plus-resnet18':
         baseline, evidence = initialize_resnet(cache)

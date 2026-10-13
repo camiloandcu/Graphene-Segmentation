@@ -135,3 +135,15 @@ Final test contains no reviewed background: foreground and unknown-coverage
 limitations remain explicit. Never sweep, rank candidates or retune on test.
 An inconclusive development outcome may lead to an explicitly reviewed test
 deferral; this must be documented rather than fabricated as a completed result.
+
+### U-Net finalist training transport
+
+WI-07 schema-2 experiments now admit `unet-resnet18` with the exact WI-06
+ImageNet initialization and shared objective/optimizer/data/selection logic.
+The initializer constructs the decoder once, preserving RNG consumption. New
+trials use WI-07 incremental checkpoint persistence; WI-06 schema-1 source and
+checkpoint compatibility remain unchanged. Synthetic parity checks compare full
+model/optimizer/scheduler/scaler/RNG/generator state, numeric history and retained
+resume against WI-06. A real CUDA first-epoch parity check is required before the
+new U-Net transport contributes experiment evidence. Existing runs retain their
+original source; use new run IDs and the exact new source for new trials.

@@ -192,3 +192,17 @@ Use a checkpoint-oriented WI-07 report schema with matrices, per-sample records,
 matching/settings/resource definitions, null reasons, gates and freeze provenance.
 Do not fake an ONNX model hash/ID to fill the WI-02 package evaluation-v1 schema.
 WI-08 later derives its package report from verified checkpoint evidence.
+
+## Finalist transport implementation note (2026-10-12)
+
+The approved U-Net seed stage may use the WI-07 schema-2 experiment runner with
+the exact WI-06 U-Net/ImageNet initializer and common loss/data/optimizer/selection
+functions. This uses the already verified incremental persistence to avoid full
+checkpoint-chain hashing on every save. WI-06 schema-1 source remains unchanged.
+New transport trials have new run IDs and an explicit source pin; do not resume
+a schema-1 run under the new runner. Fixture full-state parity and a real CUDA
+first-epoch parity gate precede using the new transport for U-Net evidence.
+Training geometry is the single declared adjustment; transport/schema changes
+are recorded separately and never represented as a new architecture or extra
+hyperparameter search. Frozen seed cohorts use their declared configuration and
+source. Preserve superseded partial trials without ranking incomplete histories.
