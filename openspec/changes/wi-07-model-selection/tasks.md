@@ -31,7 +31,7 @@
 
 ## 4. Shortlist, resource checks and decision
 
-- [ ] 4.1 Produce common-support candidate comparisons and pilot errors; have the
+- [x] 4.1 Produce common-support candidate comparisons and pilot errors; have the
   stakeholder review preferences/Pareto shortlist of at most two (AC-3/4).
 - [ ] 4.2 Run reviewed geometry screens and any single justified finalist training
   change, then frozen-configuration seeds 42/43/44 (AC-4).

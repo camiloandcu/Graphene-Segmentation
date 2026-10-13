@@ -199,11 +199,11 @@ four individual images despite SegFormer's higher pooled foreground Dice.
 | --- | --- |
 | AC-1 traceability/isolation | Actual checkpoint/data/support binding and baseline exact counts/panels verified; test remains gated |
 | AC-2 candidates/recovery | Real admissions and initial runs verified; DINO retention/model load across replacement verified; actual interrupted challenger continuation pending |
-| AC-3 supported quality/errors | Initial checkpoint-bound metrics/panels complete; common-support comparison verified; stakeholder pilot-error review pending |
+| AC-3 supported quality/errors | Initial checkpoint-bound metrics/panels complete; common-support comparison verified; stakeholder pilot/shortlist approved 2026-10-12 |
 | AC-4 sensitivity/resources | Training telemetry measured, all initial CPU/T4 benchmarks verified; finalist geometry, any justified adjustment and seeds 42/43/44 pending |
-| AC-5 reviewed selection/test | Shortlist, final recommendation, exact freeze or explicit inconclusive/test-deferral decision pending |
+| AC-5 reviewed selection/test | Shortlist approved; final recommendation, exact freeze or explicit inconclusive/test-deferral decision pending |
 
-Continue with the paired pilot/resource review, stakeholder shortlist, approved
+Continue with the approved U-Net/ResNet18 and SegFormer-B0
 finalist screens/seeds and genuine replacement-runtime training continuation.
 Only after stakeholder checkpoint/settings freeze may the single selection use
 the five-image test role; test lacks reviewed background. Sync specifications and
@@ -216,7 +216,8 @@ totals exactly, then restored the four panels to
 `trials/wi07-baseline-migrated-argmax-20261012`. All four candidates now have
 private original-coordinate pilot panels in the migrated account.
 [Initial pilot and shortlist review](11_INITIAL_PILOT_AND_SHORTLIST_REVIEW.md)
-recommends U-Net/ResNet18 and SegFormer-B0; stakeholder approval remains pending.
+records the stakeholder-approved U-Net/ResNet18 and SegFormer-B0 shortlist
+(2026-10-12). This approval covers the geometry/seed stage, not final test use.
 U-Net leads on two individual images and SegFormer on the other two.
 The mean per-image Dice favors U-Net; pooled Dice favors SegFormer.
 

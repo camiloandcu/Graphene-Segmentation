@@ -1,8 +1,8 @@
 # WI-07 initial pilot and finalist review
 
-Checked: 2026-10-12. Decision consumer: stakeholder choosing at most two finalists for the already approved geometry/seed stage. Status: initial pilot verified; shortlist not yet approved. Final test is untouched.
+Checked: 2026-10-12. Decision consumer: stakeholder choosing at most two finalists for the already approved geometry/seed stage. Status: initial pilot verified; stakeholder approved U-Net/ResNet18 + SegFormer-B0 on 2026-10-12. Final test is untouched.
 
-Recommend **U-Net/ResNet18 + SegFormer-B0** for the next stage. U-Net retains stronger results on two of four individual images and fewer known-support unmatched components. SegFormer improves pooled few-layer recall and offers a useful sensitivity setting. Both comfortably fit the accepted compute assumptions. This is a shortlist recommendation, not a final checkpoint or release choice.
+Approved finalists: **U-Net/ResNet18 + SegFormer-B0** for the next stage. U-Net retains stronger results on two of four individual images and fewer known-support unmatched components. SegFormer improves pooled few-layer recall and offers a useful sensitivity setting. Both comfortably fit the accepted compute assumptions. This is a shortlist recommendation, not a final checkpoint or release choice.
 
 | Initial seed-42 checkpoint | Pooled FG Dice | Few-layer recall | Component matches | Known-support unmatched | CPU median / p95 | T4 median | CPU process peak RSS |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -43,6 +43,6 @@ Visual review of all four images shows broad few-layer regions for the DINO prob
 
 Private visual evidence is retained on Drive under `Graphene (1)/trials`: `wi07-baseline-migrated-argmax-20261012`, `wi07-segformer-rerun-validation-20261012`, `wi07-dino-migrated-argmax-20261012`, and `wi07-deeplab-validation-20261012`. Review all four original-coordinate panels; gray means unknown. The local private contact sheet is `.workspace/wi07/initial-pilot-panels.jpg` (a thumbnail overview, not small-component boundary evidence).
 
-After stakeholder shortlist review, run the approved 1024-letterbox/native-512-tile screens, assess at most one justified training adjustment per finalist, freeze each configuration and run seeds 42/43/44. Actual interrupted challenger continuation across runtimes is still required. Final checkpoint/settings freeze or explicit inconclusive/test deferral comes afterward; this review does not authorize test predictions.
+Following the explicit shortlist approval on 2026-10-12, run the approved 1024-letterbox/native-512-tile screens, assess at most one justified training adjustment per finalist, freeze each configuration and run seeds 42/43/44. Actual interrupted challenger continuation across runtimes is still required. Final checkpoint/settings freeze or explicit inconclusive/test deferral comes afterward; this review does not authorize test predictions.
 
 Evidence: [validation comparison](10_INITIAL_COMMON_SUPPORT_COMPARISON.json), [resource measurements](09_INITIAL_RESOURCE_BENCHMARKS.json), [full acceptance/session record](02_IMPLEMENTATION_AND_SESSION_RECORD.md).

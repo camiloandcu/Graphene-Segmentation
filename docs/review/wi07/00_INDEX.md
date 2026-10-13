@@ -56,8 +56,8 @@ see the linked session record for current checks and acceptance limitations.
 Initial [CPU/T4 resources](09_INITIAL_RESOURCE_BENCHMARKS.json) and
 [common-support comparison](10_INITIAL_COMMON_SUPPORT_COMPARISON.json) are
 verified. All measured initial settings fit the accepted Colab-equivalent
->=16 GB RAM / 2–3 minutes per image assumptions. Stakeholder shortlist,
+>=16 GB RAM / 2–3 minutes per image assumptions. The stakeholder approved U-Net/ResNet18 + SegFormer-B0 on 2026-10-12;
 finalist geometry/seeds, actual continued-training recovery and test freeze
 remain open. Initial pooled Dice is not a final model ranking.
 
-Next stakeholder decision: [initial pilot and recommended shortlist](11_INITIAL_PILOT_AND_SHORTLIST_REVIEW.md).
+Approved shortlist: [initial pilot and finalist review](11_INITIAL_PILOT_AND_SHORTLIST_REVIEW.md).
