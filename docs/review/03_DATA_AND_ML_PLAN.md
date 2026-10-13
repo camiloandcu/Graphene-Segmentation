@@ -1,5 +1,15 @@
 # Data evidence and ML plan
 
+Current selection review, 2026-10-11: WI-06's actual baseline training/recovery
+is verified and PR #20 is merged. The stakeholder requested WI-07 and selected
+U-Net + SegFormer-B0 + gated DINOv3, with Colab sessions allowed across days.
+See [current WI-07 review](wi07/00_INDEX.md) and
+[primary-source candidate evidence](wi07/01_LITERATURE_AND_CANDIDATES.md).
+That proposed plan adds domain-model feasibility and a finite fourth-slot
+fallback, resolution/seed checks, partial-label reporting and final-test freeze.
+Full implementation approval was received on 2026-10-11. Earlier dated training statements
+below are historical; no WI-07 experiment or final-test score is claimed.
+
 Checked: 2026-10-09. Synthetic CPU baseline/recovery checks pass; no real lab training has been run.
 
 Update 2026-10-08: [WI-03](wi03/00_INDEX.md) inspected the stakeholder-supplied

@@ -1,9 +1,15 @@
 # GitHub work item tracking
 
+Latest check: 2026-10-11. PR #20 is merged; local `main` already contains
+`7d4954d`. WI-07's complete proposal is approved; Issue #7 is refined and
+`feat/wi-07-model-selection` linked. Real runs/PR remain pending.
+Earlier dated entries retain historical submission states.
+
 Access: `gh`, authorized by the stakeholder. WI-01, WI-02 and WI-03 proposals are approved;
 WI-03 and WI-04 are stakeholder accepted and merged; WI-05 software is approved,
-implemented, technically verified and merged. WI-06 has an approved OpenSpec change with verified software and required
-real-data Colab training/recovery verified; later items retain their provisional readiness. Creating Issues does not
+implemented, technically verified and merged. WI-06 software and required
+real-data Colab training/recovery are verified; PR #20 is merged (checked 2026-10-11).
+WI-07 has one explicitly approved change; later items retain provisional readiness. Creating Issues does not
 approve their implementation or create additional OpenSpec proposals.
 
 | Work item | Issue | Parent | State |
@@ -13,8 +19,8 @@ approve their implementation or create additional OpenSpec proposals.
 | WI-03 | [#3](https://github.com/camiloandcu/Graphene-Segmentation/issues/3) | INC-01 / F-01 | Merged via PR #17; stakeholder accepted 2026-10-08 |
 | WI-04 | [#4](https://github.com/camiloandcu/Graphene-Segmentation/issues/4) | INC-01 / F-03 | Merged via PR #18; stakeholder accepted 2026-10-08 |
 | WI-05 | [#5](https://github.com/camiloandcu/Graphene-Segmentation/issues/5) | INC-01 / F-01 | Merged via PR #19; software verified; real ready handoff/lab review pending |
-| WI-06 | [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6) | INC-01 / F-02 | Approved; [PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20); 30 GPU epochs retained in Drive; replacement-runtime recovery verified |
-| WI-07 | [#7](https://github.com/camiloandcu/Graphene-Segmentation/issues/7) | INC-01 / F-02 | Provisional; refinement required |
+| WI-06 | [#6](https://github.com/camiloandcu/Graphene-Segmentation/issues/6) | INC-01 / F-02 | Verified; [PR #20](https://github.com/camiloandcu/Graphene-Segmentation/pull/20) merged 2026-10-11; 30 GPU epochs retained and recovery verified |
+| WI-07 | [#7](https://github.com/camiloandcu/Graphene-Segmentation/issues/7) | INC-01 / F-02 | Full [proposal](../../openspec/changes/wi-07-model-selection/proposal.md) approved 2026-10-11; linked branch `feat/wi-07-model-selection`; draft [PR #21](https://github.com/camiloandcu/Graphene-Segmentation/pull/21); real comparisons pending |
 | WI-08 | [#8](https://github.com/camiloandcu/Graphene-Segmentation/issues/8) | INC-01 / F-02 | Provisional; refinement required |
 | WI-09 | [#9](https://github.com/camiloandcu/Graphene-Segmentation/issues/9) | INC-01 / F-03 | Provisional; refinement required |
 | WI-10 | [#10](https://github.com/camiloandcu/Graphene-Segmentation/issues/10) | INC-01 / F-04 | Provisional; refinement required |

@@ -116,3 +116,8 @@ requirements, standalone installation, synthetic examples, and resource limits.
 
 Work proceeds one approved OpenSpec change at a time. Implementation branches
 link to their Issue, and PRs include the acceptance evidence and a closing link.
+
+Model selection is in progress under the approved WI-07 protocol. The separate
+[evaluation guide](docs/15_MODEL_SELECTION_EVALUATION.md) describes checkpoint
+reports, reviewed candidate training and test isolation. No challenger has been
+selected for deployment yet.

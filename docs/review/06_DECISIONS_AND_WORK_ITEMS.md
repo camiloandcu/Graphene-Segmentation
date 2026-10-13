@@ -312,6 +312,50 @@ whitespace across 18 Markdown files passed. See current data evidence for the
 separate installed-v1 blocked-path check. All edits remain local/uncommitted;
 no implementation branch/PR or real Colab execution is claimed.
 
+## WI-07 / Spike: measured selection of a feasible segmentation model
+
+Parent: INC-01 / F-02. Consumer: stakeholder choosing an exploratory screening
+model, then WI-08 exporter. Dependencies: accepted WI-03 audit and merged WI-06
+training/recovery; local `main` contains WI-06 merge `7d4954d`, checked 2026-10-11.
+
+Status: stakeholder requested continuation on 2026-10-11. One
+[proposal](../../openspec/changes/wi-07-model-selection/proposal.md),
+[design](../../openspec/changes/wi-07-model-selection/design.md),
+[specification](../../openspec/changes/wi-07-model-selection/specs/model-selection-evaluation/spec.md)
+and [tasks](../../openspec/changes/wi-07-model-selection/tasks.md) are prepared for
+review and explicitly approved in full on 2026-10-11. Issue #7 is refined;
+`feat/wi-07-model-selection` is linked using `gh issue develop 7`.
+See [current evidence/next step](wi07/00_INDEX.md) and
+[primary-source candidate review](wi07/01_LITERATURE_AND_CANDIDATES.md).
+Evaluator/adapters are committed as `8abeb9f` and pushed in draft
+[PR #21](https://github.com/camiloandcu/Graphene-Segmentation/pull/21).
+[Implementation/session evidence](wi07/02_IMPLEMENTATION_AND_SESSION_RECORD.md)
+records synthetic checks and actual checkpoint-byte recovery; real comparisons
+and stakeholder model selection remain pending.
+
+Confirmed choices: U-Net + SegFormer-B0 + gated DINOv3; seek the best feasible
+model, account for Colab quotas and permit recovery across multiple day sessions.
+No fixed GPU-hour/day cap was requested. Proposed finite effort: initial runs,
+one fourth semantic slot (2D-TLK or the predeclared DeepLabv3+ fallback), separate
+MaskTerial compatibility assessment, at most two finalists, resolution screens,
+one justified training change per finalist and three frozen-config seeds.
+These stages, metric proxies, resource decision and test freeze are approved.
+
+Outcome: supported feasible model/settings recommendation or a documented
+inconclusive answer. Current partial labels support supervised pixel/component
+metrics but not exhaustive flake recall, full false burden or coverage-ranking
+agreement. Keep approved 31/4/5 roles and unknown pixels. Final test is scored
+only after stakeholder freeze, or explicitly deferred; no test-driven selection.
+Exclude new labels/splits, external-data generation, UI, ONNX export and app integration.
+
+Authoritative AC-1–5 are in the proposal: traceability/isolation; actual candidate
+evidence/gates/recovery; supported quality/detection reporting; setting/seed/resource
+evidence; reviewed decision/frozen-test or explicit deferral. All are unverified.
+G-02 approval precedes coding; G-03 requires measured and stakeholder evidence;
+G-04 includes sync/archive and linked submission after verification. G-05 numeric
+performance/release decisions remain separate. Implementation is started on the
+linked branch; real runs, candidate selection and PR submission remain pending.
+
 ## Later candidates in dependency order
 
 The following is a provisional decomposition, not a queue of approved executable
@@ -321,7 +365,6 @@ promoted item gets its own OpenSpec change when the user starts that work.
 
 | ID / type | Parent | Consumer and independently reviewable outcome | Dependencies | Candidate acceptance evidence |
 | --- | --- | --- | --- | --- |
-| WI-07 / Spike | INC-01 / F-02 | Stakeholder can select a model/operating setting using few-layer misses, false detections, segmentation quality, and resource measurements. | WI-03, WI-06 | Actual baseline/challenger reports, full supported metrics, error panels, split isolation, uncertainty, and a supported recommendation. Effort limit and numeric acceptance remain to review; DINOv3 is access/resource gated. |
 | WI-08 / Enabler | INC-01 / F-02 | Exporter supplies the selected checkpoint as a compatible app model with matching predictions. | WI-02, WI-06; WI-07 for the final selected model | PyTorch/ONNX logit and mask comparisons on representative square/non-square images; package records the evaluated checkpoint and settings. |
 | WI-09 / Fix | INC-01 / F-03 | Lab user receives a prediction from the requested model with correct class interpretation and original-image alignment. | WI-02, WI-04; WI-08 for a trained-model check | Regressions for selected-ID/global-model mismatch, concurrent selection changes, geometry, and three-class output. Synthetic packages can verify early behavior; a real exported package verifies integration. |
 | WI-10 / US | INC-01 / F-04 | Lab user uploads one image and inspects original, overlay, and mask without ML assistance. | WI-09 | Given ready/no-model/invalid-image/inference-error states, readable actions and correct results; visual and keyboard checks of zoom, opacity, legend, and stale-result behavior. |

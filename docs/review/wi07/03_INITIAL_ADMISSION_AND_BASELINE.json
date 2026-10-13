@@ -1,0 +1,926 @@
+{
+  "schema_version": 1,
+  "checked": "2026-10-11",
+  "scope": "Actual baseline development evaluation and real-weight synthetic CPU admission; no challenger quality evidence yet",
+  "baseline": {
+    "schema_version": 1,
+    "status": "complete",
+    "binding": {
+      "architecture": "unet-resnet18",
+      "checkpoint_sha256": "c199f87a1d3f06f013dbef0db7982c6d4e3e2ba852146c1ca57f735ec25e267f",
+      "config": {
+        "architecture": "unet-resnet18",
+        "batch_size": 2,
+        "device": "cuda",
+        "epochs": 30,
+        "horizontal_flip": 0.0,
+        "input_size": 512,
+        "learning_rate": 0.001,
+        "persistence_directory": "/content/drive/MyDrive/Graphene/runs/graphene-baseline-wi06-20261010-002",
+        "precision": "float32",
+        "schema_version": 1,
+        "seed": 42,
+        "vertical_flip": 0.0,
+        "weight_decay": 0.0001,
+        "weights": "imagenet-resnet18-v1"
+      },
+      "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+      "generation": "epoch-000023",
+      "preprocessing": {
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "padding_rgb": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.00392156862745098,
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ],
+        "version": 1
+      },
+      "recorded_best_epoch": 23,
+      "run_fingerprint": "657e88412a7690f9d7436d326fa62e92506ab1f3280a58397a2839ef440b449e",
+      "seed": 42,
+      "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+      "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+      "training_environment": {
+        "cpu_backend": "cuda",
+        "cpu_interop_threads": 1,
+        "cpu_threads": 1,
+        "cudnn": 90501,
+        "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+        "device_policy": "cuda",
+        "git_revision": "b0480172dd80181efbd7241b7c8e2853818407f4",
+        "gpu": "Tesla T4",
+        "packages": {
+          "Pillow": "11.3.0",
+          "graphene-dataset-contract": "2.0.0",
+          "graphene-model-contract": "1.0.0",
+          "graphene-training": "1.0.0",
+          "numpy": "2.2.6",
+          "pycocotools": "2.0.10",
+          "pydantic": "2.12.3",
+          "segmentation-models-pytorch": "0.5.0",
+          "timm": "1.0.30",
+          "torch": "2.7.1+cu126",
+          "torchvision": "0.22.1+cu126"
+        },
+        "precision": "float32",
+        "python": "3.13.15",
+        "torch_cuda": "12.6",
+        "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+      },
+      "weights": {
+        "identifier": "ResNet18_Weights.IMAGENET1K_V1",
+        "initialization": "pretrained",
+        "sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+        "source": "https://download.pytorch.org/models/resnet18-f37072fd.pth"
+      }
+    },
+    "evaluation_environment": {
+      "cpu_backend": "cuda",
+      "cpu_interop_threads": 1,
+      "cpu_threads": 1,
+      "cudnn": 90501,
+      "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+      "device_policy": "cuda",
+      "evaluation_packages": {
+        "graphene-evaluation": "1.0.0",
+        "huggingface-hub": "0.36.2",
+        "scipy": "1.15.3",
+        "transformers": "4.57.6"
+      },
+      "evaluation_source_sha256": "4347b74a8fc2a9d819fb7aa8b4ca3528c20fe6ca781026c0885db64413a33def",
+      "git_revision": null,
+      "gpu": "Tesla T4",
+      "packages": {
+        "Pillow": "11.3.0",
+        "graphene-dataset-contract": "2.0.0",
+        "graphene-model-contract": "1.0.0",
+        "graphene-training": "1.0.0",
+        "numpy": "2.2.6",
+        "pycocotools": "2.0.10",
+        "pydantic": "2.12.3",
+        "segmentation-models-pytorch": "0.5.0",
+        "timm": "1.0.30",
+        "torch": "2.7.1",
+        "torchvision": "0.22.1"
+      },
+      "precision": "float32",
+      "python": "3.13.15",
+      "torch_cuda": "12.6",
+      "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+    },
+    "support": {
+      "images": 4,
+      "total_pixels": 19660800,
+      "unknown_fraction": 0.7129902648925781,
+      "unknown_pixels": 14017959
+    },
+    "settings": {
+      "argmax": {
+        "pixels": {
+          "classes": [
+            {
+              "class_id": 0,
+              "dice": 0.9816197189691166,
+              "iou": 0.9639029125499612,
+              "precision": 0.9639029125499612,
+              "predicted_support": 271961,
+              "recall": 1.0,
+              "support": 262144,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 1,
+              "dice": 0.8427417215213913,
+              "iou": 0.7282226769890148,
+              "precision": 0.8625633148994394,
+              "predicted_support": 524758,
+              "recall": 0.8238106591584569,
+              "support": 549443,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 2,
+              "dice": 0.9835585596756807,
+              "iou": 0.9676490161222209,
+              "precision": 0.9820497709302407,
+              "predicted_support": 4846122,
+              "recall": 0.9850719916609643,
+              "support": 4831254,
+              "unavailable_reasons": {}
+            }
+          ],
+          "confusion_matrix": [
+            [
+              262144,
+              0,
+              0
+            ],
+            [
+              9817,
+              452637,
+              86989
+            ],
+            [
+              0,
+              72121,
+              4759133
+            ]
+          ],
+          "foreground_macro_dice": 0.913150140598536,
+          "foreground_macro_iou": 0.8479358465556178,
+          "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+        },
+        "component_totals": {
+          "annotated_component_recall_proxy": 0.3333333333333333,
+          "indeterminate_unmatched": 71,
+          "known_support_unmatched": 1,
+          "matched_components": 5,
+          "reference_components": 15
+        },
+        "selection_settings": {
+          "decision": "argmax",
+          "geometry": "letterbox",
+          "input_size": 512,
+          "stride": null,
+          "threshold": null,
+          "ties": "lower_id"
+        }
+      },
+      "threshold-0.2": {
+        "pixels": {
+          "classes": [
+            {
+              "class_id": 0,
+              "dice": 0.8585717488402573,
+              "iou": 0.7521907294373602,
+              "precision": 0.9870732384313414,
+              "predicted_support": 201752,
+              "recall": 0.759674072265625,
+              "support": 262144,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 1,
+              "dice": 0.8027565314077754,
+              "iou": 0.6705039972794291,
+              "precision": 0.7630050505050505,
+              "predicted_support": 609840,
+              "recall": 0.8468776560989948,
+              "support": 549443,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 2,
+              "dice": 0.9831251798835147,
+              "iou": 0.9668104278271886,
+              "precision": 0.9831256886159252,
+              "predicted_support": 4831249,
+              "recall": 0.9831246711516306,
+              "support": 4831254,
+              "unavailable_reasons": {}
+            }
+          ],
+          "confusion_matrix": [
+            [
+              199144,
+              63000,
+              0
+            ],
+            [
+              2608,
+              465311,
+              81524
+            ],
+            [
+              0,
+              81529,
+              4749725
+            ]
+          ],
+          "foreground_macro_dice": 0.8929408556456451,
+          "foreground_macro_iou": 0.8186572125533089,
+          "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+        },
+        "component_totals": {
+          "annotated_component_recall_proxy": 0.4,
+          "indeterminate_unmatched": 129,
+          "known_support_unmatched": 1,
+          "matched_components": 6,
+          "reference_components": 15
+        },
+        "selection_settings": {
+          "decision": "few_layer_threshold",
+          "geometry": "letterbox",
+          "input_size": 512,
+          "stride": null,
+          "threshold": 0.2,
+          "ties": "lower_id"
+        }
+      },
+      "threshold-0.3": {
+        "pixels": {
+          "classes": [
+            {
+              "class_id": 0,
+              "dice": 0.9616473148087206,
+              "iou": 0.9261278258567525,
+              "precision": 0.9762252878984397,
+              "predicted_support": 254430,
+              "recall": 0.9474983215332031,
+              "support": 262144,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 1,
+              "dice": 0.8351447776863749,
+              "iou": 0.7169515676185214,
+              "precision": 0.8341977003479258,
+              "predicted_support": 550692,
+              "recall": 0.836094007931669,
+              "support": 549443,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 2,
+              "dice": 0.9832918139289457,
+              "iou": 0.9671327794937482,
+              "precision": 0.9826347913138402,
+              "predicted_support": 4837719,
+              "recall": 0.9839497157466778,
+              "support": 4831254,
+              "unavailable_reasons": {}
+            }
+          ],
+          "confusion_matrix": [
+            [
+              248381,
+              13763,
+              0
+            ],
+            [
+              6049,
+              459386,
+              84008
+            ],
+            [
+              0,
+              77543,
+              4753711
+            ]
+          ],
+          "foreground_macro_dice": 0.9092182958076602,
+          "foreground_macro_iou": 0.8420421735561348,
+          "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+        },
+        "component_totals": {
+          "annotated_component_recall_proxy": 0.3333333333333333,
+          "indeterminate_unmatched": 64,
+          "known_support_unmatched": 2,
+          "matched_components": 5,
+          "reference_components": 15
+        },
+        "selection_settings": {
+          "decision": "few_layer_threshold",
+          "geometry": "letterbox",
+          "input_size": 512,
+          "stride": null,
+          "threshold": 0.3,
+          "ties": "lower_id"
+        }
+      },
+      "threshold-0.4": {
+        "pixels": {
+          "classes": [
+            {
+              "class_id": 0,
+              "dice": 0.9809410688436829,
+              "iou": 0.9625950363151401,
+              "precision": 0.9682575073484874,
+              "predicted_support": 269103,
+              "recall": 0.9939613342285156,
+              "support": 262144,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 1,
+              "dice": 0.8422653426929684,
+              "iou": 0.7275115566222523,
+              "precision": 0.8569407900312841,
+              "predicted_support": 530941,
+              "recall": 0.82808407787523,
+              "support": 549443,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 2,
+              "dice": 0.9834310362845927,
+              "iou": 0.9674021845899166,
+              "precision": 0.9822590127151727,
+              "predicted_support": 4842797,
+              "recall": 0.9846058600934664,
+              "support": 4831254,
+              "unavailable_reasons": {}
+            }
+          ],
+          "confusion_matrix": [
+            [
+              260561,
+              1583,
+              0
+            ],
+            [
+              8542,
+              454985,
+              85916
+            ],
+            [
+              0,
+              74373,
+              4756881
+            ]
+          ],
+          "foreground_macro_dice": 0.9128481894887805,
+          "foreground_macro_iou": 0.8474568706060844,
+          "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+        },
+        "component_totals": {
+          "annotated_component_recall_proxy": 0.3333333333333333,
+          "indeterminate_unmatched": 71,
+          "known_support_unmatched": 2,
+          "matched_components": 5,
+          "reference_components": 15
+        },
+        "selection_settings": {
+          "decision": "few_layer_threshold",
+          "geometry": "letterbox",
+          "input_size": 512,
+          "stride": null,
+          "threshold": 0.4,
+          "ties": "lower_id"
+        }
+      },
+      "threshold-0.5": {
+        "pixels": {
+          "classes": [
+            {
+              "class_id": 0,
+              "dice": 0.9799043062200957,
+              "iou": 0.9606003752345216,
+              "precision": 0.9606003752345216,
+              "predicted_support": 272896,
+              "recall": 1.0,
+              "support": 262144,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 1,
+              "dice": 0.8413371683099616,
+              "iou": 0.7261276924562928,
+              "precision": 0.8627812537658308,
+              "predicted_support": 522793,
+              "recall": 0.8209331996221628,
+              "support": 549443,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 2,
+              "dice": 0.9835332388411894,
+              "iou": 0.9676000007318726,
+              "precision": 0.9819203111435334,
+              "predicted_support": 4847152,
+              "recall": 0.9851514741307329,
+              "support": 4831254,
+              "unavailable_reasons": {}
+            }
+          ],
+          "confusion_matrix": [
+            [
+              262144,
+              0,
+              0
+            ],
+            [
+              10752,
+              451056,
+              87635
+            ],
+            [
+              0,
+              71737,
+              4759517
+            ]
+          ],
+          "foreground_macro_dice": 0.9124352035755755,
+          "foreground_macro_iou": 0.8468638465940828,
+          "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+        },
+        "component_totals": {
+          "annotated_component_recall_proxy": 0.3333333333333333,
+          "indeterminate_unmatched": 67,
+          "known_support_unmatched": 1,
+          "matched_components": 5,
+          "reference_components": 15
+        },
+        "selection_settings": {
+          "decision": "few_layer_threshold",
+          "geometry": "letterbox",
+          "input_size": 512,
+          "stride": null,
+          "threshold": 0.5,
+          "ties": "lower_id"
+        }
+      },
+      "threshold-0.6": {
+        "pixels": {
+          "classes": [
+            {
+              "class_id": 0,
+              "dice": 0.9749841931044743,
+              "iou": 0.9511894221977097,
+              "precision": 0.9511894221977097,
+              "predicted_support": 275596,
+              "recall": 1.0,
+              "support": 262144,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 1,
+              "dice": 0.8384889016569357,
+              "iou": 0.7218948685493141,
+              "precision": 0.8659068169302484,
+              "predicted_support": 515716,
+              "recall": 0.8127540072400595,
+              "support": 549443,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 2,
+              "dice": 0.9836221673045858,
+              "iou": 0.9677721568326999,
+              "precision": 0.9815668421233801,
+              "predicted_support": 4851529,
+              "recall": 0.9856861179312866,
+              "support": 4831254,
+              "unavailable_reasons": {}
+            }
+          ],
+          "confusion_matrix": [
+            [
+              262144,
+              0,
+              0
+            ],
+            [
+              13452,
+              446562,
+              89429
+            ],
+            [
+              0,
+              69154,
+              4762100
+            ]
+          ],
+          "foreground_macro_dice": 0.9110555344807607,
+          "foreground_macro_iou": 0.8448335126910069,
+          "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+        },
+        "component_totals": {
+          "annotated_component_recall_proxy": 0.3333333333333333,
+          "indeterminate_unmatched": 65,
+          "known_support_unmatched": 1,
+          "matched_components": 5,
+          "reference_components": 15
+        },
+        "selection_settings": {
+          "decision": "few_layer_threshold",
+          "geometry": "letterbox",
+          "input_size": 512,
+          "stride": null,
+          "threshold": 0.6,
+          "ties": "lower_id"
+        }
+      },
+      "threshold-0.7": {
+        "pixels": {
+          "classes": [
+            {
+              "class_id": 0,
+              "dice": 0.9696646877138472,
+              "iou": 0.94111565055682,
+              "precision": 0.94111565055682,
+              "predicted_support": 278546,
+              "recall": 1.0,
+              "support": 262144,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 1,
+              "dice": 0.8353758169934641,
+              "iou": 0.7172921781830937,
+              "precision": 0.8693684030285794,
+              "predicted_support": 508093,
+              "recall": 0.8039414461554701,
+              "support": 549443,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 2,
+              "dice": 0.9837218357430475,
+              "iou": 0.967965140195934,
+              "precision": 0.9811949750030992,
+              "predicted_support": 4856202,
+              "recall": 0.9862617448803147,
+              "support": 4831254,
+              "unavailable_reasons": {}
+            }
+          ],
+          "confusion_matrix": [
+            [
+              262144,
+              0,
+              0
+            ],
+            [
+              16402,
+              441720,
+              91321
+            ],
+            [
+              0,
+              66373,
+              4764881
+            ]
+          ],
+          "foreground_macro_dice": 0.9095488263682558,
+          "foreground_macro_iou": 0.8426286591895138,
+          "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+        },
+        "component_totals": {
+          "annotated_component_recall_proxy": 0.3333333333333333,
+          "indeterminate_unmatched": 73,
+          "known_support_unmatched": 1,
+          "matched_components": 5,
+          "reference_components": 15
+        },
+        "selection_settings": {
+          "decision": "few_layer_threshold",
+          "geometry": "letterbox",
+          "input_size": 512,
+          "stride": null,
+          "threshold": 0.7,
+          "ties": "lower_id"
+        }
+      },
+      "threshold-0.8": {
+        "pixels": {
+          "classes": [
+            {
+              "class_id": 0,
+              "dice": 0.962566805648118,
+              "iou": 0.9278349785688751,
+              "precision": 0.9278349785688751,
+              "predicted_support": 282533,
+              "recall": 1.0,
+              "support": 262144,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 1,
+              "dice": 0.8310575840284007,
+              "iou": 0.710948266290469,
+              "precision": 0.8735978106685767,
+              "predicted_support": 498417,
+              "recall": 0.792468008510437,
+              "support": 549443,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 2,
+              "dice": 0.9838367217244764,
+              "iou": 0.9681876355481899,
+              "precision": 0.9807369190300647,
+              "predicted_support": 4861891,
+              "recall": 0.9869561815627992,
+              "support": 4831254,
+              "unavailable_reasons": {}
+            }
+          ],
+          "confusion_matrix": [
+            [
+              262144,
+              0,
+              0
+            ],
+            [
+              20372,
+              435416,
+              93655
+            ],
+            [
+              17,
+              63001,
+              4768236
+            ]
+          ],
+          "foreground_macro_dice": 0.9074471528764385,
+          "foreground_macro_iou": 0.8395679509193295,
+          "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+        },
+        "component_totals": {
+          "annotated_component_recall_proxy": 0.3333333333333333,
+          "indeterminate_unmatched": 72,
+          "known_support_unmatched": 1,
+          "matched_components": 5,
+          "reference_components": 15
+        },
+        "selection_settings": {
+          "decision": "few_layer_threshold",
+          "geometry": "letterbox",
+          "input_size": 512,
+          "stride": null,
+          "threshold": 0.8,
+          "ties": "lower_id"
+        }
+      }
+    },
+    "baseline_reproduction": {
+      "recorded": {
+        "classes": [
+          {
+            "class_id": 0,
+            "dice": 0.9816197189691166,
+            "iou": 0.9639029125499612,
+            "precision": 0.9639029125499612,
+            "predicted_support": 271961,
+            "recall": 1.0,
+            "support": 262144
+          },
+          {
+            "class_id": 1,
+            "dice": 0.8427417215213913,
+            "iou": 0.7282226769890148,
+            "precision": 0.8625633148994394,
+            "predicted_support": 524758,
+            "recall": 0.8238106591584569,
+            "support": 549443
+          },
+          {
+            "class_id": 2,
+            "dice": 0.9835585596756807,
+            "iou": 0.9676490161222209,
+            "precision": 0.9820497709302407,
+            "predicted_support": 4846122,
+            "recall": 0.9850719916609643,
+            "support": 4831254
+          }
+        ],
+        "confusion_matrix": [
+          [
+            262144,
+            0,
+            0
+          ],
+          [
+            9817,
+            452637,
+            86989
+          ],
+          [
+            0,
+            72121,
+            4759133
+          ]
+        ],
+        "foreground_macro_dice": 0.913150140598536,
+        "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+      },
+      "confusion_exact": true,
+      "dice_exact": true
+    },
+    "resources": {
+      "cpu": "x86_64",
+      "cpu_feasibility": "Hardware-specific pilot only; stakeholder lab latency/RAM acceptance pending",
+      "definition": "Single pass per role image; normalization, model, restoration included; not warmed benchmark",
+      "device": "cuda",
+      "elapsed_seconds": 185.64758538,
+      "inference_ms": [
+        1034.202255999844,
+        228.13889200006088,
+        255.88433300004,
+        172.41310899999007
+      ],
+      "median_ms": 242.01161250005043,
+      "numpy": "2.2.6",
+      "p95_ms": 917.4545675498732,
+      "process_peak_rss_bytes": 1638473728,
+      "repeat_count": 1,
+      "threads": 1,
+      "torch": "2.7.1",
+      "warmup": 0
+    },
+    "report_fingerprint": "4245cb4672b4aa6531462a55c64e0c5b269920c867c190309975e1f14c4ccb07"
+  },
+  "segformer_cpu_admission": {
+    "config": {
+      "architecture": "segformer-b0",
+      "batch_size": 2,
+      "device": "cpu",
+      "epochs": 30,
+      "horizontal_flip": 0.0,
+      "input_size": 512,
+      "learning_rate": 0.001,
+      "license_approved": true,
+      "persistence_directory": null,
+      "precision": "float32",
+      "schema_version": 2,
+      "seed": 42,
+      "vertical_flip": 0.0,
+      "weight_decay": 0.0001,
+      "weights": "nvidia/mit-b0",
+      "weights_directory": null,
+      "weights_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+      "weights_sha256": null
+    },
+    "environment": {
+      "cpu_backend": "native-single-thread",
+      "cpu_interop_threads": 3,
+      "cpu_threads": 1,
+      "cudnn": null,
+      "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+      "device_policy": "cpu",
+      "evaluation_packages": {
+        "graphene-evaluation": "1.0.0",
+        "huggingface-hub": "0.36.2",
+        "scipy": "1.15.3",
+        "transformers": "4.57.6"
+      },
+      "evaluation_source_sha256": "4347b74a8fc2a9d819fb7aa8b4ca3528c20fe6ca781026c0885db64413a33def",
+      "git_revision": "edf80daf9569053fcaa025d5c6f6eb1676badf8d",
+      "gpu": null,
+      "packages": {
+        "Pillow": "11.3.0",
+        "graphene-dataset-contract": "2.0.0",
+        "graphene-model-contract": "1.0.0",
+        "graphene-training": "1.0.0",
+        "numpy": "2.2.6",
+        "pycocotools": "2.0.10",
+        "pydantic": "2.12.3",
+        "segmentation-models-pytorch": "0.5.0",
+        "timm": "1.0.30",
+        "torch": "2.7.1+cpu",
+        "torchvision": "0.22.1+cpu"
+      },
+      "precision": "float32",
+      "python": "3.12.13",
+      "torch_cuda": null,
+      "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+    },
+    "finite_loss": 2.0722947120666504,
+    "ignore_gradients_zero": true,
+    "parameters": 3714915,
+    "peak_cuda_allocated_bytes": null,
+    "peak_cuda_reserved_bytes": null,
+    "schema_version": 1,
+    "scope": "Synthetic input admission of real pretrained bytes, not real-data quality evidence",
+    "seconds": 67.48665524198441,
+    "status": "admitted",
+    "trainable_parameters": 3714915,
+    "weights": {
+      "checksum_definition": "SHA-256 of sorted weight filename + file SHA-256 pairs",
+      "format": "pytorch restricted weights_only=True",
+      "identifier": "nvidia/mit-b0",
+      "initialization": "pretrained",
+      "license_approved": true,
+      "revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+      "sha256": "d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b",
+      "source": "https://huggingface.co/nvidia/mit-b0"
+    }
+  },
+  "segformer_gpu_admission": {
+    "config": {
+      "architecture": "segformer-b0",
+      "batch_size": 2,
+      "device": "cuda",
+      "epochs": 30,
+      "horizontal_flip": 0.0,
+      "input_size": 512,
+      "learning_rate": 0.001,
+      "license_approved": true,
+      "persistence_directory": null,
+      "precision": "float32",
+      "schema_version": 2,
+      "seed": 42,
+      "vertical_flip": 0.0,
+      "weight_decay": 0.0001,
+      "weights": "nvidia/mit-b0",
+      "weights_directory": null,
+      "weights_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+      "weights_sha256": "d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b"
+    },
+    "environment": {
+      "cpu_backend": "cuda",
+      "cpu_interop_threads": 1,
+      "cpu_threads": 1,
+      "cudnn": 90501,
+      "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+      "device_policy": "cuda",
+      "evaluation_packages": {
+        "graphene-evaluation": "1.0.0",
+        "huggingface-hub": "0.36.2",
+        "scipy": "1.15.3",
+        "transformers": "4.57.6"
+      },
+      "evaluation_source_sha256": "4347b74a8fc2a9d819fb7aa8b4ca3528c20fe6ca781026c0885db64413a33def",
+      "git_revision": null,
+      "gpu": "Tesla T4",
+      "packages": {
+        "Pillow": "11.3.0",
+        "graphene-dataset-contract": "2.0.0",
+        "graphene-model-contract": "1.0.0",
+        "graphene-training": "1.0.0",
+        "numpy": "2.2.6",
+        "pycocotools": "2.0.10",
+        "pydantic": "2.12.3",
+        "segmentation-models-pytorch": "0.5.0",
+        "timm": "1.0.30",
+        "torch": "2.7.1",
+        "torchvision": "0.22.1"
+      },
+      "precision": "float32",
+      "python": "3.13.15",
+      "torch_cuda": "12.6",
+      "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+    },
+    "finite_loss": 2.1114368438720703,
+    "ignore_gradients_zero": true,
+    "parameters": 3714915,
+    "peak_cuda_allocated_bytes": 903049728,
+    "peak_cuda_reserved_bytes": 1140850688,
+    "schema_version": 1,
+    "scope": "Synthetic input admission of real pretrained bytes, not real-data quality evidence",
+    "seconds": 18.152036106000196,
+    "status": "admitted",
+    "trainable_parameters": 3714915,
+    "weights": {
+      "checksum_definition": "SHA-256 of sorted weight filename + file SHA-256 pairs",
+      "format": "pytorch restricted weights_only=True",
+      "identifier": "nvidia/mit-b0",
+      "initialization": "pretrained",
+      "license_approved": true,
+      "revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+      "sha256": "d9c6889002284c00022a369560a76493e6094fac9aea695cb884640826017a5b",
+      "source": "https://huggingface.co/nvidia/mit-b0"
+    }
+  }
+}

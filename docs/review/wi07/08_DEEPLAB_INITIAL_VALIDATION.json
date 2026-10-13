@@ -1,0 +1,741 @@
+{
+  "schema_version": 1,
+  "checked": "2026-10-12",
+  "scope": "Actual checkpoint-bound initial DeepLab validation aggregates; report fingerprint identifies full private report, not this extracted summary. No test predictions or selected winner.",
+  "validation": {
+    "binding": {
+      "architecture": "deeplabv3plus-resnet18",
+      "checkpoint_sha256": "da759e0969e9ecfd594956b4a0bb6b1a37a7e427ab851e5f4f54907ec08d98b8",
+      "config": {
+        "architecture": "deeplabv3plus-resnet18",
+        "batch_size": 2,
+        "device": "cuda",
+        "epochs": 30,
+        "horizontal_flip": 0.0,
+        "input_size": 512,
+        "learning_rate": 0.001,
+        "license_approved": true,
+        "persistence_directory": "/content/drive/MyDrive/Graphene (1)/runs/wi07-deeplabv3plus-resnet18-seed42-20261012",
+        "precision": "float32",
+        "schema_version": 2,
+        "seed": 42,
+        "vertical_flip": 0.0,
+        "weight_decay": 0.0001,
+        "weights": "imagenet-resnet18-v1",
+        "weights_directory": null,
+        "weights_revision": null,
+        "weights_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec"
+      },
+      "dataset_fingerprint": "d3b35af44c8d2364e70732d1708d68809405ee95301f173080bd004b8fa622c1",
+      "generation": "epoch-000004",
+      "preprocessing": {
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "padding_rgb": [
+          0,
+          0,
+          0
+        ],
+        "scale": 0.00392156862745098,
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ],
+        "version": 1
+      },
+      "recorded_best_epoch": 4,
+      "run_fingerprint": "10f3af863ef337c6df1e6dcc7422c30e13229da3e41d121a4196228ed3d13b4d",
+      "seed": 42,
+      "split_fingerprint": "92f9b55e88d17c9951da798bc8008b765c64ed888d06589484287d832600616e",
+      "supervision_fingerprint": "c8795dc48e8ca8df50d84da7cddd21d651a228ea602a519091e1890ac41e451a",
+      "training_environment": {
+        "cpu_backend": "cuda",
+        "cpu_interop_threads": 1,
+        "cpu_threads": 1,
+        "cudnn": 90501,
+        "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+        "device_policy": "cuda",
+        "evaluation_packages": {
+          "graphene-evaluation": "1.0.0",
+          "huggingface-hub": "0.36.2",
+          "scipy": "1.15.3",
+          "transformers": "4.57.6"
+        },
+        "evaluation_source_sha256": "f3be8477bb429dace0a0eed2bfcd82ec14c25709f894cbf3fb8ea5c7b6d54cb2",
+        "git_revision": null,
+        "gpu": "Tesla T4",
+        "packages": {
+          "Pillow": "11.3.0",
+          "graphene-dataset-contract": "2.0.0",
+          "graphene-model-contract": "1.0.0",
+          "graphene-training": "1.0.0",
+          "numpy": "2.2.6",
+          "pycocotools": "2.0.10",
+          "pydantic": "2.12.3",
+          "segmentation-models-pytorch": "0.5.0",
+          "timm": "1.0.30",
+          "torch": "2.7.1",
+          "torchvision": "0.22.1"
+        },
+        "precision": "float32",
+        "python": "3.13.15",
+        "torch_cuda": "12.6",
+        "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+      },
+      "weights": {
+        "identifier": "ResNet18_Weights.IMAGENET1K_V1",
+        "initialization": "pretrained",
+        "sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+        "source": "https://download.pytorch.org/models/resnet18-f37072fd.pth"
+      }
+    },
+    "evaluation_environment": {
+      "cpu_backend": "cuda",
+      "cpu_interop_threads": 1,
+      "cpu_threads": 1,
+      "cudnn": 90501,
+      "deterministic_policy": "deterministic algorithms; TF32 disabled; seeded RNG",
+      "device_policy": "cuda",
+      "evaluation_packages": {
+        "graphene-evaluation": "1.0.0",
+        "huggingface-hub": "0.36.2",
+        "scipy": "1.15.3",
+        "transformers": "4.57.6"
+      },
+      "evaluation_source_sha256": "f3be8477bb429dace0a0eed2bfcd82ec14c25709f894cbf3fb8ea5c7b6d54cb2",
+      "git_revision": null,
+      "gpu": "Tesla T4",
+      "packages": {
+        "Pillow": "11.3.0",
+        "graphene-dataset-contract": "2.0.0",
+        "graphene-model-contract": "1.0.0",
+        "graphene-training": "1.0.0",
+        "numpy": "2.2.6",
+        "pycocotools": "2.0.10",
+        "pydantic": "2.12.3",
+        "segmentation-models-pytorch": "0.5.0",
+        "timm": "1.0.30",
+        "torch": "2.7.1",
+        "torchvision": "0.22.1"
+      },
+      "precision": "float32",
+      "python": "3.13.15",
+      "torch_cuda": "12.6",
+      "training_source_sha256": "bb7cfa684aa4d3e9072a2dbf8c9a5b55736422a7b81dffb7ffb41a543e703409"
+    },
+    "report_fingerprint": "00877fd7879a0b5276b33f7088372907d29c156eeaad20e6ed65af9093c5cfad",
+    "resources": {
+      "cpu": "x86_64",
+      "cpu_feasibility": "Hardware-specific pilot only; stakeholder lab latency/RAM acceptance pending",
+      "definition": "Single pass per role image; normalization, model, restoration included; not warmed benchmark",
+      "device": "cuda",
+      "elapsed_seconds": 198.54242202800015,
+      "inference_ms": [
+        772.902286000317,
+        168.5845749998407,
+        440.2863470004377,
+        157.4896889997035
+      ],
+      "median_ms": 304.4354610001392,
+      "numpy": "2.2.6",
+      "p95_ms": 723.009895150335,
+      "process_peak_rss_bytes": 2613714944,
+      "repeat_count": 1,
+      "threads": 1,
+      "torch": "2.7.1",
+      "warmup": 0
+    },
+    "retention": {
+      "archive_bytes": 274585646,
+      "archive_sha256": "83e6317723f2823442565ef0ab3547527947e6626219a4c7de3155b0e511bded",
+      "best": "epoch-000004",
+      "best_checkpoint_sha256": "da759e0969e9ecfd594956b4a0bb6b1a37a7e427ab851e5f4f54907ec08d98b8",
+      "last": "epoch-000030",
+      "run_id": "wi07-deeplabv3plus-resnet18-seed42-20261012",
+      "schema_version": 1,
+      "scope": "Selected/latest state archive; full epoch run remains required by strict training resume. Replacement-mount durability pending.",
+      "status": "verified_in_current_mount"
+    },
+    "schema_version": 1,
+    "settings": {
+      "argmax": {
+        "component_totals": {
+          "annotated_component_recall_proxy": 0.13333333333333333,
+          "indeterminate_unmatched": 21,
+          "known_support_unmatched": 0,
+          "matched_components": 2,
+          "reference_components": 15
+        },
+        "pixels": {
+          "classes": [
+            {
+              "class_id": 0,
+              "dice": 0.7053797863477917,
+              "iou": 0.5448546059371877,
+              "precision": 0.7610497908633567,
+              "predicted_support": 226407,
+              "recall": 0.6572990417480469,
+              "support": 262144,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 1,
+              "dice": 0.7530501296197185,
+              "iou": 0.6039137157855924,
+              "precision": 0.751928925535853,
+              "predicted_support": 551084,
+              "recall": 0.7541746823601356,
+              "support": 549443,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 2,
+              "dice": 0.9861953731430096,
+              "iou": 0.9727666919418436,
+              "precision": 0.9827397823383723,
+              "predicted_support": 4865350,
+              "recall": 0.9896753513684025,
+              "support": 4831254,
+              "unavailable_reasons": {}
+            }
+          ],
+          "confusion_matrix": [
+            [
+              172307,
+              89837,
+              0
+            ],
+            [
+              51090,
+              414376,
+              83977
+            ],
+            [
+              3010,
+              46871,
+              4781373
+            ]
+          ],
+          "foreground_macro_dice": 0.8696227513813641,
+          "foreground_macro_iou": 0.788340203863718,
+          "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+        },
+        "selection_settings": {
+          "decision": "argmax",
+          "geometry": "letterbox",
+          "input_size": 512,
+          "stride": null,
+          "threshold": null,
+          "ties": "lower_id"
+        }
+      },
+      "threshold-0.2": {
+        "component_totals": {
+          "annotated_component_recall_proxy": 0.2,
+          "indeterminate_unmatched": 32,
+          "known_support_unmatched": 1,
+          "matched_components": 3,
+          "reference_components": 15
+        },
+        "pixels": {
+          "classes": [
+            {
+              "class_id": 0,
+              "dice": 0.6953984073656634,
+              "iou": 0.5330350746862647,
+              "precision": 0.8031872629416967,
+              "predicted_support": 200109,
+              "recall": 0.6131172180175781,
+              "support": 262144,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 1,
+              "dice": 0.7798626620191605,
+              "iou": 0.6391597386157584,
+              "precision": 0.7467560261882912,
+              "predicted_support": 600421,
+              "recall": 0.8160409724029608,
+              "support": 549443,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 2,
+              "dice": 0.9877661441257696,
+              "iou": 0.9758280049551109,
+              "precision": 0.9866384046790881,
+              "predicted_support": 4842311,
+              "recall": 0.9888964645617887,
+              "support": 4831254,
+              "unavailable_reasons": {}
+            }
+          ],
+          "confusion_matrix": [
+            [
+              160725,
+              101419,
+              0
+            ],
+            [
+              36374,
+              448368,
+              64701
+            ],
+            [
+              3010,
+              50634,
+              4777610
+            ]
+          ],
+          "foreground_macro_dice": 0.8838144030724651,
+          "foreground_macro_iou": 0.8074938717854346,
+          "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+        },
+        "selection_settings": {
+          "decision": "few_layer_threshold",
+          "geometry": "letterbox",
+          "input_size": 512,
+          "stride": null,
+          "threshold": 0.2,
+          "ties": "lower_id"
+        }
+      },
+      "threshold-0.3": {
+        "component_totals": {
+          "annotated_component_recall_proxy": 0.13333333333333333,
+          "indeterminate_unmatched": 29,
+          "known_support_unmatched": 0,
+          "matched_components": 2,
+          "reference_components": 15
+        },
+        "pixels": {
+          "classes": [
+            {
+              "class_id": 0,
+              "dice": 0.710937599836428,
+              "iou": 0.5515152716782489,
+              "precision": 0.8048212408498655,
+              "predicted_support": 207374,
+              "recall": 0.6366691589355469,
+              "support": 262144,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 1,
+              "dice": 0.7710639534214225,
+              "iou": 0.6274239864377851,
+              "precision": 0.7510750869733281,
+              "predicted_support": 579488,
+              "recall": 0.7921458640841725,
+              "support": 549443,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 2,
+              "dice": 0.9867090014248651,
+              "iou": 0.9737666700013631,
+              "precision": 0.9841970074417538,
+              "predicted_support": 4855979,
+              "recall": 0.989233851087109,
+              "support": 4831254,
+              "unavailable_reasons": {}
+            }
+          ],
+          "confusion_matrix": [
+            [
+              166899,
+              95245,
+              0
+            ],
+            [
+              37465,
+              435239,
+              76739
+            ],
+            [
+              3010,
+              49004,
+              4779240
+            ]
+          ],
+          "foreground_macro_dice": 0.8788864774231437,
+          "foreground_macro_iou": 0.8005953282195741,
+          "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+        },
+        "selection_settings": {
+          "decision": "few_layer_threshold",
+          "geometry": "letterbox",
+          "input_size": 512,
+          "stride": null,
+          "threshold": 0.3,
+          "ties": "lower_id"
+        }
+      },
+      "threshold-0.4": {
+        "component_totals": {
+          "annotated_component_recall_proxy": 0.13333333333333333,
+          "indeterminate_unmatched": 18,
+          "known_support_unmatched": 1,
+          "matched_components": 2,
+          "reference_components": 15
+        },
+        "pixels": {
+          "classes": [
+            {
+              "class_id": 0,
+              "dice": 0.7036065614365988,
+              "iou": 0.5427415323979893,
+              "precision": 0.7663916923284407,
+              "predicted_support": 222445,
+              "recall": 0.65032958984375,
+              "support": 262144,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 1,
+              "dice": 0.7537882522347816,
+              "iou": 0.6048637028069427,
+              "precision": 0.749245701668267,
+              "predicted_support": 556146,
+              "recall": 0.7583862202266659,
+              "support": 549443,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 2,
+              "dice": 0.9861172766263621,
+              "iou": 0.9726147353069713,
+              "precision": 0.9827726782134965,
+              "predicted_support": 4864250,
+              "recall": 0.9894847176323166,
+              "support": 4831254,
+              "unavailable_reasons": {}
+            }
+          ],
+          "confusion_matrix": [
+            [
+              170480,
+              91664,
+              0
+            ],
+            [
+              48955,
+              416690,
+              83798
+            ],
+            [
+              3010,
+              47792,
+              4780452
+            ]
+          ],
+          "foreground_macro_dice": 0.8699527644305718,
+          "foreground_macro_iou": 0.788739219056957,
+          "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+        },
+        "selection_settings": {
+          "decision": "few_layer_threshold",
+          "geometry": "letterbox",
+          "input_size": 512,
+          "stride": null,
+          "threshold": 0.4,
+          "ties": "lower_id"
+        }
+      },
+      "threshold-0.5": {
+        "component_totals": {
+          "annotated_component_recall_proxy": 0.13333333333333333,
+          "indeterminate_unmatched": 7,
+          "known_support_unmatched": 0,
+          "matched_components": 2,
+          "reference_components": 15
+        },
+        "pixels": {
+          "classes": [
+            {
+              "class_id": 0,
+              "dice": 0.6956274516431104,
+              "iou": 0.5333042714823982,
+              "precision": 0.7264018934125024,
+              "predicted_support": 240835,
+              "recall": 0.6673545837402344,
+              "support": 262144,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 1,
+              "dice": 0.7355866576511494,
+              "iou": 0.5817612271353284,
+              "precision": 0.7478914937478369,
+              "predicted_support": 531656,
+              "recall": 0.7236801633654446,
+              "support": 549443,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 2,
+              "dice": 0.985694736664164,
+              "iou": 0.9717929821466389,
+              "precision": 0.9817384787540937,
+              "predicted_support": 4870350,
+              "recall": 0.9896830098355417,
+              "support": 4831254,
+              "unavailable_reasons": {}
+            }
+          ],
+          "confusion_matrix": [
+            [
+              174943,
+              87201,
+              0
+            ],
+            [
+              62882,
+              397621,
+              88940
+            ],
+            [
+              3010,
+              46834,
+              4781410
+            ]
+          ],
+          "foreground_macro_dice": 0.8606406971576567,
+          "foreground_macro_iou": 0.7767771046409837,
+          "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+        },
+        "selection_settings": {
+          "decision": "few_layer_threshold",
+          "geometry": "letterbox",
+          "input_size": 512,
+          "stride": null,
+          "threshold": 0.5,
+          "ties": "lower_id"
+        }
+      },
+      "threshold-0.6": {
+        "component_totals": {
+          "annotated_component_recall_proxy": 0.2,
+          "indeterminate_unmatched": 8,
+          "known_support_unmatched": 0,
+          "matched_components": 3,
+          "reference_components": 15
+        },
+        "pixels": {
+          "classes": [
+            {
+              "class_id": 0,
+              "dice": 0.6961327868758403,
+              "iou": 0.5338985288293706,
+              "precision": 0.6980083531807669,
+              "predicted_support": 260739,
+              "recall": 0.6942672729492188,
+              "support": 262144,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 1,
+              "dice": 0.7238827417732433,
+              "iou": 0.5672540960531501,
+              "precision": 0.7531598878670143,
+              "predicted_support": 508325,
+              "recall": 0.6967965739849266,
+              "support": 549443,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 2,
+              "dice": 0.985656820673731,
+              "iou": 0.9717192768313465,
+              "precision": 0.9813569640137413,
+              "predicted_support": 4873777,
+              "recall": 0.9899945231610675,
+              "support": 4831254,
+              "unavailable_reasons": {}
+            }
+          ],
+          "confusion_matrix": [
+            [
+              181998,
+              80146,
+              0
+            ],
+            [
+              75731,
+              382850,
+              90862
+            ],
+            [
+              3010,
+              45329,
+              4782915
+            ]
+          ],
+          "foreground_macro_dice": 0.8547697812234871,
+          "foreground_macro_iou": 0.7694866864422483,
+          "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+        },
+        "selection_settings": {
+          "decision": "few_layer_threshold",
+          "geometry": "letterbox",
+          "input_size": 512,
+          "stride": null,
+          "threshold": 0.6,
+          "ties": "lower_id"
+        }
+      },
+      "threshold-0.7": {
+        "component_totals": {
+          "annotated_component_recall_proxy": 0.13333333333333333,
+          "indeterminate_unmatched": 12,
+          "known_support_unmatched": 0,
+          "matched_components": 2,
+          "reference_components": 15
+        },
+        "pixels": {
+          "classes": [
+            {
+              "class_id": 0,
+              "dice": 0.676030676369893,
+              "iou": 0.5106090181276464,
+              "precision": 0.6240694468656581,
+              "predicted_support": 309762,
+              "recall": 0.7374305725097656,
+              "support": 262144,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 1,
+              "dice": 0.6845373049989704,
+              "iou": 0.5203775885095963,
+              "precision": 0.7549062631652858,
+              "predicted_support": 455744,
+              "recall": 0.626168683557712,
+              "support": 549443,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 2,
+              "dice": 0.9858023653076673,
+              "iou": 0.9720022326878336,
+              "precision": 0.9811454411066699,
+              "predicted_support": 4877335,
+              "recall": 0.9905037077330233,
+              "support": 4831254,
+              "unavailable_reasons": {}
+            }
+          ],
+          "confusion_matrix": [
+            [
+              193313,
+              68831,
+              0
+            ],
+            [
+              113439,
+              344044,
+              91960
+            ],
+            [
+              3010,
+              42869,
+              4785375
+            ]
+          ],
+          "foreground_macro_dice": 0.8351698351533188,
+          "foreground_macro_iou": 0.7461899105987149,
+          "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+        },
+        "selection_settings": {
+          "decision": "few_layer_threshold",
+          "geometry": "letterbox",
+          "input_size": 512,
+          "stride": null,
+          "threshold": 0.7,
+          "ties": "lower_id"
+        }
+      },
+      "threshold-0.8": {
+        "component_totals": {
+          "annotated_component_recall_proxy": 0.13333333333333333,
+          "indeterminate_unmatched": 3,
+          "known_support_unmatched": 0,
+          "matched_components": 2,
+          "reference_components": 15
+        },
+        "pixels": {
+          "classes": [
+            {
+              "class_id": 0,
+              "dice": 0.6703160729270208,
+              "iou": 0.5041168500867581,
+              "precision": 0.5721982555112194,
+              "predicted_support": 370653,
+              "recall": 0.8090476989746094,
+              "support": 262144,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 1,
+              "dice": 0.6390981441387026,
+              "iou": 0.46961369138131237,
+              "precision": 0.7686689910444096,
+              "predicted_support": 390929,
+              "recall": 0.5469084145216155,
+              "support": 549443,
+              "unavailable_reasons": {}
+            },
+            {
+              "class_id": 2,
+              "dice": 0.9859157974872209,
+              "iou": 0.9722228144805329,
+              "precision": 0.9808657971232422,
+              "predicted_support": 4881259,
+              "recall": 0.9910180669449381,
+              "support": 4831254,
+              "unavailable_reasons": {}
+            }
+          ],
+          "confusion_matrix": [
+            [
+              212087,
+              50057,
+              0
+            ],
+            [
+              155549,
+              300495,
+              93399
+            ],
+            [
+              3017,
+              40377,
+              4787860
+            ]
+          ],
+          "foreground_macro_dice": 0.8125069708129617,
+          "foreground_macro_iou": 0.7209182529309226,
+          "scope": "original-coordinate supervised pixels only; unknown pixels excluded"
+        },
+        "selection_settings": {
+          "decision": "few_layer_threshold",
+          "geometry": "letterbox",
+          "input_size": 512,
+          "stride": null,
+          "threshold": 0.8,
+          "ties": "lower_id"
+        }
+      }
+    },
+    "support": {
+      "images": 4,
+      "total_pixels": 19660800,
+      "unknown_fraction": 0.7129902648925781,
+      "unknown_pixels": 14017959
+    }
+  }
+}
