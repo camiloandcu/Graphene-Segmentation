@@ -84,8 +84,9 @@ approximately 284 GB reread by epoch 17. The new WI-07 schema-2 U-Net transport
 uses its unchanged initializer/optimization semantics and incremental persistence.
 Its full-state parity, retained resume, initializer RNG/digest and existing
 evaluation/persistence/benchmark suite passed (15 tests, 34.76 seconds).
-A real first-epoch CUDA state parity gate is required before completing the new
-transport trial. Existing partial state is preserved under its original run ID;
+The real-data first-epoch CUDA gate passed: all model, optimizer, scheduler,
+scaler, RNG and data-order states and numeric history match the preserved trial
+exactly. Comparison at the preserved epoch 22 remains pending before completion. Existing partial state is preserved under its original run ID;
 new trials use distinct IDs/source and do not rewrite or resume old state under
 new code. This is a persistence improvement within the approved finalist stage,
 with no additional candidate or training adjustment.

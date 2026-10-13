@@ -19,6 +19,7 @@ Notebook: [Colab evaluation](../../../notebooks/02_COLAB_MODEL_SELECTION.ipynb).
 | --- | --- | --- |
 | Original SegFormer and completed DINO probe | `8abeb9f2d10762d5420c539748832a5b29d28c16` | Original approved evaluator/training bundle |
 | SegFormer replacement and DeepLab | `33eb57af378b32ed80a552c44119c4ab7e805ff7` | Incremental verified challenger persistence |
+| U-Net finalist incremental runner | `8913690151cc2f5dac6d338b70bac72c956c5751` | Same initialization/optimization; separately installed schema-2 persistence |
 | Corrected benchmarks/new notebook | `9bea06aad3ae97858090c94f8e040a26d3d0564d` | Complete inference timing and separate initialization |
 
 Strict training recovery must use each run's recorded source/runtime. The newer
@@ -243,4 +244,9 @@ WI-07 now adds U-Net to its schema-2 incremental experiment transport while
 preserving WI-06 source. Two new initializer/full-state parity cases and three
 existing persistence/replay cases passed (24.80 seconds). These fixtures verify
 numerical/recovery equivalence, not actual laboratory quality; the full evaluator suite subsequently passed (15 tests, 34.76 seconds).
-Real CUDA parity and use of the new pinned source remain pending.
+The separately installed pinned source is in use. Real-data CUDA epoch-1
+model/optimizer/scheduler/scaler/RNG/data-order state and numeric-history parity
+passed exactly; the epoch-22 comparison and trial completion remain pending.
+MCP notebook reads succeed, but diagnostic execution currently times out or
+returns without execution. Browser/runtime status was requested; workers and
+the current runtime were kept intact. Last confirmed new-run prefix: two epochs.
